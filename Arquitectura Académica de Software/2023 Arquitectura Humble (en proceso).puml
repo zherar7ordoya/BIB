@@ -1,0 +1,59 @@
+' ===========================================
+' Author:       Gerardo Tordoya
+' Create date:  2023-06-09
+' Description:  2021 - Arquitectura de Prinzo
+' ===========================================
+
+@startuml Arquitecturas
+
+' --- CONFIGURACIÓN ------------------------------------------------------------
+
+skinparam linetype ortho
+!theme plain
+
+' --- TÍTULO -------------------------------------------------------------------
+
+title Arquitectura Prinzo
+
+' --- ENTIDAD ------------------------------------------------------------------
+
+[GUI]
+
+[BEL]
+
+[ABS]
+
+[BLL]
+
+[MAP]
+
+[DAL]
+
+database "DAT" {
+}
+
+' --- RELACIÓN -----------------------------------------------------------------
+
+GUI -down-> BLL
+BLL -down-> MAP
+MAP -down-> DAL
+DAL -down-> DAT
+
+GUI --> BEL
+GUI -[hidden]down-> ABS
+
+BLL --> BEL
+BLL --> ABS
+
+MAP --> BEL
+MAP --> ABS
+
+BEL  -> ABS
+
+' --- SUBTÍTULO ----------------------------------------------------------------
+
+caption 2021
+
+' --- FIN ----------------------------------------------------------------------
+
+@enduml
