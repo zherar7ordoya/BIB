@@ -1,0 +1,13 @@
+U:\Documents\Biblioteca\#Exercises\Taiizor\bin\Debug\Taiizor.exe.config
+U:\Documents\Biblioteca\#Exercises\Taiizor\bin\Debug\Taiizor.exe
+U:\Documents\Biblioteca\#Exercises\Taiizor\bin\Debug\Taiizor.pdb
+U:\Documents\Biblioteca\#Exercises\Taiizor\bin\Debug\ReaLTaiizor.dll
+U:\Documents\Biblioteca\#Exercises\Taiizor\bin\Debug\ReaLTaiizor.xml
+U:\Documents\Biblioteca\#Exercises\Taiizor\obj\Debug\Taiizor.csproj.AssemblyReference.cache
+U:\Documents\Biblioteca\#Exercises\Taiizor\obj\Debug\Taiizor.Form1.resources
+U:\Documents\Biblioteca\#Exercises\Taiizor\obj\Debug\Taiizor.Properties.Resources.resources
+U:\Documents\Biblioteca\#Exercises\Taiizor\obj\Debug\Taiizor.csproj.GenerateResource.cache
+U:\Documents\Biblioteca\#Exercises\Taiizor\obj\Debug\Taiizor.csproj.CoreCompileInputs.cache
+U:\Documents\Biblioteca\#Exercises\Taiizor\obj\Debug\Taiizor.csproj.Up2Date
+U:\Documents\Biblioteca\#Exercises\Taiizor\obj\Debug\Taiizor.exe
+U:\Documents\Biblioteca\#Exercises\Taiizor\obj\Debug\Taiizor.pdb

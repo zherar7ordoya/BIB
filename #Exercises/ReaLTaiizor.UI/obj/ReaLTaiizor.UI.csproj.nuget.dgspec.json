@@ -1,0 +1,68 @@
+{
+  "format": 1,
+  "restore": {
+    "U:\\Documents\\Biblioteca\\#Exercises\\ReaLTaiizor.UI\\ReaLTaiizor.UI.csproj": {}
+  },
+  "projects": {
+    "U:\\Documents\\Biblioteca\\#Exercises\\ReaLTaiizor.UI\\ReaLTaiizor.UI.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "U:\\Documents\\Biblioteca\\#Exercises\\ReaLTaiizor.UI\\ReaLTaiizor.UI.csproj",
+        "projectName": "ReaLTaiizor.UI",
+        "projectPath": "U:\\Documents\\Biblioteca\\#Exercises\\ReaLTaiizor.UI\\ReaLTaiizor.UI.csproj",
+        "packagesPath": "C:\\Users\\gtordoya\\.nuget\\packages\\",
+        "outputPath": "U:\\Documents\\Biblioteca\\#Exercises\\ReaLTaiizor.UI\\obj\\",
+        "projectStyle": "PackageReference",
+        "crossTargeting": true,
+        "configFilePaths": [
+          "C:\\Users\\gtordoya\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net48"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net48": {
+            "targetAlias": "net48",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net48": {
+          "targetAlias": "net48",
+          "dependencies": {
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.3, )"
+            },
+            "ReaLTaiizor": {
+              "target": "Package",
+              "version": "[3.8.0.2, )"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.200\\RuntimeIdentifierGraph.json"
+        }
+      },
+      "runtimes": {
+        "win7-x86": {
+          "#import": []
+        }
+      }
+    }
+  }
+}
