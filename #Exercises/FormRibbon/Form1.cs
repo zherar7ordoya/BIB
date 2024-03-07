@@ -10,11 +10,17 @@ using System.Windows.Forms;
 
 namespace FormRibbon
 {
-    public partial class Form1 : Form
+    public partial class Form1 : BaseForm
     {
         public Form1()
         {
             InitializeComponent();
+            //SalirOrb.Click += ApplicationExit;
+        }
+
+        private void ApplicationExit(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

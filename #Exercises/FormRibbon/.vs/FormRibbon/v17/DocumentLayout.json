@@ -1,9 +1,9 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "D:\\Documents\\Biblioteca\\#Exercises\\FormRibbon\\",
+  "WorkspaceRootPath": "U:\\Documents\\Biblioteca\\#Exercises\\FormRibbon\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{5A321BD5-3A0A-4F84-95AF-8FDF4BE7BA56}|FormRibbon.csproj|d:\\documents\\biblioteca\\#exercises\\formribbon\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{5A321BD5-3A0A-4F84-95AF-8FDF4BE7BA56}|FormRibbon.csproj|u:\\documents\\biblioteca\\#exercises\\formribbon\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{5A321BD5-3A0A-4F84-95AF-8FDF4BE7BA56}|FormRibbon.csproj|solutionrelative:form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     }
   ],
@@ -20,12 +20,12 @@
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "Form1.cs [Design]",
-              "DocumentMoniker": "D:\\Documents\\Biblioteca\\#Exercises\\FormRibbon\\Form1.cs",
+              "DocumentMoniker": "U:\\Documents\\Biblioteca\\#Exercises\\FormRibbon\\Form1.cs",
               "RelativeDocumentMoniker": "Form1.cs",
-              "ToolTip": "D:\\Documents\\Biblioteca\\#Exercises\\FormRibbon\\Form1.cs [Design]",
+              "ToolTip": "U:\\Documents\\Biblioteca\\#Exercises\\FormRibbon\\Form1.cs [Design]",
               "RelativeToolTip": "Form1.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-07T01:18:38.093Z",
+              "WhenOpened": "2024-03-07T14:40:28.219Z",
               "EditorCaption": " [Design]"
             }
           ]
