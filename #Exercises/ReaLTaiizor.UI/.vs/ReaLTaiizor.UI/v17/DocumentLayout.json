@@ -1,26 +1,18 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "U:\\Documents\\Biblioteca\\#Exercises\\ReaLTaiizor.UI\\",
+  "WorkspaceRootPath": "D:\\Documents\\Biblioteca\\#Exercises\\ReaLTaiizor.UI\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{8B626AB5-8533-492D-B63B-CF94F9AD2D70}|ReaLTaiizor.UI.csproj|u:\\documents\\biblioteca\\#exercises\\realtaiizor.ui\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8B626AB5-8533-492D-B63B-CF94F9AD2D70}|ReaLTaiizor.UI.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{4421C624-4FB3-4A5B-B4F2-AEEB5DD9DB85}|ReaLTaiizor.UI\\ReaLTaiizor.UI.csproj|d:\\documents\\biblioteca\\#exercises\\realtaiizor.ui\\realtaiizor.ui\\helpers\\formhelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4421C624-4FB3-4A5B-B4F2-AEEB5DD9DB85}|ReaLTaiizor.UI\\ReaLTaiizor.UI.csproj|solutionrelative:realtaiizor.ui\\helpers\\formhelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8B626AB5-8533-492D-B63B-CF94F9AD2D70}|ReaLTaiizor.UI.csproj|u:\\documents\\biblioteca\\#exercises\\realtaiizor.ui\\menuform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{8B626AB5-8533-492D-B63B-CF94F9AD2D70}|ReaLTaiizor.UI.csproj|solutionrelative:menuform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{4421C624-4FB3-4A5B-B4F2-AEEB5DD9DB85}|ReaLTaiizor.UI\\ReaLTaiizor.UI.csproj|d:\\documents\\biblioteca\\#exercises\\realtaiizor.ui\\realtaiizor.ui\\form20.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4421C624-4FB3-4A5B-B4F2-AEEB5DD9DB85}|ReaLTaiizor.UI\\ReaLTaiizor.UI.csproj|solutionrelative:realtaiizor.ui\\form20.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8B626AB5-8533-492D-B63B-CF94F9AD2D70}|ReaLTaiizor.UI.csproj|u:\\documents\\biblioteca\\#exercises\\realtaiizor.ui\\form17.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{8B626AB5-8533-492D-B63B-CF94F9AD2D70}|ReaLTaiizor.UI.csproj|solutionrelative:form17.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8B626AB5-8533-492D-B63B-CF94F9AD2D70}|ReaLTaiizor.UI.csproj|u:\\documents\\biblioteca\\#exercises\\realtaiizor.ui\\form17.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8B626AB5-8533-492D-B63B-CF94F9AD2D70}|ReaLTaiizor.UI.csproj|solutionrelative:form17.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8B626AB5-8533-492D-B63B-CF94F9AD2D70}|ReaLTaiizor.UI.csproj|u:\\documents\\biblioteca\\#exercises\\realtaiizor.ui\\menuform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8B626AB5-8533-492D-B63B-CF94F9AD2D70}|ReaLTaiizor.UI.csproj|solutionrelative:menuform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{4421C624-4FB3-4A5B-B4F2-AEEB5DD9DB85}|ReaLTaiizor.UI\\ReaLTaiizor.UI.csproj|d:\\documents\\biblioteca\\#exercises\\realtaiizor.ui\\realtaiizor.ui\\form20.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{4421C624-4FB3-4A5B-B4F2-AEEB5DD9DB85}|ReaLTaiizor.UI\\ReaLTaiizor.UI.csproj|solutionrelative:realtaiizor.ui\\form20.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     }
   ],
   "DocumentGroupContainers": [
@@ -30,68 +22,45 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Program.cs",
-              "DocumentMoniker": "U:\\Documents\\Biblioteca\\#Exercises\\ReaLTaiizor.UI\\Program.cs",
-              "RelativeDocumentMoniker": "Program.cs",
-              "ToolTip": "U:\\Documents\\Biblioteca\\#Exercises\\ReaLTaiizor.UI\\Program.cs",
-              "RelativeToolTip": "Program.cs",
-              "ViewState": "AQIAABMAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "DocumentIndex": 1,
+              "Title": "Form20.cs",
+              "DocumentMoniker": "D:\\Documents\\Biblioteca\\#Exercises\\ReaLTaiizor.UI\\ReaLTaiizor.UI\\Form20.cs",
+              "RelativeDocumentMoniker": "ReaLTaiizor.UI\\Form20.cs",
+              "ToolTip": "D:\\Documents\\Biblioteca\\#Exercises\\ReaLTaiizor.UI\\ReaLTaiizor.UI\\Form20.cs",
+              "RelativeToolTip": "ReaLTaiizor.UI\\Form20.cs",
+              "ViewState": "AQIAAFcAAAAAAAAAAABAwCoAAAAOAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-07T22:34:38.972Z",
+              "WhenOpened": "2024-03-08T04:30:39.674Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "Form17.cs [Design]",
-              "DocumentMoniker": "U:\\Documents\\Biblioteca\\#Exercises\\ReaLTaiizor.UI\\Form17.cs",
-              "RelativeDocumentMoniker": "Form17.cs",
-              "ToolTip": "U:\\Documents\\Biblioteca\\#Exercises\\ReaLTaiizor.UI\\Form17.cs [Design]",
-              "RelativeToolTip": "Form17.cs [Design]",
+              "Title": "Form20.cs [Design]",
+              "DocumentMoniker": "D:\\Documents\\Biblioteca\\#Exercises\\ReaLTaiizor.UI\\ReaLTaiizor.UI\\Form20.cs",
+              "RelativeDocumentMoniker": "ReaLTaiizor.UI\\Form20.cs",
+              "ToolTip": "D:\\Documents\\Biblioteca\\#Exercises\\ReaLTaiizor.UI\\ReaLTaiizor.UI\\Form20.cs [Design]",
+              "RelativeToolTip": "ReaLTaiizor.UI\\Form20.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-07T22:30:28.666Z",
+              "WhenOpened": "2024-03-08T04:30:10.699Z",
               "EditorCaption": " [Design]"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "MenuForm.cs [Design]",
-              "DocumentMoniker": "U:\\Documents\\Biblioteca\\#Exercises\\ReaLTaiizor.UI\\MenuForm.cs",
-              "RelativeDocumentMoniker": "MenuForm.cs",
-              "ToolTip": "U:\\Documents\\Biblioteca\\#Exercises\\ReaLTaiizor.UI\\MenuForm.cs [Design]",
-              "RelativeToolTip": "MenuForm.cs [Design]",
+              "DocumentIndex": 0,
+              "Title": "FormHelper.cs",
+              "DocumentMoniker": "D:\\Documents\\Biblioteca\\#Exercises\\ReaLTaiizor.UI\\ReaLTaiizor.UI\\Helpers\\FormHelper.cs",
+              "RelativeDocumentMoniker": "ReaLTaiizor.UI\\Helpers\\FormHelper.cs",
+              "ToolTip": "D:\\Documents\\Biblioteca\\#Exercises\\ReaLTaiizor.UI\\ReaLTaiizor.UI\\Helpers\\FormHelper.cs",
+              "RelativeToolTip": "ReaLTaiizor.UI\\Helpers\\FormHelper.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABsAAAAGAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-07T22:01:20.014Z",
-              "EditorCaption": " [Design]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Form17.cs",
-              "DocumentMoniker": "U:\\Documents\\Biblioteca\\#Exercises\\ReaLTaiizor.UI\\Form17.cs",
-              "RelativeDocumentMoniker": "Form17.cs",
-              "ToolTip": "U:\\Documents\\Biblioteca\\#Exercises\\ReaLTaiizor.UI\\Form17.cs",
-              "RelativeToolTip": "Form17.cs",
-              "ViewState": "AQIAAHsBAAAAAAAAAAAiwIIBAAAuAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-07T21:59:27.479Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "MenuForm.cs",
-              "DocumentMoniker": "U:\\Documents\\Biblioteca\\#Exercises\\ReaLTaiizor.UI\\MenuForm.cs",
-              "RelativeDocumentMoniker": "MenuForm.cs",
-              "ToolTip": "U:\\Documents\\Biblioteca\\#Exercises\\ReaLTaiizor.UI\\MenuForm.cs",
-              "RelativeToolTip": "MenuForm.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAAAFAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-07T22:01:24.809Z"
+              "WhenOpened": "2024-03-08T02:20:40.076Z",
+              "EditorCaption": ""
             }
           ]
         }
