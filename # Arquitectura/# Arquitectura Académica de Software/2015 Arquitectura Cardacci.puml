@@ -1,0 +1,85 @@
+@startuml Arquitectura Cardacci v2015
+
+' =========================================
+' Author:       Gerardo Tordoya
+' Create date:  2023-01-31
+' Update date:  2023-03-19
+' Description:  Arquitectura Cardacci v2015
+' =========================================
+
+
+' --- CONFIGURACION DEL DIAGRAMA (Tipo: Diagrama de Clases) --------------------
+
+' skin rose
+' skinparam classFontName Calibri
+' skinparam shadowing false
+' hide circle
+skinparam linetype ortho
+
+
+' --- TITULO DEL DIAGRAMA ------------------------------------------------------
+
+title Arquitectura Académica de Software
+
+
+' --- ENTIDADES ----------------------------------------------------------------
+
+package GUI <<Folder>> {
+}
+
+
+package Controller <<Folder>> {
+}
+
+
+package Structure <<Folder>> {
+}
+
+
+package Abstract <<Folder>> {
+}
+
+
+package Logic <<Folder>> {
+}
+
+
+package ORM <<Folder>> {
+}
+
+
+package DataAccess <<Folder>> {
+}
+
+
+package Database <<Database>> {
+}
+
+
+' --- RELACIONES ---------------------------------------------------------------
+
+GUI        <--> Controller
+
+Controller  --> Structure
+Controller  --> Logic
+Controller  --> Abstract
+
+Logic       --> Structure
+Logic       --> ORM
+Logic       --> Abstract
+
+ORM         --> Structure
+ORM         --> DataAccess
+ORM         --> Abstract
+
+Structure    -> Abstract
+
+DataAccess <--> Database
+
+
+' --- PIE DE DIAGRAMA ----------------------------------------------------------
+
+' caption Cardacci v2015
+
+
+@enduml
