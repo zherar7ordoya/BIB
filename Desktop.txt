@@ -1,0 +1,23 @@
+A continuación, se mencionan algunas pilas tecnológicas comunes para el desarrollo de aplicaciones de escritorio:
+
+Electron:
+Lenguajes: *TypeScript*
+Características: Electron permite el desarrollo de aplicaciones de escritorio multiplataforma utilizando tecnologías web estándar. Es utilizado por muchas empresas para crear aplicaciones de escritorio, incluyendo Slack, Visual Studio Code y Discord.
+
+JavaFX:
+Lenguaje: *Java*
+Características: JavaFX es una plataforma de desarrollo de aplicaciones de escritorio que utiliza Java. Ofrece capacidades ricas para la creación de interfaces de usuario modernas y es una elección común para aplicaciones empresariales.
+
+Qt:
+Lenguajes: *Python*
+Características: Qt es un marco de desarrollo de aplicaciones multiplataforma que permite el desarrollo de aplicaciones de escritorio con una apariencia nativa en diversas plataformas. Es conocido por su flexibilidad y se utiliza en aplicaciones como Autodesk Maya.
+
+WPF (Windows Presentation Foundation):
+Lenguaje: *C#*
+Características: WPF es un marco de desarrollo de Microsoft para la creación de aplicaciones de escritorio en el ecosistema Windows. Aunque es específico de Windows, es una opción sólida para empresas que se centran en esta plataforma.
+
+
+BASES DE DATOS:
+SQL Server
+MySQL
+SQLite

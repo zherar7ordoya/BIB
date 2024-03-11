@@ -1,0 +1,17 @@
+{
+  "name": "electron-quick-start-with-typescript",
+  "version": "0.8.0",
+  "description": "https://dev.to/batajus/electron-quick-start-with-typescript-48h8",
+  "author": "Gerardo Tordoya",
+  "main": "build/index.js",
+  "scripts": {
+    "compile": "tsc && copyfiles -f src/index.html build",
+    "start": "npm run compile && electron ."
+  },
+  "devDependencies": {
+    "copyfiles": "^2.4.1",
+    "electron": "^29.1.1",
+    "typescript": "^4.9.5"
+  },
+  "license": "ISC"
+}
