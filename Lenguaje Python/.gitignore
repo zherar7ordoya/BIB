@@ -1,0 +1,17 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Caché de desarrollo
+.cache/
+.pyre/
+
+# Directorio de construcción
+build/
+
+# Archivos de distribución
+dist/
+
+# Entorno virtual
+venv/
