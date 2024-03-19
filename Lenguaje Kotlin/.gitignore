@@ -1,0 +1,22 @@
+# Bytecode
+*.class
+
+# Compiled files
+*.jar
+*.war
+*.ear
+*.zip
+*.tar.gz
+*.rar
+
+# Log files
+*.log
+logging/
+
+# IntelliJ IDEA
+.idea/
+*.iml
+
+# Eclipse
+.settings/
+bin/
