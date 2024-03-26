@@ -14,7 +14,8 @@ public class Main {
     char Sexo = 'M';
 
     public static void main(String[] args) {
-      System.out.println("Hello {Nombre}");
+      String Nombre = "Pedro";
+      System.out.println("Hello " + Nombre);
     }
   }
   
