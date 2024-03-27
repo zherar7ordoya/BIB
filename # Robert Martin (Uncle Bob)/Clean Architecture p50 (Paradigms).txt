@@ -1,0 +1,9 @@
+Paradigma	Descubierto	Adoptado
+
+Funcional	1958		1990
+Objectos	1966		1973
+Estructurado	1968		1972
+
+Estructurado	1968		1972
+Objectos	1966		1973
+Funcional	1958		1990
