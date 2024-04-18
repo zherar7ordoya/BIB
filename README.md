@@ -4,7 +4,6 @@
 AOO try DOO finally POO
 </div>
 
----
 <br/>
 
 > *First,*
