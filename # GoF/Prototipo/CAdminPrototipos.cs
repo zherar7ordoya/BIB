@@ -1,16 +1,28 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Prototipo
 {
-    internal class CAdminPrototipos
+    public class CAdminPrototipos
     {
+        private Dictionary<string, IPrototipo> prototipos = new Dictionary<string, IPrototipo>();
         public CAdminPrototipos()
         {
+            // Adicionamos los objetos prototipo con los valores iniciales que nos interesan
+            CPersona persona = new CPersona("Ciudadano", 1);
+            prototipos.Add("Persona", persona);
+
+            CValores valores = new CValores(10);
+            prototipos.Add("Valores", valores);
         }
 
-        internal CPersona ObtenPrototipo(string v)
+        public void AdicionarPrototipo(string pLlave, IPrototipo pPrototipo)
         {
-            throw new NotImplementedException();
+            prototipos.Add(pLlave, pPrototipo);
+        }
+        public object ObtenerPrototipo(string pLlave)
+        {
+            return prototipos[pLlave].Clonar();
         }
     }
 }

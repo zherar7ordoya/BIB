@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CAdminPrototipos.cs" />
+    <Compile Include="CAuto.cs" />
     <Compile Include="CPersona.cs" />
     <Compile Include="CValores.cs" />
     <Compile Include="IPrototipo.cs" />

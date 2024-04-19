@@ -41,9 +41,11 @@ namespace Prototipo
 
         public object Clonar()
         {
-            CValores clon = new CValores();
-            clon.M = m;
-            clon.Sumatoria = sumatoria;
+            CValores clon = new CValores
+            {
+                M = m,
+                Sumatoria = sumatoria
+            };
             return clon;
         }
     }
