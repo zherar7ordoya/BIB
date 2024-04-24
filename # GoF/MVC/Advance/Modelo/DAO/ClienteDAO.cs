@@ -1,10 +1,13 @@
 ﻿using System.Collections.Generic;
 using System.Data;
-using System.Data.SqlClient;
+
+// using System.Data.SqlClient;
+using MySql.Data.MySqlClient;
 
 namespace Modelo
 {
-    internal class ClienteDAO : ConexionDAO
+    // internal class ClienteDAO : ConexionSqlServer
+    internal class ClienteDAO : ConexionMySql
     {
         /**
          * El patrón Data Access object (DAO), consiste en utilizar un objetoSqlDataReader
@@ -14,8 +17,10 @@ namespace Modelo
          * Esta clase solo debería contener métodos CRUD.
          */
 
-        SqlDataReader reader;
-        readonly SqlCommand comando = new SqlCommand();
+        //SqlDataReader reader;
+        MySqlDataReader reader;
+        //readonly SqlCommand comando = new SqlCommand();
+        readonly MySqlCommand comando = new MySqlCommand();
 
         public List<ClienteDTO> Consultar(string condicion)
         {
