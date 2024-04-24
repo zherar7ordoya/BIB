@@ -1,5 +1,6 @@
 ﻿using System.Data.SqlClient;
 
+
 namespace Modelo
 {
     internal class ConexionSqlServer

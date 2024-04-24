@@ -2,6 +2,7 @@
 using Vista;
 using Modelo;
 
+
 namespace Controlador
 {
     internal class ClienteController
