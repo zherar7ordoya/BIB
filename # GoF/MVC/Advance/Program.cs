@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Windows.Forms;
-using Desktop.Vistas;
+using Vista;
 
-namespace Desktop
+namespace Escritorio
 {
     internal static class Program
     {
@@ -14,7 +14,7 @@ namespace Desktop
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new ClientesForm());
+            Application.Run(new ClienteForm());
         }
     }
 }
