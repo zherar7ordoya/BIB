@@ -5,7 +5,7 @@ namespace Modelo
 {
     internal class ConexionMySql
     {
-        protected MySqlConnection connectionString =
+        protected MySqlConnection conexion =
             new MySqlConnection(@"Server=localhost;
                                   User=root;
                                   Password=delfin;
