@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace Modelo
 {
-    internal class ClienteConsultar : ConexionMySql
+    internal class ClienteConsulta : ConexionMySql
     {
-        public List<ClienteDTO> Consultar(string condicion)
+        public List<Cliente> Consultar(string condicion)
         {
-            List<ClienteDTO> clientes = new List<ClienteDTO>();
+            List<Cliente> clientes = new List<Cliente>();
             using (var conexion = connectionString)
             {
                 using (var comando = ClienteHelper.CrearComando(condicion, conexion))

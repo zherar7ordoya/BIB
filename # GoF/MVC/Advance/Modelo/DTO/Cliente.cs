@@ -1,6 +1,6 @@
 ﻿namespace Modelo
 {
-    internal class ClienteDTO
+    internal class Cliente
     {
         public int ID { get; set; }
         public string Nombre { get; set; }

@@ -17,9 +17,9 @@ namespace Modelo
             return comando;
         }
 
-        public static ClienteDTO MapearCliente(MySqlDataReader reader)
+        public static Cliente MapearCliente(MySqlDataReader reader)
         {
-            return new ClienteDTO
+            return new Cliente
             {
                 ID = reader.GetInt32(reader.GetOrdinal("ID")),
                 Nombre = reader.GetString(reader.GetOrdinal("Nombre")),

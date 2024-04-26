@@ -8,17 +8,17 @@ namespace Modelo
         //private readonly ClienteAgregar clienteAgregar;
         //private readonly ClienteBorrar clienteBorrar;
         //private readonly ClienteModificar clienteModificar;
-        private readonly ClienteConsultar clienteConsultar;
+        private readonly ClienteConsulta clienteConsultar;
 
         public ClienteDAO()
         {
             //clienteAgregar = new ClienteAgregar();
             //clienteBorrar = new ClienteBorrar();
             //clienteModificar = new ClienteModificar();
-            clienteConsultar = new ClienteConsultar();
+            clienteConsultar = new ClienteConsulta();
         }
 
-        public void Agregar(ClienteDTO cliente)
+        public void Agregar(Cliente cliente)
         {
             //clienteAgregar.Agregar(cliente);
         }
@@ -28,12 +28,12 @@ namespace Modelo
             //clienteBorrar.Borrar(id);
         }
 
-        public void Modificar(ClienteDTO cliente)
+        public void Modificar(Cliente cliente)
         {
             //clienteModificar.Modificar(cliente);
         }
 
-        public List<ClienteDTO> Consultar(string condicion)
+        public List<Cliente> Consultar(string condicion)
         {
             return clienteConsultar.Consultar(condicion);
         }
