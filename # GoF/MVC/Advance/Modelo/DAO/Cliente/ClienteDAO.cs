@@ -2,6 +2,7 @@
 
 namespace Modelo
 {
+    // Patrón de diseño Facade (Fachada)
     internal class ClienteDAO
     {
         //private readonly ClienteAgregar clienteAgregar;

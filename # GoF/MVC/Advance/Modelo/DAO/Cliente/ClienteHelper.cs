@@ -8,10 +8,11 @@ namespace Modelo
     {
         public static MySqlCommand CrearComando(string condicion, MySqlConnection conexion)
         {
-            var comando = new MySqlCommand("VerRegistros", conexion)
-            {
-                CommandType = CommandType.StoredProcedure
-            };
+            string query = @"SELECT * 
+                             FROM Clientes 
+                             WHERE ID LIKE CONCAT (@Condicion, '%') 
+                             OR Nombre LIKE CONCAT (@Condicion, '%')";
+            var comando = new MySqlCommand(query, conexion);
             comando.Parameters.AddWithValue("@Condicion", condicion);
             return comando;
         }
