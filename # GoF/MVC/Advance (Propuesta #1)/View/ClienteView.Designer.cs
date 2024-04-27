@@ -1,6 +1,6 @@
 ﻿namespace View
 {
-    partial class ClienteForm
+    partial class ClienteView
     {
         /// <summary>
         /// Required designer variable.

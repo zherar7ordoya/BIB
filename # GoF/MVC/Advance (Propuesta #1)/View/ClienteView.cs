@@ -3,9 +3,9 @@ using System.Windows.Forms;
 
 namespace View
 {
-    public partial class ClienteForm : Form
+    public partial class ClienteView : Form
     {
-        public ClienteForm()
+        public ClienteView()
         {
             InitializeComponent();
             _ = new ClienteController(this);

@@ -5,14 +5,14 @@ DELIMITER //
 CREATE PROCEDURE VerRegistros (IN Condicion VARCHAR(30))
 
 BEGIN
-	SELECT *
-	FROM Clientes
-	WHERE ID LIKE CONCAT (Condicion, '%')
-	OR Nombre LIKE CONCAT (Condicion, '%');
-END //
+    SELECT *
+    FROM Clientes
+    WHERE ID LIKE CONCAT (Condicion, '%')
+    OR Nombre LIKE CONCAT (Condicion, '%');
+END // 
 
 -- RESTAURAR EL DELIMITADOR
-DELIMITER;
+DELIMITER //
 
 -- EJECUTAR EL PROCEDIMIENTO
-CALL VerRegistros('Tama');
+CALL VerRegistros('Mari');
