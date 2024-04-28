@@ -101,6 +101,7 @@
     <Compile Include="Common\BusinessEntities\Cliente.cs" />
     <Compile Include="Common\DataAccess\ConexionMySql.cs" />
     <Compile Include="Common\Abstract\ICRUD.cs" />
+    <Compile Include="ConversorLogic.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
