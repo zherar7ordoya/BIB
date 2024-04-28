@@ -101,8 +101,14 @@
     <Compile Include="Common\BusinessEntities\Cliente.cs" />
     <Compile Include="Common\DataAccess\ConexionMySql.cs" />
     <Compile Include="Common\Abstract\ICRUD.cs" />
-    <Compile Include="ConversorLogic.cs" />
+    <Compile Include="Qr\QrLogic.cs" />
+    <Compile Include="QrModel.cs" />
+    <Compile Include="Qr\QrMapper.cs" />
+    <Compile Include="Qr\QrSQL.cs" />
+    <Compile Include="Qr\QrCRUD.cs" />
+    <Compile Include="Qr\QrHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Common\BusinessEntities\Qr.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

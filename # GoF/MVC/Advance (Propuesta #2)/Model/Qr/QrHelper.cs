@@ -5,7 +5,7 @@ namespace Model
     /// <summary>
     /// Métodos para convertir números decimales, binarios, octales y hexadecimales.
     /// </summary>
-    internal class ConversorLogic
+    internal static class QrHelper
     {
         //*--------------------------------------------------------------------*
 

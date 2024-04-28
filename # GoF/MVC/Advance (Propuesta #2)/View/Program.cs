@@ -13,7 +13,7 @@ namespace View
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new ClienteView());
+            Application.Run(new QrView());
         }
     }
 }
