@@ -3,27 +3,30 @@
 namespace Model
 {
     /// <summary>
-    /// Métodos para convertir números decimales, binarios, octales y hexadecimales.
+    /// Métodos para la conversión entre números (en cadena de texto):
+    /// * decimales
+    /// * binarios
+    /// * hexadecimales
     /// </summary>
     internal static class QrHelper
     {
         //*--------------------------------------------------------------------*
 
-        private static bool EsBinario(string pBinario)
+        private static bool EsBinario(string binario)
         {
-            foreach (char digit in pBinario)
+            foreach (char caracter in binario)
             {
-                if (digit != '0' && digit != '1') return false;
+                if (caracter != '0' && caracter != '1') return false;
             }
             return true;
         }
 
-        private static bool EsHexadecimal(string pHexadecimal)
+        private static bool EsHexadecimal(string hexadecimal)
         {
-            foreach (char caracter in pHexadecimal)
+            foreach (char caracter in hexadecimal)
             {
                 if (
-                    !char.IsDigit(caracter) && 
+                    !char.IsDigit(caracter) &&
                     !(caracter >= 'A' && caracter <= 'F') &&
                     !(caracter >= 'a' && caracter <= 'f'))
                 {
@@ -45,7 +48,7 @@ namespace Model
         /// El número caracteres de longitud que se desea como resultado.
         /// </param>
         /// <returns>
-        /// Una cadena de texto con la representación binaria del número decimal.
+        /// Una cadena de texto con el decimal convertido a binario.
         /// </returns>
         /// <exception cref="ArgumentException">
         /// Este método no contempla la conversión de números decimales negativos.
@@ -63,16 +66,16 @@ namespace Model
         //*--------------------------------------------------------------------*
 
         /// <summary>
-        /// Convertir un número decimal a octal.
+        /// Convertir un número decimal a hexadecimal.
         /// </summary>
         /// <param name="pDecimal">
-        /// El número decimal que se desea convertir a octal.
+        /// El número decimal que se desea convertir a hexadecimal.
         /// </param>
         /// <param name="pLargo">
         /// El número caracteres de longitud que se desea como resultado.
         /// </param>
         /// <returns>
-        /// Una cadena de texto con la representación octal del número decimal.
+        /// Una cadena de texto con el decimal convertido a hexadecimal.
         /// </returns>
         /// <exception cref="ArgumentException">
         /// Este método no contempla la conversión de números decimales negativos.
@@ -99,7 +102,7 @@ namespace Model
         /// El número caracteres de longitud que se desea como resultado.
         /// </param>
         /// <returns>
-        /// Una cadena de texto con la representación decimal del número binario.
+        /// Una cadena de texto con el binario convertido a decimal.
         /// </returns>
         /// <exception cref="ArgumentException">
         /// Un número binario no válido.
@@ -117,16 +120,16 @@ namespace Model
         //*--------------------------------------------------------------------*
 
         /// <summary>
-        /// Convertir un número binario a octal.
+        /// Convertir un número binario a hexadecimal.
         /// </summary>
         /// <param name="pBinario">
-        /// El número binario que se desea convertir a octal.
+        /// El número binario que se desea convertir a hexadecimal.
         /// </param>
         /// <param name="pLargo">
         /// El número caracteres de longitud que se desea como resultado.
         /// </param>
         /// <returns>
-        /// Una cadena de texto con la representación octal del número binario.
+        /// Una cadena de texto con el binario convertido a hexadecimal.
         /// </returns>
         /// <exception cref="ArgumentException">
         /// Un número binario no válido.
@@ -144,19 +147,19 @@ namespace Model
         //*--------------------------------------------------------------------*
 
         /// <summary>
-        /// Convertir un número octal a decimal.
+        /// Convertir un número hexadecimal a decimal.
         /// </summary>
         /// <param name="pHexadecimal">
-        /// El número octal que se desea convertir a decimal.
+        /// El número hexadecimal que se desea convertir a decimal.
         /// </param>
         /// <param name="pLargo">
         /// El número caracteres de longitud que se desea como resultado.
         /// </param>
         /// <returns>
-        /// Una cadena de texto con la representación decimal del número octal.
+        /// Una cadena de texto con el hexadecimal convertido a decimal.
         /// </returns>
         /// <exception cref="ArgumentException">
-        /// Un número octal no válido.
+        /// Un número hexadecimal no válido.
         /// </exception>
         public static string Hexadecimal_a_Decimal(string pHexadecimal, int pLargo)
         {
@@ -171,19 +174,19 @@ namespace Model
         //*--------------------------------------------------------------------*
 
         /// <summary>
-        /// Convertir un número octal a binario.
+        /// Convertir un número hexadecimal a binario.
         /// </summary>
         /// <param name="pHexadecimal">
-        /// El número octal que se desea convertir a binario.
+        /// El número hexadecimal que se desea convertir a binario.
         /// </param>
         /// <param name="pLargo">
         /// El número caracteres de longitud que se desea como resultado.
         /// </param>
         /// <returns>
-        /// La representación binaria del número octal.
+        /// Una cadena de texto con el hexadecimal convertido a binario.
         /// </returns>
         /// <exception cref="ArgumentException">
-        /// Un número octal no válido.
+        /// Un hexadecimal no válido.
         /// </exception>
         public static string Hexadecimal_a_Binario(string pHexadecimal, int pLargo)
         {
