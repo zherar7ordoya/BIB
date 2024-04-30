@@ -13,3 +13,18 @@ U:\Documents\BIB\# GoF\# Freeman & Robson - Head First Design Patterns (2nd edit
 U:\Documents\BIB\# GoF\# Freeman & Robson - Head First Design Patterns (2nd edition)\zherar7ordoya\PatitosCSharp\obj\Debug\net8.0\PatitosCSharp.pdb
 U:\Documents\BIB\# GoF\# Freeman & Robson - Head First Design Patterns (2nd edition)\zherar7ordoya\PatitosCSharp\obj\Debug\net8.0\PatitosCSharp.genruntimeconfig.cache
 U:\Documents\BIB\# GoF\# Freeman & Robson - Head First Design Patterns (2nd edition)\zherar7ordoya\PatitosCSharp\obj\Debug\net8.0\ref\PatitosCSharp.dll
+U:\Documents\BIB\# GoF\# Freeman & Robson - Head First Design Patterns (2nd edition)\(Ejercitación)\Capítulo 01\PatitosCSharp\bin\Debug\net8.0\PatitosCSharp.exe
+U:\Documents\BIB\# GoF\# Freeman & Robson - Head First Design Patterns (2nd edition)\(Ejercitación)\Capítulo 01\PatitosCSharp\bin\Debug\net8.0\PatitosCSharp.deps.json
+U:\Documents\BIB\# GoF\# Freeman & Robson - Head First Design Patterns (2nd edition)\(Ejercitación)\Capítulo 01\PatitosCSharp\bin\Debug\net8.0\PatitosCSharp.runtimeconfig.json
+U:\Documents\BIB\# GoF\# Freeman & Robson - Head First Design Patterns (2nd edition)\(Ejercitación)\Capítulo 01\PatitosCSharp\bin\Debug\net8.0\PatitosCSharp.dll
+U:\Documents\BIB\# GoF\# Freeman & Robson - Head First Design Patterns (2nd edition)\(Ejercitación)\Capítulo 01\PatitosCSharp\bin\Debug\net8.0\PatitosCSharp.pdb
+U:\Documents\BIB\# GoF\# Freeman & Robson - Head First Design Patterns (2nd edition)\(Ejercitación)\Capítulo 01\PatitosCSharp\obj\Debug\net8.0\PatitosCSharp.GeneratedMSBuildEditorConfig.editorconfig
+U:\Documents\BIB\# GoF\# Freeman & Robson - Head First Design Patterns (2nd edition)\(Ejercitación)\Capítulo 01\PatitosCSharp\obj\Debug\net8.0\PatitosCSharp.AssemblyInfoInputs.cache
+U:\Documents\BIB\# GoF\# Freeman & Robson - Head First Design Patterns (2nd edition)\(Ejercitación)\Capítulo 01\PatitosCSharp\obj\Debug\net8.0\PatitosCSharp.AssemblyInfo.cs
+U:\Documents\BIB\# GoF\# Freeman & Robson - Head First Design Patterns (2nd edition)\(Ejercitación)\Capítulo 01\PatitosCSharp\obj\Debug\net8.0\PatitosCSharp.csproj.CoreCompileInputs.cache
+U:\Documents\BIB\# GoF\# Freeman & Robson - Head First Design Patterns (2nd edition)\(Ejercitación)\Capítulo 01\PatitosCSharp\obj\Debug\net8.0\PatitosCSharp.sourcelink.json
+U:\Documents\BIB\# GoF\# Freeman & Robson - Head First Design Patterns (2nd edition)\(Ejercitación)\Capítulo 01\PatitosCSharp\obj\Debug\net8.0\PatitosCSharp.dll
+U:\Documents\BIB\# GoF\# Freeman & Robson - Head First Design Patterns (2nd edition)\(Ejercitación)\Capítulo 01\PatitosCSharp\obj\Debug\net8.0\refint\PatitosCSharp.dll
+U:\Documents\BIB\# GoF\# Freeman & Robson - Head First Design Patterns (2nd edition)\(Ejercitación)\Capítulo 01\PatitosCSharp\obj\Debug\net8.0\PatitosCSharp.pdb
+U:\Documents\BIB\# GoF\# Freeman & Robson - Head First Design Patterns (2nd edition)\(Ejercitación)\Capítulo 01\PatitosCSharp\obj\Debug\net8.0\PatitosCSharp.genruntimeconfig.cache
+U:\Documents\BIB\# GoF\# Freeman & Robson - Head First Design Patterns (2nd edition)\(Ejercitación)\Capítulo 01\PatitosCSharp\obj\Debug\net8.0\ref\PatitosCSharp.dll

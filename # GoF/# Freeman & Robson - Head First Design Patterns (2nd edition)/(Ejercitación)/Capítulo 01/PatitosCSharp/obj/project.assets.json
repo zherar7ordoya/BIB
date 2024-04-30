@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "U:\\Documents\\BIB\\# GoF\\# Freeman & Robson - Head First Design Patterns (2nd edition)\\zherar7ordoya\\PatitosCSharp\\PatitosCSharp.csproj",
+      "projectUniqueName": "U:\\Documents\\BIB\\# GoF\\# Freeman & Robson - Head First Design Patterns (2nd edition)\\(Ejercitación)\\Capítulo 01\\PatitosCSharp\\PatitosCSharp.csproj",
       "projectName": "PatitosCSharp",
-      "projectPath": "U:\\Documents\\BIB\\# GoF\\# Freeman & Robson - Head First Design Patterns (2nd edition)\\zherar7ordoya\\PatitosCSharp\\PatitosCSharp.csproj",
+      "projectPath": "U:\\Documents\\BIB\\# GoF\\# Freeman & Robson - Head First Design Patterns (2nd edition)\\(Ejercitación)\\Capítulo 01\\PatitosCSharp\\PatitosCSharp.csproj",
       "packagesPath": "C:\\Users\\gtordoya\\.nuget\\packages\\",
-      "outputPath": "U:\\Documents\\BIB\\# GoF\\# Freeman & Robson - Head First Design Patterns (2nd edition)\\zherar7ordoya\\PatitosCSharp\\obj\\",
+      "outputPath": "U:\\Documents\\BIB\\# GoF\\# Freeman & Robson - Head First Design Patterns (2nd edition)\\(Ejercitación)\\Capítulo 01\\PatitosCSharp\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\gtordoya\\AppData\\Roaming\\NuGet\\NuGet.Config",
