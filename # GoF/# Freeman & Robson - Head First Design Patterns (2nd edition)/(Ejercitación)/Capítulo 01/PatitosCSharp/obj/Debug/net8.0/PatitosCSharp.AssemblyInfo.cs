@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("PatitosCSharp")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1c574f5560a318369c9f7672b8b8c1786534e3a6")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+decd34887400a37cc440214fe1aca56e7e48cb1b")]
 [assembly: System.Reflection.AssemblyProductAttribute("PatitosCSharp")]
 [assembly: System.Reflection.AssemblyTitleAttribute("PatitosCSharp")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
