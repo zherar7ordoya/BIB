@@ -1,0 +1,912 @@
+﻿Listing 1
+=====================================================
+using System.Text;
+
+namespace XmlProcessing;
+
+public class Product
+{
+  public int ProductID { get; set; }
+  public string Name { get; set; }
+    = string.Empty;
+  public string ProductNumber { get; set; }
+    = string.Empty;
+  public string Color { get; set; }
+    = string.Empty;
+  public decimal StandardCost { get; set; }
+  public decimal ListPrice { get; set; }
+  public string Size { get; set; }
+    = string.Empty;
+  public DateTime ModifiedDate { get; set; }
+
+  #region Static Method to Create a Mock Product
+  public static Product CreateMock()
+  {
+    // Create an Object
+    return new() {
+      ProductID = 999,
+      Name = "Mock Product",
+      ProductNumber = "MOCK-001",
+      Color = "White",
+      StandardCost = 10,
+      ListPrice = 20,
+      Size = "Medium",
+      ModifiedDate = DateTime.Now
+    };
+  }
+  #endregion
+
+  #region ToString Override 
+  public override string ToString()
+  {
+    return $@"
+{Name}  ID: {ProductID}
+  Color: {Color ?? "n/a"}  Size: {Size ?? "n/a"}
+  Cost: {StandardCost:c}  Price: {ListPrice:c}";
+  }
+  #endregion
+}
+
+
+Listing 2
+=====================================================
+using System.Xml.Serialization;
+using XmlSerialization;
+
+// Create an Object
+Product entity = Product.CreateMock();
+
+// Create XML Serializer
+XmlSerializer serializer = 
+  new(entity.GetType());
+
+// Create a StringWriter
+using StringWriter sw = new();
+
+// Serialize the Object
+// into the StringWriter
+serializer.Serialize(sw, entity);
+
+// Display the XML
+Console.WriteLine(sw.ToString());
+
+
+Listing 3
+=====================================================
+using System.Xml.Serialization;
+using XmlSerialization;
+
+string XmlFileName = 
+  @$"{Environment.GetFolderPath(
+      Environment.SpecialFolder.MyDocuments)
+      }\Product.xml";
+
+// Create an Object
+Product entity = Product.CreateMock();
+
+// Create XML Serializer
+XmlSerializer serializer =
+  new(entity.GetType());
+
+// Create a StringWriter
+using StringWriter sw = new();
+
+// Serialize the Object
+// into the StringWriter
+serializer.Serialize(sw, entity);
+
+// Put the XML into a string variable
+string xml = sw.ToString();
+
+// Write XML to a File
+File.WriteAllText(XmlFileName, xml,
+  System.Text.Encoding.Unicode);
+
+// Display the XML
+Console.WriteLine(xml);
+Console.WriteLine(
+  $"View the XML in '{XmlFileName}'");
+
+
+Listing 4
+=====================================================
+using System.Xml.Serialization;
+using XmlSerialization;
+
+string XmlFileName = 
+  @$"{Environment.GetFolderPath(
+      Environment.SpecialFolder.MyDocuments)
+      }\Product.xml";
+
+// Create an Object
+Product entity = Product.CreateMock();
+
+// Create XML Serializer
+XmlSerializer serializer =
+  new(entity.GetType());
+
+// Create a StreamWriter to 
+// write object into
+using StreamWriter sw = new(XmlFileName, 
+  false, System.Text.Encoding.Unicode);
+
+// Serialize the Object
+// into the StreamWriter
+serializer.Serialize(sw, entity);
+
+Console.WriteLine(
+  $"View the XML in '{XmlFileName}'");
+
+
+Listing 5
+=====================================================
+using System.Xml;
+using System.Xml.Serialization;
+using XmlSerialization;
+
+string XmlFileName =
+  @$"{Environment.GetFolderPath(
+      Environment.SpecialFolder.MyDocuments)
+     }\ProductNoFormatting.xml";
+
+// Create an Object
+Product entity = Product.CreateMock();
+
+// Create XML Serializer
+XmlSerializer serializer =
+  new(entity.GetType());
+
+// Create a StreamWriter to 
+// write object into
+using StreamWriter sw = new(XmlFileName,
+  false, System.Text.Encoding.Unicode);
+
+// Create a XmlWriterSettings object
+XmlWriterSettings options = new() {
+  Indent = false,
+  OmitXmlDeclaration = true
+};
+
+// Use an XmlWriter to format the XML
+using XmlWriter xw =
+  XmlWriter.Create(sw, options);
+
+// Serialize the Object
+// to the StreamWriter
+serializer.Serialize(xw, entity);
+
+Console.WriteLine(
+  $"View the XML in '{XmlFileName}'");
+    
+
+Listing 6
+=====================================================
+using System.Xml.Serialization;
+using XmlSerialization;
+
+string XmlFileName = 
+  @$"{Environment.GetFolderPath(
+      Environment.SpecialFolder.MyDocuments)
+     }\Product.xml";
+
+Product? entity = null;
+
+// Create XML Serializer
+XmlSerializer serializer =
+  new(typeof(Product));
+
+// Read XML from a file
+StreamReader sr = new(XmlFileName,
+  System.Text.Encoding.Unicode);
+
+// Deserialize XML to an object
+entity = (Product?)serializer.Deserialize(sr);
+
+if (entity != null) {
+  // Display C# Object
+  Console.WriteLine(entity);
+}
+
+    
+
+Listing 7
+=====================================================
+using System.Xml;
+using System.Xml.Serialization;
+
+namespace XmlSerialization;
+
+/// <summary>
+/// Extension methods to 
+/// serialize C# objects to XML and
+/// deserialize XML into to C# objects
+/// </summary>
+public static class XmlSerializerHelper
+{
+  #region Serialize<T> Method
+  public static string Serialize<T>(this T entity)
+  {
+    return Serialize<T>(entity, null);
+  }
+  
+  public static string Serialize<T>
+    (this T entity, XmlSerializerNamespaces? ns)
+  {
+    string ret = string.Empty;
+
+    if (entity != null) {
+      // Create XML Serializer
+      XmlSerializer serializer = new(typeof(T));
+      // Create a StringWriter to write into
+      using StringWriter sw = new();
+      // Create a XmlWriterSettings object
+      // and add option to Indent
+      XmlWriterSettings options = new() {        
+        Indent = true
+      };
+
+      // Use an XmlWriter to format the XML
+      using XmlWriter xw = 
+        XmlWriter.Create(sw, options);
+      // Serialize the object
+      serializer.Serialize(xw, entity, ns);
+      // Get the XML
+      ret = sw.ToString();
+    }
+
+    return ret;
+  }
+  #endregion
+
+  #region Deserialize<T> Method
+  public static T? Deserialize<T>
+    (this T _, string xml) where T : class
+  {
+    var ret = default(T);
+
+    if (!string.IsNullOrEmpty(xml)) {
+      // Create XML Serializer
+      XmlSerializer serializer = new(typeof(T));
+      // Create a StringReader with the XML
+      using StringReader sr = new(xml);
+      // Deserialize the XML into a C# object
+      ret = (T?)serializer.Deserialize(sr);
+    }
+
+    return ret;
+  }
+  #endregion
+}
+    
+
+Listing 8
+=====================================================
+using XmlSerialization;
+
+string XmlFileName = 
+  @$"{Environment.GetFolderPath(
+      Environment.SpecialFolder.MyDocuments)
+     }\Product.xml";
+
+// Create an Object
+Product entity = Product.CreateMock();
+
+// Serialize the Object
+string xml = entity.Serialize<Product>();
+
+// Write XML to File
+File.WriteAllText(XmlFileName, xml,
+  System.Text.Encoding.Unicode);
+
+// Display the XML
+Console.WriteLine(xml);
+Console.WriteLine(
+  $"View the XML in '{XmlFileName}'");
+
+     
+
+Listing 9
+=====================================================
+using XmlSerialization;
+
+string XmlFileName = 
+  @$"{Environment.GetFolderPath(
+      Environment.SpecialFolder.MyDocuments)
+     }\Product.xml";
+
+Product? entity = new();
+
+// Read XML from a file
+string xml = File.ReadAllText(XmlFileName);
+
+// Deserialize XML to an object
+entity = entity.Deserialize<Product>(xml);
+
+if (entity != null) {
+  // Display Object
+  Console.WriteLine(entity);
+}
+    
+
+Listing 10
+=====================================================
+using System.Text;
+using System.Xml.Serialization;
+
+/// <summary>
+/// Using the [Xml*] attributes
+/// </summary>
+[XmlRoot(ElementName = "Product", 
+  Namespace = "http://www.pdsa.com",
+  IsNullable = false)]
+public partial class ProductWithAttributes
+{
+  [XmlAttribute("ProductId")]
+  public int ProductID { get; set; }
+
+  [XmlElement("ProductName")]
+  public string Name { get; set; }
+    = string.Empty;
+  public string ProductNumber { get; set; }
+    = string.Empty;
+  [XmlElement(IsNullable = true)]
+  public string? Color { get; set; }
+    = string.Empty;
+  public decimal StandardCost { get; set; }
+  public decimal ListPrice { get; set; }
+
+  /// <summary>
+  /// If Size is null, the XML element
+  /// will still appear
+  /// </summary>
+  [XmlElement(IsNullable = true)]
+  public string? Size { get; set; } 
+    = string.Empty;
+
+  /// <summary>
+  /// This property will not be written out
+  /// </summary>
+  [XmlIgnore]
+  public string ProductDescription 
+    { get; set; } = string.Empty;
+
+  #region Static Method to Create a Mock Product
+  public static ProductWithAttributes CreateMock()
+  {
+    // Create an Object
+    return new() {
+      ProductID = 999,
+      Name = "Mock Product",
+      ProductNumber = "MOCK-001",
+      Color = "White",
+      StandardCost = 10,
+      ListPrice = 20,
+      Size = "Medium"
+    };
+  }
+  #endregion
+
+  #region ToString Override 
+  public override string ToString()
+  {
+    StringBuilder sb = new(1024);
+
+    sb.AppendLine($"{Name}  ID: {ProductID}");
+    sb.AppendLine($"   Color: {Color ?? "n/a"}
+       Size: {Size ?? "n/a"}");
+    sb.AppendLine($"   Cost: {StandardCost:c}
+      Price: {ListPrice:c}");
+
+    return sb.ToString();
+  }
+  #endregion
+}
+
+    
+
+Listing 11
+=====================================================
+using XmlSerialization;
+
+string XmlFileName = 
+  @$"{Environment.GetFolderPath(
+      Environment.SpecialFolder.MyDocuments)
+     }\ProductWithAttributes.xml";
+
+// Create an Object
+ProductWithAttributes entity =
+  ProductWithAttributes.CreateMock();
+entity.ProductDescription = "A description";
+entity.Color = null; 
+entity.Size = null;
+
+// Serialize the Object
+string xml = 
+  entity.Serialize<ProductWithAttributes>();
+
+// Write XML to File
+File.WriteAllText(XmlFileName, xml,
+  System.Text.Encoding.Unicode);
+
+// Display the XML
+Console.WriteLine(xml);
+Console.WriteLine(
+  $"View the XML in '{XmlFileName}'");
+    
+
+Listing 12
+=====================================================
+using System.Xml.Serialization;
+
+namespace XmlSerialization;
+
+public class ProductAttributeBased
+{
+  [XmlAttribute("ProductID")]
+  public int ProductID { get; set; }
+  [XmlAttribute]
+  public string Name { get; set; }
+    = string.Empty;
+  [XmlAttribute]
+  public string ProductNumber { get; set; }
+    = string.Empty;
+  [XmlAttribute]
+  public string Color { get; set; }
+    = string.Empty;
+  [XmlAttribute]
+  public decimal StandardCost { get; set; }
+  [XmlAttribute]
+  public decimal ListPrice { get; set; }
+  [XmlAttribute]
+  public string Size { get; set; }
+    = string.Empty;
+  [XmlAttribute]
+  public DateTime ModifiedDate { get; set; }
+  
+  #region Static Method to Create a Mock Product
+  public static ProductAttributeBased CreateMock()
+  {
+    // Create an Object
+    return new() {
+      ProductID = 999,
+      Name = "Mock Product",
+      ProductNumber = "MOCK-001",
+      Color = "White",
+      StandardCost = 10,
+      ListPrice = 20,
+      Size = "Medium",
+      ModifiedDate = DateTime.Now
+    };
+  }
+  #endregion
+
+  #region ToString Override 
+  public override string ToString()
+  {
+    return $@"
+{Name}  ID: {ProductID}
+  Color: {Color ?? "n/a"}  Size: {Size ?? "n/a"}
+  Cost: {StandardCost:c}  Price: {ListPrice:c}";
+  }
+  #endregion
+}
+    
+
+Listing 13
+=====================================================
+namespace XmlSerialization;
+
+public class Person
+{
+  public int ID { get; set; }
+  public string FirstName { get; set; }
+    = string.Empty;
+  public string LastName { get; set; }
+    = string.Empty;
+  public DateTime BirthDate { get; set; }
+  public Address HomeAddress { get; set; }
+    = new();
+
+  #region ToString Override
+  public override string ToString()
+  {
+    return $@"[Person] Class
+Name: {LastName},{FirstName}";
+  }
+  #endregion
+}
+    
+
+Listing 14
+=====================================================
+using XmlSerialization;
+
+// Create an Object
+Person entity = new() {
+  ID = 42,
+  FirstName = "John",
+  LastName = "Smith",
+  BirthDate = 
+    Convert.ToDateTime("10/2/1970"),
+  HomeAddress = new Address() {
+    ID = 1,
+    Street = "123 Main Street",
+    City = "Nashville",
+    State = "TN",
+    PostalCode = "37011"
+  }
+};
+
+// Serialize the Object
+string xml = entity.Serialize<Person>();
+
+// Display the XML
+Console.WriteLine(xml);
+    
+
+Listing 15
+=====================================================
+namespace XmlSerialization;
+
+public class Employee : Person
+{
+  public decimal Salary { get; set; }
+
+  #region ToString Override
+  public override string ToString()
+  {
+    return $@"[Employee] Class
+Name: {FirstName} {LastName}
+Employee #: {EmployeeId}";
+  }
+  #endregion
+}
+    
+
+Listing 16
+=====================================================
+namespace XmlSerialization;
+
+public class Supervisor : Employee
+{
+  List<Employee> Employees { get; set; }
+    = new();
+
+  #region ToString Override
+  public override string ToString()
+  {
+    return $@"[Supervisor] Class
+Name: {FirstName} {LastName}
+Direct Reports = {Employees.Count}";
+  }
+  #endregion
+}
+
+    
+
+Listing 17
+=====================================================
+using XmlSerialization;
+
+// Create an Object
+Supervisor entity = new() {
+  ID = 42,
+  FirstName = "John",
+  LastName = "Smith",
+  BirthDate =
+    Convert.ToDateTime("10/2/1970"),
+  HomeAddress = new Address() {
+    ID = 1,
+    Street = "123 Main Street",
+    City = "Nashville",
+    State = "TN",
+    PostalCode = "37011"
+  },
+  Employees = new List<Employee>() {
+    new Employee() {
+      ID = 22,
+      FirstName = "Sally",
+      LastName= "Jones" },
+    new Employee() {
+      ID = 73,
+      FirstName = "Bob",
+      LastName= "Cranley" }
+  }
+};
+
+// Serialize the Object
+string xml = entity.Serialize<Supervisor>();
+
+// Display the XML
+Console.WriteLine(xml);
+    
+
+Listing 18
+=====================================================
+<?xml version="1.0" encoding="utf-16"?>
+<Supervisor>
+  <ID>42</ID>
+  <FirstName>John</FirstName>
+  <LastName>Smith</LastName>
+  <BirthDate>1970-10-02T00:00:00</BirthDate>
+  <HomeAddress>
+    // OTHER ELEMENTS HERE
+  </HomeAddress>
+  <Employees>
+    <Employee>
+      <ID>22</ID>
+      <FirstName>Sally</FirstName>
+      <LastName>Jones</LastName>
+      // OTHER ELEMENTS HERE
+    </Employee>
+    <Employee>
+      <ID>73</ID>
+      <FirstName>Bob</FirstName>
+      <LastName>Cranley</LastName>
+      // OTHER ELEMENTS HERE
+    </Employee>
+  </Employees>
+</Supervisor>
+    
+
+Listing 19
+=====================================================
+using System.Xml.Serialization;
+using XmlSerialization;
+
+string XmlFileName =
+  @$"{Environment.GetFolderPath(
+      Environment.SpecialFolder.MyDocuments)
+     }\PersonWithNamespaces.xml";
+
+// Create an Object
+Person entity =
+   new() {
+     ID = 42,
+     FirstName = "Sally",
+     LastName = "Jones",
+     BirthDate =
+       Convert.ToDateTime("10/1/1970")
+   };
+
+// Add Namespaces with a prefix/alias
+// to the serialized XML
+var ns = new XmlSerializerNamespaces();
+ns.Add("per", "http://www.pdsa.com/person");
+
+// Serialize the Object
+string xml = entity.Serialize<Person>(ns);
+
+// Write XML to File
+File.WriteAllText(XmlFileName, xml,
+  System.Text.Encoding.Unicode);
+
+// Display XML
+Console.WriteLine(xml);
+Console.WriteLine(
+  $"View the XML in '{XmlFileName}'");
+   
+
+
+Listing 20
+=====================================================
+using XmlSerialization;
+
+string XmlFileName = 
+  @$"{Environment.GetFolderPath(
+      Environment.SpecialFolder.MyDocuments)
+     }\PersonWithNamespaces.xml";
+
+// Create an Object
+Person? entity = new();
+
+// Read XML from a file
+string xml = File.ReadAllText(XmlFileName);
+
+// Deserialize XML to an object
+entity = entity.Deserialize<Person>(xml);
+
+// Display the Object
+Console.WriteLine(entity);
+
+
+   
+Listing 21
+=====================================================
+using XmlSerialization;
+
+string XmlFileName = 
+  @$"{Environment.GetFolderPath(
+      Environment.SpecialFolder.MyDocuments)
+     }\Products.xml";
+
+List<Product>? list = new();
+
+// Read XML from a file
+string xml = File.ReadAllText(XmlFileName);
+
+// Deserialize XML to an object
+list = list.Deserialize(xml);
+
+if (list != null) {
+  foreach (Product row in list) {
+    if (row != null) {
+      Console.WriteLine(row.ToString());
+    }
+  }
+}
+
+
+Listing 22
+=====================================================
+using System.Xml.Serialization;
+
+namespace XmlProcessing;
+
+[XmlRoot(ElementName = "Products")]
+public class ProductCollection
+{
+  [XmlElement(ElementName = "Product")]
+  public Product[] ProductAsArray { get; set; }
+    = Array.Empty<Product>();
+
+  [XmlIgnore]
+  public List<Product> Products
+  {
+    get { return ProductAsArray.ToList(); }
+    set { ProductAsArray = value.ToArray(); }
+  }
+}
+  
+
+
+Listing 23
+=====================================================
+using XmlSerialization;
+
+string XmlFileName = 
+  @$"{Environment.GetFolderPath(
+      Environment.SpecialFolder.MyDocuments)
+     }\Products.xml";
+
+ProductCollection? entity = new();
+
+// Read XML from a file
+string xml = File.ReadAllText(XmlFileName);
+
+// Deserialize XML to an object
+entity = entity.Deserialize(xml);
+
+if (entity != null) {
+  foreach (Product row in entity.Products) {
+    if (row != null) {
+      Console.WriteLine(row.ToString());
+    }
+  }
+}
+
+   
+Listing 24
+=====================================================
+using XmlSerialization;
+
+string XmlFileName = 
+  @$"{Environment.GetFolderPath(
+      Environment.SpecialFolder.MyDocuments)
+     }\ProductList.xml";
+
+ProductCollection pc = new() {
+  Products = new()
+{
+  new Product {
+    ProductID = 680,
+    Name = @"HL Road Frame - Black, 58",
+    ProductNumber = @"FR-R92B-58",
+    Color = @"Black",
+    StandardCost = 1059.3100m,
+    ListPrice = 1431.5000m,
+    Size = @"58",
+    ModifiedDate =
+      Convert.ToDateTime("3/11/2008")
+  },
+  new Product {
+    ProductID = 706,
+    Name = @"HL Road Frame - Red, 58",
+    ProductNumber = @"FR-R92R-58",
+    Color = @"Red",
+    StandardCost = 1059.3100m,
+    ListPrice = 1431.5000m,
+    Size = @"58",
+    ModifiedDate =
+      Convert.ToDateTime("3/11/2008")
+  }
+}
+};
+
+// Serialize the Object
+string xml = 
+  pc.Serialize<ProductCollection>();
+
+// Write XML to File
+File.WriteAllText(XmlFileName, xml,
+  System.Text.Encoding.Unicode);
+
+// Display the XML
+Console.WriteLine(xml);
+Console.WriteLine(
+  $"View the XML in '{XmlFileName}'");
+
+
+Listing 25
+=====================================================
+using XmlSerialization;
+
+Person entity = new Employee() {
+  ID = 42,
+  FirstName = "Sally",
+  LastName = "Jones",
+  BirthDate = 
+    Convert.ToDateTime("10/1/1970")
+};
+
+// Serialize the Object
+string xml = entity.Serialize<Person>();
+
+// Display the XML
+Console.WriteLine(xml);
+  
+
+
+Listing 26
+=====================================================
+using XmlSerialization;
+
+// Create a List<Person>
+List<Person> list = new() {
+   new Supervisor() {
+      FirstName = "Sally",
+      LastName= "Jones" },
+    new Employee() {
+      FirstName = "Bob",
+      LastName= "Cranley" }
+};
+
+// Serialize the Object
+string xml = list.Serialize<List<Person>>();
+
+// Display the XML
+Console.WriteLine(xml);
+
+
+Listing 27
+=====================================================
+using System.Xml.Linq;
+using System.Xml.Schema;
+
+string XmlFileName = 
+  @$"{Environment.GetFolderPath(
+      Environment.SpecialFolder.MyDocuments)
+     }\Product.xml";
+string XsdFileName = 
+  @$"{Environment.GetFolderPath(
+      Environment.SpecialFolder.MyDocuments)
+     }\Product.xsd";
+string msg = "XML is valid.";
+
+XDocument doc = XDocument.Load(XmlFileName);
+
+// Create an XmlSchemaSet Object
+XmlSchemaSet schemaSet = new();
+// Add an XSD file to it
+schemaSet.Add("", XsdFileName);
+
+// Validate the document
+doc.Validate(schemaSet, (sender, args) =>
+{
+  // If an error occurs
+  // get the message
+  msg = args.Message;
+});
+
+// Display Message
+Console.WriteLine(msg);
