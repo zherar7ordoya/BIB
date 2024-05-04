@@ -1,35 +1,24 @@
 ﻿using XmlSerialization;
 
-// Create an Object
-Supervisor entity = new()
+string XmlFileName =
+  @$"{Environment.GetFolderPath(
+      Environment.SpecialFolder.MyDocuments)}\Products.xml";
+
+List<Product>? list = new();
+
+// Read XML from a file
+string xml = File.ReadAllText(XmlFileName);
+
+// Deserialize XML to an object
+list = list.Deserialize(xml);
+
+if (list != null)
 {
-    ID = 42,
-    FirstName = "John",
-    LastName = "Smith",
-    BirthDate =
-    Convert.ToDateTime("10/2/1970"),
-    HomeAddress = new Address()
+    foreach (Product row in list)
     {
-        ID = 1,
-        Street = "123 Main Street",
-        City = "Nashville",
-        State = "TN",
-        PostalCode = "37011"
-    },
-    Employees = new List<Employee>() {
-    new Employee() {
-      ID = 22,
-      FirstName = "Sally",
-      LastName= "Jones" },
-    new Employee() {
-      ID = 73,
-      FirstName = "Bob",
-      LastName= "Cranley" }
-  }
-};
-
-// Serialize the Object
-string xml = entity.Serialize<Supervisor>();
-
-// Display the XML
-Console.WriteLine(xml);
+        if (row != null)
+        {
+            Console.WriteLine(row.ToString());
+        }
+    }
+}

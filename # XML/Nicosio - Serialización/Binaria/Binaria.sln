@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34622.214
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SerializacionBinaria", "SerializacionBinaria\SerializacionBinaria.csproj", "{0D0A16C3-FB70-40E8-9989-44F66C7CD9D9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SerializacionBinaria", "SerializacionBinaria.csproj", "{58B0255E-67CD-40F4-B6A6-9B6E6024D149}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{0D0A16C3-FB70-40E8-9989-44F66C7CD9D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0D0A16C3-FB70-40E8-9989-44F66C7CD9D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0D0A16C3-FB70-40E8-9989-44F66C7CD9D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0D0A16C3-FB70-40E8-9989-44F66C7CD9D9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{58B0255E-67CD-40F4-B6A6-9B6E6024D149}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{58B0255E-67CD-40F4-B6A6-9B6E6024D149}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{58B0255E-67CD-40F4-B6A6-9B6E6024D149}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{58B0255E-67CD-40F4-B6A6-9B6E6024D149}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {67B25A06-2F4E-461C-95D0-487C29475991}
+		SolutionGuid = {0C24C914-C877-4383-AF8C-F896DED7A0EC}
 	EndGlobalSection
 EndGlobal

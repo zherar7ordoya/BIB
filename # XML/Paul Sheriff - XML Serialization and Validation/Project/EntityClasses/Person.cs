@@ -2,6 +2,7 @@
 
 namespace XmlSerialization;
 
+[XmlType(Namespace = "http://www.pdsa.com/person")]
 [XmlInclude(typeof(Employee))]
 [XmlInclude(typeof(Supervisor))]
 //[XmlType(Namespace = $"{BASE_URI}/person")]
