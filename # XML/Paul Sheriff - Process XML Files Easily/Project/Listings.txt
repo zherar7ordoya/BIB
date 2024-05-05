@@ -1,0 +1,551 @@
+﻿Listing 1: Use an XDocument object to create a valid XML document with a declaration.
+using System.Xml.Linq;
+
+XDocument doc = new(
+  new XDeclaration("1.0", "utf-8", "yes"),
+  new XComment("Product Information"),
+  new XElement("Products",
+    new XElement("Product",
+      new XElement("ProductID", "1"),
+      new XElement("Name", "Bicycle Helmet"),
+      new XElement("ProductNumber", "HELM-01"),
+      new XElement("Color", "White"),
+      new XElement("StandardCost", "24.49"),
+      new XElement("ListPrice", "89.99"),
+      new XElement("Size", "Medium"))
+  )
+);
+
+// Display the Document
+Console.WriteLine(doc);
+
+
+Listing 2: Create an attribute on an element using the XAttribute class.
+using System.Xml.Linq;
+
+XDocument doc =
+  new(
+    new XDeclaration("1.0", "utf-8", "yes"),
+    new XComment("Product Information"),
+    new XElement("Products",
+      new XElement("Product",
+        new XAttribute("ProductID", "1"),
+        new XElement("Name", "Bicycle Helmet"),
+        new XElement("ProductNumber", "HELM-01"),
+        new XElement("Color", "White"),
+        new XElement("StandardCost", "24.49"),
+        new XElement("ListPrice", "89.99"),
+        new XElement("Size", "Medium"))
+        )
+      );
+
+// Display the Document
+Console.WriteLine(doc);
+
+
+Listing 3: Create nested XML documents easily by nesting XElement objects.
+using System.Xml.Linq;
+
+XDocument doc =
+  new(
+    new XDeclaration("1.0", "utf-8", "yes"),
+    new XComment("Product/Sales Information"),
+    new XElement("Products",
+      new XElement("Product",
+      new XAttribute("ProductID", "1"),
+      new XElement("Name", "Bicycle Helmet"),
+      new XElement("Sales",
+        new XElement("SalesDetail",
+        new XAttribute("SalesOrderID", "1"),
+        new XElement("OrderDate",
+          Convert.ToDateTime("9/1/2023")))
+        )
+      )
+    )
+  );
+
+// Display the Document
+Console.WriteLine(doc);
+
+
+Listing 4: Use a C# verbatim string to create your XML in a more readable manner.
+using System.Xml.Linq;
+
+string xml = @"<?xml version='1.0' standalone='yes'?>
+<!--Product Data -->
+<Products>
+  <Product>
+    <ProductID>706</ProductID>
+    <Name>HL Road Frame - Red, 58</Name>
+    <ProductNumber>FR-R92R-58</ProductNumber>
+    <Color>Red</Color>
+    <StandardCost>1059.31</StandardCost>
+    <ListPrice>1500.00</ListPrice>
+    <Size>58</Size>
+  </Product>
+</Products>";
+
+// Create XML Document using Parse()
+XDocument doc = XDocument.Parse(xml);
+
+// Display the Document
+Console.WriteLine(doc.Declaration?.ToString());
+Console.WriteLine(doc);
+
+
+Listing 5: Write an XML string as an XML document on disk.
+using System.Xml.Linq;
+
+const string XmlFileName =
+  @"D:\Samples\NewProducts.xml";
+
+// Create XML Document using Parse()
+XDocument doc = XDocument.Parse(@"
+<Products>
+<Product>
+<ProductID>706</ProductID>
+<Name>HL Road Frame - Red, 58</Name>
+<ProductNumber>FR-R92R-58</ProductNumber>
+<Color>Red</Color>
+<StandardCost>1059.31</StandardCost>
+<ListPrice>1500.00</ListPrice>
+<Size>58</Size>
+</Product>
+<Product>
+<ProductID>707</ProductID>
+<Name>Sport-100 Helmet, Red</Name>   
+<Color>Red</Color>
+<StandardCost>13.08</StandardCost>
+<ListPrice>34.99</ListPrice>
+<Size />
+</Product>
+</Products>");
+
+// Save to disk
+// Formats the XML automatically
+doc.Save(XmlFileName);
+
+Console.WriteLine($"Open the file 
+ '{XmlFileName}' to see the results");
+
+
+Listing 6: Use the XmlWriter class for fine-grained control over writing XML.
+using System.Xml;
+
+const string XmlFileName =
+  @"D:\Samples\NewProducts.xml";
+
+// Create an XML Writer
+using XmlWriter writer =
+  XmlWriter.Create(XmlFileName);
+
+// Write Root Element <Products>
+writer.WriteStartElement("Products");
+
+// Write Parent Element <Product>
+writer.WriteStartElement("Product");
+// Write Attribute <Product ProductID="999">
+writer.WriteAttributeString("ProductID", "999");
+
+// Write Child Element <Name>
+writer.WriteStartElement("Name");
+// Write the Value
+writer.WriteString("Bicycle Helmet");
+// Write Ending Element </Name>
+writer.WriteEndElement();
+
+// Write Sibling Element <ProductNumber>
+writer.WriteStartElement("ProductNumber");
+writer.WriteString("HELM-01");
+writer.WriteEndElement();
+
+// Write Sibling Element <Color>
+writer.WriteStartElement("Color");
+writer.WriteString("White");
+writer.WriteEndElement();
+
+// Write Ending Parent Element </Product>
+writer.WriteEndElement();
+
+// Write Ending Root Element </Products>
+writer.WriteEndElement();
+
+// Close the Writer
+writer.Close();
+
+Console.WriteLine($"Open the file 
+  '{XmlFileName}' to see the results");
+
+
+Listing 7: Use the Descendants() method with an XDocument object to retrieve all nodes.
+using System.Xml.Linq;
+
+const string XmlFileName =
+  @"D:\Samples\ProductsSmall.xml";
+
+// Read XML using XDocument
+XDocument doc = XDocument.Load(XmlFileName);
+
+// Use LINQ to XML to retrieve
+// all Parent nodes (Descendants)
+// under the Root node
+List<XElement> list =
+  (from row in doc.Descendants("Product")
+   select row).ToList();
+
+// Iterate over all Parent nodes
+foreach (XElement row in list) {
+  // Retrieve each Child node
+  // using Element("NodeName").Value
+  Console.WriteLine($"Product Name:
+    {row.Element("Name")?.Value}");
+  Console.WriteLine($"   Product Id:
+    {row.Element("ProductID")?.Value}");
+}
+
+Console.WriteLine();
+Console.WriteLine($"Total Products: {list.Count}");
+
+
+Listing 8: Create an extension method to help read element values in an XML node.
+using System.Globalization;
+using System.Xml.Linq;
+
+namespace XmlProcessing;
+
+public static class XmlHelper
+{
+  public static T GetAs<T>(
+    this XElement elem, string name) 
+      where T : notnull
+  {
+    var ret = default(T);
+
+    if (elem != null) {
+      XElement? current = elem.Element(name);
+      if (current != null) {
+        string value = current.Value;
+        // Cast to Return Data Type
+        // NOTE: ChangeType() can not cast
+        // to a Nullable type
+        if (value != null) {
+          ret = (T)Convert.ChangeType(value,
+            typeof(T),
+            CultureInfo.InvariantCulture);
+        }
+      }
+    }
+
+    return ret;
+  }
+}
+
+
+Listing 9: Use the orderby clause to sort the XML data.
+using System.Xml.Linq;
+using XmlProcessing;
+
+const string XmlFileName =
+  @"D:\Samples\Products.xml";
+
+// Read XML using XElement
+XElement elem = XElement.Load(XmlFileName);
+
+// Use LINQ to XML to retrieve
+// all Parent nodes (Elements)
+// sorting by Color then by ListPrice
+List<XElement> list =
+  (from row in elem.Elements("Product")
+   orderby row.GetAs<string>("Color"),
+           row.GetAs<decimal>("ListPrice")
+   select row).ToList();
+
+// Iterate over all Parent nodes
+foreach (XElement row in list) {
+  // Retrieve each Child node
+  // using Element("NodeName").Value
+  Console.WriteLine($"Product Name:
+    {row.GetAs<string>("Name")}");
+  Console.WriteLine($"   Product Id:
+    {row.GetAs<int>("ProductID")}");
+}
+
+Console.WriteLine();
+Console.WriteLine($"Total Products: {list.Count}");
+
+
+Listing 10: Use a Where clause to filter rows in an XML file.
+using System.Xml.Linq;
+using XmlProcessing;
+
+const string XmlFileName =
+  @"D:\Samples\Products.xml";
+
+// Read XML using XElement
+XElement elem = XElement.Load(XmlFileName);
+
+Console.WriteLine($"Total Products in File:
+  {elem.Elements("Product").Count()}");
+Console.WriteLine();
+
+// Use LINQ to XML to retrieve
+// Parent nodes (Elements)
+// where the Color value is 'Silver'
+List<XElement> list =
+  (from row in elem.Elements("Product")
+   where row.GetAs<string>("Color") == "Silver"
+   select row).ToList();
+
+// Iterate over all Parent nodes
+foreach (XElement row in list) {
+  // Retrieve each Child node
+  // using Element("NodeName").Value
+  Console.WriteLine($"Product Name:
+    {row.GetAs<string>("Name")}");
+  Console.WriteLine($"   Product Id:
+    {row.GetAs<int>("ProductID")}");
+}
+
+Console.WriteLine();
+Console.WriteLine($"Products Matching 
+  Criteria: {list.Count}");
+
+
+Listing 11: Apply SingleOrDefault() when you know you are retrieving a single node.
+using System.Xml.Linq;
+
+const string XmlFileName =
+  @"D:\Samples\Products.xml";
+
+// Read XML using XElement
+XElement elem = XElement.Load(XmlFileName);
+
+// Use LINQ to XML to retrieve
+// a single child node
+XElement? prod =
+  (from row in elem.Elements("Product")
+   where row.GetAs<int>("ProductID") == 706
+   select row).SingleOrDefault();
+
+// If node found, display values
+if (prod != null) {
+  Console.WriteLine($"Product Name:
+    {prod.GetAs<string>("Name")}");
+  Console.WriteLine($"   Product Id:
+    {prod.GetAs<int>("ProductID")}");
+  Console.WriteLine($"   Color:
+    {prod.GetAs<string>("Color")}");
+  Console.Write($"   Cost:
+    {prod.GetAs<decimal>("StandardCost"):c}");
+  Console.WriteLine($"   Price:
+    {prod.GetAs<decimal>("ListPrice"):c}");
+}
+
+
+Listing 12: Join two XML documents together using the join, on, and equals statements.
+using System.Xml.Linq;
+using XmlProcessing;
+
+const string XmlFileName =
+  @"D:\Samples\Products.xml";
+const string SalesFileName =
+  @"D:\Samples\SalesOrderDetails.xml";
+
+XElement prodElem;
+XElement detailElem;
+
+// Load Products XML File
+prodElem = XElement.Load(XmlFileName);
+// Load Sales Order Detail XML File
+detailElem = XElement.Load(SalesFileName);
+
+// Write Query Here
+XElement newDoc =
+  new("SalesOrderWithProductInfo",
+  from prod in prodElem.Elements("Product")
+    orderby prod.GetAs<int>("ProductID")
+  join order in
+    detailElem.Elements("SalesOrderDetail")
+      .Take(3)
+    on prod.GetAs<int>("ProductID") equals
+       order.GetAs<int>("ProductID")
+  select new XElement("Order",
+    new XElement("ProductID",
+      prod.GetAs<int>("ProductID")),
+    new XElement("Name",
+      prod.GetAs<string>("Name")),
+    new XElement("Color",
+      prod.GetAs<string>("Color")),
+    new XElement("ListPrice",
+      prod.GetAs<decimal>("ListPrice")),
+    new XElement("Quantity",
+      order.GetAs<decimal>("OrderQty")),
+    new XElement("UnitPrice",
+      order.GetAs<decimal>("UnitPrice")),
+    new XElement("Total",
+      order.GetAs<decimal>("LineTotal"))
+    )
+);
+
+// Display Document
+Console.WriteLine(newDoc);
+
+
+Listing 13: Retrieve attribute-based XML data using the Attribute() method.
+using System.Xml.Linq;
+
+const string XmlFileName =
+  @"D:\Samples\ProductsAttributes.xml";
+
+// Read XML using XElement
+XElement elem = XElement.Load(XmlFileName);
+
+// Read all Product Elements
+List<XElement> list = 
+  (from row in elem.Elements("Product")
+   select row).ToList();
+
+// Iterate over each Element
+foreach (XElement row in list) {
+  // Use the Attribute() method
+  Console.WriteLine($"Product Name:
+    {row.Attribute("Name")?.Value}");
+  Console.WriteLine($"   Product Id:
+    {row.Attribute("ProductID")?.Value}");
+}
+
+Console.WriteLine();
+Console.WriteLine($"Total Products: {list.Count}");
+
+
+Listing 14: Add a new extension method to handle attribute-based XML.
+public static T GetAttrAs<T>
+  (this XElement elem, string name) 
+    where T : notnull
+{
+  var ret = default(T);
+
+  if (elem != null) {
+    XAttribute? current = elem.Attribute(name);
+    if (current != null) {
+      string value = current.Value;
+      // Cast to Return Data Type
+      // NOTE: ChangeType() can not cast
+      // to a Nullable type
+      if (value != null) {
+        ret = (T)Convert.ChangeType(value,
+          typeof(T), 
+          CultureInfo.InvariantCulture);
+      }
+    }
+  }
+
+  return ret;
+}
+
+
+Listing 15: Use the Distinct() method to get unique values from a single element in the XML document.
+using System.Xml.Linq;
+using XmlProcessing;
+
+const string XmlFileName =
+  @"D:\Samples\Products.xml";
+
+XElement elem = XElement.Load(XmlFileName);
+
+// Get all distinct colors
+// sorted by the color name
+List<string> list =
+  (from row in elem.Elements("Product")
+   select row.GetAs<string>("Color")).Distinct()
+   .OrderBy(color => color).ToList();
+
+// Display all unique colors
+foreach (string color in list) {
+  Console.WriteLine(color);
+}
+
+
+Listing 16: Add a new XElement to an XML document.
+using System.Xml.Linq;
+
+XElement elem = XElement.Parse(@"
+<Products>
+  <Product>
+    <ProductID>706</ProductID>
+    <Name>HL Road Frame</Name>
+    <Color>Red</Color>
+    <ListPrice>1500.00</ListPrice>
+  </Product>
+</Products>");
+
+// Create new XElement to add
+XElement newElem =
+  new("Product",
+    new XElement("ProductID", "745"),
+      new XElement("Name", "Bike Helmet"),
+      new XElement("Color", "White"),
+      new XElement("ListPrice", "50.99")
+  );
+
+// Add new element to XML Document
+elem.Add(newElem);
+
+// Display Document
+Console.WriteLine(elem);
+
+
+Listing 17: Once you get a reference to an XElement node in the XML document, you can update it.
+using System.Xml.Linq;
+using XmlProcessing;
+
+// Create XML Document using Parse()
+XDocument doc = XDocument.Parse(@"
+<Products>
+  <Product>
+    <ProductID>706</ProductID>
+    <Name>HL Road Frame</Name>
+    <Color>Red</Color>
+    <ListPrice>1500.00</ListPrice>
+  </Product>
+</Products>");
+
+// Get the First product element
+XElement? elem =
+  doc.Root?.Descendants().FirstOrDefault();
+
+if (elem != null) {
+  // Modify some of the node values
+  elem.UpdateElement("Name", "CHANGED PRODUCT");
+  elem.UpdateElement("ListPrice", "999.99");
+}
+
+// Display the Changed Element
+Console.WriteLine(doc);
+
+
+Listing 18: Delete a node by using the Remove() method after locating the element to delete.
+using System.Xml.Linq;
+using XmlProcessing;
+
+const string XmlFileName =
+  @"D:\Samples\ProductsSmall.xml";
+
+// Read XML using XDocument
+XDocument doc = XDocument.Load(XmlFileName);
+
+// Use LINQ to XML to retrieve
+// a single child node
+XElement? elem =
+  (from row in 
+    doc.Root?.Descendants("Product")
+   where row.GetAs<int>("ProductID") == 706
+   select row).SingleOrDefault();
+
+if (elem != null) {
+  // Delete the node
+  elem.Remove();
+}
+
+// Display XDocument
+Console.WriteLine(doc);

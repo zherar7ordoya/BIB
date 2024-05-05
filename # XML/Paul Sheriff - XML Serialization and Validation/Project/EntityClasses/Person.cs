@@ -2,13 +2,13 @@
 
 namespace XmlSerialization;
 
-[XmlType(Namespace = "http://www.pdsa.com/person")]
+//[XmlType(Namespace = "http://www.pdsa.com/person")]
 [XmlInclude(typeof(Employee))]
 [XmlInclude(typeof(Supervisor))]
 //[XmlType(Namespace = $"{BASE_URI}/person")]
 public class Person
 {
-  public const string BASE_URI = "http://www.pdsa.com";
+  //public const string BASE_URI = "http://www.pdsa.com";
 
   public int ID { get; set; }
   public string FirstName { get; set; } = string.Empty;

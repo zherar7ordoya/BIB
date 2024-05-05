@@ -10,9 +10,9 @@ public class Employee : Person
   #region ToString Override
   public override string ToString()
   {
-    return $@"[Employee] Class
-Name: {FirstName} {LastName}
-Employee #: {ID}";
+        return $@"[Employee] Class
+            Name: {FirstName} {LastName}
+            Employee #: {ID}";
   }
   #endregion
 }
