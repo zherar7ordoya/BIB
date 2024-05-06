@@ -1,26 +1,22 @@
 ﻿using System.Xml.Linq;
 
-XElement elem = XElement.Parse(@"
-<Products>
-  <Product>
-    <ProductID>706</ProductID>
-    <Name>HL Road Frame</Name>
-    <Color>Red</Color>
-    <ListPrice>1500.00</ListPrice>
-  </Product>
-</Products>");
+XDocument doc =
+  new(
+    new XDeclaration("1.0", "utf-8", "yes"),
+    new XComment("Product Information"),
+    new XElement("Products",
+      new XElement("Product",
+        new XAttribute("ProductID", "1"),
+        new XElement("Name", "Bicycle Helmet"),
+        new XElement("ProductNumber", "HELM-01"),
+        new XElement("Color", "White"),
+        new XElement("StandardCost", "24.49"),
+        new XElement("ListPrice", "89.99"),
+        new XElement("Size", "Medium"))
+        )
+      );
 
-// Create new XElement to add
-XElement newElem =
-  new("Product",
-    new XElement("ProductID", "745"),
-      new XElement("Name", "Bike Helmet"),
-      new XElement("Color", "White"),
-      new XElement("ListPrice", "50.99")
-  );
+doc.Save(fileName: "Products.xml");
 
-// Add new element to XML Document
-elem.Add(newElem);
-
-// Display Document
-Console.WriteLine(elem);
+// Display the Document
+Console.WriteLine(doc);
