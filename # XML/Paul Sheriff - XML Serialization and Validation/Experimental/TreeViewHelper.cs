@@ -1,151 +1,94 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Experimental
 {
-
-
-
-
-
-
     public static class TreeViewHelper
     {
-        //public static void LoadList<T>(List<T> items, TreeView treeView)
-        //{
-        //    treeView.BeginUpdate(); // Inicia la actualización del control TreeView
-
-        //    // Borra todos los nodos previos en el TreeView
-        //    treeView.Nodes.Clear();
-
-        //    foreach (T item in items)
-        //    {
-        //        // Crea un nodo TreeNode para el elemento actual y agrégalo al árbol
-        //        TreeNode node = treeView.Nodes.Add(item.GetType().Name);
-
-        //        // Agrega los detalles del objeto al nodo
-        //        AgregarDetallesAlNodo(item, node);
-        //    }
-
-        //    treeView.EndUpdate(); // Finaliza la actualización del control TreeView
-        //}
-
-        public static void LoadList<T>(List<T> items, TreeView treeView)
+        public static void CargarTreeview<T>(List<T> items, TreeView treeview)
         {
-            treeView.BeginUpdate(); // Inicia la actualización del control TreeView
-
-            // Borra todos los nodos previos en el TreeView
-            treeView.Nodes.Clear();
+            treeview.BeginUpdate();
+            treeview.Nodes.Clear();
 
             foreach (T item in items)
             {
-                // Obtiene el valor del atributo Id del objeto si existe
-                string idValue = ObtenerIdDelObjeto(item);
-
-                // Crea un nodo TreeNode para el elemento actual y agrégalo al árbol
-                TreeNode node = treeView.Nodes.Add($"{item.GetType().Name} Código: {idValue}");
-
-                // Agrega los detalles del objeto al nodo
-                AgregarDetallesAlNodo(item, node);
+                string codigo = ObtenerCodigo(item);
+                TreeNode node = treeview.Nodes.Add($"{item.GetType().Name} || Código: {codigo}");
+                DetallarNodo(item, node);
             }
 
-            treeView.EndUpdate(); // Finaliza la actualización del control TreeView
+            treeview.EndUpdate();
         }
 
-        private static string ObtenerIdDelObjeto<T>(T item)
+
+        private static string ObtenerCodigo<T>(T item)
         {
             // Intenta obtener la propiedad "Id" utilizando reflexión
-            PropertyInfo idProperty = typeof(T).GetProperty("Codigo");
+            PropertyInfo codigoPropiedad = typeof(T).GetProperty("Codigo");
 
-            if (idProperty != null)
+            if (codigoPropiedad != null)
             {
-                // Si la propiedad "Id" existe, obtiene su valor del objeto
-                object idValue = idProperty.GetValue(item);
-                return idValue?.ToString() ?? "(Sin código)"; // Si el valor es nulo, devuelve "Sin Id"
+                // Si la propiedad "Codigo" existe, obtiene su valor del objeto
+                object codigoValor = codigoPropiedad.GetValue(item);
+                // Si el valor es nulo, devuelve "(Sin código)"
+                return codigoValor?.ToString() ?? "(Sin código)";
             }
-            else
-            {
-                // Si la propiedad "Id" no existe, devuelve "Sin Id"
-                return "(Sin código)";
-            }
+            // Si la propiedad "Codigo" no existe, devuelve "(Sin código)"
+            else { return "(Sin código)"; }
         }
 
 
-
-        private static void AgregarDetallesAlNodo(object obj, TreeNode node)
+        private static void DetallarNodo(object objetoOrigen, TreeNode nodo)
         {
-            PropertyInfo[] properties = obj.GetType().GetProperties();
-            foreach (PropertyInfo property in properties)
+            // Obtiene todas las propiedades del objeto
+            PropertyInfo[] propiedadesObjeto = objetoOrigen.GetType().GetProperties();
+
+            // Itera sobre cada propiedad del objeto
+            foreach (PropertyInfo propiedad in propiedadesObjeto)
             {
-                object value = property.GetValue(obj);
-                string propertyName = property.Name;
+                // Obtiene el valor de la propiedad actual
+                object valorActual = propiedad.GetValue(objetoOrigen);
+
+                // Obtiene el nombre de la propiedad actual
+                string nombrePropiedad = propiedad.Name;
 
                 // Si el valor es una colección, agrega sus elementos como nodos hijos recursivamente
-                if (value is IEnumerable<object> collection)
+                if (valorActual is IEnumerable<object> elementos)
                 {
-                    TreeNode collectionNode = node.Nodes.Add(propertyName);
+                    // Crea un nodo para los elementos de la colección
+                    TreeNode nodoElementos = nodo.Nodes.Add(nombrePropiedad);
 
-                    foreach (object item in collection)
+                    // Itera sobre cada elemento de la colección
+                    foreach (object elemento in elementos)
                     {
-                        TreeNode itemNode = collectionNode.Nodes.Add(item.GetType().Name);
-                        AgregarDetallesAlNodo(item, itemNode);
+                        // Crea un nodo para el elemento actual
+                        TreeNode nodoElemento = nodoElementos.Nodes.Add(elemento.GetType().Name);
+
+                        // Recursivamente agrega detalles al nodo del elemento
+                        DetallarNodo(elemento, nodoElemento);
                     }
                 }
-                // Si el valor es un objeto de clase (y no un tipo de valor ni una cadena), agrega los detalles de ese objeto como nodos hijos recursivamente
-                else if (value != null && property.PropertyType.IsClass && property.PropertyType != typeof(string))
+                // Si el valor es un objeto de clase, agrega los detalles como nodos hijos (recursivamente)
+                else if (valorActual != null &&
+                         propiedad.PropertyType.IsClass &&
+                         propiedad.PropertyType != typeof(string))
                 {
-                    TreeNode classNode = node.Nodes.Add(propertyName);
-                    AgregarDetallesAlNodo(value, classNode);
+                    // Crea un nodo para el objeto de clase
+                    TreeNode nodoClase = nodo.Nodes.Add(nombrePropiedad);
+
+                    // Recursivamente agrega detalles al nodo del objeto de clase
+                    DetallarNodo(valorActual, nodoClase);
                 }
                 else
                 {
                     // Si no es ni una colección ni un objeto de clase, agrega el valor como un nodo hijo
-                    string propertyValue = value != null ? value.ToString() : "null";
-                    node.Nodes.Add($"{propertyName}: {propertyValue}");
+                    string valorPropiedad = valorActual != null ? valorActual.ToString() : "null";
+                    nodo.Nodes.Add($"{nombrePropiedad}: {valorPropiedad}");
                 }
             }
         }
-
-
-
-
-        //private static void AgregarDetallesAlNodo(object obj, TreeNode node)
-        //{
-        //    PropertyInfo[] properties = obj.GetType().GetProperties();
-        //    foreach (PropertyInfo property in properties)
-        //    {
-        //        object value = property.GetValue(obj);
-        //        string propertyName = property.Name;
-
-        //        // Si el valor es una colección, agrega sus elementos como nodos hijos recursivamente
-        //        if (value is IEnumerable<object> collection)
-        //        {
-        //            TreeNode collectionNode = node.Nodes.Add(propertyName);
-
-        //            foreach (object item in collection)
-        //            {
-        //                TreeNode itemNode = collectionNode.Nodes.Add(item.GetType().Name);
-        //                AgregarDetallesAlNodo(item, itemNode);
-        //            }
-        //        }
-        //        else
-        //        {
-        //            // Si no es una colección, agrega el valor como un nodo hijo
-        //            string propertyValue = value != null ? value.ToString() : "null";
-        //            node.Nodes.Add($"{propertyName}: {propertyValue}");
-        //        }
-        //    }
-        //}
-
-
-
-
+        //*==================================================================*\\
     }
 
 

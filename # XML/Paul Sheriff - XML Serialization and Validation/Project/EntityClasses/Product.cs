@@ -1,6 +1,4 @@
-﻿using System.Xml.Serialization;
-
-namespace XmlSerialization;
+﻿namespace XmlSerialization;
 
 public class Product
 {

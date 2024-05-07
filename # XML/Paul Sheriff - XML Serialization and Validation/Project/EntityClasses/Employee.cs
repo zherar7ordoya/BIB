@@ -1,6 +1,4 @@
-﻿using System.Xml.Serialization;
-
-namespace XmlSerialization;
+﻿namespace XmlSerialization;
 
 //[XmlType(Namespace = $"{BASE_URI}/employee")]
 public class Employee : Person

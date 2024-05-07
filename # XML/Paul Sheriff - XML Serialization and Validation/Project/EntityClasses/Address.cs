@@ -1,6 +1,4 @@
-﻿using System.Xml.Serialization;
-
-namespace XmlSerialization;
+﻿namespace XmlSerialization;
 
 //[XmlType(Namespace = $"{Person.BASE_URI}/address")]
 //[XmlType(Namespace = "http://www.pdsa.com/address")]

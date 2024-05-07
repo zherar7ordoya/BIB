@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.IO;
 using System.Xml.Serialization;
 using System.Xml;
 
 namespace Experimental
 {
-    internal static class Mapeador
+    internal static class XmlDAL
     {
         public static string Serialize<T>(this T entity)
         {

@@ -1,14 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Diagnostics;
-using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Net;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Serialization;
 
@@ -158,7 +151,7 @@ namespace Experimental
             List<Mudanza> mudanzasRecovered = (List<Mudanza>)xmlSerializer.Deserialize(stringReader);
 
             // Display the XML
-            TreeViewHelper.LoadList(mudanzasRecovered, treeView1);
+            TreeViewHelper.CargarTreeview(mudanzasRecovered, treeView1);
 
 
         }
