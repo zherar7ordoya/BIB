@@ -1,0 +1,170 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Mudanzas>
+	<Mudanza Id="1">
+		<Fecha>2023-09-16</Fecha>
+		<Camion>
+			<Patente>GRT-777</Patente>
+			<Marca>Mercedes-Benz Actros 1845</Marca>
+		</Camion>
+		<Chofer>
+			<DNI>20212223</DNI>
+			<NombreApellido>Mercedes Sosa</NombreApellido>
+			<FechaAlta>2020-11-17</FechaAlta>
+			<Puesto>Vendedor</Puesto>
+			<Direccion>Plaza 7777</Direccion>
+			<Telefono>011-4444-5555</Telefono>
+			<Email>mercedes.sosa@gmail.com</Email>
+			<Username>msosa</Username>
+			<Password>bQBzAG8AcwBhAA==</Password>
+			<Intento>0</Intento>
+		</Chofer>
+		<Estibadores>
+			<Estibador>
+				<DNI>19202122</DNI>
+				<NombreApellido>Lito Nebbia</NombreApellido>
+				<FechaAlta>2023-10-08</FechaAlta>
+				<Puesto>Vendedor</Puesto>
+				<Direccion>Calle 4444</Direccion>
+				<Telefono>011-3333-4444</Telefono>
+				<Email>lito.nebbia@gmail.com</Email>
+				<Username>lnebbia</Username>
+				<Password>bABuAGUAYgBiAGkAYQA=</Password>
+				<Intento>0</Intento>
+			</Estibador>
+			<Estibador>
+				<DNI>18192021</DNI>
+				<NombreApellido>Amelita Baltar</NombreApellido>
+				<FechaAlta>2022-09-29</FechaAlta>
+				<Puesto>Logístico</Puesto>
+				<Direccion>Avenida 1111</Direccion>
+				<Telefono>011-2222-3333</Telefono>
+				<Email>amelita.baltar@gmail.com</Email>
+				<Username>abaltar</Username>
+				<Password>YQBiAGEAbAB0AGEAcgA=</Password>
+				<Intento>0</Intento>
+			</Estibador>
+		</Estibadores>
+		<Insumos>
+			<Insumo>
+				<Cantidad>2</Cantidad>
+				<Descripcion>Kit de seguridad por estibador</Descripcion>
+			</Insumo>
+			<Insumo>
+				<Cantidad>3</Cantidad>
+				<Descripcion>Aparejo manual a cadena gancho 2 Tn</Descripcion>
+			</Insumo>
+			<Insumo>
+				<Cantidad>1</Cantidad>
+				<Descripcion>Apilador manual hidráulico 1 Tn</Descripcion>
+			</Insumo>
+		</Insumos>
+		<OrdenID>7</OrdenID>
+	</Mudanza>
+	<!-- Cambiar a empleados existentes por DNI -->
+	<Mudanza Id="2">
+		<Fecha>2023-10-17</Fecha>
+		<Camion>
+			<Patente>AZM-123</Patente>
+			<Marca>Scania R450</Marca>
+		</Camion>
+		<Chofer>
+			<DNI>11112222</DNI>
+			<NombreApellido>Leonard Hofstadter</NombreApellido>
+		</Chofer>
+		<Estibadores>
+			<Estibador>
+				<DNI>33334444</DNI>
+				<NombreApellido>Penny</NombreApellido>
+			</Estibador>
+			<Estibador>
+				<DNI>55556666</DNI>
+				<NombreApellido>Rajesh Koothrappali</NombreApellido>
+			</Estibador>
+		</Estibadores>
+		<Insumos>
+			<Insumo>
+				<Cantidad>2</Cantidad>
+				<Descripcion>Celular Samsung</Descripcion>
+			</Insumo>
+			<Insumo>
+				<Cantidad>6</Cantidad>
+				<Descripcion>Cuerdas 18mm de 5 mts. c/u</Descripcion>
+			</Insumo>
+			<Insumo>
+				<Cantidad>1</Cantidad>
+				<Descripcion>Apilador manual hidráulico 1 Tn</Descripcion>
+			</Insumo>
+		</Insumos>
+		<OrdenID>7</OrdenID>
+	</Mudanza>
+	<!-- Cambiar a empleados existentes por DNI -->
+	<Mudanza Id="3">
+		<Fecha>2023-11-18</Fecha>
+		<Camion>
+			<Patente>CXI-789</Patente>
+			<Marca>Volvo FH16</Marca>
+		</Camion>
+		<Chofer>
+			<DNI>99998888</DNI>
+			<NombreApellido>Howard Wolowitz</NombreApellido>
+		</Chofer>
+		<Estibadores>
+			<Estibador>
+				<DNI>77776666</DNI>
+				<NombreApellido>Fernando Rodriguez</NombreApellido>
+			</Estibador>
+			<Estibador>
+				<DNI>44443333</DNI>
+				<NombreApellido>Julieta Martinez</NombreApellido>
+			</Estibador>
+		</Estibadores>
+		<Insumos>
+			<Insumo>
+				<Cantidad>2</Cantidad>
+				<Descripcion>Kit de seguridad por estibador</Descripcion>
+			</Insumo>
+			<Insumo>
+				<Cantidad>3</Cantidad>
+				<Descripcion>Aparejo manual a cadena gancho 2 Tn</Descripcion>
+			</Insumo>
+		</Insumos>
+		<OrdenID>7</OrdenID>
+	</Mudanza>
+	<!-- Agregar caso faltante -->
+	<Mudanza Id="4">
+		<Fecha>2023-11-20</Fecha>
+		<Camion>
+			<Patente>XYZ-456</Patente>
+			<Marca>MAN TGX</Marca>
+		</Camion>
+		<Chofer>
+			<DNI>12344321</DNI>
+			<NombreApellido>Stuart Bloom</NombreApellido>
+		</Chofer>
+		<Estibadores>
+			<Estibador>
+				<DNI>11223344</DNI>
+				<NombreApellido>Amy Farrah Fowler</NombreApellido>
+			</Estibador>
+			<Estibador>
+				<DNI>55667788</DNI>
+				<NombreApellido>Howard Wolowitz</NombreApellido>
+			</Estibador>
+		</Estibadores>
+		<Insumos>
+			<Insumo>
+				<Cantidad>2</Cantidad>
+				<Descripcion>Kit de seguridad por estibador</Descripcion>
+			</Insumo>
+			<Insumo>
+				<Cantidad>3</Cantidad>
+				<Descripcion>Aparejo manual a cadena gancho 2 Tn</Descripcion>
+			</Insumo>
+			<Insumo>
+				<Cantidad>1</Cantidad>
+				<Descripcion>Apilador manual hidráulico 1 Tn</Descripcion>
+			</Insumo>
+		</Insumos>
+		<OrdenID>7</OrdenID>
+	</Mudanza>
+</Mudanzas>
