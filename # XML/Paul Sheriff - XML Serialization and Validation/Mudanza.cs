@@ -20,8 +20,6 @@ namespace Experimental
     [XmlInclude(typeof(Estibador))]
     public abstract class Persona : Entidad
     {
-        public int DNI { get; set; } = new int();
-        public string NombreApellido { get; set; } = string.Empty;
         public DateTime FechaAlta { get; set; } = new DateTime();
         public string Puesto { get; set; } = string.Empty;
         public string Direccion { get; set; } = string.Empty;
@@ -31,6 +29,10 @@ namespace Experimental
 
     public class Empleado : Persona
     {
+        public int DNI { get; set; } = new int();
+        public string Nombre { get; set; } = string.Empty;
+        public string Apellido { get; set; } = string.Empty;
+
         public string Username { get; set; } = string.Empty;
         public string Password { get; set; } = string.Empty;
         public int Intento { get; set; } = new int();
