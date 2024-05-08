@@ -6,12 +6,12 @@ namespace Experimental
 {
     internal static class XmlDAL
     {
-        public static string Serialize<T>(this T entity)
+        public static string MapearDesdeObjetoHaciaXml<T>(this T entity)
         {
-            return Serialize<T>(entity, null);
+            return MapearDesdeObjetoHaciaXml<T>(entity, null);
         }
 
-        public static string Serialize<T>(this T entity, XmlSerializerNamespaces ns)
+        public static string MapearDesdeObjetoHaciaXml<T>(this T entity, XmlSerializerNamespaces ns)
         {
             string ret = string.Empty;
 
@@ -44,7 +44,7 @@ namespace Experimental
         }
 
 
-        public static T Deserialize<T>(this T _, string xml) where T : class
+        public static T MapearDesdeXmlHaciaObjeto<T>(this T _, string xml) where T : class
         {
             var ret = default(T);
 

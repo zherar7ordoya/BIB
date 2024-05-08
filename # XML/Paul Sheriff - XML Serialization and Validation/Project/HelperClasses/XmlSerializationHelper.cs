@@ -11,12 +11,12 @@ namespace XmlSerialization;
 public static class XmlSerializerHelper
 {
     #region Serialize<T> Method
-    public static string Serialize<T>(this T entity)
+    public static string MapearHaciaXml<T>(this T entity)
     {
-        return Serialize<T>(entity, null);
+        return MapearHaciaXml<T>(entity, null);
     }
 
-    public static string Serialize<T>(this T entity, XmlSerializerNamespaces? ns)
+    public static string MapearHaciaXml<T>(this T entity, XmlSerializerNamespaces? ns)
     {
         string ret = string.Empty;
 

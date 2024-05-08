@@ -16,6 +16,25 @@ namespace Experimental
         public int Codigo { get; set; } = new int();
     }
 
+
+
+
+    [XmlRoot(ElementName = "Mudanzas")]
+    public class ListadoMudanzas
+    {
+        [XmlElement(ElementName = "Mudanza")]
+        public Mudanza[] MudanzaAsArray { get; set; } = Array.Empty<Mudanza>();
+
+        [XmlIgnore]
+        public List<Mudanza> Mudanzas
+        {
+            get { return MudanzaAsArray.ToList(); }
+            set { MudanzaAsArray = value.ToArray(); }
+        }
+    }
+
+
+
     public class Mudanza : Entidad
     {
         public DateTime Fecha { get; set; } = new DateTime();
@@ -37,7 +56,7 @@ namespace Experimental
     [XmlInclude(typeof(Empleado))]
     [XmlInclude(typeof(Chofer))]
     [XmlInclude(typeof(Estibador))]
-    public class Persona : Entidad
+    public abstract class Persona : Entidad
     {
         public int DNI { get; set; } = new int();
         public string NombreApellido { get; set; } = string.Empty;
@@ -75,19 +94,7 @@ namespace Experimental
     }
 
 
-    [XmlRoot(ElementName = "Mudanzas")]
-    public class MudanzaCollection
-    {
-        [XmlElement(ElementName = "Mudanza")]
-        public Mudanza[] MudanzaAsArray { get; set; } = Array.Empty<Mudanza>();
-
-        [XmlIgnore]
-        public List<Mudanza> Mudanzas
-        {
-            get { return MudanzaAsArray.ToList(); }
-            set { MudanzaAsArray = value.ToArray(); }
-        }
-    }
+    
 
 
 }

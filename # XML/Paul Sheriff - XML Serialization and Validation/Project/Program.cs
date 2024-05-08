@@ -4,7 +4,7 @@ string XmlFileName =
   @$"{Environment.GetFolderPath(
       Environment.SpecialFolder.MyDocuments)}\ProductList.xml";
 
-ProductCollection pc = new()
+ProductCollection productos = new()
 {
     Products = new()
 {
@@ -34,7 +34,7 @@ ProductCollection pc = new()
 };
 
 // Serialize the Object
-string xml =   pc.Serialize<ProductCollection>();
+string xml = productos.MapearHaciaXml<ProductCollection>();
 
 // Write XML to File
 File.WriteAllText(XmlFileName, xml,
