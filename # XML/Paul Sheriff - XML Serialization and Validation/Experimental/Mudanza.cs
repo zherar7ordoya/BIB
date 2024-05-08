@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Xml.Serialization;
 
 namespace Experimental
@@ -16,25 +15,6 @@ namespace Experimental
         public int Codigo { get; set; } = new int();
     }
 
-
-
-
-    [XmlRoot(ElementName = "Mudanzas")]
-    public class ListadoMudanzas
-    {
-        [XmlElement(ElementName = "Mudanza")]
-        public Mudanza[] MudanzaAsArray { get; set; } = Array.Empty<Mudanza>();
-
-        [XmlIgnore]
-        public List<Mudanza> Mudanzas
-        {
-            get { return MudanzaAsArray.ToList(); }
-            set { MudanzaAsArray = value.ToArray(); }
-        }
-    }
-
-
-
     public class Mudanza : Entidad
     {
         public DateTime Fecha { get; set; } = new DateTime();
@@ -45,13 +25,11 @@ namespace Experimental
         public int OrdenID { get; set; } = new int();
     }
 
-
     public class Camion : Entidad
     {
         public string Patente { get; set; } = string.Empty;
         public string Marca { get; set; } = string.Empty;
     }
-
 
     [XmlInclude(typeof(Empleado))]
     [XmlInclude(typeof(Chofer))]
@@ -66,8 +44,6 @@ namespace Experimental
         public string Telefono { get; set; } = string.Empty;
         public string Email { get; set; } = string.Empty;
     }
-
-
 
     public class Empleado : Persona
     {
@@ -86,15 +62,9 @@ namespace Experimental
 
     }
 
-
     public class Insumo
     {
         public int Cantidad { get; set; } = new int();
         public string Descripcion { get; set; } = string.Empty;
     }
-
-
-    
-
-
 }

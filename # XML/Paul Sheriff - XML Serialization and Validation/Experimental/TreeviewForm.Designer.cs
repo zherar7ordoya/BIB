@@ -1,6 +1,6 @@
 ﻿namespace Experimental
 {
-    partial class Form1
+    partial class TreeviewForm<T>
     {
         /// <summary>
         /// Required designer variable.
@@ -28,25 +28,36 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.treeView1 = new System.Windows.Forms.TreeView();
+            this.ListadoTview = new System.Windows.Forms.TreeView();
+            this.GuardarButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // treeView1
+            // ListadoTview
             // 
-            this.treeView1.Location = new System.Drawing.Point(12, 12);
-            this.treeView1.Name = "treeView1";
-            this.treeView1.Size = new System.Drawing.Size(560, 337);
-            this.treeView1.TabIndex = 0;
+            this.ListadoTview.Location = new System.Drawing.Point(12, 12);
+            this.ListadoTview.Name = "ListadoTview";
+            this.ListadoTview.Size = new System.Drawing.Size(560, 337);
+            this.ListadoTview.TabIndex = 0;
             // 
-            // Form1
+            // GuardarButton
+            // 
+            this.GuardarButton.Location = new System.Drawing.Point(497, 361);
+            this.GuardarButton.Name = "GuardarButton";
+            this.GuardarButton.Size = new System.Drawing.Size(75, 23);
+            this.GuardarButton.TabIndex = 1;
+            this.GuardarButton.Text = "Guardar";
+            this.GuardarButton.UseVisualStyleBackColor = true;
+            // 
+            // TreeviewForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(584, 361);
-            this.Controls.Add(this.treeView1);
+            this.ClientSize = new System.Drawing.Size(584, 396);
+            this.Controls.Add(this.GuardarButton);
+            this.Controls.Add(this.ListadoTview);
             this.Font = new System.Drawing.Font("Calibri", 11F);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.Name = "Form1";
+            this.Margin = new System.Windows.Forms.Padding(4);
+            this.Name = "TreeviewForm";
             this.Text = "Form1";
             this.ResumeLayout(false);
 
@@ -54,7 +65,8 @@
 
         #endregion
 
-        private System.Windows.Forms.TreeView treeView1;
+        private System.Windows.Forms.TreeView ListadoTview;
+        private System.Windows.Forms.Button GuardarButton;
     }
 }
 

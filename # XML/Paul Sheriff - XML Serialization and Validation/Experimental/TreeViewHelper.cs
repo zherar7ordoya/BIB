@@ -4,7 +4,7 @@ using System.Windows.Forms;
 
 namespace Experimental
 {
-    public static class TreeViewHelper
+    public static class TreeviewHelper
     {
         public static void CargarTreeview<T>(List<T> items, TreeView treeview)
         {
