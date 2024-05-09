@@ -5,7 +5,7 @@ using System.Windows.Forms;
 
 namespace Experimental
 {
-    public static class TreeviewHelper
+    public static class TreeviewController
     {
         public static void CargarTreeview<T>(List<T> items, TreeView treeview)
         {

@@ -21,9 +21,12 @@ namespace Experimental
     public abstract class Persona : Entidad
     {
         public int DNI { get; set; } = new int();
-        public string NombreApellido { get; set; } = string.Empty;
+        public string Nombre { get; set; } = string.Empty;
+        public string Apellido { get; set; } = string.Empty;
         public DateTime FechaAlta { get; set; } = new DateTime();
         public string Puesto { get; set; } = string.Empty;
+
+        // Se trabajará con array.
         public string Direccion { get; set; } = string.Empty;
         public string Telefono { get; set; } = string.Empty;
         public string Email { get; set; } = string.Empty;

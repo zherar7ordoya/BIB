@@ -13,7 +13,7 @@ namespace Experimental
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new TreeviewForm<Mudanza>());
+            Application.Run(new MudanzaForm<Mudanza>());
         }
     }
 }
