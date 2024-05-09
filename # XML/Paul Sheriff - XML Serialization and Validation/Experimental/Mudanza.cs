@@ -15,6 +15,13 @@ namespace Experimental
         public int Codigo { get; set; } = new int();
     }
 
+    public enum Rol
+    {
+        Empleado,
+        Chofer,
+        Estibador
+    }
+
     [XmlInclude(typeof(Empleado))]
     [XmlInclude(typeof(Chofer))]
     [XmlInclude(typeof(Estibador))]
@@ -24,9 +31,8 @@ namespace Experimental
         public string Nombre { get; set; } = string.Empty;
         public string Apellido { get; set; } = string.Empty;
         public DateTime FechaAlta { get; set; } = new DateTime();
-        public string Puesto { get; set; } = string.Empty;
+        public Rol Puesto { get; set; } = Rol.Empleado;
 
-        // Se trabajará con array.
         public string Direccion { get; set; } = string.Empty;
         public string Telefono { get; set; } = string.Empty;
         public string Email { get; set; } = string.Empty;
