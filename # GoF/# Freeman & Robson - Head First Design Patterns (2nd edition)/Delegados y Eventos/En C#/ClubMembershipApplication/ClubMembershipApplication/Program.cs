@@ -4,12 +4,10 @@ namespace ClubMembershipApplication
 {
     class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
             IView mainView = Factory.GetMainViewObject();
             mainView.RunView();
-
-            Console.ReadKey();
         }
     }
 }
