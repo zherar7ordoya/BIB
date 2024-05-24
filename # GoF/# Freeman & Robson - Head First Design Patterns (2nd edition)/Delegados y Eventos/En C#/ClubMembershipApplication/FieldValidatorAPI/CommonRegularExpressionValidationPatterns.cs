@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace FieldValidatorAPI
+﻿namespace FieldValidatorAPI
 {
-     public static class CommonRegularExpressionValidationPatterns
+    public static class CommonRegularExpressionValidationPatterns
      {
 
         public const string Email_Address_RegEx_Pattern = @"^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$";

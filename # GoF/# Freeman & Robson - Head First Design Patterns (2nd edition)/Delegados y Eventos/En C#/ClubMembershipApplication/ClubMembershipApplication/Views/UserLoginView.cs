@@ -1,6 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
+
 using ClubMembershipApplication.Data;
 using ClubMembershipApplication.FieldValidators;
 using ClubMembershipApplication.Models;

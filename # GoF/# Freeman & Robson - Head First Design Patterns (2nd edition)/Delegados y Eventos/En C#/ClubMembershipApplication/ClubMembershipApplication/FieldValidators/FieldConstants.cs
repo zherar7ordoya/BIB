@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace ClubMembershipApplication.FieldValidators
+﻿namespace ClubMembershipApplication.FieldValidators
 {
-   public class FieldConstants
+    public class FieldConstants
     {
         public enum UserRegistrationField
         { 

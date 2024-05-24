@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using ClubMembershipApplication.Views;
+﻿using ClubMembershipApplication.Views;
 using ClubMembershipApplication.Data;
 using ClubMembershipApplication.FieldValidators;
 

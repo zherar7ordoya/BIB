@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace ClubMembershipApplication.Data
+﻿namespace ClubMembershipApplication.Data
 {
     public interface IRegister
     {

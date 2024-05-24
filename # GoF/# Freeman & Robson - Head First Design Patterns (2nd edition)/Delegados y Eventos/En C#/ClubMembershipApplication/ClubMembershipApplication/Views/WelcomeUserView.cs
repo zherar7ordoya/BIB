@@ -1,12 +1,11 @@
 ﻿using ClubMembershipApplication.FieldValidators;
 using ClubMembershipApplication.Models;
+
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace ClubMembershipApplication.Views
 {
-    
+
 
     public class WelcomeUserView:IView
     {

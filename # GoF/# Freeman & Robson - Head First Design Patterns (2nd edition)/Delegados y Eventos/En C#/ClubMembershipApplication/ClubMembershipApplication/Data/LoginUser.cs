@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using ClubMembershipApplication.Models;
+﻿using ClubMembershipApplication.Models;
+
 using System.Linq;
 
 namespace ClubMembershipApplication.Data
