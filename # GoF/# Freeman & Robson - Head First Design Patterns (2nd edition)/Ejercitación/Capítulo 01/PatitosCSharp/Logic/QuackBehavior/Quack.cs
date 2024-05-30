@@ -1,10 +1,7 @@
-﻿namespace PatitosCSharp
+﻿internal class Quack : IQuackBehavior
 {
-    internal class Quack : IQuackBehavior
+    public void quack()
     {
-        public void quack()
-        {
-            Console.WriteLine("Quack");
-        }
+        Console.WriteLine("Quack");
     }
 }

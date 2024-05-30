@@ -1,10 +1,7 @@
-﻿namespace PatitosCSharp
+﻿internal class FlyNoWay : IFlyBehavior
 {
-    internal class FlyNoWay : IFlyBehavior
+    public void fly()
     {
-        public void fly()
-        {
-            Console.WriteLine("I can't fly");
-        }
+        Console.WriteLine("I can't fly");
     }
 }

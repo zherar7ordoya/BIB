@@ -1,10 +1,7 @@
-﻿namespace PatitosCSharp
+﻿internal class FlyWithWings : IFlyBehavior
 {
-    internal class FlyWithWings : IFlyBehavior
+    public void fly()
     {
-        public void fly()
-        {
-            Console.WriteLine("I'm flying!!");
-        }
+        Console.WriteLine("I'm flying!!");
     }
 }

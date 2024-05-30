@@ -1,7 +1,4 @@
-﻿namespace PatitosCSharp
+﻿public interface IQuackBehavior
 {
-    internal interface IQuackBehavior
-    {
-        public void quack();
-    }
+    public void quack();
 }

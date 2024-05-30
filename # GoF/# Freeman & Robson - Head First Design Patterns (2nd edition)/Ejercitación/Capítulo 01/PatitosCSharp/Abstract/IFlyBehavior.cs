@@ -1,7 +1,4 @@
-﻿namespace PatitosCSharp
+﻿public interface IFlyBehavior
 {
-    internal interface IFlyBehavior
-    {
-        public void fly();
-    }
+    public void fly();
 }

@@ -1,5 +1,3 @@
-﻿using PatitosCSharp;
-
-Duck mallard = new MallardDuck();
-mallard?.performQuack();
-mallard?.performFly();
+﻿Duck mallard = new MallardDuck();
+mallard?.PerformQuack();
+mallard?.PerformFly();
