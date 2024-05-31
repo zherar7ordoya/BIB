@@ -12,6 +12,7 @@ public class ShowBorrowing
     {
         string sel = "SELECT * FROM ROCKET";
         DataServices.LendReader(sel, new BorrowReader(GetNames));
+        Console.ReadKey();
     }
 
     private static Object GetNames(IDataReader reader)

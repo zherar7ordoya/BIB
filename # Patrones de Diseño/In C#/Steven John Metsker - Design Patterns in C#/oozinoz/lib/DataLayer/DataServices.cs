@@ -3,6 +3,7 @@ using System.Data;
 using System.Data.OleDb;
 using System.Collections;
 using System.Reflection;
+using Utilities;
 
 namespace DataLayer
 {
@@ -28,15 +29,15 @@ namespace DataLayer
         /// <param name="sql">The SQL select statement to execute.</param>
         /// <param name="borrower">The method to call that uses a reader.</param>
         /// <returns>The supplied method's return value.</returns>
-        public static object LendReader(string sql, BorrowReader borrower) 
+        public static object LendReader(string sql, BorrowReader borrower)
         {
             using (OleDbConnection conn = CreateConnection())
             {
-                conn.Open(); 
-                OleDbCommand c = new OleDbCommand(sql, conn);  
+                conn.Open();
+                OleDbCommand c = new OleDbCommand(sql, conn);
                 OleDbDataReader r = c.ExecuteReader();
                 return borrower(r);
-            }     
+            }
         }
 
         /// <summary>
@@ -46,15 +47,22 @@ namespace DataLayer
         /// <returns>the connection</returns>
         public static OleDbConnection CreateConnection()
         {
-            OleDbConnection c = new OleDbConnection();
-       
+            string dbName = FileFinder.GetFileName("db", "oozinoz.mdb");
+            OleDbConnection c = new OleDbConnection
+            {
+                ConnectionString = $"Provider=Microsoft.Jet.OLEDB.4.0;Data Source={dbName}"
+            };
+
             // String dbName = FileFinder.GetFileName("db", "oozinoz.mdb");
             // c.ConnectionString = "Provider=Microsoft.Jet.OLEDB.4.0;" + "Data Source=" + dbName;
             // Data Source=.\SQLEXPRESS;Initial Catalog=Customers;Integrated Security=True;
-            const string provider = "SQLOLEDB";
-            const string server = ".\\SQLExpress";
-            const string dbName = "oozinoz";
-            c.ConnectionString = string.Format("Provider={0};Server={1};Database={2};Trusted_Connection=Yes;", provider, server, dbName);
+
+            //OleDbConnection c = new OleDbConnection();
+            //const string provider = "SQLOLEDB";
+            //const string server = ".\\SQLExpress";
+            //const string dbName = "oozinoz";
+            //c.ConnectionString = string.Format("Provider={0};Server={1};Database={2};Trusted_Connection=Yes;", provider, server, dbName);
+
             return c;
         }
 
@@ -64,37 +72,37 @@ namespace DataLayer
         /// </summary>
         /// <param name="select">The SQL select statement to execute</param>
         /// <returns>The adapter.</returns>
-        public static OleDbDataAdapter CreateAdapter(string select) 
-        {   
-            return new OleDbDataAdapter(select, CreateConnection());  
-        }   
-     
+        public static OleDbDataAdapter CreateAdapter(string select)
+        {
+            return new OleDbDataAdapter(select, CreateConnection());
+        }
+
         /// <summary>
         /// Create and return a DataTable object that holds the results
         /// of the supplied select statement.
         /// </summary>
         /// <param name="select">The SQL to generate results</param>
         /// <returns>The DataTable</returns>
-        public static DataTable CreateTable(string select) 
-        {   
-            return (DataTable) LendReader(select, new BorrowReader(CreateTable));
-        } 
+        public static DataTable CreateTable(string select)
+        {
+            return (DataTable)LendReader(select, new BorrowReader(CreateTable));
+        }
 
         // Create a DataTable from the given reader
-        internal static object CreateTable(IDataReader reader) 
+        internal static object CreateTable(IDataReader reader)
         {
-            DataTable table = new DataTable(); 
-            for (int i = 0; i < reader.FieldCount; i++) 
-            { 
+            DataTable table = new DataTable();
+            for (int i = 0; i < reader.FieldCount; i++)
+            {
                 table.Columns.Add(reader.GetName(i), reader.GetFieldType(i));
-            }   
-            while (reader.Read()) 
+            }
+            while (reader.Read())
             {
                 DataRow dr = table.NewRow();
-                for (int i = 0; i < reader.FieldCount; i++) 
+                for (int i = 0; i < reader.FieldCount; i++)
                 {
                     dr[i] = reader.GetValue(i);
-                }     
+                }
                 table.Rows.Add(dr);
             }
             return table;
@@ -107,11 +115,11 @@ namespace DataLayer
         /// <param name="name">The name of the object to lookup in the 
         /// database</param>
         /// <returns>The instantiated object</returns>
-        public static Object Find(Type t, string name)         
+        public static Object Find(Type t, string name)
         {
             string sel = "SELECT * FROM " + t.Name + " WHERE NAME = '" + name + "'";
             return LendReader(sel, new BorrowReader(new ObjectLoader(t).LoadObject));
-        } 
+        }
 
         /// <summary>
         /// Find all objects of the given type in the database.
@@ -120,11 +128,11 @@ namespace DataLayer
         /// <returns>A list of the objects that represents rows of data
         /// in the database table whose name matches the given type.
         /// </returns>
-        public static IList FindAll(Type t)         
+        public static IList FindAll(Type t)
         {
             string sel = "SELECT * FROM " + t.Name;
-            return (IList) LendReader(sel, new BorrowReader(new ObjectLoader(t).LoadAll));
-        } 
+            return (IList)LendReader(sel, new BorrowReader(new ObjectLoader(t).LoadAll));
+        }
         //
         // Instances of this class hold a type to instantiate and to populate from
         // a database reader.
@@ -144,8 +152,8 @@ namespace DataLayer
             //
             internal Object LoadObject(IDataReader reader)
             {
-                if (reader.Read()) 
-                { 
+                if (reader.Read())
+                {
                     return LoadFromCurrent(reader);
                 }
                 return null;
@@ -157,7 +165,7 @@ namespace DataLayer
             internal Object LoadAll(IDataReader reader)
             {
                 ArrayList list = new ArrayList();
-                while (reader.Read()) 
+                while (reader.Read())
                 {
                     list.Add(LoadFromCurrent(reader));
                 }
@@ -167,18 +175,18 @@ namespace DataLayer
             // Instantiate and load a single object from the current
             // record in the supplied reader.
             //
-            internal Object LoadFromCurrent(IDataReader reader) 
+            internal Object LoadFromCurrent(IDataReader reader)
             {
-                ConstructorInfo c = _type.GetConstructor(new Type[]{});
-                Object o = c.Invoke(new Object[]{});
-                foreach (PropertyInfo p in _type.GetProperties()) 
+                ConstructorInfo c = _type.GetConstructor(new Type[] { });
+                Object o = c.Invoke(new Object[] { });
+                foreach (PropertyInfo p in _type.GetProperties())
                 {
                     MethodInfo m = p.GetSetMethod();
-                    try 
+                    try
                     {
-                        m.Invoke(o, new Object[]{reader[p.Name]});
+                        m.Invoke(o, new Object[] { reader[p.Name] });
                     }
-                    catch (System.IndexOutOfRangeException) {}
+                    catch (System.IndexOutOfRangeException) { }
                 }
                 return o;
             }
