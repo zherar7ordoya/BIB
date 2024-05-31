@@ -15,7 +15,7 @@ public class ShowBorrowing
         Console.ReadKey();
     }
 
-    private static Object GetNames(IDataReader reader)
+    private static object GetNames(IDataReader reader)
     {
         while (reader.Read()) 
         {
