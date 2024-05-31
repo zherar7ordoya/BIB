@@ -9,7 +9,7 @@ public class WebAd2 : IAdvertisement2
     public WebAd2 (int id) 
     {
         _id = id;
-    } 
+    }
     
     public int ID 
     {
@@ -20,5 +20,5 @@ public class WebAd2 : IAdvertisement2
     {
         get { return _adCopy; }
         set { _adCopy = value; }
-    } 
+    }
 }
