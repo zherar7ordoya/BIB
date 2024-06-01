@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ContenedorBase.cs" />
+    <Compile Include="Formalidad.cs" />
     <Compile Include="IContenedor.cs" />
     <Compile Include="IImprimible.cs" />
     <Compile Include="ILista.cs" />
