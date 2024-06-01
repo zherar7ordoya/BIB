@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{67B86134-F18C-418A-9628-8DA594AAFE78}</ProjectGuid>
+    <ProjectGuid>{079C31C9-93AB-458D-AA90-EA796CEB6184}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>EjemploAvanzado</RootNamespace>
-    <AssemblyName>EjemploAvanzado</AssemblyName>
+    <RootNamespace>ReviewInterface</RootNamespace>
+    <AssemblyName>ReviewInterface</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -43,12 +43,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ContenedorBase.cs" />
-    <Compile Include="Formalidad.cs" />
-    <Compile Include="IContenedor.cs" />
-    <Compile Include="IImprimible.cs" />
-    <Compile Include="ILista.cs" />
-    <Compile Include="Lista.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
