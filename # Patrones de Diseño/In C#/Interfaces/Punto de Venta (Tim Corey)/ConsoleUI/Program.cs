@@ -39,13 +39,14 @@ namespace ConsoleUI
 
         private static List<IProductModel> AddSampleData()
         {
-            List<IProductModel> output = new List<IProductModel>();
-
-            output.Add(new PhysicalProductModel { Title = "Nerf Football" });
-            output.Add(new PhysicalProductModel { Title = "IAmTimCorey T-Shirt" });
-            output.Add(new PhysicalProductModel { Title = "Hard Drive" });
-            output.Add(new DigitalProductModel { Title = "Lesson Source Code" });
-            output.Add(new CourseProductModel { Title = ".NET Core Start to Finish" });
+            List<IProductModel> output = new List<IProductModel>
+            {
+                new PhysicalProductModel { Title = "Nerf Football" },
+                new PhysicalProductModel { Title = "IAmTimCorey T-Shirt" },
+                new PhysicalProductModel { Title = "Hard Drive" },
+                new DigitalProductModel { Title = "Lesson Source Code" },
+                new CourseProductModel { Title = ".NET Core Start to Finish" }
+            };
 
             return output;
         }
