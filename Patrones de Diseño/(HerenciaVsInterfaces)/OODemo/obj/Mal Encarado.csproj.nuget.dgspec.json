@@ -1,32 +1,32 @@
 {
   "format": 1,
   "restore": {
-    "U:\\Documents\\BIB\\Patrones de Diseño\\(HerenciaVsInterfaces)\\OODemo\\Mal Encarado.csproj": {}
+    "D:\\Documents\\BIB\\Patrones de Diseño\\(HerenciaVsInterfaces)\\OODemo\\Mal Encarado.csproj": {}
   },
   "projects": {
-    "U:\\Documents\\BIB\\Patrones de Diseño\\(HerenciaVsInterfaces)\\OODemo\\Mal Encarado.csproj": {
+    "D:\\Documents\\BIB\\Patrones de Diseño\\(HerenciaVsInterfaces)\\OODemo\\Mal Encarado.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "U:\\Documents\\BIB\\Patrones de Diseño\\(HerenciaVsInterfaces)\\OODemo\\Mal Encarado.csproj",
+        "projectUniqueName": "D:\\Documents\\BIB\\Patrones de Diseño\\(HerenciaVsInterfaces)\\OODemo\\Mal Encarado.csproj",
         "projectName": "Mal Encarado",
-        "projectPath": "U:\\Documents\\BIB\\Patrones de Diseño\\(HerenciaVsInterfaces)\\OODemo\\Mal Encarado.csproj",
-        "packagesPath": "C:\\Users\\gtordoya\\.nuget\\packages\\",
-        "outputPath": "U:\\Documents\\BIB\\Patrones de Diseño\\(HerenciaVsInterfaces)\\OODemo\\obj\\",
+        "projectPath": "D:\\Documents\\BIB\\Patrones de Diseño\\(HerenciaVsInterfaces)\\OODemo\\Mal Encarado.csproj",
+        "packagesPath": "C:\\Users\\zherar7ordoya\\.nuget\\packages\\",
+        "outputPath": "D:\\Documents\\BIB\\Patrones de Diseño\\(HerenciaVsInterfaces)\\OODemo\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\gtordoya\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\zherar7ordoya\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
-          "net5.0"
+          "net8.0"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "net5.0": {
-            "targetAlias": "net5.0",
+          "net8.0": {
+            "targetAlias": "net8.0",
             "projectReferences": {}
           }
         },
@@ -42,8 +42,8 @@
         }
       },
       "frameworks": {
-        "net5.0": {
-          "targetAlias": "net5.0",
+        "net8.0": {
+          "targetAlias": "net8.0",
           "imports": [
             "net461",
             "net462",
@@ -60,7 +60,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.300\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.300/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

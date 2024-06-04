@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Bien Encarado")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+13c0617991c98ea756b7c247836556edb61a989e")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+18921ea746ee0ed9a10a4237f3dfac0a33b58215")]
 [assembly: System.Reflection.AssemblyProductAttribute("Bien Encarado")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Bien Encarado")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
