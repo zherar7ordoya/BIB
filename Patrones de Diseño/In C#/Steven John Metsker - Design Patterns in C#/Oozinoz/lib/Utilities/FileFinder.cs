@@ -48,7 +48,10 @@ namespace Utilities
             }
             
             // Ok, how 'bout in the top-level directory?
-            path = Path.Combine(Path.Combine(@"\oozinoz", dirName), fileName);
+            path = Path.Combine(Path.Combine(@"\Oozinoz", dirName), fileName);
+
+            path = @"U:\Documents\BIB\Patrones de Diseño\In C#\Steven John Metsker - Design Patterns in C#\Oozinoz\db\oozinoz.mdb";
+
             if (File.Exists(path))
             {
                 return path;
