@@ -50,7 +50,7 @@ namespace Utilities
             // Ok, how 'bout in the top-level directory?
             path = Path.Combine(Path.Combine(@"\Oozinoz", dirName), fileName);
 
-            path = @"U:\Documents\BIB\Patrones de Diseño\In C#\Steven John Metsker - Design Patterns in C#\Oozinoz\db\oozinoz.mdb";
+            path = "U:\\Documents\\BIB\\Patrones de Diseño\\In C#\\Steven John Metsker - Design Patterns in C#\\Oozinoz\\db\\oozinoz.mdb";
 
             if (File.Exists(path))
             {
