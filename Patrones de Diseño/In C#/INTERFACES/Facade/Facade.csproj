@@ -45,6 +45,8 @@
   <ItemGroup>
     <Compile Include="CFachada.cs" />
     <Compile Include="CSistemaCompra.cs" />
+    <Compile Include="CSubSistemaAlmacen.cs" />
+    <Compile Include="CSubSistemaEnvio.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

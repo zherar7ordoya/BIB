@@ -1,16 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Facade
+﻿namespace Subsistemas
 {
-    class CFachada
+    public class CFachada
     {
-        private CSistemaCompra compra =new CSistemaCompra();
-        private CSubsistemaAlmacen almacen =new CSubsistemaAlmacen();
-        private CSubsitemaEnvio envio =new CSubsitemaEnvio();
+        readonly CSistemaCompra compra = new CSistemaCompra();
+        readonly CSubSistemaAlmacen almacen = new CSubSistemaAlmacen();
+        readonly CSubSistemaEnvio envio = new CSubSistemaEnvio();
 
         public void Compra()
         {
