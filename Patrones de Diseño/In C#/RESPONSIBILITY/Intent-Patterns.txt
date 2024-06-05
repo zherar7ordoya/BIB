@@ -1,0 +1,29 @@
+Intent		Patterns
+
+CONSTRUCTION	Abstract Factory
+		Builder
+		Factory Method
+		Memento
+		Prototype
+
+EXTENSIONS	Decorator
+		Iterator
+		Visitor
+
+INTERFACES	Adapter
+		Bridge
+		Composite
+		Facade
+
+OPERATIONS	Command
+		Interpreter
+		State
+		Strategy
+		Template Method
+
+RESPONSIBILITY	Chain Of Responsibility
+		Flyweight
+		Mediator
+		Observer
+		Proxy
+		Singleton
