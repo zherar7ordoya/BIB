@@ -1,6 +1,9 @@
-﻿using System;
+﻿// Agregar esta referencia, no "Microsoft.Data.Sqlite".
+using System.Data.SQLite; 
+// ****************************************************
+
+using System;
 using System.Collections.Generic;
-using System.Data.SQLite; // <== Agregar esta referencia (no Microsoft.Data.Sqlite)
 using System.Windows.Forms;
 
 namespace EasySQLite
@@ -10,10 +13,10 @@ namespace EasySQLite
         public MenuForm()
         {
             InitializeComponent();
-            Load += Form1_Load;
+            Load += OnLoad;
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void OnLoad(object sender, EventArgs e)
         {
             //ConnectToDatabase();
             List<Cliente> listado = CargarListado();
@@ -47,23 +50,6 @@ namespace EasySQLite
             return listado;
         }
 
-        private void ConnectToDatabase()
-        {
-            string connectionString = "Data Source=SQLiteDatabase.db";
-            using (var connection = new SQLiteConnection(connectionString))
-            {
-                try
-                {
-                    connection.Open();
-                    MessageBox.Show("Conexión exitosa a la base de datos SQLite");
-
-                    // Aquí puedes realizar operaciones con la base de datos
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show($"Error de conexión: {ex.Message}");
-                }
-            }
-        }
+    // *************************************************************************
     }
 }
