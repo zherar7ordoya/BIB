@@ -1,3 +1,8 @@
+/*
+La clase «DataServices» aplica FACADE, proporcionando una interfaz simplificada
+para ADO.NET.
+*/
+
 using System;
 using System.Data;
 using System.Data.OleDb;
@@ -31,12 +36,12 @@ namespace DataLayer
         /// <returns>The supplied method's return value.</returns>
         public static object LendReader(string sql, BorrowReader borrower)
         {
-            using (OleDbConnection conn = CreateConnection())
+            using (OleDbConnection connection = CreateConnection())
             {
-                conn.Open();
-                OleDbCommand c = new OleDbCommand(sql, conn);
-                OleDbDataReader r = c.ExecuteReader();
-                return borrower(r);
+                connection.Open();
+                OleDbCommand command = new OleDbCommand(sql, connection);
+                OleDbDataReader reader = command.ExecuteReader();
+                return borrower(reader);
             }
         }
 

@@ -4,14 +4,14 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{FB49154D-73F3-48EF-A08D-60FF770C1457}</ProjectGuid>
+    <ProjectGuid>{B34BE7F4-96F4-4A29-99E0-5326452404ED}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>PatrónAdapter_CSharp</RootNamespace>
-    <AssemblyName>PatrónAdapter CSharp</AssemblyName>
-    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <RootNamespace>AdapterInterface</RootNamespace>
+    <AssemblyName>AdapterInterface</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -43,12 +43,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IMotor.cs" />
-    <Compile Include="Motor.cs" />
-    <Compile Include="MotorDiesel.cs" />
-    <Compile Include="MotorElectrico.cs" />
-    <Compile Include="MotorElectricoAdapter.cs" />
-    <Compile Include="MotorNaftero.cs" />
+    <Compile Include="IRocketSim.cs" />
+    <Compile Include="OozinozRocket.cs" />
+    <Compile Include="PhysicalRocket.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

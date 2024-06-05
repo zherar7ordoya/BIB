@@ -2,24 +2,24 @@
 
 namespace PatrónAdapter_CSharp
 {
-    public class MotorNaftero : IMotor
+    public class MotorNaftero : Motor
     {
-        public void Acelerar()
+        public override void Acelerar()
         {
             Console.WriteLine("Acelerando el motor naftero..");
         }
 
-        public void Arrancar()
+        public override void Arrancar()
         {
             Console.WriteLine("Arrancando el motor naftero..");
         }
 
-        public void CargarCombustible()
+        public override void CargarCombustible()
         {
             Console.WriteLine("Cargando combustible al motor naftero..");
         }
 
-        public void Detener()
+        public override void Detener()
         {
             Console.WriteLine("Deteniendo el motor naftero..");
         }

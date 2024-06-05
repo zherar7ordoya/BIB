@@ -18,10 +18,13 @@ namespace PatrónAdapter_CSharp
                 _conectado = true;
                 Console.WriteLine("Motor conectado!");
             }
+            
+      
         }
-
+               
         public void Activar()
         {
+
             if (!_conectado)
                 Console.WriteLine("Imposible activar un motor no conectado");
             else
@@ -29,8 +32,9 @@ namespace PatrónAdapter_CSharp
                 _activo = true;
                 Console.WriteLine("Motor activado!");
             }
+            
         }
-
+       
         public void Mover()
         {
             if (_conectado && _activo)
@@ -42,10 +46,12 @@ namespace PatrónAdapter_CSharp
             {
                 Console.WriteLine("El motor deberá estar conectado y activo!");
             }
+   
         }
 
         public void Parar()
         {
+
             if (_moviendo)
             {
                 _moviendo = false;
@@ -55,21 +61,23 @@ namespace PatrónAdapter_CSharp
             {
                 Console.WriteLine("Imposible parar un motor que no esté en movimiento!");
             }
+            
         }
 
         public void Desconectar()
         {
             if (_conectado)
             {
-
+              
                 Console.WriteLine("Motor desconectado...");
             }
             else
             {
                 Console.WriteLine("Imposible desconectar un motor que no esté conectado!");
             }
+   
         }
-
+  
         public void Desactivar()
         {
             if (_activo)
@@ -81,8 +89,8 @@ namespace PatrónAdapter_CSharp
             {
                 Console.WriteLine("Imposible desactivar un motor que no esté activo!");
             }
-        }
-
+      }
+   
         public void Enchufar()
         {
             if (!_activo)
@@ -94,6 +102,8 @@ namespace PatrónAdapter_CSharp
             {
                 Console.WriteLine("Imposible enchufar un motor activo!");
             }
+         
         }
+        
     }
 }
