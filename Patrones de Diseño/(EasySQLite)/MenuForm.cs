@@ -1,5 +1,5 @@
 ﻿// Agregar esta referencia, no "Microsoft.Data.Sqlite".
-using System.Data.SQLite; 
+using System.Data.SQLite;
 // ****************************************************
 
 using System;
@@ -18,38 +18,38 @@ namespace EasySQLite
 
         private void OnLoad(object sender, EventArgs e)
         {
-            //ConnectToDatabase();
             List<Cliente> listado = CargarListado();
             ListadoDgv.DataSource = listado;
         }
 
-        private List<Cliente> CargarListado() {
-            List<Cliente> listado = new List<Cliente>();
-            string connectionString = "Data Source=SQLiteDatabase.db";
+        private List<Cliente> CargarListado()
+        {
+            var listado = new List<Cliente>();
+            const string connectionString = "Data Source=SQLiteDatabase.db";
+
             using (var connection = new SQLiteConnection(connectionString))
             {
                 connection.Open();
-                var command = connection.CreateCommand();
-                command.CommandText = "SELECT * FROM Cliente";
+                using (var command = new SQLiteCommand("SELECT * FROM Cliente", connection))
                 using (var reader = command.ExecuteReader())
                 {
                     while (reader.Read())
                     {
-                        Cliente cliente = new Cliente
+                        var cliente = new Cliente
                         {
-                            Codigo = reader.GetInt32(0),
-                            Nombre = reader.GetString(1),
-                            Apellido = reader.GetString(2),
-                            Email = reader.GetString(3),
-                            Telefono = reader.GetString(4)
+                            Codigo = reader.GetInt32(reader.GetOrdinal("Codigo")),
+                            Nombre = reader.GetString(reader.GetOrdinal("Nombre")),
+                            Apellido = reader.GetString(reader.GetOrdinal("Apellido")),
+                            Email = reader.GetString(reader.GetOrdinal("Email")),
+                            Telefono = reader.GetString(reader.GetOrdinal("Telefono"))
                         };
                         listado.Add(cliente);
                     }
                 }
             }
+
             return listado;
         }
-
-    // *************************************************************************
     }
+    // *************************************************************************
 }
