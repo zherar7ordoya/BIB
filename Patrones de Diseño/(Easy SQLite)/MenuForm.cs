@@ -47,7 +47,6 @@ namespace EasySQLite
                     }
                 }
             }
-
             return listado;
         }
     }
