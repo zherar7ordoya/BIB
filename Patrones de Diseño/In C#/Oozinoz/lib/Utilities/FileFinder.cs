@@ -25,7 +25,9 @@ namespace Utilities
         {
             String path;
             // Can we find the file using the OOZINOZ environment variable?
-            String oozinozBase = Environment.GetEnvironmentVariable("OOZINOZ");
+            // NOTA: Esto no declara una variable global en C# sino que obtiene
+            // el valor de una variable de entorno del sistema operativo.
+            string oozinozBase = Environment.GetEnvironmentVariable("OOZINOZ");
             if (oozinozBase != null) 
             {
                 path = Path.Combine(Path.Combine(oozinozBase, dirName), fileName);
@@ -48,9 +50,9 @@ namespace Utilities
             }
             
             // Ok, how 'bout in the top-level directory?
+            // Esto es un error, ya que no se puede acceder a la raíz del
+            // sistema de archivos.
             path = Path.Combine(Path.Combine(@"\Oozinoz", dirName), fileName);
-
-            path = "U:\\Documents\\BIB\\Patrones de Diseño\\In C#\\Steven John Metsker - Design Patterns in C#\\Oozinoz\\db\\oozinoz.mdb";
 
             if (File.Exists(path))
             {
