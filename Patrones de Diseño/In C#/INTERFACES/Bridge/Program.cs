@@ -21,23 +21,13 @@ namespace Bridge
                 { "M056", 21.42 },
             };
 
-            CAbstraccion abstraccion = new CAbstraccion(new CImplementacion1(), productos);
+            //CAbstraccion abstraccion = new CAbstraccion(new CImplementacion3(), productos);
+            CAbstraccion abstraccion = new CAbstraccion(3, productos);
             abstraccion.MostrarTotales();
             Console.WriteLine();
             abstraccion.Listar();
-            Console.ReadKey();
 
-            //CAbstraccion abstraccion1 = new CAbstraccion(new CImplementacion(), productos);
-            //abstraccion1.MostrarTotales();
-            //Console.WriteLine();
-
-            //CAbstraccion abstraccion2 = new CAbstraccion(new CImplementacion2(), productos);
-            //abstraccion2.MostrarTotales();
-            //Console.WriteLine();
-
-            //CAbstraccion abstraccion3 = new CAbstraccion(new CImplementacion3(), productos);
-            //abstraccion3.MostrarTotales();
-            //Console.WriteLine();
+            
 
             Console.ReadKey();
         }
