@@ -5,7 +5,7 @@ namespace Bridge
 {
     internal class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
             Dictionary<string, double> productos = new Dictionary<string, double>
             {
@@ -21,13 +21,19 @@ namespace Bridge
                 { "M056", 21.42 },
             };
 
-            //CAbstraccion abstraccion = new CAbstraccion(new CImplementacion3(), productos);
-            CAbstraccion abstraccion = new CAbstraccion(3, productos);
+            Console.WriteLine("Usando uno de los constructores...\n");
+            Abstraction abstraccion = new Abstraction(new ImplementationBlock(), productos);
             abstraccion.MostrarTotales();
             Console.WriteLine();
             abstraccion.Listar();
 
-            
+            Console.ResetColor();
+
+            Console.WriteLine("\nUsando el otro constructor...\n");
+            abstraccion = new Abstraction(3, productos);
+            abstraccion.MostrarTotales();
+            Console.WriteLine();
+            abstraccion.Listar();
 
             Console.ReadKey();
         }

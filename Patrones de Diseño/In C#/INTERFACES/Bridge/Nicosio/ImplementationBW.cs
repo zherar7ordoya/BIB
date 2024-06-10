@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Bridge
 {
-    public class CImplementacion1 : IBridge
+    public class ImplementationBW : IBridge
     {
         public void ListarProductos(Dictionary<string, double> pProductos)
         {

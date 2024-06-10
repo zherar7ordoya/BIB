@@ -43,10 +43,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CAbstraccion.cs" />
-    <Compile Include="CImplementacion1.cs" />
-    <Compile Include="CImplementacion2.cs" />
-    <Compile Include="CImplementacion3.cs" />
+    <Compile Include="Abstraction.cs" />
+    <Compile Include="ImplementationBW.cs" />
+    <Compile Include="ImplementationZebra.cs" />
+    <Compile Include="ImplementationBlock.cs" />
     <Compile Include="IBridge.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

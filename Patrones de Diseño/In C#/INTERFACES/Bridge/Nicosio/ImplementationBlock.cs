@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Bridge
 {
-    public class CImplementacion3 : IBridge
+    public class ImplementationBlock : IBridge
     {
         public void ListarProductos(Dictionary<string, double> productos)
         {
@@ -42,10 +42,15 @@ namespace Bridge
                 if (producto.Key[0] == 'D') totalD += producto.Value;
                 cantidad++;
             }
-            Console.WriteLine("El total de comida es de ${0}, {1}% del total general", totalC, totalC / total * 100);
-            Console.WriteLine("El total de medicamentos es de ${0}, {1}% del total general", totalM, totalM / total * 100);
-            Console.WriteLine("El total de deportes es de ${0}, {1}% del total general ", totalD, totalD / total * 100);
-            Console.WriteLine("El total de {0} productos es ${1} ", cantidad, total);
+
+            double porcentajeC = Math.Round((totalC / total) * 100, 2);
+            double porcentajeM = Math.Round((totalM / total) * 100, 2);
+            double porcentajeD = Math.Round((totalD / total) * 100, 2);
+
+            Console.WriteLine("El total de comida es de ${0}\t({1}% del total general)", totalC, porcentajeC);
+            Console.WriteLine("El total de medicamentos es de ${0}\t({1}% del total general)", totalM, porcentajeM);
+            Console.WriteLine("El total de deportes es de ${0}\t({1}% del total general)", totalD, porcentajeD);
+            Console.WriteLine("\nEl total de {0} productos es ${1}", cantidad, total);
         }
     }
 }
