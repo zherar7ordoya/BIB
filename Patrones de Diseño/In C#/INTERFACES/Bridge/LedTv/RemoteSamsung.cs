@@ -1,17 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace DotNet
+﻿namespace DotNet
 {
     // This is going to be a concrete class which inherits from the Abstraction
     // class i.e., AbstractRemoteControl. This Redefined Abstraction Class
     // extends the interface defined by AbstractRemoteControl class.
-    public class SamsungRemoteControl : AbstractRemoteControl
+    public class RemoteSamsung : RemoteAbstract
     {
-        public SamsungRemoteControl(ILEDTV ledTv)
+        public RemoteSamsung(ITv ledTv)
         {
             this.ledTv = ledTv;
         }

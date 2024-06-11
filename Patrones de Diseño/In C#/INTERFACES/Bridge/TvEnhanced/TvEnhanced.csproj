@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{21E7E10B-7710-4AEF-AAC9-A788D195A614}</ProjectGuid>
+    <ProjectGuid>{B39F343C-9A0C-4019-ABB5-86A862321B8C}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>DotNet</RootNamespace>
-    <AssemblyName>DotNet</AssemblyName>
+    <RootNamespace>TvEnhanced</RootNamespace>
+    <AssemblyName>TvEnhanced</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -43,14 +43,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="RemoteAbstract.cs" />
-    <Compile Include="ITv.cs" />
+    <Compile Include="AdvancedRemote.cs" />
+    <Compile Include="ITV.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TvSamsung.cs" />
-    <Compile Include="RemoteSamsung.cs" />
+    <Compile Include="RemoteAbstract.cs" />
+    <Compile Include="SimpleRemote.cs" />
+    <Compile Include="TvLG.cs" />
     <Compile Include="TvSony.cs" />
-    <Compile Include="RemoteSony.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

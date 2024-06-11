@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DotNet
 {
@@ -23,15 +19,21 @@ namespace DotNet
             // a specific Implementation object, i.e. new SonyLedTv() or new
             // SamsungLedTv(), the client code should only depend on the
             // Abstraction class, i.e. SonyRemoteControl or SamsungRemoteControl
-            AbstractRemoteControl sonyRemoteControl = new SonyRemoteControl(new SonyLedTv());
-            sonyRemoteControl.SwitchOn();
-            sonyRemoteControl.SetChannel(101);
-            sonyRemoteControl.SwitchOff();
+
+            RemoteAbstract abstracto;
+
+            abstracto = new RemoteSony(new TvSony());
+            abstracto.SwitchOn();
+            abstracto.SetChannel(101);
+            abstracto.SwitchOff();
+            
             Console.WriteLine();
-            AbstractRemoteControl samsungRemoteControl = new SamsungRemoteControl(new SamsungLedTv());
-            samsungRemoteControl.SwitchOn();
-            samsungRemoteControl.SetChannel(202);
-            samsungRemoteControl.SwitchOff();
+            
+            abstracto = new RemoteSamsung(new TvSamsung());
+            abstracto.SwitchOn();
+            abstracto.SetChannel(202);
+            abstracto.SwitchOff();
+            
             Console.ReadKey();
         }
     }

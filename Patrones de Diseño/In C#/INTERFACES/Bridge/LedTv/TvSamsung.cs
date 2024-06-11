@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DotNet
 {
@@ -10,7 +6,7 @@ namespace DotNet
     // also provide the implementation details for the associated Abstraction
     // class. Each Concrete Implementation corresponds to a specific platform.
 
-    public class SamsungLedTv : ILEDTV
+    public class TvSamsung : ITv
     {
         public void SwitchOn()
         {

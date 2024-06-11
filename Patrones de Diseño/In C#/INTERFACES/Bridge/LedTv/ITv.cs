@@ -1,17 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace DotNet
+﻿namespace DotNet
 {
     // This is going to be an interface that acts as a bridge between the
     // abstraction classes and implementer classes.
     // The Implementor Interface defines the operations for all implementation
     // classes. It doesn't have to match the Abstraction's interface.
     // In fact, the two interfaces can be entirely different. 
-    public interface ILEDTV
+    public interface ITv
     {
         void SwitchOn();
         void SwitchOff();
