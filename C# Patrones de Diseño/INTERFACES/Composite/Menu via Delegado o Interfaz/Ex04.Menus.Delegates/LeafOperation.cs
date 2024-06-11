@@ -23,10 +23,7 @@ namespace Ex04.Menus.Delegates
 
         protected virtual void OnLeafOperationChosen()
         {
-            if (LeafChoosenOperation != null)
-            {
-                LeafChoosenOperation.Invoke();
-            }
+            LeafChoosenOperation?.Invoke();
         }
     }
 }
