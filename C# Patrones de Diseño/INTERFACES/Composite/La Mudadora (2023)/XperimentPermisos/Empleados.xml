@@ -1,0 +1,264 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Empleados>
+  <!-- 4 puestos de Vendedor -->
+  <Empleado Id="1">
+    <DNI>12345678</DNI>
+    <NombreApellido>Carlos Gardel</NombreApellido>
+    <FechaAlta>2020-04-03</FechaAlta>
+    <Puesto>Vendedor</Puesto>
+    <Direccion>Avenida 1234</Direccion>
+    <Telefono>011-1234-5678</Telefono>
+    <Email>carlos.gardel@gmail.com</Email>
+    <Username>cgardel</Username>
+    <Password>YwBnAGEAcgBkAGUAbAA=</Password>
+    <Intento>0</Intento>
+  </Empleado>
+  <Empleado Id="2">
+    <DNI>23456789</DNI>
+    <NombreApellido>Aníbal Troilo</NombreApellido>
+    <FechaAlta>2021-05-12</FechaAlta>
+    <Puesto>Vendedor</Puesto>
+    <Direccion>Calle 567</Direccion>
+    <Telefono>011-9876-5432</Telefono>
+    <Email>aníbal.troilo@gmail.com</Email>
+    <Username>atroilo</Username>
+    <Password>YQB0AHIAbwBpAGwAbwA=</Password>
+    <Intento>0</Intento>
+  </Empleado>
+  <Empleado Id="3">
+    <DNI>34567890</DNI>
+    <NombreApellido>Carlos Di Sarli</NombreApellido>
+    <FechaAlta>2022-06-25</FechaAlta>
+    <Puesto>Vendedor</Puesto>
+    <Direccion>Plaza 987</Direccion>
+    <Telefono>011-3456-7890</Telefono>
+    <Email>carlos.di@gmail.com</Email>
+    <Username>cdi</Username>
+    <Password>YwBkAGkA</Password>
+    <Intento>0</Intento>
+  </Empleado>
+  <Empleado Id="4">
+    <DNI>45678901</DNI>
+    <NombreApellido>Roberto Goyeneche</NombreApellido>
+    <FechaAlta>2023-07-17</FechaAlta>
+    <Puesto>Vendedor</Puesto>
+    <Direccion>Callejon 543</Direccion>
+    <Telefono>011-6543-2109</Telefono>
+    <Email>roberto.goyeneche@gmail.com</Email>
+    <Username>rgoyeneche</Username>
+    <Password>cgBnAG8AeQBlAG4AZQBjAGgAZQA=</Password>
+    <Intento>0</Intento>
+  </Empleado>
+  <!-- 2 puestos de Cajero -->
+  <Empleado Id="5">
+    <DNI>56789012</DNI>
+    <NombreApellido>Tita Merello</NombreApellido>
+    <FechaAlta>2020-08-05</FechaAlta>
+    <Puesto>Cajero</Puesto>
+    <Direccion>Avenida 876</Direccion>
+    <Telefono>011-7890-1234</Telefono>
+    <Email>tita.merello@gmail.com</Email>
+    <Username>tmerello</Username>
+    <Password>dABtAGUAcgBlAGwAbABvAA==</Password>
+    <Intento>0</Intento>
+  </Empleado>
+  <Empleado Id="6">
+    <DNI>67890123</DNI>
+    <NombreApellido>Edmundo Rivero</NombreApellido>
+    <FechaAlta>2021-09-13</FechaAlta>
+    <Puesto>Cajero</Puesto>
+    <Direccion>Plaza 654</Direccion>
+    <Telefono>011-8765-4321</Telefono>
+    <Email>edmundo.rivero@gmail.com</Email>
+    <Username>erivero</Username>
+    <Password>ZQByAGkAdgBlAHIAbwA=</Password>
+    <Intento>0</Intento>
+  </Empleado>
+  <!-- 2 puestos de Logistico -->
+  <Empleado Id="7">
+    <DNI>78901234</DNI>
+    <NombreApellido>Alberto Castillo</NombreApellido>
+    <FechaAlta>2022-10-18</FechaAlta>
+    <Puesto>Logistico</Puesto>
+    <Direccion>Calle 210</Direccion>
+    <Telefono>011-7890-9876</Telefono>
+    <Email>alberto.castillo@gmail.com</Email>
+    <Username>acastillo</Username>
+    <Password>YQBjAGEAcwB0AGkAbABsAG8A</Password>
+    <Intento>0</Intento>
+  </Empleado>
+  <Empleado Id="8">
+    <DNI>89012345</DNI>
+    <NombreApellido>Astor Piazzolla</NombreApellido>
+    <FechaAlta>2023-11-27</FechaAlta>
+    <Puesto>Logistico</Puesto>
+    <Direccion>Avenida 4321</Direccion>
+    <Telefono>011-4321-8765</Telefono>
+    <Email>astor.piazzolla@gmail.com</Email>
+    <Username>apiazzolla</Username>
+    <Password>YQBwAGkAYQB6AHoAbwBsAGwAYQA=</Password>
+    <Intento>0</Intento>
+  </Empleado>
+  <!-- 4 puestos de Chofer -->
+  <Empleado Id="9">
+    <DNI>10987654</DNI>
+    <NombreApellido>Francisco Canaro</NombreApellido>
+    <FechaAlta>2020-12-06</FechaAlta>
+    <Puesto>Chofer</Puesto>
+    <Direccion>Calle 789</Direccion>
+    <Telefono>011-9876-5432</Telefono>
+    <Email>francisco.canaro@gmail.com</Email>
+    <Username>fcanaro</Username>
+    <Password>ZgBjAGEAbgBhAHIAbwA=</Password>
+    <Intento>0</Intento>
+  </Empleado>
+  <Empleado Id="10">
+    <DNI>10111213</DNI>
+    <NombreApellido>Osvaldo Pugliese</NombreApellido>
+    <FechaAlta>2022-01-15</FechaAlta>
+    <Puesto>Chofer</Puesto>
+    <Direccion>Avenida 5678</Direccion>
+    <Telefono>011-1111-2222</Telefono>
+    <Email>osvaldo.pugliese@gmail.com</Email>
+    <Username>opugliese</Username>
+    <Password>bwBwAHUAZwBsAGkAZQBzAGUA</Password>
+    <Intento>0</Intento>
+  </Empleado>
+  <Empleado Id="11">
+    <DNI>11121314</DNI>
+    <NombreApellido>Alfredo Le Pera</NombreApellido>
+    <FechaAlta>2023-02-24</FechaAlta>
+    <Puesto>Chofer</Puesto>
+    <Direccion>Calle 3333</Direccion>
+    <Telefono>011-2222-3333</Telefono>
+    <Email>alfredo.le@gmail.com</Email>
+    <Username>ale</Username>
+    <Password>YQBsAGUA</Password>
+    <Intento>0</Intento>
+  </Empleado>
+  <Empleado Id="12">
+    <DNI>12131415</DNI>
+    <NombreApellido>Enrique Santos Discépolo</NombreApellido>
+    <FechaAlta>2020-03-05</FechaAlta>
+    <Puesto>Chofer</Puesto>
+    <Direccion>Avenida 9999</Direccion>
+    <Telefono>011-5555-6666</Telefono>
+    <Email>enrique.santos@gmail.com</Email>
+    <Username>esantos</Username>
+    <Password>ZQBzAGEAbgB0AG8AcwA=</Password>
+    <Intento>0</Intento>
+  </Empleado>
+  <!-- 8 puestos de Estibador -->
+  <Empleado Id="13">
+    <DNI>13141516</DNI>
+    <NombreApellido>Homero Manzi</NombreApellido>
+    <FechaAlta>2021-04-14</FechaAlta>
+    <Puesto>Estibador</Puesto>
+    <Direccion>Callejon 2222</Direccion>
+    <Telefono>011-4444-5555</Telefono>
+    <Email>homero.manzi@gmail.com</Email>
+    <Username>hmanzi</Username>
+    <Password>aABtAGEAbgB6AGkA</Password>
+    <Intento>0</Intento>
+  </Empleado>
+  <Empleado Id="14">
+    <DNI>14151617</DNI>
+    <NombreApellido>Julio Sosa</NombreApellido>
+    <FechaAlta>2022-05-23</FechaAlta>
+    <Puesto>Estibador</Puesto>
+    <Direccion>Plaza 5555</Direccion>
+    <Telefono>011-8888-9999</Telefono>
+    <Email>julio.sosa@gmail.com</Email>
+    <Username>jsosa</Username>
+    <Password>agBzAG8AcwBhAA==</Password>
+    <Intento>0</Intento>
+  </Empleado>
+  <Empleado Id="15">
+    <DNI>15161718</DNI>
+    <NombreApellido>Nelly Omar</NombreApellido>
+    <FechaAlta>2023-06-01</FechaAlta>
+    <Puesto>Estibador</Puesto>
+    <Direccion>Calle 7777</Direccion>
+    <Telefono>011-6666-7777</Telefono>
+    <Email>nelly.omar@gmail.com</Email>
+    <Username>nomar</Username>
+    <Password>bgBvAG0AYQByAA==</Password>
+    <Intento>0</Intento>
+  </Empleado>
+  <Empleado Id="16">
+    <DNI>16171819</DNI>
+    <NombreApellido>Juan D'Arienzo</NombreApellido>
+    <FechaAlta>2020-07-10</FechaAlta>
+    <Puesto>Estibador</Puesto>
+    <Direccion>Plaza 5555</Direccion>
+    <Telefono>011-8888-9999</Telefono>
+    <Email>juan.darienzo@gmail.com</Email>
+    <Username>jdarienzo</Username>
+    <Password>agBkAGEAcgBpAGUAbgB6AG8A</Password>
+    <Intento>0</Intento>
+  </Empleado>
+  <Empleado Id="17">
+    <DNI>17181920</DNI>
+    <NombreApellido>Susana Rinaldi</NombreApellido>
+    <FechaAlta>2021-08-20</FechaAlta>
+    <Puesto>Estibador</Puesto>
+    <Direccion>Calle 8888</Direccion>
+    <Telefono>011-1111-2222</Telefono>
+    <Email>susana.rinaldi@gmail.com</Email>
+    <Username>srinaldi</Username>
+    <Password>cwByAGkAbgBhAGwAZABpAA==</Password>
+    <Intento>0</Intento>
+  </Empleado>
+  <Empleado Id="18">
+    <DNI>18192021</DNI>
+    <NombreApellido>Amelita Baltar</NombreApellido>
+    <FechaAlta>2022-09-29</FechaAlta>
+    <Puesto>Estibador</Puesto>
+    <Direccion>Avenida 1111</Direccion>
+    <Telefono>011-2222-3333</Telefono>
+    <Email>amelita.baltar@gmail.com</Email>
+    <Username>abaltar</Username>
+    <Password>YQBiAGEAbAB0AGEAcgA=</Password>
+    <Intento>0</Intento>
+  </Empleado>
+  <Empleado Id="19">
+    <DNI>19202122</DNI>
+    <NombreApellido>Lito Nebbia</NombreApellido>
+    <FechaAlta>2023-10-08</FechaAlta>
+    <Puesto>Estibador</Puesto>
+    <Direccion>Calle 4444</Direccion>
+    <Telefono>011-3333-4444</Telefono>
+    <Email>lito.nebbia@gmail.com</Email>
+    <Username>lnebbia</Username>
+    <Password>bABuAGUAYgBiAGkAYQA=</Password>
+    <Intento>0</Intento>
+  </Empleado>
+  <Empleado Id="20">
+    <DNI>20212223</DNI>
+    <NombreApellido>Mercedes Sosa</NombreApellido>
+    <FechaAlta>2020-11-17</FechaAlta>
+    <Puesto>Estibador</Puesto>
+    <Direccion>Plaza 7777</Direccion>
+    <Telefono>011-4444-5555</Telefono>
+    <Email>mercedes.sosa@gmail.com</Email>
+    <Username>msosa</Username>
+    <Password>bQBzAG8AcwBhAA==</Password>
+    <Intento>0</Intento>
+  </Empleado>
+
+  <!-- ADMINISTRADOR -->
+  
+  <Empleado Id="21">
+    <DNI>22777420</DNI>
+    <NombreApellido>Gerardo Tordoya</NombreApellido>
+    <FechaAlta>2023-11-11</FechaAlta>
+    <Puesto>Administrador</Puesto>
+    <Direccion>Pachi Gorriti 1310</Direccion>
+    <Telefono>+5493885843652</Telefono>
+    <Email>gerardo.tordoya@outlook.com</Email>
+    <Username>gtordoya</Username>
+    <Password>ZwB0AG8AcgBkAG8AeQBhAA==</Password>
+    <Intento>0</Intento>
+  </Empleado>
+  
+</Empleados>

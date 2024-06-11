@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<Roles>
+
+	<!-- Modo Dios -->
+	<Rol Nombre="Administrador">
+
+		<!-- MENÚ VENTAS -->
+		<Permiso>Ventas</Permiso>
+		<Permiso>Captura</Permiso>
+		<Permiso>Facturación</Permiso>
+		<Permiso>Dashboard</Permiso>
+
+		<!-- MENÚ LOGÍSTICA -->
+		<Permiso>Logística</Permiso>
+		<Permiso>Despacho</Permiso>
+		<Permiso>Liquidación</Permiso>
+
+		<!-- MENÚ ADMINISTRACIÓN -->
+		<Permiso>Administración</Permiso>
+		<Permiso>Camiones</Permiso>
+		<Permiso>Clientes</Permiso>
+		<Permiso>Empleados</Permiso>
+		<Permiso>Facturas</Permiso>
+		<Permiso>Liquidaciones</Permiso>
+		<Permiso>Mudanzas</Permiso>
+		<Permiso>Órdenes</Permiso>
+		<Permiso>Tarifas</Permiso>
+
+		<!-- MENÚ SEGURIDAD -->
+		<Permiso>Seguridad</Permiso>
+		<Permiso>Permisos</Permiso>
+		<Permiso>Respaldos</Permiso>
+		<Permiso>Restauraciones</Permiso>
+
+		<!-- MENÚ ABOUT... -->
+		<Permiso>About</Permiso>
+
+	</Rol>
+	
+	<Rol Nombre="Vendedor">
+		<Permiso>Ventas</Permiso>
+		<Permiso>Captura</Permiso>
+	</Rol>
+
+	<Rol Nombre="Cajero">
+		<Permiso>Ventas</Permiso>
+		<Permiso>Facturacion</Permiso>
+	</Rol>
+
+	<Rol Nombre="Logistico">
+		<Permiso>Logistica</Permiso>
+		<Permiso>Despacho</Permiso>
+		<Permiso>Liquidacion</Permiso>
+	</Rol>
+
+	<Rol Nombre="Jefe de Ventas">
+		<Permiso>Ventas</Permiso>
+		<Permiso>Captura</Permiso>
+		<Permiso>Dashboard</Permiso>
+		<Permiso>Facturacion</Permiso>
+	</Rol>
+
+</Roles>
+
