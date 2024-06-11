@@ -3,6 +3,7 @@ Escalabilidad:
 Agregar nuevas formas o nuevos colores es sencillo. Solo necesitas crear nuevas
 implementaciones de Shape o IColor.
 */
+
 using System;
 
 namespace FormasColores
