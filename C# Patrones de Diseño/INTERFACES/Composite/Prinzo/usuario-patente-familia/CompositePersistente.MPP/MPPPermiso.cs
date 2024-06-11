@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using CompositePersistente.BE;
 using CompositePersistente.DAL;
 using System.Data;
@@ -16,7 +14,7 @@ namespace CompositePersistente.MPP
         Acceso oDatos;
         public Array GetAllPermission()
         {
-            return Enum.GetValues(typeof(BETipoPermiso));
+            return Enum.GetValues(typeof(ETipoPermiso));
         }
 
 
@@ -115,7 +113,7 @@ namespace CompositePersistente.MPP
                     oBEPat.Id = Convert.ToInt32(fila["id"]);
                     oBEPat.Nombre = fila["nombre"].ToString();
                     var permisop = fila["permiso"].ToString();
-                    oBEPat.Permiso = (BETipoPermiso)Enum.Parse(typeof(BETipoPermiso), permisop);
+                    oBEPat.Permiso = (ETipoPermiso)Enum.Parse(typeof(ETipoPermiso), permisop);
                     ListaPatente.Add(oBEPat);
                 }
             }
@@ -200,7 +198,7 @@ namespace CompositePersistente.MPP
 
                     if (!string.IsNullOrEmpty(permiso))
                   
-                    c.Permiso = (BETipoPermiso)Enum.Parse(typeof(BETipoPermiso), permiso);
+                    c.Permiso = (ETipoPermiso)Enum.Parse(typeof(ETipoPermiso), permiso);
           
 
                     var padre = GetComponent(id_padre, ListaComponente);
@@ -278,7 +276,7 @@ namespace CompositePersistente.MPP
                         c1 = new BEPatente();
                         c1.Id = idp;
                         c1.Nombre = nombrep;
-                        c1.Permiso = (BETipoPermiso)Enum.Parse(typeof(BETipoPermiso), permisop);
+                        c1.Permiso = (ETipoPermiso)Enum.Parse(typeof(ETipoPermiso), permisop);
                         oBEUsu.Permisos.Add(c1);
                     }
                     else

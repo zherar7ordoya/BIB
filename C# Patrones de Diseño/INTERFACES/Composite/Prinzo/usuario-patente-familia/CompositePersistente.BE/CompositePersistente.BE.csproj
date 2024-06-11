@@ -42,7 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BETipoPermiso.cs" />
+    <Compile Include="ETipoPermiso.cs" />
     <Compile Include="BEComponente.cs" />
     <Compile Include="BEFamilia.cs" />
     <Compile Include="BEPatente.cs" />

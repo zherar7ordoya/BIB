@@ -1,12 +1,7 @@
 ﻿using CompositePersistente.BE;
+
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CompositePersistente.UI.Forms
@@ -46,7 +41,7 @@ namespace CompositePersistente.UI.Forms
             BEPatente oBEPat = new BEPatente()
             {
                 Nombre = this.txtNombrePatente.Text,
-                Permiso = (BETipoPermiso)this.cboPermisos.SelectedItem
+                Permiso = (ETipoPermiso)this.cboPermisos.SelectedItem
 
             };
 

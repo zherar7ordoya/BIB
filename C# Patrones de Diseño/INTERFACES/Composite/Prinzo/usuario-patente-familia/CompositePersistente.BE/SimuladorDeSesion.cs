@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace CompositePersistente.BE
+﻿namespace CompositePersistente.BE
 {
     public class SimuladorSesion
 
@@ -28,7 +22,7 @@ namespace CompositePersistente.BE
             return oBEusuario != null;
         }
 
-        bool isInRole(BEComponente c, BETipoPermiso permiso, bool existe)
+        bool isInRole(BEComponente c, ETipoPermiso permiso, bool existe)
         {
 
 
@@ -49,7 +43,7 @@ namespace CompositePersistente.BE
             return existe;
         }
 
-        public bool IsInRole(BETipoPermiso permiso)
+        public bool IsInRole(ETipoPermiso permiso)
         {
             bool existe = false;
             foreach (var item in oBEusuario.Permisos)

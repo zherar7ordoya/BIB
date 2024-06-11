@@ -1,12 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CompositePersistente.BE
-{  
-    //familia es lo mismo que rol
+{
+    /***************************************************************************
+    NOMBRES QUE RECIBE:
+        *) Familia
+        *) Rol
+        *) Composite
+    ***************************************************************************/
+
     public class BEFamilia : BEComponente
 
     {   //método para traer todas las flia o roles o grupos

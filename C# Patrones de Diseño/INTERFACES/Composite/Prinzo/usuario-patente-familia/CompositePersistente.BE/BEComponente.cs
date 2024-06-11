@@ -1,36 +1,30 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace CompositePersistente.BE
 {
-   //clase abstracta con métodos abstractos con operaciones abstractas
+    //clase abstracta con métodos abstractos con operaciones abstractas
 
     public abstract class BEComponente
     {
-
         public int Id { get; set; }
         public string Nombre { get; set; }
 
-        //método para obtener todos los hijos
-        //IList Iterface predefinida de .NET
+        // Método para obtener todos los hijos (IList: interface predefinida de .NET)
+        // Video: "puedo tener una lista de hijos, es decir, puedo tener permisos apartes"
         public abstract IList<BEComponente> Hijos { get; }
         
-        //método para agregar hijos
+        // Método para agregar hijos
         public abstract void AgregarHijo(BEComponente c);
 
-        //método para vacias hijos
+        // Método para vaciar hijos
         public abstract void VaciarHijos();
 
-        //propiedad Permisos, los permisos simples son estaticos.
-        public BETipoPermiso Permiso { get; set; }
+        // Propiedad Permisos (los permisos simples son estáticos).
+        public ETipoPermiso Permiso { get; set; }
 
         public override string ToString()
         {
             return Nombre;
         }
-
     }
 }
