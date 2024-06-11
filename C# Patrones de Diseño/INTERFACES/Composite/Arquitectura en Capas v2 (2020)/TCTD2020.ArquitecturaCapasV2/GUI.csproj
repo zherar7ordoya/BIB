@@ -46,34 +46,34 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="frmGestorPermisos.cs">
+    <Compile Include="GestorPermisoForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmGestorPermisos.Designer.cs">
-      <DependentUpon>frmGestorPermisos.cs</DependentUpon>
+    <Compile Include="GestorPermisoForm.Designer.cs">
+      <DependentUpon>GestorPermisoForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmLogin.cs">
+    <Compile Include="LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmLogin.Designer.cs">
-      <DependentUpon>frmLogin.cs</DependentUpon>
+    <Compile Include="LoginForm.Designer.cs">
+      <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmMdiPrincipal.cs">
+    <Compile Include="MenuForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmMdiPrincipal.Designer.cs">
-      <DependentUpon>frmMdiPrincipal.cs</DependentUpon>
+    <Compile Include="MenuForm.Designer.cs">
+      <DependentUpon>MenuForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="frmGestorPermisos.resx">
-      <DependentUpon>frmGestorPermisos.cs</DependentUpon>
+    <EmbeddedResource Include="GestorPermisoForm.resx">
+      <DependentUpon>GestorPermisoForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmLogin.resx">
-      <DependentUpon>frmLogin.cs</DependentUpon>
+    <EmbeddedResource Include="LoginForm.resx">
+      <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmMdiPrincipal.resx">
-      <DependentUpon>frmMdiPrincipal.cs</DependentUpon>
+    <EmbeddedResource Include="MenuForm.resx">
+      <DependentUpon>MenuForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

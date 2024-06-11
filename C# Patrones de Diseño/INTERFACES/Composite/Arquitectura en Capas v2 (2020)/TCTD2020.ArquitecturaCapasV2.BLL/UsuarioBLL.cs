@@ -9,7 +9,7 @@ namespace TCTD2020.ArquitecturaCapasV2.BLL
 {
     public class UsuarioBLL : AbstractBLL<Usuario>
     {
-        FamiliaBLL _bllFamilias = new FamiliaBLL();
+        readonly FamiliaBLL _bllFamilias = new FamiliaBLL();
         public UsuarioBLL()
         {
             _crud = new UsuarioDAL();
@@ -19,41 +19,40 @@ namespace TCTD2020.ArquitecturaCapasV2.BLL
         
         private void SimularDatos()
         {
-
-
             _bllFamilias.SimularDatos();
 
             //u1 puede gestionar usuarios
-            var u = new Usuario();
-            u.Email = "u1@mail.com";
-            u.Password = Encriptador.Hash("123");
-            var f = _bllFamilias.GetAll().Where(ff => ff.Nombre.Contains("Gestores de usuarios")).FirstOrDefault();
-            if (f != null) u.Permisos.Add(f);
+            var usuario = new Usuario
+            {
+                Email = "u1@mail.com",
+                Password = Encriptador.Hash("123")
+            };
+            var familia = _bllFamilias.GetAll().Where(x => x.Nombre.Contains("Gestores de usuarios")).FirstOrDefault();
+            if (familia != null) usuario.Permisos.Add(familia);
 
-            _crud.Save(u);
-
+            _crud.Save(usuario);
 
             //u2 puede gestionar permisos
-            u = new Usuario();
-            u.Email = "u2@mail.com";
-            u.Password = Encriptador.Hash("123");
-            f = _bllFamilias.GetAll().Where(ff => ff.Nombre.Contains("Gestores de permisos")).FirstOrDefault();
-            if (f != null) u.Permisos.Add(f);
-            _crud.Save(u);
-            
+            usuario = new Usuario
+            {
+                Email = "u2@mail.com",
+                Password = Encriptador.Hash("123")
+            };
+            familia = _bllFamilias.GetAll().Where(x => x.Nombre.Contains("Gestores de permisos")).FirstOrDefault();
+            if (familia != null) usuario.Permisos.Add(familia);
+
+            _crud.Save(usuario);
 
             //admin tiene todo
-            u = new Usuario();
-            u.Email = "admin@mail.com";
-            u.Password = Encriptador.Hash("123");
-            f = _bllFamilias.GetAll().Where(ff => ff.Nombre.Contains("Administradores")).FirstOrDefault() ;
-            if (f != null) u.Permisos.Add(f);
+            usuario = new Usuario
+            {
+                Email = "admin@mail.com",
+                Password = Encriptador.Hash("123")
+            };
+            familia = _bllFamilias.GetAll().Where(x => x.Nombre.Contains("Administradores")).FirstOrDefault() ;
+            if (familia != null) usuario.Permisos.Add(familia);
        
-            _crud.Save(u);
-
-
-
-
+            _crud.Save(usuario);
         }
 
         public LoginResult Login(string email, string password)

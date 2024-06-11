@@ -15,7 +15,7 @@ namespace TCTD2020.ArquitecturaCapasV2.Servicios.Composite
 
         public override string ToString()
         {
-            return this.Nombre;
+            return Nombre;
         }
     
     }

@@ -16,7 +16,7 @@ namespace TCTD2020.ArquitecturaCapasV2.DAL
 
         public void Delete(T entity)
         {
-            this.dataContext.Remove(entity);
+            dataContext.Remove(entity);
         }
 
         public IList<T> GetAll()

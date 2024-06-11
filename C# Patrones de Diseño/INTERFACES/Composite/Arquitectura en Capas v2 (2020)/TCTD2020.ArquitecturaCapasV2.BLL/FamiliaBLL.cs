@@ -9,22 +9,24 @@ namespace TCTD2020.ArquitecturaCapasV2.BLL
 {
     public class FamiliaBLL : AbstractBLL<IFamilia>
     {
-        PatenteBLL _bllPatentes = new PatenteBLL();
+        readonly PatenteBLL _bllPatentes = new PatenteBLL();
+
         public FamiliaBLL()
         {
             _crud = new FamiliaDAL();
         }
 
-
         public void SimularDatos()
         {
-
             _bllPatentes.SimularDatos();
 
-            var f1 = new Familia();
-            f1.Nombre = "Gestores de usuarios";
+            var f1 = new Familia
+            {
+                Nombre = "Gestores de usuarios"
+            };
             var p1 = _bllPatentes.GetAll().Where(pp => pp.Nombre.Contains("Puede gestionar usuarios")).FirstOrDefault();
             if (p1 != null) f1.AgregarPermiso(p1);
+
             _crud.Save(f1);
 
 

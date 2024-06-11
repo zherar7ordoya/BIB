@@ -1,6 +1,6 @@
 ﻿namespace TCTD2020.ArquitecturaCapasV2.UI
 {
-    partial class frmLogin
+    partial class LoginForm
     {
         /// <summary>
         /// Required designer variable.

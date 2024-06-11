@@ -15,7 +15,7 @@ namespace TCTD2020.ArquitecturaCapasV2
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmMdiPrincipal());
+            Application.Run(new MenuForm());
         }
     }
 }

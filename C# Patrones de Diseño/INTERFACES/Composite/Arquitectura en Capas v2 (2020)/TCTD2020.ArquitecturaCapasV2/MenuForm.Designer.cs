@@ -1,6 +1,6 @@
 ﻿namespace TCTD2020.ArquitecturaCapasV2.UI
 {
-    partial class frmMdiPrincipal
+    partial class MenuForm
     {
         /// <summary>
         /// Required designer variable.

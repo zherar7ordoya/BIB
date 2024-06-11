@@ -8,24 +8,24 @@ namespace TCTD2020.ArquitecturaCapasV2.UI
 {
 
 
-    public partial class frmGestorPermisos : Form
+    public partial class GestorPermisoForm : Form
     {
 
         UsuarioBLL _bllusuarios;
 
        Usuario _usuario;
-        public frmGestorPermisos()
+        public GestorPermisoForm()
         {
             _bllusuarios = new UsuarioBLL();
             InitializeComponent();
 
             var users = _bllusuarios.GetAll();
-            this.cboUsuarios.DataSource =users;
+            cboUsuarios.DataSource =users;
         }
 
         private void CboUsuarios_SelectedIndexChanged(object sender, EventArgs e)
         {
-            _usuario = (Usuario)this.cboUsuarios.SelectedItem;
+            _usuario = (Usuario)cboUsuarios.SelectedItem;
             MostrarPermisos();
         }
 
@@ -56,9 +56,9 @@ namespace TCTD2020.ArquitecturaCapasV2.UI
         {
             if (_usuario!=null)
             {
-                this.treeView1.Nodes.Clear();
+                treeView1.Nodes.Clear();
                 TreeNode raiz = new TreeNode("Permisos");
-                this.treeView1.Nodes.Add(raiz);
+                treeView1.Nodes.Add(raiz);
 
                 foreach (var item in _usuario.Permisos)
                 {

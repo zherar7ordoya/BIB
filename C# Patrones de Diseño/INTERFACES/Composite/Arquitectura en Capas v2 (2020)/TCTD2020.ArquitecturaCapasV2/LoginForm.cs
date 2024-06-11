@@ -7,11 +7,11 @@ using TCTD2020.ArquitecturaCapasV2.Servicios;
 
 namespace TCTD2020.ArquitecturaCapasV2.UI
 {
-    public partial class frmLogin : Form
+    public partial class LoginForm : Form
     {
 
         UsuarioBLL _usuarioBLL;
-        public frmLogin()
+        public LoginForm()
         {
             InitializeComponent();
             _usuarioBLL = new UsuarioBLL();
@@ -19,7 +19,7 @@ namespace TCTD2020.ArquitecturaCapasV2.UI
 
         private void Btnsalir_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Close();
         }
 
         private void BtnIngresar_Click(object sender, EventArgs e)
@@ -27,11 +27,11 @@ namespace TCTD2020.ArquitecturaCapasV2.UI
 
             try
             {
-                var res = _usuarioBLL.Login(this.txtEmail.Text, this.txtPassword.Text);
-                frmMdiPrincipal frm = (frmMdiPrincipal)this.MdiParent;
+                var res = _usuarioBLL.Login(txtEmail.Text, txtPassword.Text);
+                MenuForm frm = (MenuForm)MdiParent;
                 frm.ValidarForm();
             
-                this.Close();
+                Close();
             }
             catch (LoginException error)
             {

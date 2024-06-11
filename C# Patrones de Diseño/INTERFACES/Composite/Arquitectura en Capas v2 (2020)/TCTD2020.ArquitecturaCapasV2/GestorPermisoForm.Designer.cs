@@ -1,6 +1,6 @@
 ﻿namespace TCTD2020.ArquitecturaCapasV2.UI
 {
-    partial class frmGestorPermisos
+    partial class GestorPermisoForm
     {
         /// <summary>
         /// Required designer variable.
