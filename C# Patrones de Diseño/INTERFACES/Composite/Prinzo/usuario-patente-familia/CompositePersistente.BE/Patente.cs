@@ -9,22 +9,18 @@ namespace CompositePersistente.BE
         *) Permiso
     ***************************************************************************/
 
-    public class BEPatente : BEComponente
+    public class Patente : Componente
     {
-        //obtiene todos los permisos patentes
-        public override IList<BEComponente> Hijos
+        // Todos los permisos (patentes)
+        public override IList<Componente> Hijos
         {
-            get
-            {
-                return new List<BEComponente>();
-            }
-
+            get { return new List<Componente>(); }
         }
 
         // No agrega porque las patentes son estáticas
-        public override void AgregarHijo(BEComponente c) { }
+        public override void AgregarHijo(Componente componente) { }
 
-        // No se borran porque las patentes son estáticas
+        // No borra porque las patentes son estáticas
         public override void VaciarHijos() { }
     }
 }

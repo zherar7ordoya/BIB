@@ -10,7 +10,7 @@ namespace CompositePersistente.UI.Forms
     {
 
         BLLPermisos oBLLPer;
-        BEFamilia oBEFam;
+        Familia oBEFam;
 
         //en el constructor del form
         public frmPatentesFamilias()
@@ -38,7 +38,7 @@ namespace CompositePersistente.UI.Forms
      
         private void BtnGuardarPatente_Click(object sender, EventArgs e)
         {
-            BEPatente oBEPat = new BEPatente()
+            Patente oBEPat = new Patente()
             {
                 Nombre = this.txtNombrePatente.Text,
                 Permiso = (ETipoPermiso)this.cboPermisos.SelectedItem
@@ -53,7 +53,7 @@ namespace CompositePersistente.UI.Forms
 
         private void Button1_Click(object sender, EventArgs e)
         {
-            BEFamilia oBEFam = new BEFamilia()
+            Familia oBEFam = new Familia()
             {
                 Nombre = this.txtNombreFamilia.Text
 
@@ -73,7 +73,7 @@ namespace CompositePersistente.UI.Forms
             if (oBEFam == null) return;
 
             
-            IList<BEComponente> flia = null;
+            IList<Componente> flia = null;
             if (init)
             {
                 //traigo los hijos de la base
@@ -103,7 +103,7 @@ namespace CompositePersistente.UI.Forms
         }
 
 
-        void MostrarEnTreeView(TreeNode tn, BEComponente c)
+        void MostrarEnTreeView(TreeNode tn, Componente c)
         {   //muetro en el treeview los componenes sean familia con sus patentes
             TreeNode n = new TreeNode(c.Nombre);
             tn.Tag = c;
@@ -120,7 +120,7 @@ namespace CompositePersistente.UI.Forms
         {
             if (oBEFam != null)
             {
-                var patente =(BEPatente) cboPatentes.SelectedItem;
+                var patente =(Patente) cboPatentes.SelectedItem;
                 if (patente != null)
                 {
                     var esta = oBLLPer.Existe(oBEFam,patente.Id);
@@ -140,8 +140,8 @@ namespace CompositePersistente.UI.Forms
 
         private void CmdSeleccionar_Click(object sender, EventArgs e)
         {
-            var tmp = (BEFamilia)this.cboFamilias.SelectedItem;
-            oBEFam = new BEFamilia();
+            var tmp = (Familia)this.cboFamilias.SelectedItem;
+            oBEFam = new Familia();
             oBEFam.Id = tmp.Id;
             oBEFam.Nombre = tmp.Nombre;
            
@@ -152,7 +152,7 @@ namespace CompositePersistente.UI.Forms
         {
             if (oBEFam != null)
             {
-                var familia = (BEFamilia)cboFamilias.SelectedItem;
+                var familia = (Familia)cboFamilias.SelectedItem;
                 if (familia != null)
                 {
 

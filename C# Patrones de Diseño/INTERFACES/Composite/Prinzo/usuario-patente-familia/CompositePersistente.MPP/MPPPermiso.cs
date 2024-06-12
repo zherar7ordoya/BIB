@@ -21,7 +21,7 @@ namespace CompositePersistente.MPP
         }
 
 
-        public BEComponente GuardarComponente(BEComponente oComp, bool esfamilia)
+        public Componente GuardarComponente(Componente oComp, bool esfamilia)
         {
             try
             {
@@ -60,7 +60,7 @@ namespace CompositePersistente.MPP
         }
 
 
-        public bool GuardarFamilia(BEFamilia oBEFamilia)
+        public bool GuardarFamilia(Familia oBEFamilia)
         {
            
 
@@ -106,11 +106,11 @@ namespace CompositePersistente.MPP
         }
 
       
-        public IList<BEPatente> GetAllPatentes()
+        public IList<Patente> GetAllPatentes()
         {
             
             //instancio un objeto de la clase datos para operar con la BD
-            List<BEPatente> ListaPatente = new List<BEPatente>();
+            List<Patente> ListaPatente = new List<Patente>();
             //Declaro el objeto DataSet para guardar los datos y luego pasarlos a lista
             DataSet Ds;
             string Consulta = "select * from permiso p where p.permiso is not null";
@@ -123,7 +123,7 @@ namespace CompositePersistente.MPP
             {
                 foreach (DataRow fila in Ds.Tables[0].Rows)
                 {
-                    BEPatente oBEPat = new BEPatente();
+                    Patente oBEPat = new Patente();
                     oBEPat.Id = Convert.ToInt32(fila["id"]);
                     oBEPat.Nombre = fila["nombre"].ToString();
                     var permisop = fila["permiso"].ToString();
@@ -137,9 +137,9 @@ namespace CompositePersistente.MPP
 
         // GetAllFamilias
 
-        public List<BEFamilia> GetAllFamilias()
+        public List<Familia> GetAllFamilias()
         {  //instancio un objeto de la clase datos para operar con la BD
-            List<BEFamilia> ListaFamilia = new List<BEFamilia>();
+            List<Familia> ListaFamilia = new List<Familia>();
             //Declaro el objeto DataSet para guardar los datos y luego pasarlos a lista
             DataSet Ds;
             //si el permiso es null entonces es un familia
@@ -153,7 +153,7 @@ namespace CompositePersistente.MPP
             {
                 foreach (DataRow fila in Ds.Tables[0].Rows)
                 {
-                    BEFamilia oBEFam= new BEFamilia();
+                    Familia oBEFam= new Familia();
                     oBEFam.Id = Convert.ToInt32(fila["id"]);
                     oBEFam.Nombre = fila["nombre"].ToString();
                     ListaFamilia.Add(oBEFam);
@@ -164,7 +164,7 @@ namespace CompositePersistente.MPP
             return ListaFamilia;
         }
 
-        public IList<BEComponente> GetAll(string familia)
+        public IList<Componente> GetAll(string familia)
         {
             var where = "is NULL";
 
@@ -185,7 +185,7 @@ namespace CompositePersistente.MPP
                            inner join permiso p on r.id_permiso_hijo = p.id 
                            ";
 
-            List<BEComponente> ListaComponente = new List<BEComponente>();
+            List<Componente> ListaComponente = new List<Componente>();
             DataSet Ds;
             Ds = oDatos.Leer(Consulta, null);
 
@@ -201,12 +201,12 @@ namespace CompositePersistente.MPP
                     if (fila["permiso"] != DBNull.Value)
                         permiso = fila["permiso"].ToString();
 
-                    BEComponente c;
+                    Componente c;
 
                     if (string.IsNullOrEmpty(permiso))
-                        c = new BEFamilia();
+                        c = new Familia();
                     else
-                        c = new BEPatente();
+                        c = new Patente();
 
                     c.Id = id;
                     c.Nombre = nombre;
@@ -233,10 +233,10 @@ namespace CompositePersistente.MPP
 
         }
 
-        private BEComponente GetComponent(int id, IList<BEComponente> Lista)
+        private Componente GetComponent(int id, IList<Componente> Lista)
         {
 
-            BEComponente component = Lista != null ? Lista.Where(i => i.Id.Equals(id)).FirstOrDefault() : null;
+            Componente component = Lista != null ? Lista.Where(i => i.Id.Equals(id)).FirstOrDefault() : null;
 
             if (component == null && Lista != null)
             {
@@ -260,7 +260,7 @@ namespace CompositePersistente.MPP
 
         }
 
-        public void FillUserComponents(BEUsuario oBEUsu)
+        public void FillUserComponents(Usuario oBEUsu)
         {
 
             string Consulta = "select p.* from usuarios_permisos up inner join permiso p on up.id_permiso=p.id where id_usuario=@id";
@@ -287,11 +287,11 @@ namespace CompositePersistente.MPP
                     if (fila["permiso"] != DBNull.Value)
                         permisop = fila["permiso"].ToString();
 
-                    BEComponente c1;
+                    Componente c1;
 
                     if (!String.IsNullOrEmpty(permisop))
                     {
-                        c1 = new BEPatente();
+                        c1 = new Patente();
                         c1.Id = idp;
                         c1.Nombre = nombrep;
                         c1.Permiso = (ETipoPermiso)Enum.Parse(typeof(ETipoPermiso), permisop);
@@ -299,7 +299,7 @@ namespace CompositePersistente.MPP
                     }
                     else
                     {
-                        c1 = new BEFamilia();
+                        c1 = new Familia();
                         c1.Id = idp;
                         c1.Nombre = nombrep;
 
@@ -318,7 +318,7 @@ namespace CompositePersistente.MPP
   
 
         }
-        public void FillFamilyComponents(BEFamilia oFamilia)
+        public void FillFamilyComponents(Familia oFamilia)
         {
             oFamilia.VaciarHijos();
             foreach (var item in GetAll("=" + oFamilia.Id))

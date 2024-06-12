@@ -16,7 +16,7 @@ namespace CompositePersistente.UI.Forms
         {
 
 
-            BEUsuario oBEEUsu =(BEUsuario)((ToolStripMenuItem)sender).Tag;
+            Usuario oBEEUsu =(Usuario)((ToolStripMenuItem)sender).Tag;
 
             oBLLSesion.Login(oBEEUsu);
 
@@ -31,13 +31,13 @@ namespace CompositePersistente.UI.Forms
         {
             if (SimuladorSesion.GetInstance.IsLoggedIn())
             {
-                this.mnuEjemplo.Enabled = SimuladorSesion.GetInstance.IsInRole(ETipoPermiso.PuedeHacerF);
-                this.mnuA.Enabled = SimuladorSesion.GetInstance.IsInRole(ETipoPermiso.PuedeHacerA);
-                this.mnuB.Enabled = SimuladorSesion.GetInstance.IsInRole(ETipoPermiso.PuedeHacerB);
-                this.mnuC.Enabled = SimuladorSesion.GetInstance.IsInRole(ETipoPermiso.PuedeHacerC);
-                this.mnuD.Enabled = SimuladorSesion.GetInstance.IsInRole(ETipoPermiso.PuedeHacerD);
-                this.mnuE.Enabled = SimuladorSesion.GetInstance.IsInRole(ETipoPermiso.PuedeHacerE);
-                this.mnuG.Enabled = SimuladorSesion.GetInstance.IsInRole(ETipoPermiso.PuedeHacerG);
+                this.mnuEjemplo.Enabled = SimuladorSesion.GetInstance.ExistInRole(ETipoPermiso.PuedeHacerF);
+                this.mnuA.Enabled = SimuladorSesion.GetInstance.ExistInRole(ETipoPermiso.PuedeHacerA);
+                this.mnuB.Enabled = SimuladorSesion.GetInstance.ExistInRole(ETipoPermiso.PuedeHacerB);
+                this.mnuC.Enabled = SimuladorSesion.GetInstance.ExistInRole(ETipoPermiso.PuedeHacerC);
+                this.mnuD.Enabled = SimuladorSesion.GetInstance.ExistInRole(ETipoPermiso.PuedeHacerD);
+                this.mnuE.Enabled = SimuladorSesion.GetInstance.ExistInRole(ETipoPermiso.PuedeHacerE);
+                this.mnuG.Enabled = SimuladorSesion.GetInstance.ExistInRole(ETipoPermiso.PuedeHacerG);
 
             }
             else
@@ -95,7 +95,7 @@ namespace CompositePersistente.UI.Forms
         {
 
 
-            if (SimuladorSesion.GetInstance.IsInRole(ETipoPermiso.PuedeHacerG))
+            if (SimuladorSesion.GetInstance.ExistInRole(ETipoPermiso.PuedeHacerG))
             {
                 frmNuevo frm = new frmNuevo();
                 frm.MdiParent = this;

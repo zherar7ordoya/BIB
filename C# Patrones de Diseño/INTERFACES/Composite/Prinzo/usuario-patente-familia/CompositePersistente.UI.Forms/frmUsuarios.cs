@@ -10,8 +10,8 @@ namespace CompositePersistente.UI.Forms
 
         BLLUsuario oBLLUsu;
         BLLPermisos oBLLPermiso;
-        BEUsuario seleccion;
-        BEUsuario tmp;
+        Usuario seleccion;
+        Usuario tmp;
         public frmUsuarios()
         {
             InitializeComponent();
@@ -26,7 +26,7 @@ namespace CompositePersistente.UI.Forms
         }
 
       
-        void LlenarTreeView(TreeNode padre, BEComponente c)
+        void LlenarTreeView(TreeNode padre, Componente c)
         {
             TreeNode hijo = new TreeNode(c.Nombre);
             hijo.Tag = c;
@@ -39,7 +39,7 @@ namespace CompositePersistente.UI.Forms
 
         }
 
-        void MostrarPermisos(BEUsuario u)
+        void MostrarPermisos(Usuario u)
         {
             this.treeView1.Nodes.Clear();
             TreeNode root = new TreeNode(u.Nombre);
@@ -55,10 +55,10 @@ namespace CompositePersistente.UI.Forms
 
         private void CmdConfigurar_Click(object sender, EventArgs e)
         {
-            seleccion = (BEUsuario)this.cboUsuarios.SelectedItem;
+            seleccion = (Usuario)this.cboUsuarios.SelectedItem;
         
             //hago una copia del objeto para no modificr el que esta en el combo.
-            tmp = new BEUsuario();
+            tmp = new Usuario();
             tmp.Id = seleccion.Id;
             tmp.Nombre = seleccion.Nombre;
             oBLLPermiso.FillUserComponents(tmp);
@@ -70,7 +70,7 @@ namespace CompositePersistente.UI.Forms
         {
             if (tmp != null)
             {
-                var patente = (BEPatente)cboPatentes.SelectedItem;
+                var patente = (Patente)cboPatentes.SelectedItem;
                 if (patente != null)
                 {
                     var esta = false;
@@ -102,7 +102,7 @@ namespace CompositePersistente.UI.Forms
         {
             if (tmp != null)
             {
-                var flia = (BEFamilia)cboFamilias.SelectedItem;
+                var flia = (Familia)cboFamilias.SelectedItem;
                 if (flia != null)
                 {
                     var esta = false;

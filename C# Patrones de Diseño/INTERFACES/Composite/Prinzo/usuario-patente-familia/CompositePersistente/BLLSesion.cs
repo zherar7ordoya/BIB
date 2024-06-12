@@ -14,7 +14,7 @@ namespace CompositePersistente
         }
 
 
-        public void Login(BEUsuario oBEUsu)
+        public void Login(Usuario oBEUsu)
         {
 
             (new MPPPermiso()).FillUserComponents(oBEUsu);

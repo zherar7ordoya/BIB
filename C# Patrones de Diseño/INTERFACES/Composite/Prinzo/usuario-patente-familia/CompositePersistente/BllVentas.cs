@@ -8,7 +8,7 @@ namespace CompositePersistente
     {
         public void Facturar()
         {
-            if (!SimuladorSesion.GetInstance.IsInRole(ETipoPermiso.PuedeHacerE)) throw new Exception("No tiene permisos");
+            if (!SimuladorSesion.GetInstance.ExistInRole(ETipoPermiso.PuedeHacerE)) throw new Exception("No tiene permisos");
         }
     }
 }

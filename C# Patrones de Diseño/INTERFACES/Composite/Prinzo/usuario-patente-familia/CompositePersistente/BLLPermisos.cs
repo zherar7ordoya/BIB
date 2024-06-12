@@ -18,7 +18,7 @@ namespace CompositePersistente
 
         //método para sabner si existe
 
-        public bool Existe(BEComponente c, int id)
+        public bool Existe(Componente c, int id)
         {
             bool existe = false;
 
@@ -45,31 +45,31 @@ namespace CompositePersistente
 
 
         //método para guardar  los permisosm en la familia
-        public BEComponente GuardarComponente(BEComponente p, bool esfamilia)
+        public Componente GuardarComponente(Componente p, bool esfamilia)
         {
             return oMPPPermiso.GuardarComponente(p, esfamilia);
         }
 
         //método para guardar  Familias
-        public void GuardarFamilia(BEFamilia c)
+        public void GuardarFamilia(Familia c)
         {
             oMPPPermiso.GuardarFamilia(c);
         }
 
         //método para taer todas las patentes
-        public IList<BEPatente> GetAllPatentes()
+        public IList<Patente> GetAllPatentes()
         {
             return oMPPPermiso.GetAllPatentes();
         }
 
         //método para taer todas las familias
-        public IList<BEFamilia> GetAllFamilias()
+        public IList<Familia> GetAllFamilias()
         {
             return oMPPPermiso.GetAllFamilias();
         }
 
         //método para taer todas las patentes
-        public IList<BEComponente> GetAll(string familia)
+        public IList<Componente> GetAll(string familia)
         {
             return oMPPPermiso.GetAll(familia);
 
@@ -77,14 +77,14 @@ namespace CompositePersistente
 
 
         //método para taer los permisos de los suaurios
-        public void FillUserComponents(BEUsuario u)
+        public void FillUserComponents(Usuario u)
         {
             oMPPPermiso.FillUserComponents(u);
 
         }
 
         //método para taer todos las familias con sus permisos
-        public void FillFamilyComponents(BEFamilia familia)
+        public void FillFamilyComponents(Familia familia)
         {
             oMPPPermiso.FillFamilyComponents(familia);
         }

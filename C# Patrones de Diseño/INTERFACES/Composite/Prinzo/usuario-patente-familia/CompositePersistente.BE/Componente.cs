@@ -4,17 +4,17 @@ namespace CompositePersistente.BE
 {
     //clase abstracta con métodos abstractos con operaciones abstractas
 
-    public abstract class BEComponente
+    public abstract class Componente
     {
         public int Id { get; set; }
         public string Nombre { get; set; }
 
-        // Método para obtener todos los hijos (IList: interface predefinida de .NET)
+        // Forma de obtener todos los hijos (IList: interface predefinida de .NET)
         // Video: "puedo tener una lista de hijos, es decir, puedo tener permisos apartes"
-        public abstract IList<BEComponente> Hijos { get; }
+        public abstract IList<Componente> Hijos { get; }
         
         // Método para agregar hijos
-        public abstract void AgregarHijo(BEComponente c);
+        public abstract void AgregarHijo(Componente c);
 
         // Método para vaciar hijos
         public abstract void VaciarHijos();

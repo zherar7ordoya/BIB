@@ -17,9 +17,9 @@ namespace CompositePersistente.MPP
 
 
         //convierto a Lista lo que traigo del Dataset
-        public List<BEUsuario> GetAll()
+        public List<Usuario> GetAll()
         {  //instancio un objeto de la clase datos para operar con la BD
-            List<BEUsuario> ListaUsuarios = new List<BEUsuario>();
+            List<Usuario> ListaUsuarios = new List<Usuario>();
             //Declaro el objeto DataSet para guardar los datos y luego pasarlos a lista
             DataSet Ds;
             string Consulta = "select * from usuarios";
@@ -32,7 +32,7 @@ namespace CompositePersistente.MPP
             {
                 foreach (DataRow fila in Ds.Tables[0].Rows)
                 {
-                    BEUsuario oBEUsu = new BEUsuario();
+                    Usuario oBEUsu = new Usuario();
                     oBEUsu.Id = Convert.ToInt32(fila[0]);
                     oBEUsu.Nombre = fila[1].ToString();
                     ListaUsuarios.Add(oBEUsu);
@@ -41,7 +41,7 @@ namespace CompositePersistente.MPP
   
             return ListaUsuarios;
         }
-        public bool GuardarPermisos(BEUsuario oBEUsu)
+        public bool GuardarPermisos(Usuario oBEUsu)
         {   //porque borras antes si podes consultar y no duplicar el permiso y usuario
             string Consulta_SQL = "DELETE FROM usuarios_permisos WHERE id_usuario= @id_usuario";
 

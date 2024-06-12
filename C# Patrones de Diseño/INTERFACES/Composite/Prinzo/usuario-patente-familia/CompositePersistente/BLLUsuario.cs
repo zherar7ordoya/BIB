@@ -18,12 +18,12 @@ namespace CompositePersistente
             oMPPUsuario= new MPPUsuario();
         }
 
-        public List<BEUsuario>ListarTodo()
+        public List<Usuario>ListarTodo()
         {
             return oMPPUsuario.GetAll();
         }
 
-        public bool GuardarPermisos(BEUsuario oBEUsu)
+        public bool GuardarPermisos(Usuario oBEUsu)
         {
               return oMPPUsuario.GuardarPermisos(oBEUsu);
         }
