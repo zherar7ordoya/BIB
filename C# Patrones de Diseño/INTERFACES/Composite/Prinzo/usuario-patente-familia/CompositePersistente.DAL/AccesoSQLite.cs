@@ -7,44 +7,47 @@ namespace CompositePersistente.DAL
 {
     public class AccesoSQLite
     {
-        readonly string cadena = @"Data Source=UPF.db;Version=3;";
-        SQLiteCommand comando;
-        SQLiteTransaction transaccion;
-        readonly SQLiteConnection conexion;
+        private readonly string cadena = @"Data Source=UPF.db;Version=3;";
+        private readonly SQLiteConnection conexion;
 
         public AccesoSQLite()
         {
             conexion = new SQLiteConnection(cadena);
         }
 
-
+        /// <summary>
+        /// Ejecuta una consulta SQL y devuelve los resultados en un DataSet.
+        /// </summary>
+        /// <param name="query">La cadena de consulta SQL a ejecutar.</param>
+        /// <param name="parametros">Lista de parámetros SQL a incluir en la consulta.</param>
+        /// <returns>Un DataSet con los resultados de la consulta.</returns>
+        /// <exception cref="SQLiteException">Se produce si ocurre un error al ejecutar la consulta SQL.</exception>
         public DataSet Leer(string query, List<SQLiteParameter> parametros)
         {
-            DataSet dataset = new DataSet();
-            SQLiteDataAdapter adaptador;
+            var dataset = new DataSet();
 
-            // Pasar la consulta y el objeto de conexión en el constructor
-            comando = new SQLiteCommand(query, conexion)
+            using (var comando = new SQLiteCommand(query, conexion))
             {
-                CommandType = CommandType.Text
-            };
+                comando.CommandType = CommandType.Text;
+                Tool.AgregarParametros(comando, parametros);
 
-            try
-            {
-                adaptador = new SQLiteDataAdapter(comando);
-
-                if (parametros != null)
+                try
                 {
-                    foreach (SQLiteParameter parametro in parametros)
+                    using (var adaptador = new SQLiteDataAdapter(comando))
                     {
-                        comando.Parameters.AddWithValue(parametro.ParameterName, parametro.Value);
+                        adaptador.Fill(dataset);
                     }
                 }
+                catch (SQLiteException ex)
+                {
+                    throw new DataAccessException("Error al ejecutar la consulta SQL.", ex);
+                }
+                catch (Exception ex)
+                {
+                    throw new DataAccessException("Ocurrió un error inesperado.", ex);
+                }
             }
-            catch (SQLiteException ex) { throw ex; }
-            catch (Exception ex) { throw ex; }
 
-            adaptador.Fill(dataset);
             return dataset;
         }
 
@@ -57,69 +60,70 @@ namespace CompositePersistente.DAL
         /// <exception cref="SQLiteException">Se produce si ocurre un error al ejecutar la consulta SQL.</exception>
         public int EjecutarConsultaEscalar(string query, List<SQLiteParameter> parametros)
         {
-            conexion.Open();
-            // Usar el constructor del objeto Command al instanciar el objeto
-            comando = new SQLiteCommand(query, conexion)
+            using (var conexion = new SQLiteConnection(cadena))
             {
-                CommandType = CommandType.Text
-            };
-            try
-            {
-                if ((parametros != null))
+                conexion.Open();
+
+                using (var comando = new SQLiteCommand(query, conexion))
                 {
-                    foreach (SQLiteParameter parametro in parametros)
+                    comando.CommandType = CommandType.Text;
+                    Tool.AgregarParametros(comando, parametros);
+
+                    try
                     {
-                        comando.Parameters.AddWithValue(parametro.ParameterName, parametro.Value);
+                        return Convert.ToInt32(comando.ExecuteScalar());
+                    }
+                    catch (SQLiteException ex)
+                    {
+                        throw new DataAccessException("Error al ejecutar la consulta SQL.", ex);
+                    }
+                    catch (Exception ex)
+                    {
+                        throw new DataAccessException("Ocurrió un error inesperado.", ex);
                     }
                 }
-                int retorno = Convert.ToInt32(comando.ExecuteScalar());
-                conexion.Close();
-                return retorno;
             }
-            catch (SQLiteException ex) { throw ex; }
         }
 
+        /// <summary>
+        /// Ejecuta una consulta SQL para escribir datos en la base de datos.
+        /// </summary>
+        /// <param name="query">La cadena de consulta SQL a ejecutar.</param>
+        /// <param name="parametros">Lista de parámetros SQL a incluir en la consulta.</param>
+        /// <returns>True si la operación se realizó con éxito; False en caso contrario.</returns>
+        /// <exception cref="SQLiteException">Se produce si ocurre un error al ejecutar la consulta SQL.</exception>
         public bool Escribir(string query, List<SQLiteParameter> parametros)
         {
-            if (conexion.State == ConnectionState.Closed)
+            using (var conexion = new SQLiteConnection(cadena))
             {
-                conexion.ConnectionString = cadena;
                 conexion.Open();
-            }
 
-            try
-            {
-                transaccion = conexion.BeginTransaction();
-
-                // Usar el constructor del objeto command
-                comando = new SQLiteCommand(query, conexion, transaccion)
+                using (var transaccion = conexion.BeginTransaction())
                 {
-                    CommandType = CommandType.Text
-                };
-
-                if ((parametros != null))
-                {
-                    foreach (SQLiteParameter parametro in parametros)
+                    using (var comando = new SQLiteCommand(query, conexion, transaccion))
                     {
-                        comando.Parameters.AddWithValue(parametro.ParameterName, parametro.Value);
+                        comando.CommandType = CommandType.Text;
+                        Tool.AgregarParametros(comando, parametros);
+
+                        try
+                        {
+                            comando.ExecuteNonQuery();
+                            transaccion.Commit();
+                            return true;
+                        }
+                        catch (SQLiteException)
+                        {
+                            transaccion.Rollback();
+                            return false;
+                        }
+                        catch (Exception)
+                        {
+                            transaccion.Rollback();
+                            return false;
+                        }
                     }
                 }
-
-                int retorno = comando.ExecuteNonQuery();
-                transaccion.Commit();
-                return true;
             }
-            catch (SQLiteException)
-            {
-                transaccion.Rollback();
-                return false;
-            }
-            catch (Exception)
-            {
-                transaccion.Rollback();
-                return false;
-            }
-            finally { conexion.Close(); }
         }
     }
 }

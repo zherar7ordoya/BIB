@@ -63,7 +63,9 @@
   <ItemGroup>
     <Compile Include="AccesoSQLite.cs" />
     <Compile Include="AccesoSqlServer.cs" />
+    <Compile Include="DataAccessException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Tool.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CompositePersistente.BE\CompositePersistente.BE.csproj">
