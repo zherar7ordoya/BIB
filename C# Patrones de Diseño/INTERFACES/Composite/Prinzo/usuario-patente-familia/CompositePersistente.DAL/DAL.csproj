@@ -68,9 +68,9 @@
     <Compile Include="Tool.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CompositePersistente.BE\CompositePersistente.BE.csproj">
+    <ProjectReference Include="..\CompositePersistente.BE\BEL.csproj">
       <Project>{2ad1a921-6077-4089-a9d4-08793087641e}</Project>
-      <Name>CompositePersistente.BE</Name>
+      <Name>BEL</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
