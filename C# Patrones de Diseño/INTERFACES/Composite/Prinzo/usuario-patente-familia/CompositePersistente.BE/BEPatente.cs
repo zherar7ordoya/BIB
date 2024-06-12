@@ -5,15 +5,13 @@ namespace CompositePersistente.BE
     /***************************************************************************
     NOMBRES QUE RECIBE:
         *) Patente
+        *) Hijo
         *) Permiso
-        *) Leaf
     ***************************************************************************/
 
     public class BEPatente : BEComponente
     {
-
         //obtiene todos los permisos patentes
-
         public override IList<BEComponente> Hijos
         {
             get
@@ -23,16 +21,10 @@ namespace CompositePersistente.BE
 
         }
 
-        //no agrega porque las patentes son estaticas
-        public override void AgregarHijo(BEComponente c)
-        {
+        // No agrega porque las patentes son estáticas
+        public override void AgregarHijo(BEComponente c) { }
 
-        }
-
-        //no se borran porque las patentes son estaticas
-        public override void VaciarHijos()
-        {
-           
-        }
+        // No se borran porque las patentes son estáticas
+        public override void VaciarHijos() { }
     }
 }

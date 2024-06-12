@@ -12,24 +12,23 @@ namespace CompositePersistente.BE
 
     public class BEFamilia : BEComponente
 
-    {   //método para traer todas las flia o roles o grupos
-        //la relacion 1 a M del componente con Flia
+    {   // Método para traer todas las familias (o roles o grupos)
+        // (relacion 1 a M del componente con familia)
         private IList<BEComponente> _hijos;
 
-        //instancio la IList<BEComponente en el constructor
+        // Instancio la IList<BEComponente> en el constructor
         public BEFamilia()
         {
             _hijos = new List<BEComponente>();
         }
 
-        //Traigo al listta de componentes.
+        // Traigo al lista de componentes
         public override IList<BEComponente> Hijos
         {
             get
             {
                 return _hijos.ToArray();
             }
-
         }
 
         //método agregar hijo, le agrego el componente a la lista
