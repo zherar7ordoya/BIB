@@ -54,7 +54,7 @@ namespace CompositePersistente.MPP
                 new SQLiteParameter("id_usuario", oBEUsu.Id)
             };
 
-            oDatos.EscribirV2(Consulta_SQL, LParametros1);
+            oDatos.Escribir(Consulta_SQL, LParametros1);
 
             
 
@@ -71,7 +71,7 @@ namespace CompositePersistente.MPP
 
                 //AccesoSqlServer oDatos2 = new AccesoSqlServer();
                 AccesoSQLite oDatos2 = new AccesoSQLite();
-                RTA = oDatos2.EscribirV2(Consulta_SQL, LParametros2);
+                RTA = oDatos2.Escribir(Consulta_SQL, LParametros2);
             }
 
             return RTA;

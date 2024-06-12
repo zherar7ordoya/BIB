@@ -7,119 +7,119 @@ namespace CompositePersistente.DAL
 {
     public class AccesoSQLite
     {
-        // Declarar la cadena de conexión a la base de datos SQLite
-        readonly string CadenaC = @"Data Source=UPF.db;Version=3;";
+        readonly string cadena = @"Data Source=UPF.db;Version=3;";
+        SQLiteCommand comando;
+        SQLiteTransaction transaccion;
+        readonly SQLiteConnection conexion;
 
-        // Crear el objeto de conexión SQLite
-        readonly SQLiteConnection oCnn = new SQLiteConnection(@"Data Source=UPF.db;Version=3;");
-
-        // Definir el objeto command
-        SQLiteCommand cmd;
-        // Definir el objeto Transaction
-        SQLiteTransaction Tranx;
-
-        public DataSet Leer(string Consulta, List<SQLiteParameter> Lparam)
+        public AccesoSQLite()
         {
-            DataSet Ds = new DataSet();
-            SQLiteDataAdapter Da;
+            conexion = new SQLiteConnection(cadena);
+        }
+
+
+        public DataSet Leer(string query, List<SQLiteParameter> parametros)
+        {
+            DataSet dataset = new DataSet();
+            SQLiteDataAdapter adaptador;
+
             // Pasar la consulta y el objeto de conexión en el constructor
-            cmd = new SQLiteCommand(Consulta, oCnn)
+            comando = new SQLiteCommand(query, conexion)
             {
                 CommandType = CommandType.Text
             };
 
             try
             {
-                Da = new SQLiteDataAdapter(cmd);
+                adaptador = new SQLiteDataAdapter(comando);
 
-                if ((Lparam != null))
+                if (parametros != null)
                 {
-                    // Si la lista de parámetros no está vacía
-                    foreach (SQLiteParameter dato in Lparam)
+                    foreach (SQLiteParameter parametro in parametros)
                     {
-                        // Cargar los parámetros que se están pasando con la lista de parámetros
-                        cmd.Parameters.AddWithValue(dato.ParameterName, dato.Value);
+                        comando.Parameters.AddWithValue(parametro.ParameterName, parametro.Value);
                     }
                 }
             }
-            catch (SQLiteException ex)
-            { throw ex; }
-            catch (Exception ex)
-            { throw ex; }
+            catch (SQLiteException ex) { throw ex; }
+            catch (Exception ex) { throw ex; }
 
-            Da.Fill(Ds);
-            return Ds;
+            adaptador.Fill(dataset);
+            return dataset;
         }
 
-        public int LeerScalar(string Consulta, List<SQLiteParameter> Lparam)
+        /// <summary>
+        /// Ejecuta una consulta SQL y devuelve el primer valor de la primera fila del conjunto de resultados como un entero.
+        /// </summary>
+        /// <param name="query">La cadena de consulta SQL a ejecutar.</param>
+        /// <param name="parametros">Lista de parámetros SQL a incluir en la consulta.</param>
+        /// <returns>El primer valor de la primera fila del conjunto de resultados convertido a un entero.</returns>
+        /// <exception cref="SQLiteException">Se produce si ocurre un error al ejecutar la consulta SQL.</exception>
+        public int EjecutarConsultaEscalar(string query, List<SQLiteParameter> parametros)
         {
-            oCnn.Open();
+            conexion.Open();
             // Usar el constructor del objeto Command al instanciar el objeto
-            cmd = new SQLiteCommand(Consulta, oCnn)
+            comando = new SQLiteCommand(query, conexion)
             {
                 CommandType = CommandType.Text
             };
             try
             {
-                if ((Lparam != null))
+                if ((parametros != null))
                 {
-                    foreach (SQLiteParameter dato in Lparam)
+                    foreach (SQLiteParameter parametro in parametros)
                     {
-                        // Cargar los parámetros que se están pasando con la lista de parámetros
-                        cmd.Parameters.AddWithValue(dato.ParameterName, dato.Value);
+                        comando.Parameters.AddWithValue(parametro.ParameterName, parametro.Value);
                     }
                 }
-
-                int Respuesta = Convert.ToInt32(cmd.ExecuteScalar());
-                oCnn.Close();
-                return Respuesta;
+                int retorno = Convert.ToInt32(comando.ExecuteScalar());
+                conexion.Close();
+                return retorno;
             }
-            catch (SQLiteException ex)
-            { throw ex; }
+            catch (SQLiteException ex) { throw ex; }
         }
 
-        public bool EscribirV2(string consulta, List<SQLiteParameter> Lparam)
+        public bool Escribir(string query, List<SQLiteParameter> parametros)
         {
-            if (oCnn.State == ConnectionState.Closed)
+            if (conexion.State == ConnectionState.Closed)
             {
-                oCnn.ConnectionString = CadenaC;
-                oCnn.Open();
+                conexion.ConnectionString = cadena;
+                conexion.Open();
             }
 
             try
             {
-                Tranx = oCnn.BeginTransaction();
+                transaccion = conexion.BeginTransaction();
+
                 // Usar el constructor del objeto command
-                cmd = new SQLiteCommand(consulta, oCnn, Tranx)
+                comando = new SQLiteCommand(query, conexion, transaccion)
                 {
                     CommandType = CommandType.Text
                 };
 
-                if ((Lparam != null))
+                if ((parametros != null))
                 {
-                    foreach (SQLiteParameter dato in Lparam)
+                    foreach (SQLiteParameter parametro in parametros)
                     {
-                        // Cargar los parámetros que se están pasando con la lista de parámetros
-                        cmd.Parameters.AddWithValue(dato.ParameterName, dato.Value);
+                        comando.Parameters.AddWithValue(parametro.ParameterName, parametro.Value);
                     }
                 }
 
-                int respuesta = cmd.ExecuteNonQuery();
-                Tranx.Commit();
+                int retorno = comando.ExecuteNonQuery();
+                transaccion.Commit();
                 return true;
             }
             catch (SQLiteException)
             {
-                Tranx.Rollback();
+                transaccion.Rollback();
                 return false;
             }
             catch (Exception)
             {
-                Tranx.Rollback();
+                transaccion.Rollback();
                 return false;
             }
-            finally
-            { oCnn.Close(); }
+            finally { conexion.Close(); }
         }
     }
 }

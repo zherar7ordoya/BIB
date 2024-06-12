@@ -41,12 +41,12 @@ namespace CompositePersistente.MPP
                     //LParametros.Add(new SqlParameter("permiso", oComp.Permiso.ToString()));
                     LParametros.Add(new SQLiteParameter("permiso", oComp.Permiso.ToString()));
 
-                oDatos.EscribirV2(consulta_sql, LParametros);
+                oDatos.Escribir(consulta_sql, LParametros);
 
                 string consulta_sql2 = "SELECT ID AS LastID FROM permiso WHERE ID = @@Identity";
 
 
-                var id = oDatos.LeerScalar(consulta_sql2, null);
+                var id = oDatos.EjecutarConsultaEscalar(consulta_sql2, null);
                 oComp.Id = (int)id;
                 return oComp;
             }
@@ -76,7 +76,7 @@ namespace CompositePersistente.MPP
 
                 //LParametros1.Add(new SqlParameter("id", oBEFamilia.Id));
                 LParametros1.Add(new SQLiteParameter("id", oBEFamilia.Id));
-                oDatos.EscribirV2(Sql, LParametros1);
+                oDatos.Escribir(Sql, LParametros1);
 
                 foreach (var item in oBEFamilia.Hijos)
                 {
@@ -92,7 +92,7 @@ namespace CompositePersistente.MPP
 
                     //AccesoSqlServer oDatos2 = new AccesoSqlServer();
                     AccesoSQLite oDatos2 = new AccesoSQLite();
-                    RTA = oDatos2.EscribirV2(Sql2, LParametros2); ;
+                    RTA = oDatos2.Escribir(Sql2, LParametros2); ;
                 }
                 return RTA;
             }
