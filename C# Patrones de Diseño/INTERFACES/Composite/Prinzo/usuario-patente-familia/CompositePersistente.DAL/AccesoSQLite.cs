@@ -7,7 +7,7 @@ namespace CompositePersistente.DAL
 {
     public class AccesoSQLite
     {
-        private readonly string cadena = @"Data Source=UPF.db;Version=3;";
+        private readonly string cadena = @"Data Source=SQLiteDatabase.db;Version=3;";
         private readonly SQLiteConnection conexion;
 
         public AccesoSQLite()
