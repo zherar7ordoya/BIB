@@ -3,14 +3,19 @@ using System.Collections.Generic;
 using CompositePersistente.BE;
 using CompositePersistente.DAL;
 using System.Data;
-using System.Data.SqlClient;
+//using System.Data.SqlClient;
+using System.Data.SQLite;
+
 
 namespace CompositePersistente.MPP
 {
     public class MPPUsuario
     {
-              
-        Acceso oDatos;
+
+        //AccesoSqlServer oDatos;
+        AccesoSQLite oDatos;
+
+
         //convierto a Lista lo que traigo del Dataset
         public List<BEUsuario> GetAll()
         {  //instancio un objeto de la clase datos para operar con la BD
@@ -18,7 +23,8 @@ namespace CompositePersistente.MPP
             //Declaro el objeto DataSet para guardar los datos y luego pasarlos a lista
             DataSet Ds;
             string Consulta = "select * from usuarios";
-            oDatos = new Acceso();
+            //oDatos = new AccesoSqlServer();
+            oDatos = new AccesoSQLite();
             Ds = oDatos.Leer(Consulta, null);
 
             //rcorro la tabla dentro del Dataset y la paso a lista
@@ -41,9 +47,12 @@ namespace CompositePersistente.MPP
 
             bool RTA = false;
 
-            List<SqlParameter> LParametros1 = new List<SqlParameter>();
-          
-            LParametros1.Add(new SqlParameter("id_usuario", oBEUsu.Id));
+            //List<SqlParameter> LParametros1 = new List<SqlParameter>();
+            List<SQLiteParameter> LParametros1 = new List<SQLiteParameter>
+            {
+                //LParametros1.Add(new SqlParameter("id_usuario", oBEUsu.Id));
+                new SQLiteParameter("id_usuario", oBEUsu.Id)
+            };
 
             oDatos.EscribirV2(Consulta_SQL, LParametros1);
 
@@ -52,14 +61,16 @@ namespace CompositePersistente.MPP
             foreach (var item in oBEUsu.Permisos)
             {
 
-                List<SqlParameter> LParametros2 = new List<SqlParameter>();
+                //List<SqlParameter> LParametros2 = new List<SqlParameter>();
+                List<SQLiteParameter> LParametros2 = new List<SQLiteParameter>();
 
                 Consulta_SQL = "INSERT INTO usuarios_permisos (id_usuario,id_permiso) VALUES (@id_usuario,@id_permiso) "; 
                 
-                LParametros2.Add(new SqlParameter("id_usuario", oBEUsu.Id));
-                LParametros2.Add(new SqlParameter("id_permiso", item.Id));
+                LParametros2.Add(new SQLiteParameter("id_usuario", oBEUsu.Id));
+                LParametros2.Add(new SQLiteParameter("id_permiso", item.Id));
 
-                Acceso oDatos2 = new Acceso();
+                //AccesoSqlServer oDatos2 = new AccesoSqlServer();
+                AccesoSQLite oDatos2 = new AccesoSQLite();
                 RTA = oDatos2.EscribirV2(Consulta_SQL, LParametros2);
             }
 

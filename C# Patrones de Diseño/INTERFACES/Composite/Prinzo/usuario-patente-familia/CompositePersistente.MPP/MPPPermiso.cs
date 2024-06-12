@@ -4,14 +4,17 @@ using System.Linq;
 using CompositePersistente.BE;
 using CompositePersistente.DAL;
 using System.Data;
-using System.Data.SqlClient;
+//using System.Data.SqlClient;
+using System.Data.SQLite;
+
 
 namespace CompositePersistente.MPP
 {
     public class MPPPermiso
     {
 
-        Acceso oDatos;
+        //AccesoSqlServer oDatos;
+        AccesoSQLite oDatos;
         public Array GetAllPermission()
         {
             return Enum.GetValues(typeof(ETipoPermiso));
@@ -24,15 +27,19 @@ namespace CompositePersistente.MPP
             {
                 string consulta_sql = $@"INSERT INTO permiso (nombre,permiso) VALUES (@nombre,@permiso)";
 
-                List<SqlParameter> LParametros = new List<SqlParameter>();
-                LParametros.Add(new SqlParameter("nombre", oComp.Nombre));
+                //List<SqlParameter> LParametros = new List<SqlParameter>();
+                List<SQLiteParameter> LParametros = new List<SQLiteParameter>();
+                //LParametros.Add(new SqlParameter("nombre", oComp.Nombre));
+                LParametros.Add(new SQLiteParameter("nombre", oComp.Nombre));
 
 
                 if (esfamilia)
-                    LParametros.Add(new SqlParameter("permiso", DBNull.Value));
+                    //LParametros.Add(new SqlParameter("permiso", DBNull.Value));
+                    LParametros.Add(new SQLiteParameter("permiso", DBNull.Value));
 
                 else
-                    LParametros.Add(new SqlParameter("permiso", oComp.Permiso.ToString()));
+                    //LParametros.Add(new SqlParameter("permiso", oComp.Permiso.ToString()));
+                    LParametros.Add(new SQLiteParameter("permiso", oComp.Permiso.ToString()));
 
                 oDatos.EscribirV2(consulta_sql, LParametros);
 
@@ -63,22 +70,28 @@ namespace CompositePersistente.MPP
 
                 var Sql = $@"delete from permiso_permiso where id_permiso_padre=@id";
 
-                List<SqlParameter> LParametros1 = new List<SqlParameter>();
+                //List<SqlParameter> LParametros1 = new List<SqlParameter>();
+                List<SQLiteParameter> LParametros1 = new List<SQLiteParameter>();
 
 
-                LParametros1.Add(new SqlParameter("id", oBEFamilia.Id));
+                //LParametros1.Add(new SqlParameter("id", oBEFamilia.Id));
+                LParametros1.Add(new SQLiteParameter("id", oBEFamilia.Id));
                 oDatos.EscribirV2(Sql, LParametros1);
 
                 foreach (var item in oBEFamilia.Hijos)
                 {
                      string Sql2 = $@"insert into permiso_permiso (id_permiso_padre,id_permiso_hijo) values (@id_permiso_padre,@id_permiso_hijo) ";
 
-                    List<SqlParameter> LParametros2 = new List<SqlParameter>();
+                    //List<SqlParameter> LParametros2 = new List<SqlParameter>();
+                    List<SQLiteParameter> LParametros2 = new List<SQLiteParameter>();
 
-                    LParametros2.Add(new SqlParameter("id_permiso_padre", oBEFamilia.Id));
-                    LParametros2.Add(new SqlParameter("id_permiso_hijo", item.Id));
+                    //LParametros2.Add(new SqlParameter("id_permiso_padre", oBEFamilia.Id));
+                    LParametros2.Add(new SQLiteParameter("id_permiso_padre", oBEFamilia.Id));
+                    //LParametros2.Add(new SqlParameter("id_permiso_hijo", item.Id));
+                    LParametros2.Add(new SQLiteParameter("id_permiso_hijo", item.Id));
 
-                    Acceso oDatos2 = new Acceso();
+                    //AccesoSqlServer oDatos2 = new AccesoSqlServer();
+                    AccesoSQLite oDatos2 = new AccesoSQLite();
                     RTA = oDatos2.EscribirV2(Sql2, LParametros2); ;
                 }
                 return RTA;
@@ -101,7 +114,8 @@ namespace CompositePersistente.MPP
             //Declaro el objeto DataSet para guardar los datos y luego pasarlos a lista
             DataSet Ds;
             string Consulta = "select * from permiso p where p.permiso is not null";
-            oDatos = new Acceso();
+            //oDatos = new AccesoSqlServer();
+            oDatos = new AccesoSQLite();
             Ds = oDatos.Leer(Consulta, null);
 
             //rcorro la tabla dentro del Dataset y la paso a lista
@@ -130,7 +144,8 @@ namespace CompositePersistente.MPP
             DataSet Ds;
             //si el permiso es null entonces es un familia
             string Consulta = "select * from permiso p where p.permiso is null";
-            oDatos = new Acceso();
+            //oDatos = new AccesoSqlServer();
+            oDatos = new AccesoSQLite();
             Ds = oDatos.Leer(Consulta, null);
 
             //rcorro la tabla dentro del Dataset y la paso a lista
@@ -249,11 +264,14 @@ namespace CompositePersistente.MPP
         {
 
             string Consulta = "select p.* from usuarios_permisos up inner join permiso p on up.id_permiso=p.id where id_usuario=@id";
-           
-            List<SqlParameter> LParametros = new List<SqlParameter>();
-            LParametros.Add(new SqlParameter("id", oBEUsu.Id));
+
+            //List<SqlParameter> LParametros = new List<SqlParameter>();
+            List<SQLiteParameter> LParametros = new List<SQLiteParameter>();
+            //LParametros.Add(new SqlParameter("id", oBEUsu.Id));
+            LParametros.Add(new SQLiteParameter("id", oBEUsu.Id));
             DataSet Ds;
-            oDatos = new Acceso();
+            //oDatos = new AccesoSqlServer();
+            oDatos = new AccesoSQLite();
             Ds = oDatos.Leer(Consulta, LParametros );
 
             oBEUsu.Permisos.Clear();
