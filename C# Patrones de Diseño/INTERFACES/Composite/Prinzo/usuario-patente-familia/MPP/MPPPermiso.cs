@@ -14,7 +14,7 @@ namespace CompositePersistente.MPP
     {
 
         //AccesoSqlServer oDatos;
-        AccesoSQLite oDatos;
+        AccesoSQLite accesoSqlite;
         public Array GetAllPermission()
         {
             return Enum.GetValues(typeof(ETipoPermiso));
@@ -41,12 +41,12 @@ namespace CompositePersistente.MPP
                     //LParametros.Add(new SqlParameter("permiso", oComp.Permiso.ToString()));
                     LParametros.Add(new SQLiteParameter("permiso", oComp.Permiso.ToString()));
 
-                oDatos.Escribir(consulta_sql, LParametros);
+                accesoSqlite.Escribir(consulta_sql, LParametros);
 
                 string consulta_sql2 = "SELECT ID AS LastID FROM permiso WHERE ID = @@Identity";
 
 
-                var id = oDatos.EjecutarConsultaEscalar(consulta_sql2, null);
+                var id = accesoSqlite.EjecutarConsultaEscalar(consulta_sql2, null);
                 oComp.Id = (int)id;
                 return oComp;
             }
@@ -76,7 +76,7 @@ namespace CompositePersistente.MPP
 
                 //LParametros1.Add(new SqlParameter("id", oBEFamilia.Id));
                 LParametros1.Add(new SQLiteParameter("id", oBEFamilia.Id));
-                oDatos.Escribir(Sql, LParametros1);
+                accesoSqlite.Escribir(Sql, LParametros1);
 
                 foreach (var item in oBEFamilia.Hijos)
                 {
@@ -115,8 +115,8 @@ namespace CompositePersistente.MPP
             DataSet Ds;
             string Consulta = "select * from permiso p where p.permiso is not null";
             //oDatos = new AccesoSqlServer();
-            oDatos = new AccesoSQLite();
-            Ds = oDatos.Leer(Consulta, null);
+            accesoSqlite = new AccesoSQLite();
+            Ds = accesoSqlite.Leer(Consulta, null);
 
             //rcorro la tabla dentro del Dataset y la paso a lista
             if (Ds.Tables[0].Rows.Count > 0)
@@ -145,8 +145,8 @@ namespace CompositePersistente.MPP
             //si el permiso es null entonces es un familia
             string Consulta = "select * from permiso p where p.permiso is null";
             //oDatos = new AccesoSqlServer();
-            oDatos = new AccesoSQLite();
-            Ds = oDatos.Leer(Consulta, null);
+            accesoSqlite = new AccesoSQLite();
+            Ds = accesoSqlite.Leer(Consulta, null);
 
             //rcorro la tabla dentro del Dataset y la paso a lista
             if (Ds.Tables[0].Rows.Count > 0)
@@ -218,7 +218,7 @@ FROM
 
             List<Componente> componentes = new List<Componente>();
             DataSet dataset;
-            dataset = oDatos.Leer(query, null);
+            dataset = accesoSqlite.Leer(query, null);
             if (dataset.Tables[0].Rows.Count > 0)
             {
                 foreach (DataRow fila in dataset.Tables[0].Rows)
@@ -238,7 +238,7 @@ FROM
                     componente.Nombre = nombre;
                     if (!string.IsNullOrEmpty(permiso))
                         componente.Permiso = (ETipoPermiso)Enum.Parse(typeof(ETipoPermiso), permiso);
-                    var padre = GetComponent(id_padre, componentes);
+                    var padre = ObtenerComponente(id_padre, componentes);
                     if (padre == null)
                     {
                         componentes.Add(componente);
@@ -253,91 +253,148 @@ FROM
         }
 
 
-        private Componente GetComponent(int id, IList<Componente> Lista)
+        //private Componente GetComponent(int id, IList<Componente> componentes)
+        //{
+        //    Componente componente = componentes?.Where(i => i.Id.Equals(id)).FirstOrDefault();
+        //    if (componente == null && componentes != null)
+        //    {
+        //        foreach (var item in componentes)
+        //        {
+        //            var l = GetComponent(id, item.Hijos);
+        //            if (l != null && l.Id == id)
+        //            {
+        //                return l;
+        //            }
+        //            else
+        //            {
+        //                if (l != null)
+        //                {
+        //                    return GetComponent(id, l.Hijos);
+        //                }
+        //            }
+        //        }
+        //    }
+        //    return componente;
+        //}
+
+
+        // Método para buscar un componente por su ID en una lista de componentes, incluyendo recursivamente sus hijos.
+        private Componente ObtenerComponente(int idComponente, IList<Componente> listaComponentes)
         {
+            // Intentar encontrar el componente con el ID especificado en la lista principal.
+            Componente componenteEncontrado = 
+                listaComponentes?
+                .Where(componente => componente.Id.Equals(idComponente))
+                .FirstOrDefault();
 
-            Componente component = Lista != null ? Lista.Where(i => i.Id.Equals(id)).FirstOrDefault() : null;
-
-            if (component == null && Lista != null)
+            // Si no se encuentra en la lista principal y la lista no es nula.
+            if (componenteEncontrado == null && listaComponentes != null)
             {
-                foreach (var c in Lista)
-                {
+                // Iterar sobre cada componente en la lista principal.
+                foreach (var componenteActual in listaComponentes)
+        {
+                    // Llamar recursivamente para buscar el componente en los hijos del componente actual.
+                    Componente componenteHijo = 
+                        ObtenerComponente(idComponente, componenteActual.Hijos);
 
-                    var l = GetComponent(id, c.Hijos);
-                    if (l != null && l.Id == id) return l;
+                    // Si se encuentra el componente con el ID especificado, retornarlo.
+                    if (componenteHijo != null && componenteHijo.Id == idComponente)
+                    {
+                        return componenteHijo;
+                    }
                     else
-                    if (l != null)
-                        return GetComponent(id, l.Hijos);
-
+                    {
+                        // Si se encuentra algún componente pero no con el ID especificado,
+                        // seguir buscando recursivamente en sus hijos.
+                        if (componenteHijo != null)
+                        {
+                            return ObtenerComponente(idComponente, componenteHijo.Hijos);
+                        }
+                    }
                 }
             }
 
-
-
-            return component;
-
-
-
+            // Retornar el componente encontrado, o null si no se encontró.
+            return componenteEncontrado;
         }
 
-        public void FillUserComponents(Usuario oBEUsu)
+
+        public void FillUserComponents(Usuario usuario)
         {
+            // Consulta SQL: Se refiere específicamente a una instrucción SQL válida.
+            string consultaSql =
+@"-- Selecciona todas las columnas de la tabla permiso.
+SELECT
+    permiso.*
+-- Se realiza una unión interna (INNER JOIN) entre las tablas usuarios_permisos
+-- y permiso donde la columna id_permiso de usuarios_permisos coincide con la
+-- columna id de permiso.
+FROM
+    usuarios_permisos
+    INNER JOIN permiso ON usuarios_permisos.id_permiso = permiso.id
+-- Filtra los resultados para incluir solo aquellos registros donde id_usuario
+-- en la tabla usuarios_permisos es igual al parámetro @id.
+WHERE
+    usuarios_permisos.id_usuario = @id";
 
-            string Consulta = "select p.* from usuarios_permisos up inner join permiso p on up.id_permiso=p.id where id_usuario=@id";
-
-            //List<SqlParameter> LParametros = new List<SqlParameter>();
-            List<SQLiteParameter> LParametros = new List<SQLiteParameter>();
-            //LParametros.Add(new SqlParameter("id", oBEUsu.Id));
-            LParametros.Add(new SQLiteParameter("id", oBEUsu.Id));
-            DataSet Ds;
-            //oDatos = new AccesoSqlServer();
-            oDatos = new AccesoSQLite();
-            Ds = oDatos.Leer(Consulta, LParametros);
-
-            oBEUsu.Permisos.Clear();
-
-            if (Ds.Tables[0].Rows.Count > 0)
+            List<SQLiteParameter> parametros = new List<SQLiteParameter>
             {
-                foreach (DataRow fila in Ds.Tables[0].Rows)
+                new SQLiteParameter("id", usuario.Id)
+            };
+
+            DataSet dataset;
+
+            accesoSqlite = new AccesoSQLite();
+            dataset = accesoSqlite.Leer(consultaSql, parametros);
+            usuario.Permisos.Clear();
+
+            if (dataset.Tables[0].Rows.Count > 0)
+            {
+                foreach (DataRow fila in dataset.Tables[0].Rows)
                 {
-                    int idp = Convert.ToInt32(fila["id"]);
-                    string nombrep = fila["nombre"].ToString();
-                    string permisop = String.Empty;
+                    int id = Convert.ToInt32(fila["id"]);
+                    string nombre = fila["nombre"].ToString();
+                    string permiso = string.Empty;
 
                     if (fila["permiso"] != DBNull.Value)
-                        permisop = fila["permiso"].ToString();
-
-                    Componente c1;
-
-                    if (!string.IsNullOrEmpty(permisop))
                     {
-                        c1 = new Patente();
-                        c1.Id = idp;
-                        c1.Nombre = nombrep;
-                        c1.Permiso = (ETipoPermiso)Enum.Parse(typeof(ETipoPermiso), permisop);
-                        oBEUsu.Permisos.Add(c1);
+                        permiso = fila["permiso"].ToString();
+                    }
+
+                    Componente componente;
+
+                    if (!string.IsNullOrEmpty(permiso))
+                    {
+                        componente = new Patente
+                        {
+                            Id = id,
+                            Nombre = nombre,
+                            Permiso = (ETipoPermiso)Enum.Parse(typeof(ETipoPermiso), permiso)
+                        };
+
+                        usuario.Permisos.Add(componente);
                     }
                     else
                     {
-                        c1 = new Familia();
-                        c1.Id = idp;
-                        c1.Nombre = nombrep;
-
-                        var f = GetAll("=" + idp);
-
-                        foreach (var familia in f)
+                        componente = new Familia
                         {
-                            c1.AgregarHijo(familia);
+                            Id = id,
+                            Nombre = nombre
+                        };
+
+                        var familias = GetAll("=" + id);
+
+                        foreach (var familia in familias)
+                        {
+                            componente.AgregarHijo(familia);
                         }
-                        oBEUsu.Permisos.Add(c1);
+                        usuario.Permisos.Add(componente);
                     }
-
                 }
-
             }
-
-
         }
+
+
         public void FillFamilyComponents(Familia oFamilia)
         {
             oFamilia.VaciarHijos();

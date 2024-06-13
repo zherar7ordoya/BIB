@@ -76,11 +76,10 @@ namespace CompositePersistente
         }
 
 
-        //método para taer los permisos de los suaurios
-        public void FillUserComponents(Usuario u)
+        // Método para taer los permisos del Usuario
+        public void FillUserComponents(Usuario usuario)
         {
-            oMPPPermiso.FillUserComponents(u);
-
+            oMPPPermiso.FillUserComponents(usuario);
         }
 
         //método para taer todos las familias con sus permisos

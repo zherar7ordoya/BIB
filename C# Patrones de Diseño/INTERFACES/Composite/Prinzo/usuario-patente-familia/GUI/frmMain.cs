@@ -61,13 +61,18 @@ namespace CompositePersistente.UI.Forms
             oBLLPermisos = new BLLPermisos();
             oBLLUsuarios = new BLLUsuario();
             oBLLSesion = new BLLSesion();
+
+
+            // Videoconferencia: 17.30
             var usuarios = oBLLUsuarios.ListarTodo();
 
-            foreach (var item in usuarios)
+            foreach (var usuario in usuarios)
             {
-                ToolStripMenuItem t = new ToolStripMenuItem(item.Nombre);
-                t.Tag = item;
-                oBLLPermisos.FillUserComponents(item);
+                ToolStripMenuItem t = new ToolStripMenuItem(usuario.Nombre)
+                {
+                    Tag = usuario
+                };
+                oBLLPermisos.FillUserComponents(usuario);
 
                 t.Click += usuario_Click;
                 mnuSimularSesion.DropDownItems.Add(t);

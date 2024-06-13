@@ -75,7 +75,7 @@ namespace CompositePersistente.UI.Forms
             IList<Componente> componentes = null;
             if (init)
             {
-                // Traigo los hijos de la base (videoconferencia: 17.30)
+                // Traigo los hijos de la base
                 componentes = permisoLogic.GetAll("=" + familia.Id);
 
                 foreach(var componente in componentes)
