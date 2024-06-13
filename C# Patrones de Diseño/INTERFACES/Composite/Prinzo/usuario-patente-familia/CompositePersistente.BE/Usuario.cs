@@ -13,6 +13,7 @@ namespace CompositePersistente.BE
         // (puede ser familia o patentes)
         public Usuario()
         {
+            // Video: la lista de permisos se instancia en el constructor
             _permisos = new List<Componente>();
         }
 
