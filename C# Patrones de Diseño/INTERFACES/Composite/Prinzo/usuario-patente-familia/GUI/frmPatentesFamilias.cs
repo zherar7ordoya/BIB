@@ -9,26 +9,25 @@ namespace CompositePersistente.UI.Forms
     public partial class frmPatentesFamilias : Form
     {
 
-        BLLPermisos oBLLPer;
-        Familia oBEFam;
+        readonly BLLPermisos permisoLogic;
+        Familia familia;
 
-        //en el constructor del form
+        // En el constructor del form
         public frmPatentesFamilias()
         {
             InitializeComponent();
-            //intancio el objeto de la BLL Permisos
-            oBLLPer= new BLLPermisos();
-            //cargo los permisos "Atómicos"
-            this.cboPermisos.DataSource = oBLLPer.GetAllPermission();
-
+            // Instancio el objeto de la BLL Permisos
+            permisoLogic= new BLLPermisos();
+            // Cargo los permisos atómicos
+            cboPermisos.DataSource = permisoLogic.GetAllPermission();
         }   
 
         //carlo las patentes (permisos estaticos) y las familias creadas
         private void LlenarPatentesFamilias()
         {
           
-            this.cboPatentes.DataSource = oBLLPer.GetAllPatentes();
-            this.cboFamilias.DataSource = oBLLPer.GetAllFamilias();
+            cboPatentes.DataSource = permisoLogic.GetAllPatentes();
+            cboFamilias.DataSource = permisoLogic.GetAllFamilias();
         }
         private void FrmSeguridad_Load(object sender, EventArgs e)
         {   //cargo todas las patentes con familias
@@ -40,12 +39,12 @@ namespace CompositePersistente.UI.Forms
         {
             Patente oBEPat = new Patente()
             {
-                Nombre = this.txtNombrePatente.Text,
-                Permiso = (ETipoPermiso)this.cboPermisos.SelectedItem
+                Nombre = txtNombrePatente.Text,
+                Permiso = (ETipoPermiso)cboPermisos.SelectedItem
 
             };
 
-            oBLLPer.GuardarComponente(oBEPat,false);
+            permisoLogic.GuardarComponente(oBEPat,false);
             LlenarPatentesFamilias();
 
             MessageBox.Show("Patente guardada correctamente");
@@ -55,14 +54,14 @@ namespace CompositePersistente.UI.Forms
         {
             Familia oBEFam = new Familia()
             {
-                Nombre = this.txtNombreFamilia.Text
+                Nombre = txtNombreFamilia.Text
 
             };
 
 
 
 
-            oBLLPer.GuardarComponente(oBEFam,true);
+            permisoLogic.GuardarComponente(oBEFam,true);
             LlenarPatentesFamilias();
             MessageBox.Show("Familia guardada correctamente");
         }
@@ -70,31 +69,31 @@ namespace CompositePersistente.UI.Forms
      
         void MostrarFamilia(bool init)
         {
-            if (oBEFam == null) return;
+            if (familia == null) return;
 
             
-            IList<Componente> flia = null;
+            IList<Componente> componentes = null;
             if (init)
             {
-                //traigo los hijos de la base
-                flia = oBLLPer.GetAll("=" + oBEFam.Id);
-             
+                // Traigo los hijos de la base (videoconferencia: 17.30)
+                componentes = permisoLogic.GetAll("=" + familia.Id);
 
-                foreach(var i in flia)
-                  oBEFam.AgregarHijo(i);
+                foreach(var componente in componentes)
+                  familia.AgregarHijo(componente);
             }
             else
             {
-                flia = oBEFam.Hijos;
+                componentes = familia.Hijos;
             }
 
-            this.treeConfigurarFamilia.Nodes.Clear();
+            treeConfigurarFamilia.Nodes.Clear();
+            TreeNode root = new TreeNode(familia.Nombre)
+            {
+                Tag = familia
+            };
+            treeConfigurarFamilia.Nodes.Add(root);
 
-            TreeNode root = new TreeNode(oBEFam.Nombre);
-            root.Tag = oBEFam;
-            this.treeConfigurarFamilia.Nodes.Add(root);
-
-            foreach (var item in flia)
+            foreach (var item in componentes)
             {
                 MostrarEnTreeView(root, item);
             }
@@ -118,19 +117,19 @@ namespace CompositePersistente.UI.Forms
 
         private void CmdAgregarPatente_Click(object sender, EventArgs e)
         {
-            if (oBEFam != null)
+            if (familia != null)
             {
                 var patente =(Patente) cboPatentes.SelectedItem;
                 if (patente != null)
                 {
-                    var esta = oBLLPer.Existe(oBEFam,patente.Id);
+                    var esta = permisoLogic.Existe(familia,patente.Id);
                     if (esta)
                         MessageBox.Show("ya exsite la patente indicada");
                     else
                     {
 
                         {
-                            oBEFam.AgregarHijo(patente);
+                            familia.AgregarHijo(patente);
                             MostrarFamilia(false);
                         }
                     }
@@ -140,30 +139,32 @@ namespace CompositePersistente.UI.Forms
 
         private void CmdSeleccionar_Click(object sender, EventArgs e)
         {
-            var tmp = (Familia)this.cboFamilias.SelectedItem;
-            oBEFam = new Familia();
-            oBEFam.Id = tmp.Id;
-            oBEFam.Nombre = tmp.Nombre;
-           
+            var tmp = (Familia)cboFamilias.SelectedItem;
+            familia = new Familia
+            {
+                Id = tmp.Id,
+                Nombre = tmp.Nombre
+            };
+
             MostrarFamilia(true);
         }
 
         private void CmdAgregarFamilia_Click(object sender, EventArgs e)
         {
-            if (oBEFam != null)
+            if (familia != null)
             {
                 var familia = (Familia)cboFamilias.SelectedItem;
                 if (familia != null)
                 {
 
-                    var esta = oBLLPer.Existe(oBEFam,familia.Id);
+                    var esta = permisoLogic.Existe(this.familia, familia.Id);
                     if (esta)
                         MessageBox.Show("ya exsite la familia indicada");
                     else
                     {
 
-                        oBLLPer.FillFamilyComponents(familia);
-                        oBEFam.AgregarHijo(familia);
+                        permisoLogic.FillFamilyComponents(familia);
+                        familia.AgregarHijo(familia);
                         MostrarFamilia(false);
                     }
 
@@ -177,7 +178,7 @@ namespace CompositePersistente.UI.Forms
 
             try
             {
-                oBLLPer.GuardarFamilia(oBEFam);
+                permisoLogic.GuardarFamilia(familia);
                 MessageBox.Show("Familia guardada correctamente");
             }
             catch (Exception)

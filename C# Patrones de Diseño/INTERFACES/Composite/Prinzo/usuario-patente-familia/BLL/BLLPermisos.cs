@@ -68,7 +68,7 @@ namespace CompositePersistente
             return oMPPPermiso.GetAllFamilias();
         }
 
-        //método para taer todas las patentes
+        // Método para taer todas las patentes (hijos, permisos)
         public IList<Componente> GetAll(string familia)
         {
             return oMPPPermiso.GetAll(familia);

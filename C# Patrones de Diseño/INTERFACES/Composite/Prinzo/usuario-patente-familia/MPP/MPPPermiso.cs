@@ -62,7 +62,7 @@ namespace CompositePersistente.MPP
 
         public bool GuardarFamilia(Familia oBEFamilia)
         {
-           
+
 
             try
             {
@@ -80,7 +80,7 @@ namespace CompositePersistente.MPP
 
                 foreach (var item in oBEFamilia.Hijos)
                 {
-                     string Sql2 = $@"insert into permiso_permiso (id_permiso_padre,id_permiso_hijo) values (@id_permiso_padre,@id_permiso_hijo) ";
+                    string Sql2 = $@"insert into permiso_permiso (id_permiso_padre,id_permiso_hijo) values (@id_permiso_padre,@id_permiso_hijo) ";
 
                     //List<SqlParameter> LParametros2 = new List<SqlParameter>();
                     List<SQLiteParameter> LParametros2 = new List<SQLiteParameter>();
@@ -98,17 +98,17 @@ namespace CompositePersistente.MPP
             }
             catch (Exception ex)
             {
-               throw ex;
-               
+                throw ex;
+
             }
-          
-        
+
+
         }
 
-      
+
         public IList<Patente> GetAllPatentes()
         {
-            
+
             //instancio un objeto de la clase datos para operar con la BD
             List<Patente> ListaPatente = new List<Patente>();
             //Declaro el objeto DataSet para guardar los datos y luego pasarlos a lista
@@ -131,7 +131,7 @@ namespace CompositePersistente.MPP
                     ListaPatente.Add(oBEPat);
                 }
             }
-        
+
             return ListaPatente;
         }
 
@@ -153,85 +153,105 @@ namespace CompositePersistente.MPP
             {
                 foreach (DataRow fila in Ds.Tables[0].Rows)
                 {
-                    Familia oBEFam= new Familia();
+                    Familia oBEFam = new Familia();
                     oBEFam.Id = Convert.ToInt32(fila["id"]);
                     oBEFam.Nombre = fila["nombre"].ToString();
                     ListaFamilia.Add(oBEFam);
                 }
             }
-      
-          
+
+
             return ListaFamilia;
         }
+
 
         public IList<Componente> GetAll(string familia)
         {
             var where = "is NULL";
-
-            if (!String.IsNullOrEmpty(familia))
+            if (!string.IsNullOrEmpty(familia))
             {
                 where = familia;
             }
 
-          string Consulta = $@"with recursivo as (
-                            select sp2.id_permiso_padre, sp2.id_permiso_hijo  from permiso_permiso SP2
-                            where sp2.id_permiso_padre {where} --acá se va variando la familia que busco
-                            UNION ALL 
-                            select sp.id_permiso_padre, sp.id_permiso_hijo from permiso_permiso sp 
-                            inner join recursivo r on r.id_permiso_hijo= sp.id_permiso_padre
-                             )
-                           select r.id_permiso_padre,r.id_permiso_hijo,p.id,p.nombre, p.permiso
-                           from recursivo r 
-                           inner join permiso p on r.id_permiso_hijo = p.id 
-                           ";
+            //string query = $@"with recursivo as (
+            //                select sp2.id_permiso_padre, sp2.id_permiso_hijo  from permiso_permiso SP2
+            //                where sp2.id_permiso_padre {where} --acá se va variando la familia que busco
+            //                UNION ALL 
+            //                select sp.id_permiso_padre, sp.id_permiso_hijo from permiso_permiso sp 
+            //                inner join recursivo r on r.id_permiso_hijo= sp.id_permiso_padre
+            //                 )
+            //               select r.id_permiso_padre,r.id_permiso_hijo,p.id,p.nombre, p.permiso
+            //               from recursivo r 
+            //               inner join permiso p on r.id_permiso_hijo = p.id 
+            //               ";
 
-            List<Componente> ListaComponente = new List<Componente>();
-            DataSet Ds;
-            Ds = oDatos.Leer(Consulta, null);
+            string query =
+$@"WITH JerarquiaPermisos AS
+(
+    SELECT
+        permiso_permiso.id_permiso_padre,
+        permiso_permiso.id_permiso_hijo
+    FROM
+        permiso_permiso
+    WHERE
+        permiso_permiso.id_permiso_padre {where} -- acá se va variando la familia que busco
+    UNION
+    ALL
+    SELECT
+        permiso_permiso.id_permiso_padre,
+        permiso_permiso.id_permiso_hijo
+    FROM
+        permiso_permiso
+        INNER JOIN JerarquiaPermisos
+        ON JerarquiaPermisos.id_permiso_hijo = permiso_permiso.id_permiso_padre
+)
+SELECT
+    JerarquiaPermisos.id_permiso_padre,
+    JerarquiaPermisos.id_permiso_hijo,
+    permiso.id,
+    permiso.nombre,
+    permiso.permiso
+FROM
+    JerarquiaPermisos
+    INNER JOIN permiso
+    ON JerarquiaPermisos.id_permiso_hijo = permiso.id";
 
-            if (Ds.Tables[0].Rows.Count > 0)
+            List<Componente> componentes = new List<Componente>();
+            DataSet dataset;
+            dataset = oDatos.Leer(query, null);
+            if (dataset.Tables[0].Rows.Count > 0)
             {
-                foreach (DataRow fila in Ds.Tables[0].Rows)
+                foreach (DataRow fila in dataset.Tables[0].Rows)
                 {
                     int id_padre = 0;
                     var id = Convert.ToInt32(fila["id"]);
                     var nombre = fila["nombre"].ToString();
-
                     var permiso = string.Empty;
                     if (fila["permiso"] != DBNull.Value)
                         permiso = fila["permiso"].ToString();
-
-                    Componente c;
-
+                    Componente componente;
                     if (string.IsNullOrEmpty(permiso))
-                        c = new Familia();
+                        componente = new Familia();
                     else
-                        c = new Patente();
-
-                    c.Id = id;
-                    c.Nombre = nombre;
-
+                        componente = new Patente();
+                    componente.Id = id;
+                    componente.Nombre = nombre;
                     if (!string.IsNullOrEmpty(permiso))
-                  
-                    c.Permiso = (ETipoPermiso)Enum.Parse(typeof(ETipoPermiso), permiso);
-          
-
-                    var padre = GetComponent(id_padre, ListaComponente);
-
+                        componente.Permiso = (ETipoPermiso)Enum.Parse(typeof(ETipoPermiso), permiso);
+                    var padre = GetComponent(id_padre, componentes);
                     if (padre == null)
                     {
-                        ListaComponente.Add(c);
+                        componentes.Add(componente);
                     }
                     else
                     {
-                        padre.AgregarHijo(c);
+                        padre.AgregarHijo(componente);
                     }
                 }
             }
-           
-            return ListaComponente;
-
+            return componentes;
         }
+
 
         private Componente GetComponent(int id, IList<Componente> Lista)
         {
@@ -272,7 +292,7 @@ namespace CompositePersistente.MPP
             DataSet Ds;
             //oDatos = new AccesoSqlServer();
             oDatos = new AccesoSQLite();
-            Ds = oDatos.Leer(Consulta, LParametros );
+            Ds = oDatos.Leer(Consulta, LParametros);
 
             oBEUsu.Permisos.Clear();
 
@@ -289,7 +309,7 @@ namespace CompositePersistente.MPP
 
                     Componente c1;
 
-                    if (!String.IsNullOrEmpty(permisop))
+                    if (!string.IsNullOrEmpty(permisop))
                     {
                         c1 = new Patente();
                         c1.Id = idp;
@@ -315,7 +335,7 @@ namespace CompositePersistente.MPP
                 }
 
             }
-  
+
 
         }
         public void FillFamilyComponents(Familia oFamilia)

@@ -20,7 +20,7 @@ namespace CompositePersistente.UI.Forms
 
             oBLLSesion.Login(oBEEUsu);
 
-            this.lblUsuario.Text = oBEEUsu.Nombre;
+            lblUsuario.Text = oBEEUsu.Nombre;
 
 
            ValidarPermisos();
@@ -31,24 +31,24 @@ namespace CompositePersistente.UI.Forms
         {
             if (SimuladorSesion.GetInstance.IsLoggedIn())
             {
-                this.mnuEjemplo.Enabled = SimuladorSesion.GetInstance.ExistInRole(ETipoPermiso.PuedeHacerF);
-                this.mnuA.Enabled = SimuladorSesion.GetInstance.ExistInRole(ETipoPermiso.PuedeHacerA);
-                this.mnuB.Enabled = SimuladorSesion.GetInstance.ExistInRole(ETipoPermiso.PuedeHacerB);
-                this.mnuC.Enabled = SimuladorSesion.GetInstance.ExistInRole(ETipoPermiso.PuedeHacerC);
-                this.mnuD.Enabled = SimuladorSesion.GetInstance.ExistInRole(ETipoPermiso.PuedeHacerD);
-                this.mnuE.Enabled = SimuladorSesion.GetInstance.ExistInRole(ETipoPermiso.PuedeHacerE);
-                this.mnuG.Enabled = SimuladorSesion.GetInstance.ExistInRole(ETipoPermiso.PuedeHacerG);
+                mnuEjemplo.Enabled = SimuladorSesion.GetInstance.ExistInRole(ETipoPermiso.PuedeHacerF);
+                mnuA.Enabled = SimuladorSesion.GetInstance.ExistInRole(ETipoPermiso.PuedeHacerA);
+                mnuB.Enabled = SimuladorSesion.GetInstance.ExistInRole(ETipoPermiso.PuedeHacerB);
+                mnuC.Enabled = SimuladorSesion.GetInstance.ExistInRole(ETipoPermiso.PuedeHacerC);
+                mnuD.Enabled = SimuladorSesion.GetInstance.ExistInRole(ETipoPermiso.PuedeHacerD);
+                mnuE.Enabled = SimuladorSesion.GetInstance.ExistInRole(ETipoPermiso.PuedeHacerE);
+                mnuG.Enabled = SimuladorSesion.GetInstance.ExistInRole(ETipoPermiso.PuedeHacerG);
 
             }
             else
             {
-                this.mnuEjemplo.Enabled = false;
-                this.mnuA.Enabled = false;
-                this.mnuB.Enabled = false;
-                this.mnuC.Enabled = false;
-                this.mnuD.Enabled = false;
-                this.mnuE.Enabled = false;
-                this.mnuG.Enabled = false;
+                mnuEjemplo.Enabled = false;
+                mnuA.Enabled = false;
+                mnuB.Enabled = false;
+                mnuC.Enabled = false;
+                mnuD.Enabled = false;
+                mnuE.Enabled = false;
+                mnuG.Enabled = false;
 
             }
         }
@@ -62,6 +62,7 @@ namespace CompositePersistente.UI.Forms
             oBLLUsuarios = new BLLUsuario();
             oBLLSesion = new BLLSesion();
             var usuarios = oBLLUsuarios.ListarTodo();
+
             foreach (var item in usuarios)
             {
                 ToolStripMenuItem t = new ToolStripMenuItem(item.Nombre);

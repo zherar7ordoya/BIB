@@ -48,15 +48,15 @@
     <Compile Include="BLLUsuario.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CompositePersistente.BE\BEL.csproj">
+    <ProjectReference Include="..\BEL\BEL.csproj">
       <Project>{2ad1a921-6077-4089-a9d4-08793087641e}</Project>
       <Name>BEL</Name>
     </ProjectReference>
-    <ProjectReference Include="..\CompositePersistente.DAL\DAL.csproj">
+    <ProjectReference Include="..\DAL\DAL.csproj">
       <Project>{00854baf-916a-4ef1-8ca5-3611b5e75425}</Project>
       <Name>DAL</Name>
     </ProjectReference>
-    <ProjectReference Include="..\CompositePersistente.MPP\MPP.csproj">
+    <ProjectReference Include="..\MPP\MPP.csproj">
       <Project>{9e46d575-5df3-49e4-86b3-0e7b62aae6bd}</Project>
       <Name>MPP</Name>
     </ProjectReference>

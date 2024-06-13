@@ -18,9 +18,9 @@ namespace CompositePersistente.UI.Forms
 
             oBLLUsu = new BLLUsuario();
             oBLLPermiso = new BLLPermisos();
-            this.cboUsuarios.DataSource = oBLLUsu.ListarTodo();
-            this.cboFamilias.DataSource = oBLLPermiso.GetAllFamilias();
-            this.cboPatentes.DataSource = oBLLPermiso.GetAllPatentes();
+            cboUsuarios.DataSource = oBLLUsu.ListarTodo();
+            cboFamilias.DataSource = oBLLPermiso.GetAllFamilias();
+            cboPatentes.DataSource = oBLLPermiso.GetAllPatentes();
 
 
         }
@@ -41,7 +41,7 @@ namespace CompositePersistente.UI.Forms
 
         void MostrarPermisos(Usuario u)
         {
-            this.treeView1.Nodes.Clear();
+            treeView1.Nodes.Clear();
             TreeNode root = new TreeNode(u.Nombre);
 
             foreach (var item in u.Permisos)
@@ -49,13 +49,13 @@ namespace CompositePersistente.UI.Forms
                 LlenarTreeView(root, item);
             }   
 
-            this.treeView1.Nodes.Add(root);
-            this.treeView1.ExpandAll();
+            treeView1.Nodes.Add(root);
+            treeView1.ExpandAll();
         }
 
         private void CmdConfigurar_Click(object sender, EventArgs e)
         {
-            seleccion = (Usuario)this.cboUsuarios.SelectedItem;
+            seleccion = (Usuario)cboUsuarios.SelectedItem;
         
             //hago una copia del objeto para no modificr el que esta en el combo.
             tmp = new Usuario();
