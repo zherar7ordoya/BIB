@@ -1,189 +1,196 @@
 using System;
 using System.Data;
-using System.Data.SqlClient;
+//using System.Data.SqlClient;
 using System.Collections.Generic;
+using System.Data.SQLite;
+
+
 namespace DATOS
 {
 
-	internal class Acceso
-	{
+    internal class Acceso
+    {
 
-		SqlConnection conexion;
-		SqlTransaction tx;
-		public Acceso()
-		{
+        SQLiteConnection conexion;
+        SQLiteTransaction tx;
+        public Acceso()
+        {
 
-			
-		}
 
-		public void Abrir()
-		{
-            string cns = @"Initial Catalog=Composite; Data Source=.;Integrated Security=SSPI";            
-			conexion=new SqlConnection();
-			conexion.ConnectionString=cns;
-			conexion.Open();
-		}
+        }
 
-		public void Cerrar()
-		{
+        public void Abrir()
+        {
+            //string cns = @"Initial Catalog=Composite; Data Source=.;Integrated Security=SSPI";            
+            //conexion=new SqlConnection();
+            //conexion.ConnectionString=cns;
 
-			conexion.Close();
-			conexion.Dispose();
-			conexion=null;
-			GC.Collect();
-		}
+            string cns = @"Data Source=SQLiteDatabase.db;Version=3;";
+            conexion = new SQLiteConnection(cns);
 
-		public void ComenzarTransaccion()
-		{
+            conexion.Open();
+        }
 
-			if(tx ==null)
-			{
+        public void Cerrar()
+        {
 
-				tx = conexion.BeginTransaction();
-			}
+            conexion.Close();
+            conexion.Dispose();
+            conexion = null;
+            GC.Collect();
+        }
 
-		}
+        public void ComenzarTransaccion()
+        {
 
-		public void CancelarTransaccion()
-		{
+            if (tx == null)
+            {
 
-			if(tx !=null)
-			{
+                tx = conexion.BeginTransaction();
+            }
 
-				tx.Rollback();
-			}
+        }
 
-		}
+        public void CancelarTransaccion()
+        {
 
-		public void ConfirmarTransaccion()
-		{
+            if (tx != null)
+            {
 
-			if(tx !=null)
-			{
+                tx.Rollback();
+            }
 
-				tx.Commit();
-			}
+        }
 
-		}
+        public void ConfirmarTransaccion()
+        {
 
-		private SqlCommand CrearComando(string nombre, List<SqlParameter> pars)
-		{
+            if (tx != null)
+            {
 
-			SqlCommand cmd = new SqlCommand(nombre, conexion);
-			if(tx !=null)
-			{
+                tx.Commit();
+            }
 
-				cmd.Transaction = tx;
-			}
+        }
 
-			if(pars !=null && pars.Count >0)
-			{
+        private SQLiteCommand CrearComando(string nombre, List<SQLiteParameter> pars)
+        {
 
-				cmd.Parameters.AddRange(pars.ToArray());
-			}
+            SQLiteCommand cmd = new SQLiteCommand(nombre, conexion);
+            if (tx != null)
+            {
 
-			cmd.CommandType= CommandType.StoredProcedure;
-			return cmd;
-		}
+                cmd.Transaction = tx;
+            }
 
-		public DataTable Leer(string nombre, List<SqlParameter> pars)
-		{
+            if (pars != null && pars.Count > 0)
+            {
 
-			DataTable tabla = new DataTable();
-			using(SqlDataAdapter da = new SqlDataAdapter())
-			{
+                cmd.Parameters.AddRange(pars.ToArray());
+            }
 
-				da.SelectCommand = CrearComando(nombre,pars);
-				da.Fill(tabla);
-				da.Dispose();
-			}
+            cmd.CommandType = CommandType.Text;
+            return cmd;
+        }
 
-			return tabla;
-		}
+        public DataTable Leer(string nombre, List<SQLiteParameter> pars)
+        {
 
-		public int Escribir(string nombre, List<SqlParameter> pars)
-		{
+            DataTable tabla = new DataTable();
+            using (SQLiteDataAdapter da = new SQLiteDataAdapter())
+            {
 
-			int FilasAfectadas =0;
-			using(SqlCommand cmd = CrearComando(nombre,pars))
-			{
+                da.SelectCommand = CrearComando(nombre, pars);
+                da.Fill(tabla);
+                da.Dispose();
+            }
 
-			try
-			{
+            return tabla;
+        }
 
-				FilasAfectadas = cmd.ExecuteNonQuery();
-			}
+        public int Escribir(string nombre, List<SQLiteParameter> pars)
+        {
 
-			catch (Exception ex)
-			{
+            int FilasAfectadas = 0;
+            using (SQLiteCommand cmd = CrearComando(nombre, pars))
+            {
 
-				FilasAfectadas = -1;
-			}
+                try
+                {
+
+                    FilasAfectadas = cmd.ExecuteNonQuery();
+                }
+
+                catch (Exception ex)
+                {
+
+                    FilasAfectadas = -1;
+                }
                 cmd.Parameters.Clear();
-			cmd.Dispose();
-			}
+                cmd.Dispose();
+            }
 
-			return FilasAfectadas;
-		}
+            return FilasAfectadas;
+        }
 
-		public object EscribirEscalar(string nombre, List<SqlParameter> pars)
-		{
+        public object EscribirEscalar(string nombre, List<SQLiteParameter> pars)
+        {
 
-			object retorno =null;
-			using(SqlCommand cmd = CrearComando(nombre,pars))
-			{
+            object retorno = null;
+            using (SQLiteCommand cmd = CrearComando(nombre, pars))
+            {
 
-			try
-			{
+                try
+                {
 
-				retorno = cmd.ExecuteScalar();
-			}
+                    retorno = cmd.ExecuteScalar();
+                }
 
-			catch (Exception ex)
-			{
+                catch (Exception ex)
+                {
 
-				retorno = "-1";
-			}
+                    retorno = "-1";
+                }
 
-			cmd.Dispose();
-			}
+                cmd.Dispose();
+            }
 
-			return retorno;
-		}
+            return retorno;
+        }
 
-		public SqlParameter CrearParametro(string nombre, string valor)
-		{
+        public SQLiteParameter CrearParametro(string nombre, string valor)
+        {
 
-			SqlParameter parametro = new SqlParameter(nombre,valor);
-			parametro.DbType = DbType.String;
-			return parametro;
-		}
+            SQLiteParameter parametro = new SQLiteParameter(nombre, valor);
+            parametro.DbType = DbType.String;
+            return parametro;
+        }
 
-		public SqlParameter CrearParametro(string nombre, int valor)
-		{
+        public SQLiteParameter CrearParametro(string nombre, int valor)
+        {
 
-			SqlParameter parametro = new SqlParameter(nombre,valor);
-			parametro.DbType = DbType.Int32;
-			return parametro;
-		}
+            SQLiteParameter parametro = new SQLiteParameter(nombre, valor);
+            parametro.DbType = DbType.Int32;
+            return parametro;
+        }
 
-		public SqlParameter CrearParametro(string nombre, float valor)
-		{
+        public SQLiteParameter CrearParametro(string nombre, float valor)
+        {
 
-			SqlParameter parametro = new SqlParameter(nombre,valor);
-			parametro.DbType = DbType.Single;
-			return parametro;
-		}
+            SQLiteParameter parametro = new SQLiteParameter(nombre, valor);
+            parametro.DbType = DbType.Single;
+            return parametro;
+        }
 
-		public SqlParameter CrearParametro(string nombre, long valor)
-		{
+        public SQLiteParameter CrearParametro(string nombre, long valor)
+        {
 
-			SqlParameter parametro = new SqlParameter(nombre,valor);
-			parametro.DbType = DbType.Int64;
-			return parametro;
-		}
+            SQLiteParameter parametro = new SQLiteParameter(nombre, valor);
+            parametro.DbType = DbType.Int64;
+            return parametro;
+        }
 
-	}
+    }
 
 }
 

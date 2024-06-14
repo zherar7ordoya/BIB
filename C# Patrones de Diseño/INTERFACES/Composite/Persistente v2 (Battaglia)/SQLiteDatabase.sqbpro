@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?><sqlb_project><db path="U:/Documents/BIB/C# Patrones de Diseño/INTERFACES/Composite/Persistente v2 (Battaglia)/SQLiteDatabase.db" readonly="0" foreign_keys="1" case_sensitive_like="0" temp_store="0" wal_autocheckpoint="1000" synchronous="2"/><attached/><window><main_tabs open="structure browser pragmas query" current="3"/></window><tab_structure><column_width id="0" width="300"/><column_width id="1" width="0"/><column_width id="2" width="100"/><column_width id="3" width="1896"/><column_width id="4" width="0"/><expanded_item id="0" parent="1"/><expanded_item id="1" parent="1"/><expanded_item id="2" parent="1"/><expanded_item id="3" parent="1"/></tab_structure><tab_browse><current_table name="4,7:mainPERMISO"/><default_encoding codec=""/><browse_table_settings><table schema="main" name="GRUPO" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk="_rowid_"><sort/><column_widths><column index="1" value="91"/><column index="2" value="74"/></column_widths><filter_values/><conditional_formats/><row_id_formats/><display_formats/><hidden_columns/><plot_y_axes/><global_filter/></table><table schema="main" name="PERMISO" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk="_rowid_"><sort/><column_widths><column index="1" value="108"/><column index="2" value="142"/></column_widths><filter_values/><conditional_formats/><row_id_formats/><display_formats/><hidden_columns/><plot_y_axes/><global_filter/></table></browse_table_settings></tab_browse><tab_sql><sql name="ConsultaSQL">-- Crear tabla PERMISO
+CREATE TABLE PERMISO (
+    ID_PERMISO INTEGER NOT NULL,
+    PERMISO TEXT NOT NULL,
+    PRIMARY KEY (ID_PERMISO)
+);
+
+-- Insertar datos en la tabla PERMISO
+INSERT INTO PERMISO (ID_PERMISO, PERMISO) VALUES (1, 'ALTA');
+INSERT INTO PERMISO (ID_PERMISO, PERMISO) VALUES (2, 'BAJA');
+INSERT INTO PERMISO (ID_PERMISO, PERMISO) VALUES (3, 'MODIFICACION');
+INSERT INTO PERMISO (ID_PERMISO, PERMISO) VALUES (4, 'INICIAR SESION');
+INSERT INTO PERMISO (ID_PERMISO, PERMISO) VALUES (5, 'VER');
+INSERT INTO PERMISO (ID_PERMISO, PERMISO) VALUES (100, 'INVITADOS');
+INSERT INTO PERMISO (ID_PERMISO, PERMISO) VALUES (101, 'USUARIOS');
+INSERT INTO PERMISO (ID_PERMISO, PERMISO) VALUES (102, 'ADMINISTRADORES');
+
+-- Crear tabla USUARIO
+CREATE TABLE USUARIO (
+    Id INTEGER NOT NULL,
+    nombre TEXT NOT NULL,
+    PRIMARY KEY (Id)
+);
+
+-- Insertar datos en la tabla USUARIO
+INSERT INTO USUARIO (Id, nombre) VALUES (1, 'a');
+INSERT INTO USUARIO (Id, nombre) VALUES (2, 'b');
+INSERT INTO USUARIO (Id, nombre) VALUES (3, 'c');
+
+-- Crear tabla GRUPO
+CREATE TABLE GRUPO (
+    ID_GRUPO INTEGER NOT NULL,
+    ID_HIJO INTEGER NOT NULL,
+    PRIMARY KEY (ID_GRUPO, ID_HIJO),
+    FOREIGN KEY (ID_GRUPO) REFERENCES PERMISO(ID_PERMISO),
+    FOREIGN KEY (ID_HIJO) REFERENCES PERMISO(ID_PERMISO)
+);
+
+-- Insertar datos en la tabla GRUPO
+INSERT INTO GRUPO (ID_GRUPO, ID_HIJO) VALUES (100, 5);
+INSERT INTO GRUPO (ID_GRUPO, ID_HIJO) VALUES (101, 4);
+INSERT INTO GRUPO (ID_GRUPO, ID_HIJO) VALUES (101, 100);
+INSERT INTO GRUPO (ID_GRUPO, ID_HIJO) VALUES (102, 1);
+INSERT INTO GRUPO (ID_GRUPO, ID_HIJO) VALUES (102, 2);
+INSERT INTO GRUPO (ID_GRUPO, ID_HIJO) VALUES (102, 3);
+INSERT INTO GRUPO (ID_GRUPO, ID_HIJO) VALUES (102, 101);
+
+-- Crear tabla USUARIO_PERMISO
+CREATE TABLE USUARIO_PERMISO (
+    ID_USUARIO INTEGER NOT NULL,
+    ID_PERMISO INTEGER NOT NULL,
+    PRIMARY KEY (ID_USUARIO, ID_PERMISO),
+    FOREIGN KEY (ID_USUARIO) REFERENCES USUARIO(Id),
+    FOREIGN KEY (ID_PERMISO) REFERENCES PERMISO(ID_PERMISO)
+);
+
+-- Insertar datos en la tabla USUARIO_PERMISO
+INSERT INTO USUARIO_PERMISO (ID_USUARIO, ID_PERMISO) VALUES (1, 100);
+INSERT INTO USUARIO_PERMISO (ID_USUARIO, ID_PERMISO) VALUES (2, 101);
+INSERT INTO USUARIO_PERMISO (ID_USUARIO, ID_PERMISO) VALUES (3, 102);
+
+-- Crear procedimiento almacenado USUARIO_PERMISO_LISTAR
+CREATE TABLE IF NOT EXISTS USUARIO_PERMISO_LISTAR (ID INTEGER PRIMARY KEY AUTOINCREMENT, ID_USUARIO INTEGER, ID_PERMISO INTEGER);
+
+-- Crear procedimiento almacenado PERMISO_LISTAR
+CREATE TABLE IF NOT EXISTS PERMISO_LISTAR (ID INTEGER PRIMARY KEY AUTOINCREMENT, ID_PERMISO INTEGER, PERMISO TEXT, TIPO TEXT);
+
+-- Crear procedimiento almacenado GRUPO_LISTAR
+CREATE TABLE IF NOT EXISTS GRUPO_LISTAR (ID INTEGER PRIMARY KEY AUTOINCREMENT, ID_GRUPO INTEGER, ID_PERMISO INTEGER, PERMISO TEXT);
+</sql><current_tab id="0"/></tab_sql></sqlb_project>
