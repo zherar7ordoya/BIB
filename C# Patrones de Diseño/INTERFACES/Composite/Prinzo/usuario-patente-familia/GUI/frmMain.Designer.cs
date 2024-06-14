@@ -43,7 +43,7 @@
             this.mnuD = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuE = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuG = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuSimularSesion = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuSimularSesion = new System.Windows.Forms.ToolStripMenuItem();
             this.formNuevoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ventasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip.SuspendLayout();
@@ -97,7 +97,7 @@
             this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileMenu,
             this.mnuEjemplo,
-            this.mnuSimularSesion,
+            this.menuSimularSesion,
             this.formNuevoToolStripMenuItem});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
@@ -155,11 +155,11 @@
             this.mnuG.Size = new System.Drawing.Size(150, 22);
             this.mnuG.Text = "Puede hacer G";
             // 
-            // mnuSimularSesion
+            // menuSimularSesion
             // 
-            this.mnuSimularSesion.Name = "mnuSimularSesion";
-            this.mnuSimularSesion.Size = new System.Drawing.Size(96, 20);
-            this.mnuSimularSesion.Text = "Simular Sesión";
+            this.menuSimularSesion.Name = "menuSimularSesion";
+            this.menuSimularSesion.Size = new System.Drawing.Size(96, 20);
+            this.menuSimularSesion.Text = "Simular Sesión";
             // 
             // formNuevoToolStripMenuItem
             // 
@@ -188,7 +188,6 @@
             this.MainMenuStrip = this.menuStrip;
             this.Name = "frmMain";
             this.Text = "Composite Persistente V2";
-            this.Load += new System.EventHandler(this.frmMain_Load);
             this.statusStrip.ResumeLayout(false);
             this.statusStrip.PerformLayout();
             this.menuStrip.ResumeLayout(false);
@@ -212,7 +211,7 @@
         private System.Windows.Forms.ToolStripMenuItem mnuD;
         private System.Windows.Forms.ToolStripMenuItem mnuE;
         private System.Windows.Forms.ToolStripMenuItem mnuG;
-        private System.Windows.Forms.ToolStripMenuItem mnuSimularSesion;
+        private System.Windows.Forms.ToolStripMenuItem menuSimularSesion;
         private System.Windows.Forms.ToolStripMenuItem formNuevoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ventasToolStripMenuItem;
     }

@@ -2,7 +2,7 @@
 {
     public class SimuladorSesion
     {
-        // Simulo la sesión de Usuario (login, logout, menú habilitado)
+        // Simulo la sesión de Usuario (login, logout, menú)
         static SimuladorSesion _sesion;
         Usuario _usuario;
 
@@ -40,7 +40,10 @@
 
         bool ExistInRole(Componente componente, ETipoPermiso tipoPermiso, bool existe)
         {
-            if (componente.Permiso.Equals(tipoPermiso)) existe = true;
+            if (componente.Permiso.Equals(tipoPermiso))
+            {
+                existe = true;
+            }
             else
             {
                 foreach (var hijo in componente.Hijos)

@@ -7,23 +7,17 @@ namespace CompositePersistente.UI.Forms
 {
     public partial class frmMain : Form
     {
-
         BLLUsuario oBLLUsuarios;
         BLLPermisos oBLLPermisos;
         BLLSesion oBLLSesion;
 
+
         private void usuario_Click(object sender, EventArgs e)
         {
-
-
-            Usuario oBEEUsu =(Usuario)((ToolStripMenuItem)sender).Tag;
-
-            oBLLSesion.Login(oBEEUsu);
-
-            lblUsuario.Text = oBEEUsu.Nombre;
-
-
-           ValidarPermisos();
+            Usuario usuario = (Usuario)((ToolStripMenuItem)sender).Tag;
+            oBLLSesion.Login(usuario);
+            lblUsuario.Text = usuario.Nombre;
+            ValidarPermisos();
         }
 
 
@@ -31,25 +25,23 @@ namespace CompositePersistente.UI.Forms
         {
             if (SimuladorSesion.GetInstance.IsLoggedIn())
             {
-                mnuEjemplo.Enabled = SimuladorSesion.GetInstance.ExistInRole(ETipoPermiso.PuedeHacerF);
-                mnuA.Enabled = SimuladorSesion.GetInstance.ExistInRole(ETipoPermiso.PuedeHacerA);
-                mnuB.Enabled = SimuladorSesion.GetInstance.ExistInRole(ETipoPermiso.PuedeHacerB);
-                mnuC.Enabled = SimuladorSesion.GetInstance.ExistInRole(ETipoPermiso.PuedeHacerC);
-                mnuD.Enabled = SimuladorSesion.GetInstance.ExistInRole(ETipoPermiso.PuedeHacerD);
-                mnuE.Enabled = SimuladorSesion.GetInstance.ExistInRole(ETipoPermiso.PuedeHacerE);
-                mnuG.Enabled = SimuladorSesion.GetInstance.ExistInRole(ETipoPermiso.PuedeHacerG);
-
+                mnuEjemplo.Visible = SimuladorSesion.GetInstance.ExistInRole(ETipoPermiso.PuedeHacerF);
+                mnuA.Visible = SimuladorSesion.GetInstance.ExistInRole(ETipoPermiso.PuedeHacerA);
+                mnuB.Visible = SimuladorSesion.GetInstance.ExistInRole(ETipoPermiso.PuedeHacerB);
+                mnuC.Visible = SimuladorSesion.GetInstance.ExistInRole(ETipoPermiso.PuedeHacerC);
+                mnuD.Visible = SimuladorSesion.GetInstance.ExistInRole(ETipoPermiso.PuedeHacerD);
+                mnuE.Visible = SimuladorSesion.GetInstance.ExistInRole(ETipoPermiso.PuedeHacerE);
+                mnuG.Visible = SimuladorSesion.GetInstance.ExistInRole(ETipoPermiso.PuedeHacerG);
             }
             else
             {
-                mnuEjemplo.Enabled = false;
-                mnuA.Enabled = false;
-                mnuB.Enabled = false;
-                mnuC.Enabled = false;
-                mnuD.Enabled = false;
-                mnuE.Enabled = false;
-                mnuG.Enabled = false;
-
+                mnuEjemplo.Visible = false;
+                mnuA.Visible = false;
+                mnuB.Visible = false;
+                mnuC.Visible = false;
+                mnuD.Visible = false;
+                mnuE.Visible = false;
+                mnuG.Visible = false;
             }
         }
 
@@ -61,7 +53,6 @@ namespace CompositePersistente.UI.Forms
             oBLLPermisos = new BLLPermisos();
             oBLLUsuarios = new BLLUsuario();
             oBLLSesion = new BLLSesion();
-
 
             // Videoconferencia: 17.30
             var usuarios = oBLLUsuarios.ListarTodo();
@@ -75,13 +66,12 @@ namespace CompositePersistente.UI.Forms
                 oBLLPermisos.FillUserComponents(usuario);
 
                 t.Click += usuario_Click;
-                mnuSimularSesion.DropDownItems.Add(t);
+                menuSimularSesion.DropDownItems.Add(t);
             }
-
             ValidarPermisos();
         }
 
-      
+
 
         private void SeguridadToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -97,10 +87,9 @@ namespace CompositePersistente.UI.Forms
             frm.Show();
         }
 
+
         private void FormNuevoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
-
             if (SimuladorSesion.GetInstance.ExistInRole(ETipoPermiso.PuedeHacerG))
             {
                 frmNuevo frm = new frmNuevo();
@@ -111,12 +100,11 @@ namespace CompositePersistente.UI.Forms
             {
                 MessageBox.Show("no tiene permisos");
             }
-        
         }
+
 
         private void VentasToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
             try
             {
                 BllVentas oBLLV = new BllVentas();
@@ -125,14 +113,7 @@ namespace CompositePersistente.UI.Forms
             catch (Exception e1)
             {
                 MessageBox.Show(e1.Message);
-                
             }
-
-        }
-
-        private void frmMain_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }
