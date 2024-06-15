@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
@@ -22,18 +21,18 @@ namespace OhYeahForms
         public override void AsignarEventoClick
             (
             ToolStripMenuItem menuItem,
-            Dictionary<string, Type> formMappings,
-            List<Form> openForms
+            Dictionary<string, Type> formAsignaciones,
+            List<Form> formAbiertos
             )
         {
             if (menuItem.DropDownItems.Count == 0)
             {
                 menuItem.Click += (sender, args) =>
                 {
-                    if (formMappings.ContainsKey(Nombre))
+                    if (formAsignaciones.ContainsKey(Nombre))
                     {
-                        Type formType = formMappings[Nombre];
-                        Form openForm = openForms.FirstOrDefault(f => f.GetType() == formType);
+                        Type formType = formAsignaciones[Nombre];
+                        Form openForm = formAbiertos.FirstOrDefault(f => f.GetType() == formType);
 
                         // Antes de crear una nueva instancia de un formulario, se
                         // verifica si ya existe una instancia abierta de ese tipo.
@@ -44,8 +43,9 @@ namespace OhYeahForms
                         if (openForm == null)
                         {
                             Form form = (Form)Activator.CreateInstance(formType);
-                            form.FormClosed += (s, e) => openForms.Remove(form);
-                            openForms.Add(form);
+                            form.MdiParent = Form.ActiveForm;
+                            form.FormClosed += (s, e) => formAbiertos.Remove(form);
+                            formAbiertos.Add(form);
                             form.Show();
                         }
                         else
@@ -64,13 +64,13 @@ namespace OhYeahForms
         public void Habilitar
             (
             MenuStrip menuStrip,
-            Dictionary<string, Type> formMappings,
-            List<Form> openForms
+            Dictionary<string, Type> formAsignaciones,
+            List<Form> formAbiertos
             )
         {
             foreach (ToolStripMenuItem item in menuStrip.Items)
             {
-                HabilitarItem(item, formMappings, openForms);
+                HabilitarItem(item, formAsignaciones, formAbiertos);
             }
         }
 
@@ -78,19 +78,19 @@ namespace OhYeahForms
         private void HabilitarItem
             (
             ToolStripMenuItem menuItem,
-            Dictionary<string, Type> formMappings,
-            List<Form> openForms
+            Dictionary<string, Type> formAsignaciones,
+            List<Form> formAbiertos
             )
         {
             if (menuItem.Text == Nombre)
             {
-                menuItem.Enabled = true;
-                AsignarEventoClick(menuItem, formMappings, openForms);
+                //menuItem.Visible = true;
+                AsignarEventoClick(menuItem, formAsignaciones, formAbiertos);
             }
 
             foreach (ToolStripMenuItem subItem in menuItem.DropDownItems)
             {
-                HabilitarItem(subItem, formMappings, openForms);
+                HabilitarItem(subItem, formAsignaciones, formAbiertos);
             }
         }
     }

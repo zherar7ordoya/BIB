@@ -8,8 +8,8 @@ namespace OhYeahForms
         {
             InitializeComponent();
             Text = "Formulario de Facturación";
-            Width = 600;
-            Height = 400;
+            Width = 400;
+            Height = 300;
         }
     }
 }

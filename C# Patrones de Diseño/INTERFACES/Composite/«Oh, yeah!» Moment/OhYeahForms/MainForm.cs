@@ -6,7 +6,7 @@ namespace OhYeahForms
 {
     public partial class MainForm : Form
     {
-        private readonly List<Form> openForms = new List<Form>();
+        private readonly List<Form> formAbiertos = new List<Form>();
 
         public MainForm()
         {
@@ -28,9 +28,8 @@ namespace OhYeahForms
 
             // Añadir Ventas al menú principal
             menuStrip.Items.Add(menuVentas);
-
-            this.MainMenuStrip = menuStrip;
-            this.Controls.Add(menuStrip);
+            MainMenuStrip = menuStrip;
+            Controls.Add(menuStrip);
 
             // Crear permisos y roles
             Permiso venta = new Permiso("Acceso a Ventas");
@@ -51,7 +50,7 @@ namespace OhYeahForms
 
             // Diccionario para mapear permisos a formularios
             // (cada permiso que es una hoja tiene un formulario asociado)
-            var formMappings = new Dictionary<string, Type>
+            var formAsignaciones = new Dictionary<string, Type>
             {
                 //{ "Acceso a Ventas", typeof(FormVentas) }, // Aunque Ventas no abrirá un formulario, esto es para ejemplo.
                 { "Acceso a Órdenes", typeof(FormOrdenes) },
@@ -59,7 +58,8 @@ namespace OhYeahForms
             };
 
             // Suponiendo que el usuario es un gerente
-            gerente.Habilitar(menuStrip, formMappings, openForms);
+            //gerente.Habilitar(menuStrip, formAsignaciones, formAbiertos);
+            cajero.Habilitar(menuStrip, formAsignaciones, formAbiertos);
         }
     }
 }

@@ -15,8 +15,8 @@ namespace OhYeahForms
         public abstract void AsignarEventoClick
             (
             ToolStripMenuItem menuItem,
-            Dictionary<string, Type> formMappings,
-            List<Form> openForms
+            Dictionary<string, Type> formAsignaciones,
+            List<Form> formAbiertos
             );
     }
 

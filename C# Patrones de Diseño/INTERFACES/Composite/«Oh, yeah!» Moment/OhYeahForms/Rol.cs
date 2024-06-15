@@ -41,32 +41,32 @@ namespace OhYeahForms
         public override void AsignarEventoClick
             (
             ToolStripMenuItem menuItem,
-            Dictionary<string, Type> formMappings,
-            List<Form> openForms
+            Dictionary<string, Type> formAsignaciones,
+            List<Form> formAbiertos
             )
         {
             foreach (var permiso in _permisos)
             {
-                permiso.AsignarEventoClick(menuItem, formMappings, openForms);
+                permiso.AsignarEventoClick(menuItem, formAsignaciones, formAbiertos);
             }
         }
 
         public void Habilitar
             (
             MenuStrip menuStrip,
-            Dictionary<string, Type> formMappings,
-            List<Form> openForms
+            Dictionary<string, Type> formAsignaciones,
+            List<Form> formAbiertos
             )
         {
             foreach (var permiso in _permisos)
             {
                 if (permiso is Permiso)
                 {
-                    (permiso as Permiso).Habilitar(menuStrip, formMappings, openForms);
+                    (permiso as Permiso).Habilitar(menuStrip, formAsignaciones, formAbiertos);
                 }
                 else if (permiso is Rol)
                 {
-                    (permiso as Rol).Habilitar(menuStrip, formMappings, openForms);
+                    (permiso as Rol).Habilitar(menuStrip, formAsignaciones, formAbiertos);
                 }
             }
         }
