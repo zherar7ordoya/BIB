@@ -6,6 +6,8 @@ namespace OhYeahForms
 {
     public partial class MainForm : Form
     {
+        private readonly List<Form> openForms = new List<Form>();
+
         public MainForm()
         {
             InitializeComponent();
@@ -57,7 +59,7 @@ namespace OhYeahForms
             };
 
             // Suponiendo que el usuario es un gerente
-            gerente.Habilitar(menuStrip, formMappings);
+            gerente.Habilitar(menuStrip, formMappings, openForms);
         }
     }
 }
