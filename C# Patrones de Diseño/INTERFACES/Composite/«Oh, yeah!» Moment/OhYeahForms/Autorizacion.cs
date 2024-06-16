@@ -5,19 +5,18 @@ using System.Xml.Serialization;
 
 namespace OhYeahForms
 {
-    // Componente base
     [XmlInclude(typeof(Permiso))]
     [XmlInclude(typeof(Rol))]
     abstract class Autorizacion
     {
         public string Nombre { get; set; }
-        public abstract void MostrarPermisos();
-        public abstract void AsignarEventoClick
-            (
+        public abstract void HabilitarPermiso(
+            MenuStrip menuStrip,
+            Dictionary<string, Type> formularios,
+            List<Form> activos);
+        public abstract void AsignarFormulario(
             ToolStripMenuItem menuItem,
-            Dictionary<string, Type> formAsignaciones,
-            List<Form> formAbiertos
-            );
+            Dictionary<string, Type> formularios,
+            List<Form> activos);
     }
-
 }

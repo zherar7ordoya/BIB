@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace OhYeahForms
 {
     public partial class MainForm : Form
     {
-        private readonly List<Form> formAbiertos = new List<Form>();
+        private readonly List<Form> activos = new List<Form>();
 
         public MainForm()
         {
@@ -16,7 +17,7 @@ namespace OhYeahForms
 
         private void InicializarMenu()
         {
-            // Crear menú
+            // Crear los ítems de lo que será el menú principal
             MenuStrip menuStrip = new MenuStrip();
             ToolStripMenuItem menuVentas = new ToolStripMenuItem("Acceso a Ventas");
             ToolStripMenuItem menuOrdenes = new ToolStripMenuItem("Acceso a Órdenes");
@@ -28,6 +29,8 @@ namespace OhYeahForms
 
             // Añadir Ventas al menú principal
             menuStrip.Items.Add(menuVentas);
+
+            // Asignar el menú principal al formulario
             MainMenuStrip = menuStrip;
             Controls.Add(menuStrip);
 
@@ -49,17 +52,14 @@ namespace OhYeahForms
             gerente.AgregarPermiso(cajero);
 
             // Diccionario para mapear permisos a formularios
-            // (cada permiso que es una hoja tiene un formulario asociado)
-            var formAsignaciones = new Dictionary<string, Type>
+            var formularios = new Dictionary<string, Type>
             {
-                //{ "Acceso a Ventas", typeof(FormVentas) }, // Aunque Ventas no abrirá un formulario, esto es para ejemplo.
                 { "Acceso a Órdenes", typeof(FormOrdenes) },
                 { "Acceso a Facturación", typeof(FormFacturacion) }
             };
 
-            // Suponiendo que el usuario es un gerente
-            //gerente.Habilitar(menuStrip, formAsignaciones, formAbiertos);
-            cajero.Habilitar(menuStrip, formAsignaciones, formAbiertos);
+            // Suponiendo que el usuario es...
+            cajero.HabilitarPermiso(menuStrip, formularios, activos);
         }
     }
 }

@@ -5,11 +5,10 @@ using System.Xml.Serialization;
 
 namespace OhYeahForms
 {
-    // Compuesto
     class Rol : Autorizacion
     {
         [XmlArray("Permisos"), XmlArrayItem(typeof(Autorizacion))]
-        readonly List<Autorizacion> _permisos = new List<Autorizacion>();
+        public readonly List<Autorizacion> Permisos = new List<Autorizacion>();
 
         public Rol(string nombre)
         {
@@ -18,58 +17,34 @@ namespace OhYeahForms
 
         public void AgregarPermiso(Autorizacion permiso)
         {
-            _permisos.Add(permiso);
+            Permisos.Add(permiso);
         }
 
         public void RemoverPermiso(Autorizacion permiso)
         {
-            _permisos.Remove(permiso);
+            Permisos.Remove(permiso);
         }
 
-        // En el caso de un Rol, MostrarPermisos llamará recursivamente a
-        // MostrarPermisos de cada autorización contenida en él (que puede ser
-        // otro Rol o un Permiso).
-        public override void MostrarPermisos()
-        {
-            MessageBox.Show("\nRol: " + Nombre);
-            foreach (var permiso in _permisos)
-            {
-                permiso.MostrarPermisos();
-            }
-        }
-
-        public override void AsignarEventoClick
-            (
-            ToolStripMenuItem menuItem,
-            Dictionary<string, Type> formAsignaciones,
-            List<Form> formAbiertos
-            )
-        {
-            foreach (var permiso in _permisos)
-            {
-                permiso.AsignarEventoClick(menuItem, formAsignaciones, formAbiertos);
-            }
-        }
-
-        public void Habilitar
-            (
+        public override void HabilitarPermiso(
             MenuStrip menuStrip,
-            Dictionary<string, Type> formAsignaciones,
-            List<Form> formAbiertos
-            )
+            Dictionary<string, Type> formularios,
+            List<Form> activos)
         {
-            foreach (var permiso in _permisos)
+            foreach (var permiso in Permisos)
             {
-                if (permiso is Permiso)
-                {
-                    (permiso as Permiso).Habilitar(menuStrip, formAsignaciones, formAbiertos);
-                }
-                else if (permiso is Rol)
-                {
-                    (permiso as Rol).Habilitar(menuStrip, formAsignaciones, formAbiertos);
-                }
+                permiso.HabilitarPermiso(menuStrip, formularios, activos);
+            }
+        }
+
+        public override void AsignarFormulario(
+            ToolStripMenuItem menuItem,
+            Dictionary<string, Type> formularios,
+            List<Form> activos)
+        {
+            foreach (var permiso in Permisos)
+            {
+                permiso.AsignarFormulario(menuItem, formularios, activos);
             }
         }
     }
-
 }

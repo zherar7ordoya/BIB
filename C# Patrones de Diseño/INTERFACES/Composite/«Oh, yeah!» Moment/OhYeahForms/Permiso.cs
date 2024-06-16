@@ -5,7 +5,6 @@ using System.Windows.Forms;
 
 namespace OhYeahForms
 {
-    // Hoja
     class Permiso : Autorizacion
     {
         public Permiso(string nombre)
@@ -13,44 +12,60 @@ namespace OhYeahForms
             Nombre = nombre;
         }
 
-        public override void MostrarPermisos()
+        public override void HabilitarPermiso(
+            MenuStrip menuStrip,
+            Dictionary<string, Type> formularios,
+            List<Form> activos)
         {
-            MessageBox.Show(Nombre);
+            foreach (ToolStripMenuItem item in menuStrip.Items)
+            {
+                HabilitarItem(item, formularios, activos);
+            }
         }
 
-        public override void AsignarEventoClick
-            (
+        private void HabilitarItem(
             ToolStripMenuItem menuItem,
-            Dictionary<string, Type> formAsignaciones,
-            List<Form> formAbiertos
-            )
+            Dictionary<string, Type> formularios,
+            List<Form> activos)
+        {
+            if (menuItem.Text == Nombre)
+            {
+                AsignarFormulario(menuItem, formularios, activos);
+            }
+            else
+            {
+                foreach (ToolStripMenuItem subItem in menuItem.DropDownItems)
+                {
+                    HabilitarItem(subItem, formularios, activos);
+                }
+            }
+        }
+
+        public override void AsignarFormulario(
+            ToolStripMenuItem menuItem,
+            Dictionary<string, Type> formularios,
+            List<Form> activos)
         {
             if (menuItem.DropDownItems.Count == 0)
             {
                 menuItem.Click += (sender, args) =>
                 {
-                    if (formAsignaciones.ContainsKey(Nombre))
+                    if (formularios.ContainsKey(Nombre))
                     {
-                        Type formType = formAsignaciones[Nombre];
-                        Form openForm = formAbiertos.FirstOrDefault(f => f.GetType() == formType);
+                        Type formulario = formularios[Nombre];
+                        Form activo = activos.FirstOrDefault(x => x.GetType() == formulario);
 
-                        // Antes de crear una nueva instancia de un formulario, se
-                        // verifica si ya existe una instancia abierta de ese tipo.
-                        // Si ya existe, se lleva ese formulario al frente(BringToFront).
-                        // Si no existe, se crea una nueva instancia, se añade a
-                        // la lista openForms, y se configura para que se elimine
-                        // de la lista al cerrarse.
-                        if (openForm == null)
+                        if (activo == null)
                         {
-                            Form form = (Form)Activator.CreateInstance(formType);
+                            Form form = (Form)Activator.CreateInstance(formulario);
                             form.MdiParent = Form.ActiveForm;
-                            form.FormClosed += (s, e) => formAbiertos.Remove(form);
-                            formAbiertos.Add(form);
+                            form.FormClosed += (s, e) => activos.Remove(form);
+                            activos.Add(form);
                             form.Show();
                         }
                         else
                         {
-                            openForm.BringToFront();
+                            activo.BringToFront();
                         }
                     }
                     else
@@ -60,39 +75,5 @@ namespace OhYeahForms
                 };
             }
         }
-
-        public void Habilitar
-            (
-            MenuStrip menuStrip,
-            Dictionary<string, Type> formAsignaciones,
-            List<Form> formAbiertos
-            )
-        {
-            foreach (ToolStripMenuItem item in menuStrip.Items)
-            {
-                HabilitarItem(item, formAsignaciones, formAbiertos);
-            }
-        }
-
-        // Se asegura de habilitar y asignar eventos de clic solo a los ítems de menú que son hojas
-        private void HabilitarItem
-            (
-            ToolStripMenuItem menuItem,
-            Dictionary<string, Type> formAsignaciones,
-            List<Form> formAbiertos
-            )
-        {
-            if (menuItem.Text == Nombre)
-            {
-                //menuItem.Visible = true;
-                AsignarEventoClick(menuItem, formAsignaciones, formAbiertos);
-            }
-
-            foreach (ToolStripMenuItem subItem in menuItem.DropDownItems)
-            {
-                HabilitarItem(subItem, formAsignaciones, formAbiertos);
-            }
-        }
     }
-
 }
