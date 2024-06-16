@@ -59,7 +59,7 @@ namespace OhYeahForms
             };
 
             // Suponiendo que el usuario es...
-            cajero.HabilitarPermiso(menuStrip, formularios, activos);
+            gerente.HabilitarPermiso(menuStrip, formularios, activos);
         }
     }
 }
