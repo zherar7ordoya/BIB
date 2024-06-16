@@ -1,7 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Windows.Forms;
+using System;
+using System.Linq;
 
 namespace OhYeahForms
 {
@@ -12,10 +12,7 @@ namespace OhYeahForms
             Nombre = nombre;
         }
 
-        public override void HabilitarPermiso(
-            MenuStrip menuStrip,
-            Dictionary<string, Type> formularios,
-            List<Form> activos)
+        public override void HabilitarPermiso(MenuStrip menuStrip, Dictionary<string, Type> formularios, List<Form> activos)
         {
             foreach (ToolStripMenuItem item in menuStrip.Items)
             {
@@ -23,10 +20,7 @@ namespace OhYeahForms
             }
         }
 
-        private void HabilitarItem(
-            ToolStripMenuItem menuItem,
-            Dictionary<string, Type> formularios,
-            List<Form> activos)
+        private void HabilitarItem(ToolStripMenuItem menuItem, Dictionary<string, Type> formularios, List<Form> activos)
         {
             if (menuItem.Text == Nombre)
             {
@@ -41,23 +35,18 @@ namespace OhYeahForms
             }
         }
 
-        public override void AsignarFormulario(
-            ToolStripMenuItem menuItem,
-            Dictionary<string, Type> formularios,
-            List<Form> activos)
+        public override void AsignarFormulario(ToolStripMenuItem menuItem, Dictionary<string, Type> formularios, List<Form> activos)
         {
             if (menuItem.DropDownItems.Count == 0)
             {
                 menuItem.Click += (sender, args) =>
                 {
-                    if (formularios.ContainsKey(Nombre))
+                    if (formularios.TryGetValue(Nombre, out var formulario))
                     {
-                        Type formulario = formularios[Nombre];
-                        Form activo = activos.FirstOrDefault(x => x.GetType() == formulario);
-
+                        var activo = activos.FirstOrDefault(x => x.GetType() == formulario);
                         if (activo == null)
                         {
-                            Form form = (Form)Activator.CreateInstance(formulario);
+                            var form = (Form)Activator.CreateInstance(formulario);
                             form.MdiParent = Form.ActiveForm;
                             form.FormClosed += (s, e) => activos.Remove(form);
                             activos.Add(form);
@@ -70,7 +59,7 @@ namespace OhYeahForms
                     }
                     else
                     {
-                        MessageBox.Show("Formulario no asignado para: " + Nombre);
+                        MessageBox.Show($"Formulario no asignado para: {Nombre}");
                     }
                 };
             }

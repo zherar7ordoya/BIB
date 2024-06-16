@@ -1,7 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Windows.Forms;
+using System;
 
 namespace OhYeahForms
 {
@@ -17,49 +16,64 @@ namespace OhYeahForms
 
         private void InicializarMenu()
         {
-            // Crear los ítems de lo que será el menú principal
-            MenuStrip menuStrip = new MenuStrip();
-            ToolStripMenuItem menuVentas = new ToolStripMenuItem("Acceso a Ventas");
-            ToolStripMenuItem menuOrdenes = new ToolStripMenuItem("Acceso a Órdenes");
-            ToolStripMenuItem menuFacturacion = new ToolStripMenuItem("Acceso a Facturación");
+            var menuStrip = new MenuStrip();
+            var menuVentas = new ToolStripMenuItem("Acceso a Ventas");
+            var menuOrdenes = new ToolStripMenuItem("Acceso a Órdenes");
+            var menuFacturacion = new ToolStripMenuItem("Acceso a Facturación");
 
-            // Añadir submenús a Ventas
-            menuVentas.DropDownItems.Add(menuOrdenes);
-            menuVentas.DropDownItems.Add(menuFacturacion);
-
-            // Añadir Ventas al menú principal
+            menuVentas.DropDownItems.AddRange(new[] { menuOrdenes, menuFacturacion });
             menuStrip.Items.Add(menuVentas);
 
-            // Asignar el menú principal al formulario
             MainMenuStrip = menuStrip;
             Controls.Add(menuStrip);
 
-            // Crear permisos y roles
-            Permiso venta = new Permiso("Acceso a Ventas");
-            Permiso orden = new Permiso("Acceso a Órdenes");
-            Permiso facturacion = new Permiso("Acceso a Facturación");
+            var permisos = CrearPermisos();
+            var roles = CrearRoles(permisos);
+            var formularios = CrearDiccionarioFormularios();
 
-            Rol vendedor = new Rol("Vendedor");
-            vendedor.AgregarPermiso(venta);
-            vendedor.AgregarPermiso(orden);
+            // Assuming the user is a gerente
+            roles["Gerente"].HabilitarPermiso(menuStrip, formularios, activos);
+        }
 
-            Rol cajero = new Rol("Cajero");
-            cajero.AgregarPermiso(venta);
-            cajero.AgregarPermiso(facturacion);
+        private Dictionary<string, Permiso> CrearPermisos()
+        {
+            return new Dictionary<string, Permiso>
+            {
+                { "Acceso a Ventas", new Permiso("Acceso a Ventas") },
+                { "Acceso a Órdenes", new Permiso("Acceso a Órdenes") },
+                { "Acceso a Facturación", new Permiso("Acceso a Facturación") }
+            };
+        }
 
-            Rol gerente = new Rol("Gerente");
+        private Dictionary<string, Rol> CrearRoles(Dictionary<string, Permiso> permisos)
+        {
+            var vendedor = new Rol("Vendedor");
+            vendedor.AgregarPermiso(permisos["Acceso a Ventas"]);
+            vendedor.AgregarPermiso(permisos["Acceso a Órdenes"]);
+
+            var cajero = new Rol("Cajero");
+            cajero.AgregarPermiso(permisos["Acceso a Ventas"]);
+            cajero.AgregarPermiso(permisos["Acceso a Facturación"]);
+
+            var gerente = new Rol("Gerente");
             gerente.AgregarPermiso(vendedor);
             gerente.AgregarPermiso(cajero);
 
-            // Diccionario para mapear permisos a formularios
-            var formularios = new Dictionary<string, Type>
+            return new Dictionary<string, Rol>
+            {
+                { "Vendedor", vendedor },
+                { "Cajero", cajero },
+                { "Gerente", gerente }
+            };
+        }
+
+        private Dictionary<string, Type> CrearDiccionarioFormularios()
+        {
+            return new Dictionary<string, Type>
             {
                 { "Acceso a Órdenes", typeof(FormOrdenes) },
                 { "Acceso a Facturación", typeof(FormFacturacion) }
             };
-
-            // Suponiendo que el usuario es...
-            gerente.HabilitarPermiso(menuStrip, formularios, activos);
         }
     }
 }
