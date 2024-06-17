@@ -11,7 +11,11 @@ namespace OhYeahForms
     {
         public string Nombre { get; set; }
 
-        public abstract void HabilitarPermiso(MenuStrip menuStrip, Dictionary<string, Type> formularios, List<Form> activos);
-        public abstract void AsignarFormulario(ToolStripMenuItem menuItem, Dictionary<string, Type> formularios, List<Form> activos);
+        public abstract void HabilitarPermiso(MenuStrip menuStrip,
+                                              Dictionary<string, Type> formulariosMapeables,
+                                              List<Form> formulariosActivos);
+        public abstract void AsignarFormulario(ToolStripMenuItem menuItem,
+                                               Dictionary<string, Type> formulariosMapeables,
+                                               List<Form> formulariosActivos);
     }
 }

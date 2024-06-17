@@ -12,49 +12,58 @@ namespace OhYeahForms
             Nombre = nombre;
         }
 
-        public override void HabilitarPermiso(MenuStrip menuStrip, Dictionary<string, Type> formularios, List<Form> activos)
+        public override void HabilitarPermiso(MenuStrip menuStrip,
+                                              Dictionary<string, Type> formulariosMapeables,
+                                              List<Form> formulariosActivos)
         {
             foreach (ToolStripMenuItem item in menuStrip.Items)
             {
-                HabilitarItem(item, formularios, activos);
+                HabilitarItem(item, formulariosMapeables, formulariosActivos);
             }
         }
 
-        private void HabilitarItem(ToolStripMenuItem menuItem, Dictionary<string, Type> formularios, List<Form> activos)
+        private void HabilitarItem(ToolStripMenuItem menuItem,
+                                   Dictionary<string, Type> formulariosMapeables,
+                                   List<Form> formulariosActivos)
         {
             if (menuItem.Text == Nombre)
             {
-                AsignarFormulario(menuItem, formularios, activos);
+                menuItem.Visible = true;
+                AsignarFormulario(menuItem, formulariosMapeables, formulariosActivos);
             }
             else
             {
                 foreach (ToolStripMenuItem subItem in menuItem.DropDownItems)
                 {
-                    HabilitarItem(subItem, formularios, activos);
+                    HabilitarItem(subItem, formulariosMapeables, formulariosActivos);
                 }
             }
         }
 
-        public override void AsignarFormulario(ToolStripMenuItem menuItem, Dictionary<string, Type> formularios, List<Form> activos)
+        public override void AsignarFormulario(ToolStripMenuItem menuItem,
+                                               Dictionary<string, Type> formulariosMapeables,
+                                               List<Form> formulariosActivos)
         {
             if (menuItem.DropDownItems.Count == 0)
             {
                 menuItem.Click += (sender, args) =>
                 {
-                    if (formularios.TryGetValue(Nombre, out var formulario))
+                    if (formulariosMapeables.TryGetValue(Nombre, out var formularioMapeable))
                     {
-                        var activo = activos.FirstOrDefault(x => x.GetType() == formulario);
-                        if (activo == null)
+                        var formularioActivo = formulariosActivos
+                        .FirstOrDefault(x => x.GetType() == formularioMapeable);
+
+                        if (formularioActivo == null)
                         {
-                            var form = (Form)Activator.CreateInstance(formulario);
-                            form.MdiParent = Form.ActiveForm;
-                            form.FormClosed += (s, e) => activos.Remove(form);
-                            activos.Add(form);
-                            form.Show();
+                            var formulario = (Form)Activator.CreateInstance(formularioMapeable);
+                            formulario.MdiParent = Form.ActiveForm;
+                            formulario.FormClosed += (s, e) => formulariosActivos.Remove(formulario);
+                            formulariosActivos.Add(formulario);
+                            formulario.Show();
                         }
                         else
                         {
-                            activo.BringToFront();
+                            formularioActivo.BringToFront();
                         }
                     }
                     else

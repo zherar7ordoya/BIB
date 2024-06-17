@@ -6,7 +6,7 @@ namespace OhYeahForms
 {
     public partial class MainForm : Form
     {
-        private readonly List<Form> activos = new List<Form>();
+        private readonly List<Form> formulariosActivos = new List<Form>();
 
         public MainForm()
         {
@@ -16,23 +16,60 @@ namespace OhYeahForms
 
         private void InicializarMenu()
         {
-            var menuStrip = new MenuStrip();
-            var menuVentas = new ToolStripMenuItem("Acceso a Ventas");
-            var menuOrdenes = new ToolStripMenuItem("Acceso a Órdenes");
-            var menuFacturacion = new ToolStripMenuItem("Acceso a Facturación");
-
-            menuVentas.DropDownItems.AddRange(new[] { menuOrdenes, menuFacturacion });
-            menuStrip.Items.Add(menuVentas);
-
+            var menuStrip = CrearMenu();
             MainMenuStrip = menuStrip;
             Controls.Add(menuStrip);
 
             var permisos = CrearPermisos();
             var roles = CrearRoles(permisos);
-            var formularios = CrearDiccionarioFormularios();
+            var formulariosMapeables = CrearFormulariosMapeables();
 
-            // Assuming the user is a gerente
-            roles["Gerente"].HabilitarPermiso(menuStrip, formularios, activos);
+            // Asumiendo que el usuario es un...
+            roles["Cajero"].HabilitarPermiso(menuStrip,
+                                              formulariosMapeables,
+                                              formulariosActivos);
+        }
+
+        private MenuStrip CrearMenu()
+        {
+            var menuStrip = new MenuStrip();
+
+            // Siempre visibles (es decir, no dependen de roles) <== Manual
+            var menuArchivo = new ToolStripMenuItem("Archivo");
+            var menuAcercaDe = new ToolStripMenuItem("Acerca de");
+
+            //||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+
+            // Ventas
+            var menuVentas = new ToolStripMenuItem("Acceso a Ventas");
+            menuVentas.Visible = false;
+
+            var menuOrdenes = new ToolStripMenuItem("Acceso a Órdenes");
+            menuOrdenes.Visible = false;
+
+            var menuFacturacion = new ToolStripMenuItem("Acceso a Facturación");
+            menuFacturacion.Visible = false;
+
+            menuVentas.DropDownItems.AddRange(new[]
+            {
+                menuOrdenes,
+                menuFacturacion
+            });
+
+            // Logística
+            var menuLogistica = new ToolStripMenuItem("Acceso a Logística");
+            menuLogistica.Visible = false;
+
+            // Menú general
+
+            menuStrip.Items.AddRange(new[] {
+                menuArchivo,
+                menuVentas,
+                menuLogistica,
+                menuAcercaDe
+            });
+
+            return menuStrip;
         }
 
         private Dictionary<string, Permiso> CrearPermisos()
@@ -41,7 +78,8 @@ namespace OhYeahForms
             {
                 { "Acceso a Ventas", new Permiso("Acceso a Ventas") },
                 { "Acceso a Órdenes", new Permiso("Acceso a Órdenes") },
-                { "Acceso a Facturación", new Permiso("Acceso a Facturación") }
+                { "Acceso a Facturación", new Permiso("Acceso a Facturación") },
+                { "Acceso a Logística", new Permiso("Acceso a Logística") }
             };
         }
 
@@ -58,6 +96,7 @@ namespace OhYeahForms
             var gerente = new Rol("Gerente");
             gerente.AgregarPermiso(vendedor);
             gerente.AgregarPermiso(cajero);
+            gerente.AgregarPermiso(permisos["Acceso a Logística"]);
 
             return new Dictionary<string, Rol>
             {
@@ -67,7 +106,7 @@ namespace OhYeahForms
             };
         }
 
-        private Dictionary<string, Type> CrearDiccionarioFormularios()
+        private Dictionary<string, Type> CrearFormulariosMapeables()
         {
             return new Dictionary<string, Type>
             {

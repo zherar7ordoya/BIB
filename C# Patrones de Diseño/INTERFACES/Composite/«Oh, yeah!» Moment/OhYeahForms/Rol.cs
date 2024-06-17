@@ -19,19 +19,27 @@ namespace OhYeahForms
 
         public void RemoverPermiso(Autorizacion permiso) => Permisos.Remove(permiso);
 
-        public override void HabilitarPermiso(MenuStrip menuStrip, Dictionary<string, Type> formularios, List<Form> activos)
+        public override void HabilitarPermiso(MenuStrip menuStrip,
+                                              Dictionary<string, Type> formulariosMapeables,
+                                              List<Form> formulariosActivos)
         {
             foreach (var permiso in Permisos)
             {
-                permiso.HabilitarPermiso(menuStrip, formularios, activos);
+                permiso.HabilitarPermiso(menuStrip,
+                                         formulariosMapeables,
+                                         formulariosActivos);
             }
         }
 
-        public override void AsignarFormulario(ToolStripMenuItem menuItem, Dictionary<string, Type> formularios, List<Form> activos)
+        public override void AsignarFormulario(ToolStripMenuItem menuItem,
+                                               Dictionary<string, Type> formulariosMapeables,
+                                               List<Form> formulariosActivos)
         {
             foreach (var permiso in Permisos)
             {
-                permiso.AsignarFormulario(menuItem, formularios, activos);
+                permiso.AsignarFormulario(menuItem,
+                                          formulariosMapeables,
+                                          formulariosActivos);
             }
         }
     }
