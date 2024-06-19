@@ -13,10 +13,10 @@ namespace TCTD2020.ArquitecturaCapasV2.BLL
         public UsuarioBLL()
         {
             _crud = new UsuarioDAL();
-           SimularDatos();
+            SimularDatos();
         }
 
-        
+
         private void SimularDatos()
         {
             _bllFamilias.SimularDatos();
@@ -49,9 +49,9 @@ namespace TCTD2020.ArquitecturaCapasV2.BLL
                 Email = "admin@mail.com",
                 Password = Encriptador.Hash("123")
             };
-            familia = _bllFamilias.GetAll().Where(x => x.Nombre.Contains("Administradores")).FirstOrDefault() ;
+            familia = _bllFamilias.GetAll().Where(x => x.Nombre.Contains("Administradores")).FirstOrDefault();
             if (familia != null) usuario.Permisos.Add(familia);
-       
+
             _crud.Save(usuario);
         }
 
@@ -59,28 +59,36 @@ namespace TCTD2020.ArquitecturaCapasV2.BLL
         {
 
             if (SingletonSesion.Instancia.IsLogged())
-                throw new Exception("Ya hay una sesión iniciada"); //doble validación, anulo en boton en formulario y valido en la bll
-
-
-            var user = _crud.GetAll().Where(u => u.Email.Equals(email)).FirstOrDefault();
-            if (user == null) throw new LoginException(LoginResult.InvalidUsername);
-
-            if (!Encriptador.Hash(password).Equals(user.Password))
-                throw new LoginException(LoginResult.InvalidPassword);
-            else
             {
-                SingletonSesion.Instancia.Login(user);
-                 return LoginResult.ValidUser;
+                throw new Exception("Ya hay una sesión iniciada"); //doble validación, anulo en boton en formulario y valido en la bll
             }
 
-           
+            var user = _crud.GetAll().Where(u => u.Email.Equals(email)).FirstOrDefault();
+
+            if (user == null)
+            {
+                throw new LoginException(LoginResult.InvalidUsername);
+            }
+
+            if (Encriptador.Hash(password).Equals(user.Password))
+            {
+                SingletonSesion.Instancia.Login(user);
+                return LoginResult.ValidUser;
+            }
+            else
+            {
+                throw new LoginException(LoginResult.InvalidPassword);
+            }
+
+
         }
 
         public void Logout()
         {
-              if (!SingletonSesion.Instancia.IsLogged())
+            if (!SingletonSesion.Instancia.IsLogged())
+            {
                 throw new Exception("No hay sesión iniciada"); //doble validación, anulo en boton en formulario y valido en la bll
-
+            }
 
             SingletonSesion.Instancia.Logout();
         }

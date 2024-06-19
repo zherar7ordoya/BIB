@@ -5,12 +5,12 @@ using TCTD2020.ArquitecturaCapasV2.Interfaces;
 
 namespace TCTD2020.ArquitecturaCapasV2.BLL
 {
-    public abstract class AbstractBLL<T> : ICrud<T> where T:IEntity
+    public abstract class AbstractBLL<T> : ICrud<T> where T : IEntity
     {
 
         protected ICrud<T> _crud;
 
-   
+
         public void Delete(T entity)
         {
             _crud.Delete(entity);
@@ -29,7 +29,7 @@ namespace TCTD2020.ArquitecturaCapasV2.BLL
         public void Save(T entity)
         {
             _crud.Save(entity);
-                 
+
         }
     }
 }

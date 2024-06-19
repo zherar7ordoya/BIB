@@ -99,19 +99,19 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\TCTD2020.ArquitecturaCapasV2.BE\BEL.csproj">
+    <ProjectReference Include="..\BEL\BEL.csproj">
       <Project>{CA1CCD91-A3B9-4085-BC1D-36477FFD782C}</Project>
       <Name>BEL</Name>
     </ProjectReference>
-    <ProjectReference Include="..\TCTD2020.ArquitecturaCapasV2.BLL\BLL.csproj">
+    <ProjectReference Include="..\BLL\BLL.csproj">
       <Project>{67DAEB88-02B3-4FE8-9773-4DF00F649365}</Project>
       <Name>BLL</Name>
     </ProjectReference>
-    <ProjectReference Include="..\TCTD2020.ArquitecturaCapasV2.Interfaceas\Interfaces.csproj">
+    <ProjectReference Include="..\Interfaces\Interfaces.csproj">
       <Project>{37F7D2AF-47BB-4446-B4E7-3B1173BD1C4D}</Project>
       <Name>Interfaces</Name>
     </ProjectReference>
-    <ProjectReference Include="..\TCTD2020.ArquitecturaCapasV2.Servicios\Servicios.csproj">
+    <ProjectReference Include="..\Servicios\Servicios.csproj">
       <Project>{8FFBD89D-43C3-428D-B770-5A0531BAC1EE}</Project>
       <Name>Servicios</Name>
     </ProjectReference>

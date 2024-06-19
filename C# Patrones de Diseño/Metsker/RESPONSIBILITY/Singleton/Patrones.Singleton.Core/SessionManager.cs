@@ -4,9 +4,12 @@ namespace Patrones.Singleton.Core
 {
     public class SessionManager
     {
+        // "Lock" se usa en entornos multi-hilo. Por lo tanto, no es necesario
+        // en este contexto (escritorio).
         private static readonly object _lock = new object();
-        private static SessionManager _session;
+        //**********************************************************************
 
+        private static SessionManager _session;
         public Usuario Usuario { get; set; }
         public DateTime FechaInicio { get; set; }
 
