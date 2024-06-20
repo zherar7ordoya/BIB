@@ -10,6 +10,8 @@ namespace ConEvento
     {
         public InteresanteAvanzado(string name) : base(name) { }
 
+        /***EN ESTA "VUELTA DE TUERCA", NO INVOCO NADA, LO MANEJO TODO AQUÍ.***/
+
         protected override void OnEstadoChanged(EventArgs e)
         {
             // Lógica adicional antes de que el evento sea disparado

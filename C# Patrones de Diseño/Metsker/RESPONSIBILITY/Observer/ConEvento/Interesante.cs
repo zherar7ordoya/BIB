@@ -13,13 +13,14 @@ namespace ConEvento
         public string Nombre { get; }
         private int _estado;
 
-        //--------------------------------------------------------------------\\
-        /*** /*** /*** EL SUJETO (INTERESANTE) TIENE QUE PROVEER: \*** \*** ***/
+        /*** -------------------------------------------------------------- ***\
+                      EL SUJETO (INTERESANTE) TIENE QUE PROVEER...
+        \*** -------------------------------------------------------------- ***/
 
-        // 1. Un tipo evento al que los observadores se suscriban.**************
+        // 1. Un (tipo) evento.
         public event EventHandler CambioHandler;
 
-        // 2. Una condición que llame al invocador del evento.******************
+        // 2. Una condición.
         public int Estado
         {
             get { return _estado; }
@@ -33,7 +34,7 @@ namespace ConEvento
             }
         }
 
-        // 3. Un método que invoque al evento.**********************************
+        // 3. Un invocador.
         protected virtual void OnEstadoChanged(EventArgs e)
         {
             CambioHandler?.Invoke(this, e);

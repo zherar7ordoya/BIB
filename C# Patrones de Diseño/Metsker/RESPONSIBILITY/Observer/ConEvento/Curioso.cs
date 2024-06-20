@@ -5,13 +5,17 @@ namespace ConEvento
     // Antes esta clase se llamaba Observador (Observer).
     public class Curioso
     {
+        /*** -------------------------------------------------------------- ***\
+                          EL OBSERVADOR (CURIOSO) TIENE QUE...
+        \*** -------------------------------------------------------------- ***/
+
+        // 1. Suscribirse.
         public void Suscribir(Interesante sujeto)
         {
             sujeto.CambioHandler += Reaccionar;
         }
 
-        /*** Está claro: El OBSERVADOR tiene que suscribirse y reaccionar ***/
-
+        // 2. Reaccionar.
         private void Reaccionar(object sender, EventArgs e)
         {
             if (sender is Interesante interesante)
