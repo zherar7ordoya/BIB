@@ -6,17 +6,21 @@ namespace ConEvento
     {
         static void Main()
         {
-            Subject sujeto = new Subject();
+            Interesante interes1 = new Interesante("Breaking Bad");
+            Interesante interes2 = new InteresanteAvanzado("Better Call Saul");
 
             // Instanciar el Observador
-            Observer observador = new Observer();
+            Curioso observador = new Curioso();
 
             // Suscribir el Observador al Sujeto
-            observador.Subscribe(sujeto);
+            observador.Suscribir(interes1);
+            observador.Suscribir(interes2);
 
-            sujeto.State = 1;  // Esto disparará el evento y notificará al observador
-            sujeto.State = 2;  // Esto también disparará el evento y notificará al observador
-            sujeto.State = 3;  // Y esto también
+            // Esto disparará el evento y notificará al observador
+            interes1.Estado = 1;
+            interes2.Estado = 2;
+            interes1.Estado = 3;
+            interes2.Estado = 4;
 
             Console.ReadKey();
         }

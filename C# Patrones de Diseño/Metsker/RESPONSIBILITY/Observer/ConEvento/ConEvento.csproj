@@ -43,10 +43,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Observer.cs" />
+    <Compile Include="InteresanteAvanzado.cs" />
+    <Compile Include="Curioso.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Subject.cs" />
+    <Compile Include="Interesante.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
