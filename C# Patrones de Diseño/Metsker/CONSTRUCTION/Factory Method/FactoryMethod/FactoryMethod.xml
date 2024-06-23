@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>FactoryMethod</name>
+    </assembly>
+    <members>
+        <member name="T:FactoryMethod.PizzeriaItaliana">
+            <summary>
+            Clase que representa una pizzeria italiana.
+            </summary>
+        </member>
+        <member name="M:FactoryMethod.PizzeriaItaliana.CrearPizza(System.String)">
+            <summary>
+            Crea una pizza de acuerdo al tipo.
+            </summary>
+            <param name="tipo"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>
