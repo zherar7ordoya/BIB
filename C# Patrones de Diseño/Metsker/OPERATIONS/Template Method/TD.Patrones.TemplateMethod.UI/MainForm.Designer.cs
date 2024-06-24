@@ -1,6 +1,6 @@
 ﻿namespace TD.Patrones.TemplateMethod.UI
 {
-    partial class Form1
+    partial class MainForm
     {
         /// <summary>
         /// Variable del diseñador necesaria.
@@ -80,7 +80,7 @@
             this.cmdSolicitar.TabIndex = 4;
             this.cmdSolicitar.Text = "Solicitar";
             this.cmdSolicitar.UseVisualStyleBackColor = true;
-            this.cmdSolicitar.Click += new System.EventHandler(this.cmdSolicitar_Click);
+            this.cmdSolicitar.Click += new System.EventHandler(this.SolicitarButton_Click);
             // 
             // resultado
             // 

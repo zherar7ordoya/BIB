@@ -3,9 +3,9 @@ namespace TD.PatronesTemplateMethod.Core
 {
     public abstract class Credito : Verificaciones
     {
-        public Credito(Cliente c)
+        public Credito(Cliente cliente)
         {
-            _cliente = c;
+            _cliente = cliente;
         }
 
         protected abstract  override string VerificarAcciones();

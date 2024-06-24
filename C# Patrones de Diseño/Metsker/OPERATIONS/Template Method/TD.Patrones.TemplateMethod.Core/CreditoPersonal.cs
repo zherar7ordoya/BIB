@@ -2,7 +2,7 @@
 {
     public class CreditoPersonal : Credito
     {
-        public CreditoPersonal(Cliente c) : base(c)
+        public CreditoPersonal(Cliente cliente) : base(cliente)
         {
         }
 

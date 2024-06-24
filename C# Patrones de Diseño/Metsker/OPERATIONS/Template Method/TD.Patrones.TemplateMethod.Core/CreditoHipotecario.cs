@@ -2,7 +2,7 @@
 {
     public class CreditoHipotecario : Credito
     {
-        public CreditoHipotecario(Cliente c) : base(c)
+        public CreditoHipotecario(Cliente cliente) : base(cliente)
         {
         }
 

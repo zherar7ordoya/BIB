@@ -8,7 +8,7 @@ namespace TD.PatronesTemplateMethod.Core
 
         public string[] Verificar()
         {
-            var msg = new List<string>
+            var mensajes = new List<string>
             {
                 $"Verificando crédito para {_cliente.Nombre}",
                 VerificarAcciones(),
@@ -16,8 +16,7 @@ namespace TD.PatronesTemplateMethod.Core
                 VerificarCreditos(),
                 VerificarIngresos()
             };
-
-            return msg.ToArray();
+            return mensajes.ToArray();
         }
 
         protected abstract string  VerificarAcciones();
