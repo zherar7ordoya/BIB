@@ -8,14 +8,14 @@ namespace Libreria
 
         public Memento SaveToMemento()
         {
-            Console.WriteLine("Originator: Guardando recuerdo: " + Nombre);
+            Console.WriteLine("Originator: Guardando momento: " + Nombre);
             return new Memento(Nombre);
         }
 
         public void RestoreToMemento(Memento memento)
         {
             Nombre = memento.Estado;
-            Console.WriteLine("Originator: Recuperando recuerdo: " + Nombre);
+            Console.WriteLine("Originator: Recuperando momento: " + Nombre);
         }
     }
 }

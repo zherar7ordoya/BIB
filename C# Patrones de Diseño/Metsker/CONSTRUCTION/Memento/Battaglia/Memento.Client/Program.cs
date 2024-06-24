@@ -12,20 +12,20 @@ namespace Cliente
         {
             var persona = new Persona
             {
-                Nombre = "Pepe"
+                Nombre = "Battaglia"
             };
             caretaker.Add(persona.SaveToMemento());
 
             persona.Nombre = "Gerardo";
             caretaker.Add(persona.SaveToMemento());
             
-            persona.Nombre = "Agustín";
+            persona.Nombre = "Petricor";
             caretaker.Add(persona.SaveToMemento());
 
             Memento memento;
-            Console.WriteLine("Viendo recuerdo 1: " + caretaker.GetMemento(0).Estado);
-            Console.WriteLine("Viendo recuerdo 2: " + caretaker.GetMemento(1).Estado);
-            Console.WriteLine("Viendo recuerdo 3: " + caretaker.GetMemento(2).Estado);
+            Console.WriteLine("Viendo momento 1: " + caretaker.GetMemento(0).Estado);
+            Console.WriteLine("Viendo momento 2: " + caretaker.GetMemento(1).Estado);
+            Console.WriteLine("Viendo momento 3: " + caretaker.GetMemento(2).Estado);
 
             memento = caretaker.GetMemento(0);
             persona.RestoreToMemento(memento);
