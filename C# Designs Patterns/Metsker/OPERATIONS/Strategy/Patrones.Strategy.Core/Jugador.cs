@@ -1,27 +1,23 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Patrones.Strategy.Core
 {
     public class Jugador
     {
-        Arma _estrategia;
-        public void CambiarEstrategia(Arma estrategia)
+        Arma _arma;
+
+        // Originalmente, este método se llamaba "CambiarEstrategia".
+        public void CambiarArma(Arma arma)
         {
-            if (estrategia == null) throw new Exception("La estrategia de disparo no puede ser null");
-            _estrategia = estrategia;
+            _arma = arma ?? throw new Exception("La estrategia de disparo no puede ser null");
         }
 
         public string Nombre { get; set; }
 
         public string Disparar()
         {
-            if (_estrategia == null) return "Arma no disponible";
-            return _estrategia.Disparar();
+            if (_arma == null) return "Arma no seleccionada";
+            return _arma.Disparar();
         }
     }
 }

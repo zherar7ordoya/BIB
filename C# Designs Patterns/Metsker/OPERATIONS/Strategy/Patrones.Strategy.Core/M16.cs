@@ -1,10 +1,10 @@
 ﻿namespace Patrones.Strategy.Core
 {
-    public class Pistola : Arma
+    public class M16 : Arma
     {
         public override string Disparar()
         {
-            return "Disparando con una pistola";
+            return "Disparando con un M-16";
         }
     }
 }

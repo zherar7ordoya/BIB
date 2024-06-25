@@ -1,6 +1,6 @@
 ﻿namespace Patrones.Strategy.UI
 {
-    partial class Form1
+    partial class MainForm
     {
         /// <summary>
         /// Variable del diseñador necesaria.
@@ -62,7 +62,7 @@
             this.cmdSeleccionar.TabIndex = 2;
             this.cmdSeleccionar.Text = "Seleccionar Arma";
             this.cmdSeleccionar.UseVisualStyleBackColor = true;
-            this.cmdSeleccionar.Click += new System.EventHandler(this.cmdSeleccionar_Click);
+            this.cmdSeleccionar.Click += new System.EventHandler(this.SeleccionarButton_Click);
             // 
             // label2
             // 
@@ -90,7 +90,7 @@
             this.cmdDisparar.TabIndex = 5;
             this.cmdDisparar.Text = "Disparar";
             this.cmdDisparar.UseVisualStyleBackColor = true;
-            this.cmdDisparar.Click += new System.EventHandler(this.cmdDisparar_Click);
+            this.cmdDisparar.Click += new System.EventHandler(this.DispararButton_Click);
             // 
             // Form1
             // 

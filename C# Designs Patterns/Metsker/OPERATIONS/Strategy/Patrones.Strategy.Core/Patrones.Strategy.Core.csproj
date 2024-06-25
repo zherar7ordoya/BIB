@@ -42,7 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Ak47.cs" />
+    <Compile Include="M16.cs" />
     <Compile Include="Arma.cs" />
     <Compile Include="Bazooka.cs" />
     <Compile Include="Pistola.cs" />

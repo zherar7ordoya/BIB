@@ -1,19 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Patrones.Strategy.Core
+﻿namespace Patrones.Strategy.Core
 {
     public abstract class Arma
     {
-
-        public override string ToString()
-        {
-            return this.GetType().Name;
-        }
         public abstract string Disparar();
 
+        // Ahhh... de aquí sale el nombre del arma...
+        public override string ToString()
+        {
+            return GetType().Name;
+        }
     }
 }
