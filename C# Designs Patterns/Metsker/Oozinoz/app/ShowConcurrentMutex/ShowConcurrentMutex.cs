@@ -11,7 +11,7 @@ using BusinessCore;
 public class ShowConcurrentMutex 
 {
     private ArrayList _list;
-    private Object _mutex = new Object();
+    private object _mutex = new object();
 
     protected void DisplayUpMachines() 
     {

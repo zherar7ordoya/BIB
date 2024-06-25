@@ -9,23 +9,23 @@ namespace RobotInterpreter2
     /// </summary>
     public class Variable : Term 
     {
-        protected String _name;
+        protected string _name;
         protected Term _value;
 
         /// <summary>
         /// Construct a variable with the provided name.
         /// </summary>
         /// <param name="name">the variable's name</param>
-        public Variable(String name)
+        public Variable(string name)
         {
-            this._name = name;
+            _name = name;
         }
 
         /// <summary>
         /// Return this variable's name.
         /// </summary>
         /// <returns>this variable's name</returns>
-        public String Name
+        public string Name
         {
             get
             {
@@ -47,7 +47,7 @@ namespace RobotInterpreter2
         /// </summary>
         /// <param name="o">an object to compare to</param>
         /// <returns>true if the provided object equals this one</returns>
-        public override bool Equals(Object o)
+        public override bool Equals(object o)
         {
             if (o == this) 
             {
@@ -85,7 +85,7 @@ namespace RobotInterpreter2
         /// Returns a string description of this variable.
         /// </summary>
         /// <returns>a string description of this variable</returns>
-        public override String ToString()
+        public override string ToString()
         {
             return _name + ": " + _value;
         }

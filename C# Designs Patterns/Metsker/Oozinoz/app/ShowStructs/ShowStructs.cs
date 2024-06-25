@@ -10,7 +10,7 @@ public class ShowStructs
     {
         Point[] points = new Point[1];
         DateTime[] times = new DateTime[1];
-        String[] strings = new String[1];
+        string[] strings = new string[1];
 
         Console.WriteLine("Which of the following statements will cause this program to crash?");
         Console.WriteLine(points[0].ToString());

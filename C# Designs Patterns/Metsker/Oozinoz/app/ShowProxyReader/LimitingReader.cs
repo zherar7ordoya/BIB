@@ -22,7 +22,7 @@ public class LimitingReader : DataReaderProxy
     {
         get
         {
-            if (String.Compare(name, "apogee", true) == 0) // same 
+            if (string.Compare(name, "apogee", true) == 0) // same 
             {
                 return 0;
             }

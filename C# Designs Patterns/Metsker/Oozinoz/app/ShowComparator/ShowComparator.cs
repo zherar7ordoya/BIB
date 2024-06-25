@@ -27,7 +27,7 @@ public class ShowComparator
 
     private class ApogeeCompare : IComparer 
     {
-        public int Compare(Object o1, Object o2)
+        public int Compare(object o1, object o2)
         {
             Rocket r1 = (Rocket)o1;
             Rocket r2 = (Rocket)o2;

@@ -11,7 +11,7 @@ namespace Carousel2
         /// </summary>
         public override void Timeout(Door door)
         {
-            door.SetState(DoorState.CLOSING);
+            door.SetState(CLOSING);
         }
 
         /// <summary>
@@ -22,7 +22,7 @@ namespace Carousel2
         /// </summary>
         public override void Touch(Door door)
         {
-            door.SetState(DoorState.STAYOPEN);
+            door.SetState(STAYOPEN);
         }
     }
 }

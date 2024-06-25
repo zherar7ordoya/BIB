@@ -12,7 +12,7 @@ namespace Enumerators
         /// </summary>
         /// <param name="node">the node over which to "iterate"</param>
         /// <param name="visited">a collection of previously visited nodes</param>
-        public LeafEnumerator(Object node, Set visited) : base(node, visited)
+        public LeafEnumerator(object node, Set visited) : base(node, visited)
         {        
         }
 

@@ -26,9 +26,9 @@ namespace Filters
         public override void Write(char c) 
         {
             _writer.Write(inWhite
-                ? Char.ToUpper(c)
-                : Char.ToLower(c));
-            inWhite = Char.IsWhiteSpace(c) || c == '\"';
+                ? char.ToUpper(c)
+                : char.ToLower(c));
+            inWhite = char.IsWhiteSpace(c) || c == '\"';
         }
 
         /// <summary>

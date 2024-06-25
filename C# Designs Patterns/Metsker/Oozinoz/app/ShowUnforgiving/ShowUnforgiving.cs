@@ -8,7 +8,7 @@ public class ShowUnforgiving
 {    
     public static void Main() 
     {
-        String sample =
+        string sample =
             "Date, November 5, Headcount, 250, "
             + "City, Springfield, DollarsPerHead, 9.95, "
             + "HasSite, False";

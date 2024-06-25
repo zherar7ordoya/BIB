@@ -9,17 +9,17 @@ public delegate void ChangeHandler();
 /// </summary>
 public class PropertyHolder
 {
-    private Object _obj;
+    private object _obj;
     private PropertyInfo _prop;
     public event ChangeHandler Change;
 
-    public PropertyHolder (Object o, String propertyName)
+    public PropertyHolder (object o, string propertyName)
     {
         _obj = o;
         _prop = _obj.GetType().GetProperty(propertyName);
     }
 
-    public Object Value
+    public object Value
     {
         get
         { 

@@ -21,9 +21,9 @@ namespace Utilities
         /// <param name="dirName">neighboring directory name</param>
         /// <param name="fileName">file name</param>
         /// <returns>path name of neighboring file</returns>
-        public static String GetFileName(String dirName, String fileName)
+        public static string GetFileName(string dirName, string fileName)
         {
-            String path;
+            string path;
             // Can we find the file using the OOZINOZ environment variable?
             // NOTA: Esto no declara una variable global en C# sino que obtiene
             // el valor de una variable de entorno del sistema operativo.

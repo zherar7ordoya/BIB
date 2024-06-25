@@ -13,12 +13,12 @@ namespace Chemicals
         private static Hashtable _chemicals = new Hashtable();
         private class ChemicalImpl : IChemical
         {
-            private String _name;
-            private String _symbol;
+            private string _name;
+            private string _symbol;
             private double _atomicWeight;
 
             internal ChemicalImpl (
-                String name, String symbol, double atomicWeight)
+                string name, string symbol, double atomicWeight)
             {
                 _name = name;
                 _symbol = symbol;
@@ -54,7 +54,7 @@ namespace Chemicals
         /// </summary>
         /// <param name="name">the name of the interesting chemical</param>
         /// <returns>the IChemical object for the given name</returns>
-        public static IChemical GetChemical(String name)
+        public static IChemical GetChemical(string name)
         {
             return (IChemical) _chemicals[name.ToLower()];
         }

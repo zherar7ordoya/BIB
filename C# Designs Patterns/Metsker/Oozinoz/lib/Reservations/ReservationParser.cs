@@ -28,34 +28,34 @@ namespace Reservations
         /// the builder.
         /// </summary>
         /// <param name="s">the request</param>
-        public void Parse(String s)
+        public void Parse(string s)
         {         
             string[] tokens = new Regex(@",\s*").Split(s);
             for (int i = 0; i < tokens.Length; i += 2 ) 
             {
-                String type = tokens[i];
-                String val = tokens[i + 1];
+                string type = tokens[i];
+                string val = tokens[i + 1];
 
-                if (String.Compare("date", type, true) == 0)
+                if (string.Compare("date", type, true) == 0)
                 { 
                     DateTime d = DateTime.Parse(val);
                     _builder.Date = ReservationBuilder.Futurize(d);
                 }
-                else if (String.Compare("headcount", type, true) == 0)
+                else if (string.Compare("headcount", type, true) == 0)
                 {
-                    _builder.Headcount = Int32.Parse(val);
+                    _builder.Headcount = int.Parse(val);
                 }
-                else if (String.Compare("City", type, true) == 0)
+                else if (string.Compare("City", type, true) == 0)
                 {
                     _builder.City = val.Trim();
                 }
-                else if (String.Compare("DollarsPerHead", type, true) == 0)
+                else if (string.Compare("DollarsPerHead", type, true) == 0)
                 {
-                    _builder.DollarsPerHead = (decimal)Double.Parse(val);
+                    _builder.DollarsPerHead = (decimal)double.Parse(val);
                 }
-                else if (String.Compare("HasSite", type, true) == 0)
+                else if (string.Compare("HasSite", type, true) == 0)
                 {
-                    _builder.HasSite = Boolean.Parse(val);
+                    _builder.HasSite = bool.Parse(val);
                      
                 } 
             }

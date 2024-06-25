@@ -12,7 +12,7 @@ namespace Processes
         /// Create an alternation with the given name.
         /// </summary>
         /// <param name="name">the name of this process alternation</param>
-        public ProcessAlternation(String name) : base(name)
+        public ProcessAlternation(string name) : base(name)
         {
         }
 
@@ -23,7 +23,7 @@ namespace Processes
         /// <param name="name">the name of this alternation</param>
         /// <param name="subprocesses">the children of this alternation</param>
         public ProcessAlternation(
-            String name,
+            string name,
             params ProcessComponent[] subprocesses) : base (name, subprocesses)
         {
         }
@@ -34,7 +34,7 @@ namespace Processes
         /// </summary>
         /// <param name="name"></param>
         /// <param name="subprocesses"></param>
-        public ProcessAlternation(String name, IList subprocesses) : 
+        public ProcessAlternation(string name, IList subprocesses) : 
             base(name, subprocesses)
         {
         }

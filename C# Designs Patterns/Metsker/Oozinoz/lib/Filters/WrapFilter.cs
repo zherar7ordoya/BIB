@@ -23,7 +23,7 @@ namespace Filters
         /// <param name="width">where to wrap</param>
         public WrapFilter(ISimpleWriter writer, int width) : base (writer)
         {
-            this._width = width;
+            _width = width;
         }
 
         /// <summary>
@@ -116,7 +116,7 @@ namespace Filters
         /// <param name="c">the character to write</param>
         public override void Write(char c)  
         {
-            if (Char.IsWhiteSpace(c))
+            if (char.IsWhiteSpace(c))
             {
                 if (!_inWhite)
                 {

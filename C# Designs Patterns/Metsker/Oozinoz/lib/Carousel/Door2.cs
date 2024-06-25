@@ -52,7 +52,7 @@ namespace Carousel
 
         internal void SetState(DoorState state)
         {
-            this._state = state;
+            _state = state;
             if (Change != null) Change();
         }
 
@@ -60,7 +60,7 @@ namespace Carousel
         /// Return a textual description of the door's state.
         /// </summary>
         /// <returns>a textual description of the door's state</returns>
-        public String Status()
+        public string Status()
         {
             return _state.Status();
         }

@@ -16,7 +16,7 @@ namespace Recommendations
         /// </summary>
         /// <param name="c">the customer</param>
         /// <returns>a suggested firework</returns>
-        public static Object Advise(Customer c)
+        public static object Advise(Customer c)
         {
             return new Firework();
         }

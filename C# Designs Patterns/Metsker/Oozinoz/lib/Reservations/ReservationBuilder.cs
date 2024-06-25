@@ -12,7 +12,7 @@ namespace Reservations
         public static readonly decimal MINTOTAL = 495.95M;
 
         protected DateTime _date = DateTime.MinValue;
-        protected String _city;
+        protected string _city;
         protected int _headcount;
         protected decimal _dollarsPerHead;
         protected bool _hasSite;
@@ -45,7 +45,7 @@ namespace Reservations
         /// <summary>
         /// The city for a reservation
         /// </summary>
-        public String City
+        public string City
         {
             get { return _city; }
             set { _city = value;}

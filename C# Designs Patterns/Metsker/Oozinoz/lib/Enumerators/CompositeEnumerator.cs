@@ -17,7 +17,7 @@ namespace Enumerators
         /// <param name="node">the node to enumerate</param>
         /// <param name="children">the node's children</param>
         /// <param name="visited">a set to track visited nodes</param>
-        public CompositeEnumerator(Object node, IList children, Set visited) : base (node, visited)
+        public CompositeEnumerator(object node, IList children, Set visited) : base (node, visited)
         {
             _childEnumerator = children.GetEnumerator();
         }

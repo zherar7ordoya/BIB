@@ -2,9 +2,9 @@
 {
     public class Encendido : Estado
     {
-        public override void CambiarEstado(Switch sw)
+        public override void CambiarEstado(Switch cambio)
         {
-            sw.DefinirEstado(new StandBy());
+            cambio.DefinirEstado(new StandBy());
         }
 
         public override string InformarEstado()

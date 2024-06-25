@@ -52,9 +52,9 @@ namespace Functions
         /// Return a textual representation of this function.
         /// </summary>
         /// <returns>a textual representation of this function</returns>
-        public override String ToString()
+        public override string ToString()
         {
-            String name = this.GetType().Name;
+            string name = GetType().Name;
             StringBuilder buf = new StringBuilder(name);
             if (_sources.Length > 0)
             {

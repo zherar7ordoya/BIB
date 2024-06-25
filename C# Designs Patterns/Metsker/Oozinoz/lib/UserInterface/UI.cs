@@ -110,7 +110,7 @@ namespace UserInterface
         /// <returns>A group box panel with a title, wrapped around the 
         /// supplied control</returns>
         public virtual GroupBox CreateGroupBox(
-            String title, Control control)
+            string title, Control control)
         {
             GroupBox gb = new GroupBox();
             gb.Text = title;
@@ -202,7 +202,7 @@ namespace UserInterface
         /// </summary>
         /// <param name="imageName">the image to look up</param>
         /// <returns>the image</returns>
-        public static Image GetImage(String imageName) 
+        public static Image GetImage(string imageName) 
         {
             return Image.FromFile(FileFinder.GetFileName("images", imageName));
         }

@@ -13,7 +13,7 @@ namespace Processes
         /// Create a step with the given name.
         /// </summary>
         /// <param name="name">the name of this process step</param>
-        public ProcessStep(String name) : base(name)
+        public ProcessStep(string name) : base(name)
         {
         }
 

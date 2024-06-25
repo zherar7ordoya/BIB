@@ -25,7 +25,7 @@ namespace RobotInterpreter2
         /// Returns a string description of this command sequence.
         /// </summary>
         /// <returns>a string description of this command sequence</returns>
-        public override String ToString()
+        public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
             bool needLine = false;

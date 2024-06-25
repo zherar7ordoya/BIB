@@ -33,7 +33,7 @@ namespace Machines
             }
             set
             {
-                this._responsible = value;
+                _responsible = value;
             }
         }
         /// <summary>
@@ -50,7 +50,7 @@ namespace Machines
             }
             set
             {
-                this._parent = value;
+                _parent = value;
             }
         }
         /// <summary>
@@ -119,7 +119,7 @@ namespace Machines
         /// <param name="o">The candidate to compare to</param>
         /// <returns>true, if this object and the supplied object represent
         /// the same machine</returns>
-        public override bool Equals(Object o)
+        public override bool Equals(object o)
         {
             if (o == this)
             {
@@ -140,7 +140,7 @@ namespace Machines
         /// Provided a textual description of this component.
         /// </summary>
         /// <returns>a textual description of this component</returns>
-        public override String ToString()
+        public override string ToString()
         {
             if (_name != null)
             {
@@ -160,7 +160,7 @@ namespace Machines
         /// </summary>
         /// <param name="id">the machine name to search for</param>
         /// <returns>a machine with the given name</returns>
-        public abstract MachineComponent Find(String name);
+        public abstract MachineComponent Find(string name);
 
     }
 }

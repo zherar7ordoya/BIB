@@ -13,7 +13,7 @@ namespace Functions
         /// </summary>
         /// <param name="f1">Another function wrapper</param>
         /// <param name="f2">Yet another function wrapper</param>
-        public Arithmetic(Char op, Frapper f1, Frapper f2) : base (new Frapper[]{f1, f2})
+        public Arithmetic(char op, Frapper f1, Frapper f2) : base (new Frapper[]{f1, f2})
         {
             _op = op;
         }

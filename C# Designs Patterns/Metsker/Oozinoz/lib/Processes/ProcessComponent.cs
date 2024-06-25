@@ -12,13 +12,13 @@ namespace Processes
     /// </summary>
     public abstract class ProcessComponent : ICompositeEnumerable
     {
-        protected String _name;
+        protected string _name;
 
         /// <summary>
         /// Create a process component with the given name.
         /// </summary>
         /// <param name="name">this process component's name </param>
-        public ProcessComponent(String name)
+        public ProcessComponent(string name)
         {
             _name = name;
         }
@@ -32,7 +32,7 @@ namespace Processes
         /// <summary>
         /// Return this component's name.
         /// </summary>
-        public String Name
+        public string Name
         {
             get 
             {
@@ -83,7 +83,7 @@ namespace Processes
         /// Return a textual representation of this component.
         /// </summary>
         /// <returns>a textual representation of this component</returns>
-        public override String ToString()
+        public override string ToString()
         {
             return _name;
         }

@@ -93,7 +93,7 @@ namespace Fireworks
         /// <param name="name">a name to lookup</param>
         /// <returns>a firework of the given name; not actually 
         /// implemented</returns>
-        public static Firework Lookup(String name)
+        public static Firework Lookup(string name)
         {
             return new Firework();
         }

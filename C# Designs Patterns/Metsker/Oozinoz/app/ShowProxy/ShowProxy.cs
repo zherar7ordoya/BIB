@@ -13,8 +13,8 @@ public class ShowProxy : Form
     private Panel _buttonPanel;
     private UI _ui;
     private PictureBoxProxy _pictureProxy; 
-    private static readonly String IMAGE_ABSENT = "absent.gif";
-    private static readonly String IMAGE_FEST   = "fest.gif";
+    private static readonly string IMAGE_ABSENT = "absent.gif";
+    private static readonly string IMAGE_FEST   = "fest.gif";
     /// <summary>
     /// Add controls to this application.
     /// </summary>

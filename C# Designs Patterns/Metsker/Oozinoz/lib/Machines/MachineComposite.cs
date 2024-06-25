@@ -91,7 +91,7 @@ namespace Machines
         /// <returns>true if this composite is a tree</returns>
         public override bool IsTree(Hashtable visited)
         {
-            visited.Add(this.ID, this);
+            visited.Add(ID, this);
             foreach (MachineComponent mc in _components)
             {
                 if (visited.Contains(mc.ID) || !mc.IsTree(visited))
@@ -131,7 +131,7 @@ namespace Machines
         /// </summary>
         /// <param name="id">a name to search for</param>
         /// <returns>a machine component whose name matches the provided one</returns>
-        public override MachineComponent Find(String name) 
+        public override MachineComponent Find(string name) 
         {
             if (name.Equals(ToString()))
             {

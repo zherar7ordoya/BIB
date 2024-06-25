@@ -8,8 +8,8 @@ using System.Drawing;
 public class MoveATubMediator
 {
     private MoveATub2 _gui;
-    private String _selectedMachineName;
-    private String _selectedTubName;
+    private string _selectedMachineName;
+    private string _selectedTubName;
 
     /// <summary>
     /// Create a mediator for the given MoveATub application.

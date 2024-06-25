@@ -21,7 +21,7 @@ namespace Reservations
         /// specified detail message. 
         /// </summary>
         /// <param name="s">detail message</param>
-        public BuilderException(String s) : base(s)
+        public BuilderException(string s) : base(s)
         {
         }
     }

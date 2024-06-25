@@ -13,7 +13,7 @@ namespace UserInterface
         // dangerous!
         public OzGroupBox Copy()
         {
-            return (OzGroupBox) this.MemberwiseClone();
+            return (OzGroupBox) MemberwiseClone();
         }
         public OzGroupBox Copy2()
         {

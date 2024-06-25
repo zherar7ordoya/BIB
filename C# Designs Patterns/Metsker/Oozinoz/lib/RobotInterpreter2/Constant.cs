@@ -25,7 +25,7 @@ namespace RobotInterpreter2
         /// </summary>
         /// <param name="o">an object to compare to</param>
         /// <returns>true if the provided object equals this one</returns>
-        public override bool Equals(Object o)
+        public override bool Equals(object o)
         {
             if (o == this)
             {
@@ -60,7 +60,7 @@ namespace RobotInterpreter2
         /// Returns a string description of this constant.
         /// </summary>
         /// <returns>a string description of this constant</returns>
-        public override String ToString()
+        public override string ToString()
         {
             return _machine.ToString();
         }

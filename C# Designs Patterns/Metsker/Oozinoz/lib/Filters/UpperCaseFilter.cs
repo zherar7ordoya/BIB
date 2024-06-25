@@ -22,7 +22,7 @@ namespace Filters
         /// <param name="c">the character</param>
         public override void Write(char c) 
         {
-            _writer.Write(Char.ToUpper(c));
+            _writer.Write(char.ToUpper(c));
         }
     }
 }

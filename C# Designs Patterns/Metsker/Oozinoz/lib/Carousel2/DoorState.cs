@@ -2,17 +2,17 @@ using System;
 
 namespace Carousel2
 {
-	/// <summary>
-	/// A refactoring of DoorState from the initial Carousel namespace. Here
-	/// we pass a Door object from transition to transition, rather than having
-	/// all the states refer to a particular door.
-	/// </summary>
-	public abstract class DoorState
-	{
-        public static readonly DoorState CLOSED   = new DoorClosed();
-        public static readonly DoorState OPENING  = new DoorOpening();
-        public static readonly DoorState OPEN     = new DoorOpen();
-        public static readonly DoorState CLOSING  = new DoorClosing();
+    /// <summary>
+    /// A refactoring of DoorState from the initial Carousel namespace. Here
+    /// we pass a Door object from transition to transition, rather than having
+    /// all the states refer to a particular door.
+    /// </summary>
+    public abstract class DoorState
+    {
+        public static readonly DoorState CLOSED = new DoorClosed();
+        public static readonly DoorState OPENING = new DoorOpening();
+        public static readonly DoorState OPEN = new DoorOpen();
+        public static readonly DoorState CLOSING = new DoorClosing();
         public static readonly DoorState STAYOPEN = new DoorStayOpen();
 
         /// <summary>
@@ -41,9 +41,9 @@ namespace Carousel2
         /// Return a textual desciption of this state.
         /// </summary>
         /// <returns>a textual desciption of this state</returns>
-        public String Status()
+        public string Status()
         {
-            return this.GetType().Name;
+            return GetType().Name;
         }
-	}    
+    }
 }

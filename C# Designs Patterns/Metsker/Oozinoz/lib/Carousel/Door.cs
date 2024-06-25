@@ -61,7 +61,7 @@ namespace Carousel
 
         private void SetState(int state)
         {
-            this._state = state;
+            _state = state;
             if (Change != null) Change();
         }
 
@@ -69,7 +69,7 @@ namespace Carousel
         /// Return a textual description of the door's state.
         /// </summary>
         /// <returns>a textual description of the door's state</returns>
-        public String Status()
+        public string Status()
         {
             switch (_state)
             {

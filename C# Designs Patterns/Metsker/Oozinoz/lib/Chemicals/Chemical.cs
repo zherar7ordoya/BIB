@@ -7,8 +7,8 @@ namespace Chemicals
     /// </summary>
     public class Chemical
     {
-        private String _name;
-        private String _symbol;
+        private string _name;
+        private string _symbol;
         private double _atomicWeight;
 
         /// <summary>
@@ -18,8 +18,8 @@ namespace Chemicals
         /// <param name="symbol">The chemical symbol for this substance, such as "KNO3."</param>
         /// <param name="atomicWeight">The atomic weight of this substance (101 for saltpeter).</param>
         internal Chemical(
-            String name,
-            String symbol,
+            string name,
+            string symbol,
             double atomicWeight)
         {
             _name = name;
@@ -64,7 +64,7 @@ namespace Chemicals
         /// Describe this chemical.
         /// </summary>
         /// <returns>a textual description of this chemical</returns>
-        public override String ToString()
+        public override string ToString()
         {
             return _name + "(" + _symbol + ")[" + _atomicWeight + "]";
         }

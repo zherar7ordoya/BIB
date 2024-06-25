@@ -24,8 +24,8 @@ namespace Filters
         public override void Write(char c) 
         {
             _writer.Write(ran.NextDouble() > .5
-                ? Char.ToLower(c)
-                : Char.ToUpper(c));
+                ? char.ToLower(c)
+                : char.ToUpper(c));
         }
     }
 }

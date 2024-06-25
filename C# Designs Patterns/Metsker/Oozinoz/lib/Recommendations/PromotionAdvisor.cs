@@ -20,10 +20,10 @@ namespace Recommendations
         {
             try
             {
-                String s = FileFinder.GetFileName("config", "strategy.xml");
+                string s = FileFinder.GetFileName("config", "strategy.xml");
                 StreamReader r = new StreamReader(s);
-                XmlSerializer xs = new XmlSerializer(typeof(String));
-                String name = (String) xs.Deserialize(r);
+                XmlSerializer xs = new XmlSerializer(typeof(string));
+                string name = (string) xs.Deserialize(r);
                 r.Close();
                 _promoted = Firework.Lookup(name);
             }

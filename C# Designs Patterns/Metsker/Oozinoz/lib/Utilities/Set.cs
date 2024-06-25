@@ -23,7 +23,7 @@ namespace Utilities
         /// Add the provided object to this set.
         /// </summary>
         /// <param name="o">the object to add</param>
-        public void Add(Object o)
+        public void Add(object o)
         {
             h[o] = null;
         }
@@ -33,7 +33,7 @@ namespace Utilities
         /// </summary>
         /// <param name="o">the object of curiosity</param>
         /// <returns>true, if the set contains the presented object</returns>
-        public bool Contains(Object o)
+        public bool Contains(object o)
         {
             return h.Contains(o);
         }

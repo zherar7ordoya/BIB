@@ -15,7 +15,7 @@ namespace Machines
         /// <param name="e">the responsible engineer</param>
         public ToolCart(Engineer e)
         {
-            this._responsible = e;
+            _responsible = e;
         }
 
         /// <summary>
@@ -30,7 +30,7 @@ namespace Machines
             }
             set 
             {
-                this._responsible = value;
+                _responsible = value;
             }
         }
     }

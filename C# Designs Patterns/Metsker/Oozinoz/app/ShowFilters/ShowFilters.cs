@@ -19,7 +19,7 @@ public class ShowFilters
         ISimpleWriter w2 = new TitleCaseFilter(w1);
         WrapFilter    w3 = new WrapFilter(w2, 40);
         w3.Center = true;
-        String line;
+        string line;
         while ((line = r.ReadLine()) != null)
         {
             w3.Write(line);

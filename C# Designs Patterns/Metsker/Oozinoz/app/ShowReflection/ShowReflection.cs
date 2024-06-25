@@ -14,7 +14,7 @@ public class ShowReflection
     {
         Type t = typeof(Firework);
         ConstructorInfo c = t.GetConstructor(
-            new Type[]{typeof(String), typeof(Double), typeof(Decimal)});
-        Console.WriteLine(c.Invoke(new Object[]{"Titan", 6500, 31.95M}));
+            new Type[]{typeof(string), typeof(double), typeof(decimal) });
+        Console.WriteLine(c.Invoke(new object[]{"Titan", 6500, 31.95M}));
     }
 }

@@ -18,8 +18,8 @@ namespace RobotInterpreter2
         /// <param name="term2">another term to compare</param>
         public Equals(Term term1, Term term2)
         {
-            this._term1 = term1;
-            this._term2 = term2;
+            _term1 = term1;
+            _term2 = term2;
         }
 
         /// <summary>

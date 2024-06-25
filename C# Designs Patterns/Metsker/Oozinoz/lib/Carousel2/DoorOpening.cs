@@ -10,7 +10,7 @@ namespace Carousel2
         /// </summary>
         public override void Complete(Door door)
         {
-            door.SetState(DoorState.OPEN);
+            door.SetState(OPEN);
         }
 
         /// <summary>
@@ -18,7 +18,7 @@ namespace Carousel2
         /// </summary>
         public override void Touch(Door door)
         {
-            door.SetState(DoorState.CLOSING);
+            door.SetState(CLOSING);
         }
     }
 }

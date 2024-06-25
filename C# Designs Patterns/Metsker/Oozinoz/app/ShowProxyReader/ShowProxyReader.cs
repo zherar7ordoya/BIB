@@ -14,7 +14,7 @@ public class ShowProxyReader
         DataServices.LendReader(sel, new BorrowReader(GetNames));
     }
 
-    private static Object GetNames(IDataReader reader)
+    private static object GetNames(IDataReader reader)
     {
         LimitingReader proxy = new LimitingReader(reader);
         while (proxy.Read()) 

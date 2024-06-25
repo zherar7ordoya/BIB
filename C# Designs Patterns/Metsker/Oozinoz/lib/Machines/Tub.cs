@@ -10,7 +10,7 @@ namespace Machines
     /// </summary>
     public class Tub 
     {
-        private String _id;
+        private string _id;
         private TubMediator _mediator = TubMediator.SINGLETON;
 
         /// <summary>
@@ -19,7 +19,7 @@ namespace Machines
         /// </summary>
         /// <param name="id">the identity of this tub</param>
         ///  relations</param>
-        public Tub(String id)
+        public Tub(string id)
         {
             _id = id;
         }
@@ -45,7 +45,7 @@ namespace Machines
         /// Return a textual representation of this tub.
         /// </summary>
         /// <returns>a textual representation of this tub</returns>
-        public override String ToString()
+        public override string ToString()
         {
             return _id;
         }
@@ -67,7 +67,7 @@ namespace Machines
         /// <param name="o">The candidate to compare to</param>
         /// <returns>true, if this object and the supplied object represent
         /// the same machine</returns>
-        public override bool Equals(Object o)
+        public override bool Equals(object o)
         {
             if (o == this)
             {

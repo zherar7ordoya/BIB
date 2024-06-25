@@ -2,9 +2,9 @@
 {
     public class StandBy : Estado
     {
-        public override void CambiarEstado(Switch sw)
+        public override void CambiarEstado(Switch cambio)
         {
-            sw.DefinirEstado(new Apagado());
+            cambio.DefinirEstado(new Apagado());
         }
 
         public override string InformarEstado()

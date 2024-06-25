@@ -17,7 +17,7 @@ namespace Testing
         //[ExpectedException(typeof(BuilderException))]
         public void TestLowDollars()
         {
-            String s =
+            string s =
                 "Date, November 5, Headcount, 250, "
                 + "City, Springfield, DollarsPerHead, 1.95, "
                 + "HasSite, false";
@@ -34,7 +34,7 @@ namespace Testing
         //[ExpectedException(typeof(BuilderException))]
         public void TestLowHeadCount()
         {
-            String s =
+            string s =
                 "Date, November 5, Headcount, 2, "
                 + "City, Springfield, DollarsPerHead, 9.95, "
                 + "HasSite, false";
@@ -51,7 +51,7 @@ namespace Testing
         //[ExpectedException(typeof(BuilderException))]
         public void TestNoCity()
         {
-            String s =
+            string s =
                 "Date, November 5, Headcount, 250, "
                 + "DollarsPerHead, 9.95, "
                 + "HasSite, false";
@@ -68,7 +68,7 @@ namespace Testing
         //[ExpectedException(typeof(BuilderException))]
         public void TestNoDate()
         {
-            String s =
+            string s =
                 "Headcount, 250, "
                 + "City, Springfield, DollarsPerHead, 9.95, "
                 + "HasSite, false";
@@ -86,7 +86,7 @@ namespace Testing
         [Test]
         public void TestNoDollar() 
         {
-            String s =
+            string s =
                 "Date, November 5, Headcount, 250, City, Springfield, "
                 + "  HasSite, false";
             ForgivingBuilder b = new ForgivingBuilder();
@@ -112,7 +112,7 @@ namespace Testing
         [Test]
         public void TestNoHeadcount()  
         {
-            String s =
+            string s =
                 "Date, November 5,   City, Springfield, "
                 + "DollarsPerHead, 9.95, HasSite, false";
             ForgivingBuilder b = new ForgivingBuilder();
@@ -139,7 +139,7 @@ namespace Testing
         [Test]
         public void TestNoHeadcountNoDollar() 
         {
-            String s =
+            string s =
                 "Date, November 5,   City, Springfield, "
                 + "  HasSite, false";
             ForgivingBuilder b = new ForgivingBuilder();
@@ -163,7 +163,7 @@ namespace Testing
         [Test]
         public void TestNormal() 
         {
-            String s =
+            string s =
                 "Date, November 5, Headcount, 250, City, Springfield, "
                 + "DollarsPerHead, 9.95, HasSite, false";
             ForgivingBuilder b = new ForgivingBuilder();

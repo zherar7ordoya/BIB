@@ -37,7 +37,7 @@ public class PrettyVisitor : IProcessVisitor
         return _buf;
     }
 
-    protected void PrintIndentedString(String s)
+    protected void PrintIndentedString(string s)
     {
         for (int i = 0; i < _depth; i++)
         {
@@ -81,7 +81,7 @@ public class PrettyVisitor : IProcessVisitor
     /// </summary>
     /// <param name="prefix">a possible prefix</param>
     /// <param name="c">the composite to display</param>
-    protected void VisitComposite(String prefix, ProcessComposite c)
+    protected void VisitComposite(string prefix, ProcessComposite c)
     {
         if (_visited.Contains(c))
         {

@@ -131,7 +131,7 @@ namespace Machines
         /// </summary>
         /// <param name="id">a name to search for</param>
         /// <returns>this machine, if the name matches</returns>
-        public override MachineComponent Find(String name)
+        public override MachineComponent Find(string name)
         {
             if (name.Equals(ToString())) 
             {

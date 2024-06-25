@@ -120,7 +120,7 @@ namespace DataLayer
         /// <param name="name">The name of the object to lookup in the 
         /// database</param>
         /// <returns>The instantiated object</returns>
-        public static Object Find(Type t, string name)
+        public static object Find(Type t, string name)
         {
             string sel = "SELECT * FROM " + t.Name + " WHERE NAME = '" + name + "'";
             return LendReader(sel, new BorrowReader(new ObjectLoader(t).LoadObject));
@@ -150,12 +150,12 @@ namespace DataLayer
             //
             public ObjectLoader(Type t)
             {
-                this._type = t;
+                _type = t;
             }
             //
             // Advance the reader and populate a single object.
             //
-            internal Object LoadObject(IDataReader reader)
+            internal object LoadObject(IDataReader reader)
             {
                 if (reader.Read())
                 {
@@ -167,7 +167,7 @@ namespace DataLayer
             // Create a list of objects, where each object represents a 
             // row in a database. 
             //
-            internal Object LoadAll(IDataReader reader)
+            internal object LoadAll(IDataReader reader)
             {
                 ArrayList list = new ArrayList();
                 while (reader.Read())
@@ -180,16 +180,16 @@ namespace DataLayer
             // Instantiate and load a single object from the current
             // record in the supplied reader.
             //
-            internal Object LoadFromCurrent(IDataReader reader)
+            internal object LoadFromCurrent(IDataReader reader)
             {
                 ConstructorInfo c = _type.GetConstructor(new Type[] { });
-                Object o = c.Invoke(new Object[] { });
+                object o = c.Invoke(new object[] { });
                 foreach (PropertyInfo p in _type.GetProperties())
                 {
                     MethodInfo m = p.GetSetMethod();
                     try
                     {
-                        m.Invoke(o, new Object[] { reader[p.Name] });
+                        m.Invoke(o, new object[] { reader[p.Name] });
                     }
                     catch (System.IndexOutOfRangeException) { }
                 }

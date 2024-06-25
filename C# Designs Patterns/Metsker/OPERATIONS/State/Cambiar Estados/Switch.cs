@@ -9,7 +9,11 @@ namespace State
             _estado = new Encendido();
         }
 
+        /*** Atributo ***/
+
         Estado _estado;
+
+        /*** Comportamiento ***/
 
         public void DefinirEstado(Estado estado)
         {

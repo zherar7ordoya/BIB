@@ -46,9 +46,9 @@ namespace Carousel
         /// Return a textual desciption of this state.
         /// </summary>
         /// <returns>a textual desciption of this state</returns>
-        public String Status()
+        public string Status()
         {
-            return this.GetType().Name;
+            return GetType().Name;
         }
 	}    
 }

@@ -14,7 +14,7 @@ namespace Reservations
     {
         private DateTime _date;
         private int _headcount; 
-        private String _city;
+        private string _city;
         private decimal _dollarsPerHead;
         private bool _hasSite;
 
@@ -34,7 +34,7 @@ namespace Reservations
         internal Reservation(
             DateTime date,
             int headcount,
-            String city,
+            string city,
             decimal dollarsPerHead,
             bool hasSite)
         {
@@ -49,7 +49,7 @@ namespace Reservations
         /// Returns a textual description of this reservation.
         /// </summary>
         /// <returns>A textual description of this reservation</returns>
-        public override String ToString()
+        public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("Date: ");
@@ -78,7 +78,7 @@ namespace Reservations
         /// <summary>
         /// The nearest city.
         /// </summary>
-        public String City { get { return _city;}}
+        public string City { get { return _city;}}
         
         /// <summary>
         /// The dollars/head the person will pay.

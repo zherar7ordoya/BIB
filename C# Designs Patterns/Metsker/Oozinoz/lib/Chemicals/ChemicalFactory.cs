@@ -23,7 +23,7 @@ namespace Chemicals
         /// </summary>
         /// <param name="name">the name of the interesting chemical</param>
         /// <returns>the Chemical object for the given name</returns>
-        public static Chemical GetChemical(String name)
+        public static Chemical GetChemical(string name)
         {
             return (Chemical) _chemicals[name.ToLower()];
         }

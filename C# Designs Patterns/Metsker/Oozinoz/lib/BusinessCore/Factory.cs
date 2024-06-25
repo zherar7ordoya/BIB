@@ -9,7 +9,7 @@ namespace BusinessCore
     public class Factory 
     {
         private static Factory _factory; 
-        private static Object _classLock = typeof(Factory);
+        private static object _classLock = typeof(Factory);
         private long _wipMoves;
         private Factory()
         {
@@ -46,7 +46,7 @@ namespace BusinessCore
         public static ArrayList UpMachineNames()
         {
             return new ArrayList(
-                new String[] {
+                new string[] {
                     "Mixer:1201",
                     "ShellAssembler:1301",
                     "StarPress:1401",

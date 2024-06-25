@@ -17,7 +17,7 @@ namespace Testing
         //[ExpectedException(typeof(BuilderException))]
         public void TestLowDollars()
         {
-            String sample =
+            string sample =
                 "Date, November 5, Headcount, 250, "
                 + "City, Springfield, DollarsPerHead, 1.95, "
                 + "HasSite, false";
@@ -34,7 +34,7 @@ namespace Testing
         //[ExpectedException(typeof(BuilderException))]
         public void TestLowHeadCount()
         {
-            String s =
+            string s =
                 "Date, November 5, Headcount, 2, "
                 + "City, Springfield, DollarsPerHead, 9.95, "
                 + "HasSite, false";
@@ -51,7 +51,7 @@ namespace Testing
         //[ExpectedException(typeof(BuilderException))]
         public void TestNoDollars()
         {
-            String sample =
+            string sample =
                 "Date, November 5, Headcount, 250, "
                 + "City, Springfield, "
                 + "HasSite, false";
@@ -68,7 +68,7 @@ namespace Testing
         //[ExpectedException(typeof(BuilderException))]
         public void TestNoHeadCount()
         {
-            String s =
+            string s =
                 "Date, November 5, "
                 + "City, Springfield, DollarsPerHead, 9.95, "
                 + "HasSite, false";
@@ -84,7 +84,7 @@ namespace Testing
         [Test]
         public void TestNormal() 
         {
-            String s =
+            string s =
                 "Date, November 5, Headcount, 250, City, Springfield, "
                 + "DollarsPerHead, 9.95, HasSite, false";
             UnforgivingBuilder b = new UnforgivingBuilder();
@@ -109,7 +109,7 @@ namespace Testing
         //[ExpectedException(typeof(BuilderException))]
         public void TestUnforgivingNoCity()
         {
-            String s =
+            string s =
                 "Date, November 5, Headcount, 250, "
                 + "DollarsPerHead, 9.95, "
                 + "HasSite, false";
@@ -126,7 +126,7 @@ namespace Testing
         //[ExpectedException(typeof(BuilderException))]
         public void TestUnforgivingNoDate()
         {
-            String s =
+            string s =
                 "Headcount, 250, "
                 + "City, Springfield, DollarsPerHead, 9.95, "
                 + "HasSite, false";

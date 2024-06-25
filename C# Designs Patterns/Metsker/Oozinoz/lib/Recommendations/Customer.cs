@@ -87,10 +87,10 @@ namespace Recommendations
             // if we're promoting a particular firework, return it
             try
             {
-                String s = FileFinder.GetFileName("config", "strategy.xml");
+                string s = FileFinder.GetFileName("config", "strategy.xml");
                 StreamReader r = new StreamReader(s);
-                XmlSerializer xs = new XmlSerializer(typeof(String));
-                String promotedName = (String) xs.Deserialize(r);
+                XmlSerializer xs = new XmlSerializer(typeof(string));
+                string promotedName = (string) xs.Deserialize(r);
                 r.Close();
 
                 Firework f = Firework.Lookup(promotedName);

@@ -22,7 +22,7 @@ public class ShowFlight : Panel
     /// <param name="control">The control that the border goes around</param>
     /// <returns>A group box panel with a title, wrapped around the 
     /// supplied control</returns>
-    public static GroupBox CreateGroupBox(String title, Control control)
+    public static GroupBox CreateGroupBox(string title, Control control)
     {
         GroupBox gb = new GroupBox();
         gb.Text = title;

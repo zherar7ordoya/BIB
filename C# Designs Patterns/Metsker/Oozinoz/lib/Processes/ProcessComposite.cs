@@ -27,7 +27,7 @@ namespace Processes
         /// Create a process composite with the given name.
         /// </summary>
         /// <param name="name">this process composite's name</param>
-        public ProcessComposite(String name) : this (name, new ArrayList())
+        public ProcessComposite(string name) : this (name, new ArrayList())
         {
         }
 
@@ -38,10 +38,10 @@ namespace Processes
         /// <param name="name">the identity of this composite</param>
         /// <param name="subprocesses">the children of this composite</param>
         public ProcessComposite(
-            String name, params ProcessComponent[] subprocesses) : base (name)
+            string name, params ProcessComponent[] subprocesses) : base (name)
         {
             _subprocesses = new ArrayList();
-            foreach (Object o in subprocesses) 
+            foreach (object o in subprocesses) 
             {
                 _subprocesses.Add(o);
             }         
@@ -53,7 +53,7 @@ namespace Processes
         /// </summary>
         /// <param name="name">the identity of this composite</param>
         /// <param name="subprocesses">the children of this composite</param>
-        public ProcessComposite(String name, IList subprocesses) : base(name)
+        public ProcessComposite(string name, IList subprocesses) : base(name)
         {
             _subprocesses = subprocesses;
         }

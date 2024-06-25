@@ -41,7 +41,7 @@ namespace Testing
         // Make a minimal use of a reader, and return it; normally
         // you wouldn't want to do that, but we need to test the reader
         // in the test method.
-        private static Object UseReader(IDataReader reader)
+        private static object UseReader(IDataReader reader)
         {
             reader.Read(); 
             return reader;

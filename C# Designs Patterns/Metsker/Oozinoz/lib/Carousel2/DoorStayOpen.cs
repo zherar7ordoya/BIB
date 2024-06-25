@@ -11,7 +11,7 @@ namespace Carousel2
         /// </summary>
         public override void Touch(Door door)
         {
-            door.SetState(DoorState.CLOSING);
+            door.SetState(CLOSING);
         }
     }
 }

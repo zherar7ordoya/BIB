@@ -12,7 +12,7 @@ namespace Processes
         /// Create a sequence with the given name.
         /// </summary>
         /// <param name="name">the name of this process sequence</param>
-        public ProcessSequence(String name) : base(name)
+        public ProcessSequence(string name) : base(name)
         {
         }
 
@@ -23,7 +23,7 @@ namespace Processes
         /// <param name="name">the name of this sequence</param>
         /// <param name="subprocesses">the children of this sequence</param>
         public ProcessSequence(
-            String name, params ProcessComponent[] subprocesses) : 
+            string name, params ProcessComponent[] subprocesses) : 
             base(name, subprocesses)
         {
         }
@@ -34,7 +34,7 @@ namespace Processes
         /// </summary>
         /// <param name="name">the name of this sequence</param>
         /// <param name="subprocesses">the children of this sequence</param>
-        public ProcessSequence(String name, IList subprocesses) : 
+        public ProcessSequence(string name, IList subprocesses) : 
             base(name, subprocesses)
         {
         }
