@@ -8,102 +8,72 @@ namespace PatrónAdapter_CSharp
         bool _activo;
         bool _moviendo;
 
-
-        public void Conectar()
+        public string Conectar()
         {
-            if (_conectado)
-                Console.WriteLine("Imposible conectar un motor electrico ya conectado!");
+            if (_conectado) return "Imposible conectar un motor electrico ya conectado!";
             else
             {
                 _conectado = true;
-                Console.WriteLine("Motor conectado!");
+                return "Motor conectado!";
             }
-            
-      
         }
-               
-        public void Activar()
+
+        public string Activar()
         {
 
-            if (!_conectado)
-                Console.WriteLine("Imposible activar un motor no conectado");
+            if (!_conectado) return "Imposible activar un motor no conectado";
             else
             {
                 _activo = true;
-                Console.WriteLine("Motor activado!");
+                return "Motor activado!";
             }
-            
         }
-       
-        public void Mover()
+
+        public string Mover()
         {
             if (_conectado && _activo)
             {
                 _moviendo = true;
-                Console.WriteLine("Moviendo vehiculo con motor eléctrico...");
+                return "Moviendo vehiculo con motor eléctrico...";
             }
-            else
-            {
-                Console.WriteLine("El motor deberá estar conectado y activo!");
-            }
-   
+            else { return "El motor deberá estar conectado y activo!"; }
         }
 
-        public void Parar()
+        public string Parar()
         {
 
             if (_moviendo)
             {
                 _moviendo = false;
-                Console.WriteLine("Parando vehiculo con motor eléctrico...");
+                return "Parando vehiculo con motor eléctrico...";
             }
-            else
-            {
-                Console.WriteLine("Imposible parar un motor que no esté en movimiento!");
-            }
-            
+            else { return "Imposible parar un motor que no esté en movimiento!"; }
         }
 
-        public void Desconectar()
+        public string Desconectar()
         {
-            if (_conectado)
-            {
-              
-                Console.WriteLine("Motor desconectado...");
-            }
-            else
-            {
-                Console.WriteLine("Imposible desconectar un motor que no esté conectado!");
-            }
-   
+            if (_conectado) return "Motor desconectado...";
+            else { return "Imposible desconectar un motor que no esté conectado!"; }
         }
-  
-        public void Desactivar()
+
+        public string Desactivar()
         {
             if (_activo)
             {
                 _activo = false;
-                Console.WriteLine("Motor desactivado...");
+                return "Motor desactivado...";
             }
-            else
-            {
-                Console.WriteLine("Imposible desactivar un motor que no esté activo!");
-            }
-      }
-   
-        public void Enchufar()
+            else { return "Imposible desactivar un motor que no esté activo!"; }
+        }
+
+        public string Enchufar()
         {
             if (!_activo)
             {
                 _activo = false;
-                Console.WriteLine("Motor cargando las baterias!...");
+                return "Motor cargando las baterias!...";
             }
-            else
-            {
-                Console.WriteLine("Imposible enchufar un motor activo!");
-            }
-         
+            else { return "Imposible enchufar un motor activo!"; }
         }
-        
     }
 }

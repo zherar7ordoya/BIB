@@ -6,23 +6,23 @@ namespace PatrónAdapter_CSharp
     {
         static void Main()
         {
-            Motor motor1 = new MotorNaftero();
-            motor1.Arrancar();
-            motor1.Acelerar();
-            motor1.Detener();
-            motor1.CargarCombustible();
+            IMotor motor1 = new MotorNaftero();
+            Console.WriteLine(motor1.Arrancar());
+            Console.WriteLine(motor1.Acelerar());
+            Console.WriteLine(motor1.Detener());
+            Console.WriteLine(motor1.CargarCombustible());
 
-            Motor motor2 = new MotorDiesel();
-            motor2.Arrancar();
-            motor2.Acelerar();
-            motor2.Detener();
-            motor2.CargarCombustible();
+            IMotor motor2 = new MotorDiesel();
+            Console.WriteLine(motor2.Arrancar());
+            Console.WriteLine(motor2.Acelerar());
+            Console.WriteLine(motor2.Detener());
+            Console.WriteLine(motor2.CargarCombustible());
 
-            Motor motor3 = new MotorElectricoAdapter();
-            motor3.Arrancar();
-            motor3.Acelerar();
-            motor3.Detener();
-            motor3.CargarCombustible();
+            IMotor motor3 = new MotorElectricoAdapter();
+            Console.WriteLine(motor3.Arrancar());
+            Console.WriteLine(motor3.Acelerar());
+            Console.WriteLine(motor3.Detener());
+            Console.WriteLine(motor3.CargarCombustible());
 
             Console.ReadKey();
         }

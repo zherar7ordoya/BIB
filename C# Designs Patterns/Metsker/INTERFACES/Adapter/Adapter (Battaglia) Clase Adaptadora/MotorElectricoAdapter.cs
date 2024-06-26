@@ -3,31 +3,21 @@
 */
 namespace PatrónAdapter_CSharp
 {
-    public class MotorElectricoAdapter : Motor
+    public class MotorElectricoAdapter : IMotor
     {
         readonly MotorElectrico motorElectrico = new MotorElectrico();
 
-        public override void Acelerar()
+        public string Acelerar() => motorElectrico.Mover();
+        public string Arrancar()
         {
-            motorElectrico.Mover();
+            return motorElectrico.Conectar() + motorElectrico.Activar();
         }
 
-        public override void Arrancar()
-        {
-            motorElectrico.Conectar();
-            motorElectrico.Activar();
+        public string CargarCombustible() => motorElectrico.Enchufar();
 
-        }
-
-        public override void CargarCombustible()
+        public string Detener()
         {
-            motorElectrico.Enchufar();
-        }
-
-        public override void Detener()
-        {
-            motorElectrico.Desactivar();
-            motorElectrico.Parar();
+            return motorElectrico.Desactivar() + motorElectrico.Parar();
         }
     }
 }

@@ -1,27 +1,10 @@
-﻿using System;
-
-namespace PatrónAdapter_CSharp
+﻿namespace PatrónAdapter_CSharp
 {
-    public class MotorDiesel : Motor
+    public class MotorDiesel : IMotor
     {
-        public override void Acelerar()
-        {
-            Console.WriteLine("Acelerando el motor diesel..");
-        }
-
-        public override void Arrancar()
-        {
-            Console.WriteLine("Arrancando el motor diesel..");
-        }
-
-        public override void CargarCombustible()
-        {
-            Console.WriteLine("Cargando combustible al motor diesel..");
-        }
-
-        public override void Detener()
-        {
-            Console.WriteLine("Deteniendo el motor diesel..");
-        }
+        public string Acelerar() => "Acelerando el motor diesel..";
+        public string Arrancar() => "Arrancando el motor diesel..";
+        public string CargarCombustible() => "Cargando combustible al motor diesel..";
+        public string Detener() => "Deteniendo el motor diesel...";
     }
 }
