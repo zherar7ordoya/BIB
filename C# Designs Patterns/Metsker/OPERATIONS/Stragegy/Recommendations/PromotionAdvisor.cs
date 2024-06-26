@@ -18,7 +18,8 @@ namespace Recommendations
         {
             try
             {
-                string s = FileFinder.GetFileName("config", "strategy.xml");
+                //string s = FileFinder.GetFileName("config", "strategy.xml");
+                string s = "strategy.xml";
                 StreamReader r = new StreamReader(s);
                 XmlSerializer xs = new XmlSerializer(typeof(string));
                 string name = (string) xs.Deserialize(r);
