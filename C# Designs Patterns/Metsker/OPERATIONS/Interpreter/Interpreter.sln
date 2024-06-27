@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30114.105
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Patrones.Interpreter.UI", "Patrones.Interpreter.UI\Patrones.Interpreter.UI.csproj", "{D41033B6-5C63-4392-9B9E-5D0A15B7C0C4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Patrones.Interpreter.Core", "Patrones.Interpreter.Core\Patrones.Interpreter.Core.csproj", "{8213A96E-C407-4EB9-B675-321CD542FAF1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D41033B6-5C63-4392-9B9E-5D0A15B7C0C4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D41033B6-5C63-4392-9B9E-5D0A15B7C0C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D41033B6-5C63-4392-9B9E-5D0A15B7C0C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D41033B6-5C63-4392-9B9E-5D0A15B7C0C4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8213A96E-C407-4EB9-B675-321CD542FAF1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8213A96E-C407-4EB9-B675-321CD542FAF1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8213A96E-C407-4EB9-B675-321CD542FAF1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8213A96E-C407-4EB9-B675-321CD542FAF1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DBF8E0D3-2C73-4384-B24B-C784121C871B}
+	EndGlobalSection
+EndGlobal
