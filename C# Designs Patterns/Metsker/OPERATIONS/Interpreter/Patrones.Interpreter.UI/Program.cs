@@ -1,10 +1,8 @@
 ﻿using Interpreter;
+
 using Microsoft.VisualBasic.CompilerServices;
+
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Patrones.Interpreter.UI
 {
@@ -14,7 +12,7 @@ namespace Patrones.Interpreter.UI
         {
             string[] tree;
             var context = new Context();
-            var expressions = new List<IExpression>();
+            //var expressions = new List<IExpression>();
             Console.WriteLine("ingrese la operacion en letras: ");
             string val = Console.ReadLine();
             tree = val.Split(' ');
