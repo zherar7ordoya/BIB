@@ -2,14 +2,6 @@
 {
     public class PhysicalRocket
     {
-        readonly double _burnArea;
-        readonly double _burnRate;
-        readonly double _initialFuelMass;
-        readonly double _totalMass;
-        readonly double _totalBurnTime;
-        readonly static double SPECIFIC_IMPULSE = 620; // Newtons/Kg
-        readonly static double FUEL_DENSITY = 1800; // Kg/M**3
-
         public PhysicalRocket(
             double burnArea,
             double burnRate,
@@ -24,6 +16,16 @@
             _totalBurnTime = _initialFuelVolume / (_burnRate * _burnArea);
         }
 
+        readonly double _burnArea;
+        readonly double _burnRate;
+        readonly double _initialFuelMass;
+        readonly double _totalMass;
+        readonly double _totalBurnTime;
+        readonly static double SPECIFIC_IMPULSE = 620; // Newtons/Kg
+        readonly static double FUEL_DENSITY = 1800; // Kg/M**3
+
+        public double GetBurnTime() => _totalBurnTime;
+
         public double GetMass(double t)
         {
             if (t > _totalBurnTime) return _totalMass - _initialFuelMass;
@@ -35,11 +37,6 @@
         {
             if (time > _totalBurnTime) return 0;
             return FUEL_DENSITY * SPECIFIC_IMPULSE * _burnRate * _burnArea;
-        }
-
-        public double GetBurnTime()
-        {
-            return _totalBurnTime;
         }
     }
 }

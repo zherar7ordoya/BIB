@@ -1,4 +1,9 @@
-﻿using System;
+﻿/*
+ * Definición enigmática (si las hay):
+ * A toolkit that lets you compose executable objects at runtime.
+ */
+
+using System;
 
 /*
  * En este ejemplo, las clases que implementan IFilterExpression (AndExpression,
@@ -44,14 +49,16 @@ namespace DataFilter
         private readonly IFilterExpression _expr1;
         private readonly IFilterExpression _expr2;
 
-        // Constructor que recibe dos expresiones que serán evaluadas con un operador AND.
+        // Constructor que recibe dos expresiones que serán evaluadas con un
+        // operador AND.
         public AndExpression(IFilterExpression expr1, IFilterExpression expr2)
         {
             _expr1 = expr1;
             _expr2 = expr2;
         }
 
-        // Implementación del método Interpret que evalúa ambas expresiones con un AND lógico.
+        // Implementación del método Interpret que evalúa ambas expresiones con
+        // un AND lógico.
         public bool Interpret(Item item)
         {
             return _expr1.Interpret(item) && _expr2.Interpret(item);
@@ -77,14 +84,16 @@ namespace DataFilter
         private readonly IFilterExpression _expr1;
         private readonly IFilterExpression _expr2;
 
-        // Constructor que recibe dos expresiones que serán evaluadas con un operador OR.
+        // Constructor que recibe dos expresiones que serán evaluadas con un
+        // operador OR.
         public OrExpression(IFilterExpression expr1, IFilterExpression expr2)
         {
             _expr1 = expr1;
             _expr2 = expr2;
         }
 
-        // Implementación del método Interpret que evalúa ambas expresiones con un OR lógico.
+        // Implementación del método Interpret que evalúa ambas expresiones con
+        // un OR lógico.
         public bool Interpret(Item item)
         {
             return _expr1.Interpret(item) || _expr2.Interpret(item);
@@ -111,7 +120,8 @@ namespace DataFilter
             _price = price;
         }
 
-        // Implementación del método Interpret que compara el precio del ítem con el precio del filtro.
+        // Implementación del método Interpret que compara el precio del ítem
+        // con el precio del filtro.
         public bool Interpret(Item item)
         {
             return item.Price <= _price;
@@ -151,11 +161,18 @@ namespace DataFilter
                                          new PriceFilterExpression(120));
 
             // Evaluación de las expresiones con dos ítems diferentes.
-            Console.WriteLine("\nLa evaluación del Item 1 devolverá TRUE ya que ya que 50 <= 60 y 50 <= 120");
-            Console.WriteLine(expr.Interpret(item1));  // Output: True (ya que 50 <= 60 y 50 <= 120)
+            Console.WriteLine(
+                "\nLa evaluación del Item 1 devolverá TRUE ya que ya que " +
+                "50 <= 60 y 50 <= 120");
 
-            Console.WriteLine("\nLa evaluación del Item 2 devolverá FALSE ya que 100 > 60");
-            Console.WriteLine(expr.Interpret(item2));  // Output: False (ya que 100 > 60)
+            // Output: True (ya que 50 <= 60 y 50 <= 120)
+            Console.WriteLine(expr.Interpret(item1));
+
+            Console.WriteLine(
+                "\nLa evaluación del Item 2 devolverá FALSE ya que 100 > 60");
+
+            // Output: False (ya que 100 > 60)
+            Console.WriteLine(expr.Interpret(item2));
 
             Console.ReadKey();
         }

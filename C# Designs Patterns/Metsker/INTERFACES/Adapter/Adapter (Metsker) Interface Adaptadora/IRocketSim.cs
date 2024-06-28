@@ -8,6 +8,7 @@ Si no prevé un tipo específico de adaptación, para que otros desarrolladores
 puedan crear adaptadores de objetos para su clase, coloque modificadores
 virtuales en los métodos que desee permitir que las subclases anulen.
 */
+
 namespace AdapterInterface
 {
     public interface IRocketSim

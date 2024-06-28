@@ -2,7 +2,6 @@
 {
     public class OozinozRocket : PhysicalRocket, IRocketSim
     {
-        private double _time;
         public OozinozRocket
             (
             double burnArea,
@@ -14,19 +13,12 @@
         {
         }
 
-        public double GetMass()
-        {
-            return GetMass(_time);
-        }
+        private double _time;
 
-        public double GetThrust()
-        {
-            return GetThrust(_time);
-        }
+        public double GetMass() => GetMass(_time);
 
-        public void SetSimTime(double time)
-        {
-            _time = time;
-        }
+        public double GetThrust() => GetThrust(_time);
+
+        public void SetSimTime(double time) => _time = time;
     }
 }

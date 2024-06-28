@@ -1,4 +1,8 @@
-﻿// VER NOTA EN IRocketSim.cs
+﻿/*
+ * A fireworks simulation designer establishes an interface that defines the
+ * behaviors your object must possess to participate in the simulation.
+ * De paso, ver las notas en IRocketSim.cs
+ */
 
 using System;
 

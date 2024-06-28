@@ -1,4 +1,9 @@
-﻿using System;
+﻿/*
+ * A design lets you register for callbacks that will be issued when an object
+ * changes.
+ */
+
+using System;
 
 namespace ConEvento
 {

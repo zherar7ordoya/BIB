@@ -1,5 +1,4 @@
-﻿
-namespace TD.PatronesTemplateMethod.Core
+﻿namespace TD.PatronesTemplateMethod.Core
 {
     public abstract class Credito : Verificaciones
     {

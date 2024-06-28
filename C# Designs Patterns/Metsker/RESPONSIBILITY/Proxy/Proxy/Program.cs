@@ -1,7 +1,10 @@
-﻿using System;
+﻿/*
+ * A code generator inserts behavior that provides the illusion that an object
+ * executing on another machine is local.
+ */
 
+using System;
 using Proxy.Application;
-
 using Real.Application;
 
 namespace Proxy

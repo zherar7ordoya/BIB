@@ -1,4 +1,9 @@
-﻿using System;
+﻿/*
+ * An object lets you extend its behavior by accepting a method encapsulated in
+ * an object and invoking that method at an appropriate moment.
+ */
+
+using System;
 
 using Patrones.Command.Core;
 
@@ -9,6 +14,8 @@ namespace Patrones.Command.UI
         static void Main()
         {
             var empresa = new EmpresaInvoker();
+
+            Console.WriteLine("Stock inicial 100\n");
             var producto = new ProductoReceiver
             {
                 Cantidad = 100
@@ -31,7 +38,7 @@ namespace Patrones.Command.UI
 
             empresa.ProcesarOrdenes();
 
-            Console.Write(string.Format("Total stock es {0}", producto.Cantidad));
+            Console.Write(string.Format("\nTotal stock es {0}", producto.Cantidad));
             Console.ReadKey();
         }
     }

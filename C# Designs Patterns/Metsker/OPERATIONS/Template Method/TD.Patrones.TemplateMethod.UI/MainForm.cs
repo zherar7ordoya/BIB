@@ -1,7 +1,10 @@
-﻿using System;
+﻿/*
+ * A superclass has a method that requires subclasses to fill in a missing step.
+ */
+
+using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
-
 using TD.PatronesTemplateMethod.Core;
 
 namespace TD.Patrones.TemplateMethod.UI
