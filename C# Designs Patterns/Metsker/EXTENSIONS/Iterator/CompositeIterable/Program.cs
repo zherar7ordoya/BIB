@@ -31,17 +31,15 @@ namespace CompositeIterator
     {
         static void Main()
         {
-            // Crear una estructura composite de ejemplo
-            Composite root = new Composite("root");
-            Composite child1 = new Composite("child1");
-            Leaf leaf1 = new Leaf("leaf1");
-            Leaf leaf2 = new Leaf("leaf2");
+            Composite root = new Composite("Root");
+            Composite child1 = new Composite("Child 1 (pertenece a Root)");
+            Leaf leaf1 = new Leaf("Leaf 1 (pertenece a Root)");
+            Leaf leaf2 = new Leaf("Leaf 2 (pertenece a Child 1)");
 
             root.Add(child1);
             root.Add(leaf1);
             child1.Add(leaf2);
 
-            // Iterar y mostrar todos los componentes
             foreach (var component in root.GetAllComponents())
             {
                 Console.WriteLine(component);
@@ -57,54 +55,68 @@ namespace CompositeIterator
         IEnumerable<IComponent> GetAllComponents();
     }
 
+    // Clase Composite que puede contener otros IComponent (nodos e hojas)
     public class Composite : IComponent
     {
-        private List<IComponent> _children = new List<IComponent>();
-
-        public Composite(string name)
-        {
-            Name = name;
-        }
-
+        // Constructor: Asignar el nombre al composite
+        public Composite(string name) => Name = name;
         public string Name { get; }
+        public override string ToString() => Name;
 
-        public void Add(IComponent component)
-        {
-            _children.Add(component);
-        }
+        readonly List<IComponent> _children = new List<IComponent>();
+        public void Add(IComponent component) => _children.Add(component);
 
+        /// <summary>
+        /// Método para obtener todos los componentes (el propio composite y sus hijos)
+        /// </summary>
+        /// <returns></returns>
         public IEnumerable<IComponent> GetAllComponents()
         {
+            // Retornar el propio composite primero
             yield return this;
+
+            // Retornar recursivamente todos los hijos y los componentes dentro
+            // de ellos. SelectMany aplana estas secuencias en una sola secuencia
+            // continua de componentes. VER NOTA ABAJO.
             foreach (var child in _children.SelectMany(child => child.GetAllComponents()))
             {
                 yield return child;
             }
         }
-
-        public override string ToString()
-        {
-            return Name;
-        }
     }
 
+    ////////////////////////////////////////////////////////////////////////////
+    /*
+     * ¿Por Qué yield return Simplifica?
+     * 
+     * Mantenimiento del Estado:
+     * yield return se encarga de mantener el estado de la iteración entre
+     * llamadas. No tienes que preocuparte por las variables de estado o por
+     * implementar interfaces adicionales.
+     * 
+     * Recursividad Simplificada:
+     * El método puede llamarse a sí mismo recursivamente sin necesidad de
+     * complejos bucles o estructuras de datos adicionales para gestionar el
+     * recorrido jerárquico.
+     * 
+     * Claridad y Brevedad:
+     * El código es más claro y más fácil de leer. No necesitas escribir mucho
+     * código para lograr un iterador complejo.
+     */
+    ////////////////////////////////////////////////////////////////////////////
+
+    // Clase Leaf que representa una hoja en la estructura composite
     public class Leaf : IComponent
     {
-        public Leaf(string name)
-        {
-            Name = name;
-        }
-
+        // Constructor: Asignar el nombre a la hoja
+        public Leaf(string name) => Name = name;
         public string Name { get; }
+        public override string ToString() => Name;
 
+        // Método para obtener todos los componentes (solo retorna la propia hoja)
         public IEnumerable<IComponent> GetAllComponents()
         {
             yield return this;
-        }
-
-        public override string ToString()
-        {
-            return Name;
         }
     }
 }
