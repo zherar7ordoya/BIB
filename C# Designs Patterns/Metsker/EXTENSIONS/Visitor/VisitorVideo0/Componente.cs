@@ -2,17 +2,11 @@
 {
     public abstract class Componente
     {
-        string _serial;
+        public Componente(string serial) => _serial = serial;
 
-        public Componente(string serial)
-        {
-            _serial = serial;
-        }
-        public string Serial { 
-            get {
-                return _serial;
-            }
-        }
+        readonly string _serial;
+        public string Serial => _serial;
+
         public abstract void Aceptar(IVisitor visitor);
     }
 }
