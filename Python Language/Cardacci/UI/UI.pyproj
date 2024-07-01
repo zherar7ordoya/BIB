@@ -5,8 +5,7 @@
     <ProjectGuid>bd3538e5-ba72-4e3b-b579-d10c4a0ca920</ProjectGuid>
     <ProjectHome>.</ProjectHome>
     <StartupFile>UI.py</StartupFile>
-    <SearchPath>
-    </SearchPath>
+    <SearchPath>..\Library</SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
     <OutputPath>.</OutputPath>
     <Name>UI</Name>
