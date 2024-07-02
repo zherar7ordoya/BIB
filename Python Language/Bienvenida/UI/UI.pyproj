@@ -2,16 +2,16 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>09d679d0-6e07-4f50-a70d-51981b4f302b</ProjectGuid>
+    <ProjectGuid>bd3538e5-ba72-4e3b-b579-d10c4a0ca920</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>Library.py</StartupFile>
-    <SearchPath>
-    </SearchPath>
+    <StartupFile>UI.py</StartupFile>
+    <SearchPath>..\Library</SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
     <OutputPath>.</OutputPath>
-    <Name>Library</Name>
-    <RootNamespace>Library</RootNamespace>
-    <InterpreterId>MSBuild|env|$(MSBuildProjectFullPath)</InterpreterId>
+    <Name>UI</Name>
+    <RootNamespace>UI</RootNamespace>
+    <InterpreterId>
+    </InterpreterId>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>
@@ -22,18 +22,14 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Library.py" />
+    <Compile Include="UI.py" />
   </ItemGroup>
   <ItemGroup>
-    <Interpreter Include="env\">
-      <Id>env</Id>
-      <Version>3.9</Version>
-      <Description>env (Python 3.9 (64-bit))</Description>
-      <InterpreterPath>Scripts\python.exe</InterpreterPath>
-      <WindowsInterpreterPath>Scripts\pythonw.exe</WindowsInterpreterPath>
-      <PathEnvironmentVariable>PYTHONPATH</PathEnvironmentVariable>
-      <Architecture>X64</Architecture>
-    </Interpreter>
+    <ProjectReference Include="..\Library\Library.pyproj">
+      <Name>Library</Name>
+      <Project>{09d679d0-6e07-4f50-a70d-51981b4f302b}</Project>
+      <Private>True</Private>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="requirements.txt" />
