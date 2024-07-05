@@ -1,15 +1,13 @@
-// Java program to run the applet using the applet viewer.
-
 import java.applet.Applet;
 import java.awt.Graphics;
 
 // Suppressing warning for applet class.
 @SuppressWarnings("removal")
 
-public class GfgApplet extends Applet
+public class WelcomeApplet extends Applet
 {
 	public void paint(Graphics g) {
-        g.drawString("Hello, Gerardo Tordoya!", 20, 20);
+        g.drawString("Bienvenido, Gerardo Tordoya!", 20, 20);
     }
 }
 /*
